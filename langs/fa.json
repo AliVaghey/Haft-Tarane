@@ -1,0 +1,13 @@
+{
+  "main": {
+    "title": "صفحه اصلی"
+  },
+  "delete-dialog": {
+    "confirm": "حذف",
+    "cancel": "لغو",
+    "This action cannot be reversed": "این اقدام قابل برگشت نیست"
+  },
+  "user": {
+    "title": "کاربر"
+  }
+}

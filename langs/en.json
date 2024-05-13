@@ -1,0 +1,13 @@
+{
+  "main": {
+    "title": "Main Page"
+  },
+  "delete-dialog": {
+    "confirm": "confirm",
+    "cancel": "cancel",
+    "This action cannot be reversed": "This action cannot be reversed"
+  },
+  "user": {
+    "title": "user"
+  }
+}
