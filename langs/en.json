@@ -1,6 +1,39 @@
 {
+  "language": "en",
+  "const": {
+    "Bibak Safar": "Bibak Safar",
+    "admin": "admin",
+    "admins": "admins",
+    "dashboard": "dashboard",
+    "user": "user",
+    "users": "users",
+    "agency": "agency",
+    "agencies": "agencies",
+    "your agencies": "your agencies",
+    "add": "add",
+    "edit": "edit",
+    "cancel": "cancel",
+    "delete": "delete",
+    "city": "city",
+    "cities": "cities",
+    "hotel": "hotel",
+    "hotels": "hotels",
+    "your hotels": "your hotels",
+    "tour": "tour",
+    "tours": "tours",
+    "your tours": "your tours"
+  },
   "main": {
     "title": "Main Page"
+  },
+  "loginPage": {
+    "title": "Bibak Safar",
+    "description": "Lorem Epsom is a mock text with an incomprehensible simplicity produced by the printing industry and used by graphic designers. Printers and texts, but also newspapers and magazines in columns and rows as necessary and for the current conditions of technology required and diverse applications with the aim of improving practical tools.",
+    "phoneNumber": "phone number",
+    "password": "password",
+    "signIn": "login",
+    "signUp": "sign up",
+    "loginText": "Please enter your user information to use the site's facilities"
   },
   "delete-dialog": {
     "confirm": "confirm",
