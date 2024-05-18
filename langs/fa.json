@@ -1,11 +1,27 @@
 {
   "language": "fa",
   "const": {
+    "Bibak Safar": "بی باک سفر",
     "admin": "ادمین",
+    "admins": "ادمین ها",
     "dashboard": "داشبورد",
     "user": "کاربر",
+    "users": "کاربران",
     "agency": "آژانس",
-    "Bibak Safar": "بی باک سفر"
+    "agencies": "آژانس ها",
+    "your agencies": "آژانس های شما",
+    "add": "افزودن",
+    "edit": "ویرایش",
+    "cancel": "لغو",
+    "delete": "حذف",
+    "city": "شهر",
+    "cities": "شهر ها",
+    "hotel": "هتل",
+    "hotels": "هتل ها",
+    "your hotels": "هتل های شما",
+    "tour": "تور",
+    "tours": "تور ها",
+    "your tours": "تور های شما"
   },
   "main": {
     "title": "صفحه اصلی"

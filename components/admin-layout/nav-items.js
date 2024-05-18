@@ -1,23 +1,18 @@
 import { routes } from "@/routes/routes";
-import { PackageSearch } from "lucide-react";
-import { ShoppingCart } from "lucide-react";
-import { PackagePlus } from "lucide-react";
-import { Folders } from "lucide-react";
-import { CopyPlus } from "lucide-react";
+import { Building } from "lucide-react";
 import {
-  Bell,
-  Folder,
-  FolderPlus,
+  Hotel,
+  ClipboardList,
+  Pyramid,
+  File,
+  Bed,
+  ShieldEllipsis,
+  Plane,
+  UserRoundCog,
+  Building2,
   LayoutDashboard,
   LibraryBig,
-  List,
-  PlusCircle,
-  Settings,
   SwatchBook,
-  UserCog,
-  UserPlus,
-  UserSearch,
-  Users,
   UsersRound,
 } from "lucide-react";
 
@@ -38,113 +33,127 @@ export const navItems = [
   },
 
   {
-    title: "پروفایل",
+    title: "مدیریت شهرها",
     type: "subMenu",
     icon: (size, strokeWidth) => (
-      <LibraryBig size={size || 18} strokeWidth={strokeWidth || 1.5} />
+      <Building2 size={size || 18} strokeWidth={strokeWidth || 1.5} />
     ),
     subMenu: [
       {
-        title: "مشاهده پروفایل",
-        href: "",
+        title: "همه شهر ها",
+        href: routes.admin.cities.root,
         icon: (size, strokeWidth) => (
-          <UserSearch size={size || 18} strokeWidth={strokeWidth || 1.5} />
+          <Building2 size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
       {
-        title: "ویرایش پروفایل",
-        href: "",
+        title: "افزودن شهر",
+        href: routes.admin.cities.add,
         icon: (size, strokeWidth) => (
-          <UserCog size={size || 18} strokeWidth={strokeWidth || 1.5} />
-        ),
-      },
-      {
-        title: "تنظیمات",
-        href: "",
-        icon: (size, strokeWidth) => (
-          <Settings size={size || 18} strokeWidth={strokeWidth || 1.5} />
+          <Building2 size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
     ],
   },
 
   {
-    title: "داشبورد",
-    type: "link",
-    href: routes.admin.dashboard,
-    icon: (size, strokeWidth) => (
-      <LayoutDashboard size={size || 18} strokeWidth={strokeWidth || 1.5} />
-    ),
-    subMenu: [],
-  },
-
-  {
-    title: "پروفایل",
+    title: "مدیریت کاربران",
     type: "subMenu",
     icon: (size, strokeWidth) => (
       <LibraryBig size={size || 18} strokeWidth={strokeWidth || 1.5} />
     ),
     subMenu: [
       {
-        title: "مشاهده پروفایل",
-        href: "",
+        title: "همه کاربران",
+        href: routes.admin.users.root,
         icon: (size, strokeWidth) => (
-          <UserSearch size={size || 18} strokeWidth={strokeWidth || 1.5} />
+          <UsersRound size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
       {
-        title: "ویرایش پروفایل",
-        href: "",
+        title: "ادمین ها",
+        href: routes.admin.users.root,
         icon: (size, strokeWidth) => (
-          <UserCog size={size || 18} strokeWidth={strokeWidth || 1.5} />
-        ),
-      },
-      {
-        title: "تنظیمات",
-        href: "",
-        icon: (size, strokeWidth) => (
-          <Settings size={size || 18} strokeWidth={strokeWidth || 1.5} />
+          <UserRoundCog size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
     ],
   },
 
   {
-    title: "داشبورد",
-    type: "link",
-    href: routes.admin.dashboard,
-    icon: (size, strokeWidth) => (
-      <LayoutDashboard size={size || 18} strokeWidth={strokeWidth || 1.5} />
-    ),
-    subMenu: [],
-  },
-
-  {
-    title: "پروفایل",
+    title: "مدیریت آژانس ها",
     type: "subMenu",
     icon: (size, strokeWidth) => (
-      <LibraryBig size={size || 18} strokeWidth={strokeWidth || 1.5} />
+      <SwatchBook size={size || 18} strokeWidth={strokeWidth || 1.5} />
     ),
     subMenu: [
       {
-        title: "مشاهده پروفایل",
-        href: "",
+        title: "همه آژانس ها",
+        href: routes.admin.agencies.root,
         icon: (size, strokeWidth) => (
-          <UserSearch size={size || 18} strokeWidth={strokeWidth || 1.5} />
+          <File size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
       {
-        title: "ویرایش پروفایل",
-        href: "",
+        title: "آژانس های شما",
+        href: routes.admin.agencies.root,
         icon: (size, strokeWidth) => (
-          <UserCog size={size || 18} strokeWidth={strokeWidth || 1.5} />
+          <File size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+    ],
+  },
+
+  {
+    title: "مدیریت هتل ها",
+    type: "subMenu",
+    icon: (size, strokeWidth) => (
+      <Hotel size={size || 18} strokeWidth={strokeWidth || 1.5} />
+    ),
+    subMenu: [
+      {
+        title: "همه هتل ها",
+        href: routes.admin.hotels.root,
+        icon: (size, strokeWidth) => (
+          <Bed size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
       {
-        title: "تنظیمات",
-        href: "",
+        title: "هتل های شما",
+        href: routes.admin.hotels.root,
         icon: (size, strokeWidth) => (
-          <Settings size={size || 18} strokeWidth={strokeWidth || 1.5} />
+          <Bed size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+    ],
+  },
+
+  {
+    title: "مدیریت تور ها",
+    type: "subMenu",
+    icon: (size, strokeWidth) => (
+      <Plane size={size || 18} strokeWidth={strokeWidth || 1.5} />
+    ),
+    subMenu: [
+      {
+        title: "همه تور های فعال",
+        href: routes.admin.hotels.root,
+        icon: (size, strokeWidth) => (
+          <ClipboardList size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
+        title: "تور های شما",
+        href: routes.admin.hotels.root,
+        icon: (size, strokeWidth) => (
+          <Pyramid size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
+        title: "تور های در انتظار تایید",
+        href: routes.admin.hotels.root,
+        icon: (size, strokeWidth) => (
+          <ShieldEllipsis size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
     ],

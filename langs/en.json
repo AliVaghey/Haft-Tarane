@@ -1,11 +1,27 @@
 {
   "language": "en",
   "const": {
+    "Bibak Safar": "Bibak Safar",
     "admin": "admin",
+    "admins": "admins",
     "dashboard": "dashboard",
     "user": "user",
+    "users": "users",
     "agency": "agency",
-    "Bibak Safar": "Bibak Safar"
+    "agencies": "agencies",
+    "your agencies": "your agencies",
+    "add": "add",
+    "edit": "edit",
+    "cancel": "cancel",
+    "delete": "delete",
+    "city": "city",
+    "cities": "cities",
+    "hotel": "hotel",
+    "hotels": "hotels",
+    "your hotels": "your hotels",
+    "tour": "tour",
+    "tours": "tours",
+    "your tours": "your tours"
   },
   "main": {
     "title": "Main Page"

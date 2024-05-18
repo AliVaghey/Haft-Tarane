@@ -30,8 +30,12 @@ import {
   LogOut,
 } from "lucide-react";
 import BreadcrumbComponent from "@/components/breadcrumb";
+import { ChevronRight } from "lucide-react";
+import { useDictionary } from "@/providers/dictionary-provider";
 
 const Header = () => {
+  const dictionary = useDictionary();
+
   const router = useRouter();
   const pathname = usePathname();
 
@@ -51,15 +55,23 @@ const Header = () => {
     <header className="sticky top-0 z-50 flex h-14 items-center gap-4 bg-transparent px-4 lg:h-[60px] lg:px-6">
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant="outline" size="icon" className="shrink-0 md:hidden">
+          <Button
+            size="icon"
+            className="shrink-0 bg-red-primary text-white hover:bg-red-dark md:hidden"
+          >
             <Menu className="h-5 w-5" />
             <span className="sr-only">Toggle navigation menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent side="right" className="flex flex-col p-1 px-2">
-          <ScrollArea dir="rtl">
-            <SheetClose ref={sheetRef} className="hidden" />
-            <nav className="grid items-start px-0 text-sm font-medium lg:px-4">
+        <SheetContent
+          side="right"
+          className="flex flex-col bg-primary p-1 px-2"
+        >
+          <ScrollArea
+            dir={dictionary["language"] === "en" ? "ltr" : "rtl"}
+            className="mt-5 flex-1 overflow-y-auto"
+          >
+            <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
               {navItems.map((item, index) => (
                 <div
                   key={index}
@@ -70,13 +82,20 @@ const Header = () => {
                       key={index}
                       href={item.href}
                       className={cn(
-                        "flex items-center gap-3 rounded-lg rounded-r-none px-2 py-2 text-muted-foreground transition-all hover:text-primary",
-                        pathname === item.href &&
-                          "border-r-4 border-r-primary text-primary",
+                        "flex items-center gap-3 rounded-lg bg-yellow-light p-2 hover:bg-white",
+                        pathname.endsWith(item.href) && "bg-white",
                       )}
+                      onClick={() => {
+                        console.log("first");
+                      }}
                     >
                       {item?.icon(18, 1.5)}
                       {item.title}
+                      {item.quantity && (
+                        <Badge className="mr-auto flex shrink-0 items-center justify-center rounded-full pt-1">
+                          {farsiNumber(item.quantity)}
+                        </Badge>
+                      )}
                     </Link>
                   )}
 
@@ -91,10 +110,8 @@ const Header = () => {
                       <div
                         onClick={() => changeActiveMenu(index)}
                         className={cn(
-                          "text-paragraph relative flex cursor-pointer items-center gap-x-3 px-5 py-2 text-sm font-medium",
-                          "border-r-4 border-r-card transition-all duration-200 hover:text-primary",
-                          activeMenu === index &&
-                            "border-r-4 border-r-primary text-primary",
+                          "flex cursor-pointer items-center gap-3 rounded-lg bg-yellow-light p-2 hover:bg-white",
+                          activeMenu === index && "bg-white",
                         )}
                       >
                         <span className="text-xs">{item.icon()}</span>
@@ -102,14 +119,25 @@ const Header = () => {
                           <span>{item.title}</span>
                           {item.subMenu.length !== 0 && (
                             <span>
-                              <ChevronLeft
-                                size={18}
-                                strokeWidth={1.5}
-                                className={cn(
-                                  "transition-all duration-300",
-                                  activeMenu === index && "-rotate-90",
-                                )}
-                              />
+                              {dictionary["language"] === "en" ? (
+                                <ChevronRight
+                                  size={18}
+                                  strokeWidth={1.5}
+                                  className={cn(
+                                    "transition-all duration-300",
+                                    activeMenu === index && "rotate-90",
+                                  )}
+                                />
+                              ) : (
+                                <ChevronLeft
+                                  size={18}
+                                  strokeWidth={1.5}
+                                  className={cn(
+                                    "transition-all duration-300",
+                                    activeMenu === index && "-rotate-90",
+                                  )}
+                                />
+                              )}
                             </span>
                           )}
                         </div>
@@ -117,8 +145,8 @@ const Header = () => {
 
                       <div
                         className={cn(
-                          "text-paragraph flex max-h-0 flex-col gap-y-2 overflow-hidden text-xs font-normal opacity-50 transition-all duration-300",
-                          activeMenu === index && "max-h-40 opacity-100",
+                          "text-paragraph mr-4  flex max-h-0 flex-col gap-y-2 overflow-hidden text-xs font-normal opacity-50 transition-all duration-300",
+                          activeMenu === index && "mt-2 max-h-40 opacity-100",
                         )}
                       >
                         {item.subMenu.map((subMenuItem, subMenuIndex) => (
@@ -126,8 +154,8 @@ const Header = () => {
                             key={subMenuIndex}
                             href={subMenuItem.href}
                             className={cn(
-                              "flex items-center gap-x-2 py-2 pr-7 transition-all duration-300 hover:text-primary",
-                              pathname === subMenuItem.href && "text-primary",
+                              "flex items-center gap-x-2 rounded-lg bg-yellow-light p-2 transition-all duration-300 hover:bg-white",
+                              pathname.endsWith(subMenuItem.href) && "bg-white",
                             )}
                           >
                             <span>{subMenuItem.icon()}</span>

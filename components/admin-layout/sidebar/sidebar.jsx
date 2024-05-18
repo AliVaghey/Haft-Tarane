@@ -58,7 +58,7 @@ const SideBar = () => {
                     href={item.href}
                     className={cn(
                       "flex items-center gap-3 rounded-lg bg-yellow-light p-2 hover:bg-white",
-                      pathname === item.href && "bg-white",
+                      pathname.endsWith(item.href) && "bg-white",
                     )}
                     onClick={() => {
                       console.log("first");
@@ -130,7 +130,7 @@ const SideBar = () => {
                           href={subMenuItem.href}
                           className={cn(
                             "flex items-center gap-x-2 rounded-lg bg-yellow-light p-2 transition-all duration-300 hover:bg-white",
-                            pathname === subMenuItem.href && "text-primary",
+                            pathname.endsWith(subMenuItem.href) && "bg-white",
                           )}
                         >
                           <span>{subMenuItem.icon()}</span>
