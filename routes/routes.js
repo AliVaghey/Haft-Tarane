@@ -27,6 +27,11 @@ export const routes = {
     },
     agencies: {
       root: "/admin/agencies",
+      details: (id) => `/admin/agencies/${id}`,
+    },
+    "your-agencies": {
+      root: "/admin/your-agencies",
+      details: (id) => `/admin/your-agencies/${id}`,
     },
     hotels: {
       root: "/admin/hotels",

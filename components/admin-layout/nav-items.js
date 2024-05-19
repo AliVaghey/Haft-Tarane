@@ -96,7 +96,7 @@ export const navItems = [
       },
       {
         title: "آژانس های شما",
-        href: routes.admin.agencies.root,
+        href: routes.admin["your-agencies"].root,
         icon: (size, strokeWidth) => (
           <File size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
