@@ -29,6 +29,10 @@ import { useDictionary } from "@/providers/dictionary-provider";
 import querystring from "querystring";
 import ToastError from "@/components/toast/toast-error";
 import { defaultMessages } from "@/lib/default-messages";
+import {
+  adminUserSchema,
+  enadminUserSchema,
+} from "@/lib/validation/auth/admin-user";
 
 const EditForm = ({ data }) => {
   const dictionary = useDictionary();
@@ -37,14 +41,18 @@ const EditForm = ({ data }) => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const isAddPage = pathname.endsWith(routes.admin.cities.edit(data.id));
+  const isAddPage = pathname.endsWith(routes.admin.users.edit(data.id));
 
   const form = useForm({
     resolver: zodResolver(
-      dictionary["language"] === "fa" ? citySchema : enCitySchema,
+      dictionary["language"] === "fa" ? adminUserSchema : enadminUserSchema,
     ),
     defaultValues: {
-      name: data.name,
+      username: data.username,
+      national_code: data.national_code,
+      email: data.email,
+      phone: data.phone,
+      access_type: data.access_type,
     },
     mode: "onSubmit",
   });
@@ -59,13 +67,17 @@ const EditForm = ({ data }) => {
     console.log("values", values);
 
     const encodedFormData = querystring.stringify({
-      name: values.name,
+      username: values.username,
+      national_code: values.national_code,
+      email: values.email,
+      phone: values.phone,
+      access_type: values.access_type,
     });
 
     await CSRFToken();
 
     await axios
-      .put(`/api/admin/city/${data.id}`, encodedFormData)
+      .put(`/api/admin/user/${data.id}`, encodedFormData)
       .then((response) => {
         if (response.status === 204) {
           toast.success(
@@ -73,11 +85,11 @@ const EditForm = ({ data }) => {
               <span>
                 <CircleCheckBig className="text-green-600" />
               </span>
-              <span>{"شهر با موفقیت ویرایش اضافه شد"}</span>
+              <span>{"کاربر با موفقیت ویرایش اضافه شد"}</span>
             </div>,
           );
 
-          router.push(routes.admin.cities.root);
+          router.push(routes.admin.users.root);
           router.refresh();
         }
       })
@@ -101,26 +113,86 @@ const EditForm = ({ data }) => {
   return (
     <Dialog
       open={isAddPage}
-      onOpenChange={() => router.push(routes.admin.cities.root)}
+      onOpenChange={() => router.push(routes.admin.users.root)}
     >
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle className="mr-4 text-right">افزودن شهر</DialogTitle>
+          <DialogTitle className="mr-4 text-right">ویرایش کاربر</DialogTitle>
         </DialogHeader>
         <div className="w-full">
           <Form {...form}>
-            <form onSubmit={handleSubmit(onSubmit)} className="">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="flex flex-col gap-2"
+            >
               <FormField
                 control={control}
-                name="name"
+                name="username"
                 render={({ field }) => (
                   <FormItem className="col-span-3 lg:col-span-1">
-                    <FormLabel>نام شهر</FormLabel>
+                    <FormLabel>نام و نام خانوادگی</FormLabel>
                     <FormControl>
                       <Input
                         className="rounded-2xl"
                         autoComplete="off"
                         placeholder="حداقل ۲ کاراکتر"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={control}
+                name="phone"
+                render={({ field }) => (
+                  <FormItem className="col-span-3 lg:col-span-1">
+                    <FormLabel>شماره تماس</FormLabel>
+                    <FormControl>
+                      <Input
+                        className="rounded-2xl"
+                        autoComplete="off"
+                        placeholder="۰۹"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={control}
+                name="national_code"
+                render={({ field }) => (
+                  <FormItem className="col-span-3 lg:col-span-1">
+                    <FormLabel>کد ملی</FormLabel>
+                    <FormControl>
+                      <Input
+                        className="rounded-2xl"
+                        autoComplete="off"
+                        placeholder="۱۰ رقم"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem className="col-span-3 lg:col-span-1">
+                    <FormLabel>ایمیل</FormLabel>
+                    <FormControl>
+                      <Input
+                        className="rounded-2xl"
+                        autoComplete="off"
+                        placeholder="ایمیل"
                         {...field}
                       />
                     </FormControl>

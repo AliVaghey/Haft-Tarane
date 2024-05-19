@@ -16,6 +16,10 @@ import { cn } from "@/lib/utils";
 import querystring from "querystring";
 import ToastError from "@/components/toast/toast-error";
 import ToastSuccess from "@/components/toast/toast-success";
+import { Eye } from "lucide-react";
+import Link from "next/link";
+import { Edit } from "lucide-react";
+import { routes } from "@/routes/routes";
 
 const accessTypes = [
   {
@@ -79,7 +83,19 @@ const CellAction = ({ data }) => {
   };
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center gap-1">
+      <Link href={routes.admin.users.details(data.id)}>
+        <div className="cursor-pointer rounded-md p-1 transition-all duration-200 hover:bg-muted">
+          <Eye size={18} strokeWidth={1.5} className="text-primary" />
+        </div>
+      </Link>
+
+      <Link href={routes.admin.users.edit(data.id)}>
+        <div className="cursor-pointer rounded-md p-1 transition-all duration-200 hover:bg-muted">
+          <Edit size={18} strokeWidth={1.5} className="text-primary" />
+        </div>
+      </Link>
+
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
