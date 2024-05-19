@@ -8,7 +8,9 @@ const AdminLayout = ({ children }) => {
       <div className="flex flex-col">
         <Header />
         <main className="flex flex-1 flex-col gap-4 p-2 lg:gap-6 lg:p-3">
-          <div className="min-h-full rounded-lg p-3 shadow-lg">{children}</div>
+          <div className="min-h-full rounded-lg p-3 py-5 shadow-lg">
+            {children}
+          </div>
         </main>
       </div>
     </div>

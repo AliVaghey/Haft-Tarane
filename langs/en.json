@@ -41,7 +41,8 @@
     "This action cannot be reversed": "This action cannot be reversed"
   },
   "user": {
-    "title": "user"
+    "title": "user",
+    "description": "This page is a list of all users"
   },
   "city": {
     "title": "Cities",
