@@ -9,6 +9,7 @@ export const routes = {
     cities: {
       root: "/admin/cities",
       add: "/admin/cities/add",
+      edit: (id) => `/admin/cities/${id}/edit`,
     },
     users: {
       root: "/admin/users",

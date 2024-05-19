@@ -9,7 +9,7 @@ const Number = ({ number }) => {
   const perPage = searchParams.get("perPage") || 20;
 
   return (
-    <span className="border-l pl-1 text-muted-foreground">
+    <span className="text-muted-foreground">
       {number + (page - 1) * perPage}
     </span>
   );

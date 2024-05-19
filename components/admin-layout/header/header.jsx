@@ -42,6 +42,7 @@ const Header = () => {
   const sheetRef = useRef(null);
 
   const [activeMenu, setActiveMenu] = useState(null);
+  const [navbar, setNavbar] = useState(false);
 
   const changeActiveMenu = (index) => {
     activeMenu === index ? setActiveMenu(null) : setActiveMenu(index);
@@ -51,8 +52,25 @@ const Header = () => {
     sheetRef?.current?.click();
   }, [pathname]);
 
+  const changeNavBg = () => {
+    if (window.scrollY > 80) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  };
+
+  if (typeof window !== "undefined") {
+    window.addEventListener("scroll", changeNavBg);
+  }
+
   return (
-    <header className="sticky top-0 z-50 flex h-14 items-center gap-4 bg-transparent px-4 lg:h-[60px] lg:px-6">
+    <header
+      className={cn(
+        "sticky top-0 z-50 flex h-14 items-center gap-4 bg-transparent px-4 transition-all duration-300 lg:h-[60px] lg:px-6",
+        navbar && "mx-2 rounded-2xl bg-primary shadow-lg",
+      )}
+    >
       <Sheet>
         <SheetTrigger asChild>
           <Button
