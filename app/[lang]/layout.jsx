@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/providers/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import DictionaryProvider from "@/providers/dictionary-provider";
 import { getLangs } from "@/lib/langs";
+import AuthProvider from "@/providers/auth-provider";
 
 const vazir = Vazirmatn({ subsets: ["latin"] });
 
@@ -28,8 +29,10 @@ const RootLayout = async ({ children, params }) => {
             enableSystem
             disableTransitionOnChange
           >
-            {children}
-            <Toaster position="bottom-right" />
+            <AuthProvider>
+              {children}
+              <Toaster position="bottom-right" />
+            </AuthProvider>
           </ThemeProvider>
         </DictionaryProvider>
       </body>
