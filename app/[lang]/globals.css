@@ -29,7 +29,7 @@
     --yellow-light: 54.08 79.78% 82.55%;
     --red-primary: 353.25 95.24% 49.41%;
     --red-dark: 355.67 94.74% 37.25%;
-
+    --gray-background: 0 0% 93.33%;
   }
 
   .dark {
@@ -57,7 +57,7 @@
     --yellow-light: 54.08 79.78% 82.55%;
     --red-primary: 353.25 95.24% 49.41%;
     --red-dark: 355.67 94.74% 37.25%;
-
+    --gray-background: 0 0% 93.33%;
   }
 }
 

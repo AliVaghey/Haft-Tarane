@@ -42,5 +42,9 @@
   },
   "user": {
     "title": "user"
+  },
+  "city": {
+    "title": "Cities",
+    "description": "This page is a list of all cities"
   }
 }
