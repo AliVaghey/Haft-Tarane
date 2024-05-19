@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { CircleUser, Menu, Search, ShoppingCart } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,12 +12,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-  SheetClose,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { navItems } from "@/components/admin-layout/nav-items";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -32,9 +27,15 @@ import {
 import BreadcrumbComponent from "@/components/breadcrumb";
 import { ChevronRight } from "lucide-react";
 import { useDictionary } from "@/providers/dictionary-provider";
+import { useUser } from "@/hooks/use-user";
+import { CSRFToken, axios } from "@/lib/axios";
+import { routes } from "@/routes/routes";
+import { toast } from "sonner";
 
 const Header = () => {
   const dictionary = useDictionary();
+
+  const userHook = useUser();
 
   const router = useRouter();
   const pathname = usePathname();
@@ -43,6 +44,7 @@ const Header = () => {
 
   const [activeMenu, setActiveMenu] = useState(null);
   const [navbar, setNavbar] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const changeActiveMenu = (index) => {
     activeMenu === index ? setActiveMenu(null) : setActiveMenu(index);
@@ -63,6 +65,28 @@ const Header = () => {
   if (typeof window !== "undefined") {
     window.addEventListener("scroll", changeNavBg);
   }
+
+  const signOut = async () => {
+    setIsLoading(true);
+
+    await CSRFToken();
+
+    const fetchData = () => {
+      return new Promise(async (resolve) => {
+        await axios.post("/logout");
+        resolve("خارج شدید");
+      });
+    };
+
+    toast.promise(fetchData, {
+      loading: "در حال خروج...",
+      success: () => {
+        router.push(routes.auth.signIn);
+        return "خارج شدید";
+      },
+      error: "Error",
+    });
+  };
 
   return (
     <header
@@ -196,7 +220,7 @@ const Header = () => {
         <DropdownMenuTrigger asChild>
           <Button className="flex items-center justify-center gap-2 bg-red-primary text-white hover:bg-red-dark">
             <CircleUserRound size={24} />
-            <span>آرمین افشار</span>
+            <span>{userHook?.userData?.username}</span>
             <ChevronDown size={20} strokeWidth={3} />
           </Button>
         </DropdownMenuTrigger>
@@ -211,12 +235,18 @@ const Header = () => {
               <Link href={"#"}>تنظیمات</Link>
             </div>
           </DropdownMenuItem>
-          <DropdownMenuItem className="w-full">
+          <DropdownMenuItem className="w-full cursor-pointer">
             <div className="w-full rtl:text-right">پشتیبانی</div>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={() => {}} className="w-full">
-            <div className="flex w-full items-center gap-x-2 rtl:justify-end">
+          <DropdownMenuItem
+            onClick={() => {}}
+            className="w-full cursor-pointer"
+          >
+            <div
+              className="flex w-full items-center gap-x-2 rtl:justify-end"
+              onClick={signOut}
+            >
               <LogOut size={14} strokeWidth={1.5} className="rtl:rotate-180" />
               <span>خروج</span>
             </div>
