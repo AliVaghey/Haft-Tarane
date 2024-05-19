@@ -18,7 +18,7 @@ const Details = ({ data }) => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const isdetailsPage = pathname.endsWith(routes.admin.users.details(data.id));
+  const isdetailsPage = pathname.endsWith(routes.admin.admins.details(data.id));
 
   if (!mount) {
     return null;
@@ -27,7 +27,7 @@ const Details = ({ data }) => {
   return (
     <Dialog
       open={isdetailsPage}
-      onOpenChange={() => router.push(routes.admin.users.root)}
+      onOpenChange={() => router.push(routes.admin.admins.root)}
     >
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

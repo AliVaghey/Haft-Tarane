@@ -16,6 +16,11 @@ export const routes = {
       edit: (id) => `/admin/users/${id}/edit`,
       details: (id) => `/admin/users/${id}`,
     },
+    admins: {
+      root: "/admin/admins",
+      edit: (id) => `/admin/admins/${id}/edit`,
+      details: (id) => `/admin/admins/${id}`,
+    },
     agencies: {
       root: "/admin/agencies",
     },
