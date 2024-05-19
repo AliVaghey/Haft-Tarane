@@ -8,7 +8,7 @@ import { axios } from "@/lib/axios";
 import { toast } from "sonner";
 
 const EditCityPage = ({ params }) => {
-  const [city, setCity] = useState({
+  const [data, setData] = useState({
     id: "",
     name: "",
   });
@@ -22,10 +22,10 @@ const EditCityPage = ({ params }) => {
   const fetchDefaultData = async () => {
     setIsLoading(true);
     await axios
-      .get(`/api/admin/city/${params.id}`)
+      .get(`/api/admin/user/${params.id}`)
       .then((response) => {
         console.log("response", response);
-        setCity(response.data);
+        setData(response.data.data);
       })
       .catch((error) => {
         toast.error(
@@ -42,7 +42,7 @@ const EditCityPage = ({ params }) => {
       });
   };
 
-  return <div>{isLoading ? <LoadingPage /> : <EditForm data={city} />}</div>;
+  return <div>{isLoading ? <LoadingPage /> : <EditForm data={data} />}</div>;
 };
 
 export default EditCityPage;

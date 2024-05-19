@@ -7,23 +7,26 @@ import LoadingPage from "@/components/loading-page";
 import { axios } from "@/lib/axios";
 import DataTableHeader from "@/components/data-table-header";
 import { useDictionary } from "@/providers/dictionary-provider";
+import PaginationComponent from "@/components/pagination";
 
-const AdminDashboardPage = () => {
+const UsersPage = ({ searchParams: { page, phone, username } }) => {
   const dictionary = useDictionary();
 
-  const [cities, setCities] = useState([]);
+  const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchCities();
-  }, []);
+  }, [page, phone, username]);
 
   const fetchCities = async () => {
     setIsLoading(true);
     await axios
-      .get("/api/cities")
+      .get(
+        `/api/admin/users?admin=true&page=${page || 1}&phone=${phone || ""}&username=${username || ""}`,
+      )
       .then((response) => {
-        setCities(response.data.data);
+        setData(response.data);
       })
       .catch((err) => {
         console.log("getCitiesError", err);
@@ -35,18 +38,24 @@ const AdminDashboardPage = () => {
   return (
     <div className="px-0 lg:px-10">
       <DataTableHeader
-        title={dictionary["city"]["title"]}
-        description={dictionary["city"]["description"]}
-        btnText="افزودن شهر"
+        title={dictionary["user"]["title"]}
+        description={dictionary["user"]["description"]}
       />
 
       {isLoading ? (
         <LoadingPage />
       ) : (
-        <DataTable columns={columns} data={cities} />
+        <>
+          <DataTable columns={columns} data={data.data} />
+          <PaginationComponent
+            total={data.meta.total || 0}
+            page={data.meta.current_page || 1}
+            perPage={data.meta.per_page || 10}
+          />
+        </>
       )}
     </div>
   );
 };
 
-export default AdminDashboardPage;
+export default UsersPage;

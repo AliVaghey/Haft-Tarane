@@ -41,7 +41,8 @@
     "This action cannot be reversed": "این اقدام قابل برگشت نیست"
   },
   "user": {
-    "title": "کاربر"
+    "title": "کاربران",
+    "description": "این صفحه لیستی از همه کاربران است"
   },
   "city": {
     "title": "شهر ها",

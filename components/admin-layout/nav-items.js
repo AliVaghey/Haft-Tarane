@@ -72,7 +72,7 @@ export const navItems = [
       },
       {
         title: "ادمین ها",
-        href: routes.admin.users.root,
+        href: routes.admin.admins.root,
         icon: (size, strokeWidth) => (
           <UserRoundCog size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
