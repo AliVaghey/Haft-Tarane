@@ -35,6 +35,9 @@ export const routes = {
     },
     hotels: {
       root: "/admin/hotels",
+      add: "/admin/hotels/add",
+      edit: (id) => `/admin/hotels/${id}/edit`,
+      details: (id) => `/admin/hotels/${id}`,
     },
   },
 
