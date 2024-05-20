@@ -136,13 +136,13 @@ const CellAction = ({ data }) => {
           رد کردن
         </Button>
 
-        <Button
+        {/* <Button
           variant="ghost"
           className="h-8 rounded-3xl border border-green-500 text-green-500"
           onClick={() => setOpen2(true)}
         >
           تایید کردن
-        </Button>
+        </Button> */}
       </div>
     </div>
   );

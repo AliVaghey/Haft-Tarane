@@ -7,7 +7,6 @@ import LoadingPage from "@/components/loading-page";
 import { axios } from "@/lib/axios";
 import DataTableHeader from "@/components/data-table-header";
 import { useDictionary } from "@/providers/dictionary-provider";
-import { routes } from "@/routes/routes";
 import PaginationComponent from "@/components/pagination";
 
 const AdminDashboardPage = ({ searchParams: { page } }) => {
@@ -23,7 +22,7 @@ const AdminDashboardPage = ({ searchParams: { page } }) => {
   const fetchPendingTours = async () => {
     setIsLoading(true);
     await axios
-      .get(`/api/admin/my-pending-tours?page=${page || 1}`)
+      .get(`/api/admin/my-tours?page=${page || 1}`)
       .then((response) => {
         console.log("fetchPendingToursres", response.data);
         setData(response.data);
