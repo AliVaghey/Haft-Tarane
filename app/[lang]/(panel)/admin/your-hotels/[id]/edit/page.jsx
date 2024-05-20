@@ -9,8 +9,7 @@ import { toast } from "sonner";
 
 const EditCityPage = ({ params }) => {
   const [data, setData] = useState({
-    id: "",
-    name: "",
+    gallery: [],
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -22,10 +21,10 @@ const EditCityPage = ({ params }) => {
   const fetchDefaultData = async () => {
     setIsLoading(true);
     await axios
-      .get(`/api/admin/city/${params.id}`)
+      .get(`/api/admin/hotel/${params.id}`)
       .then((response) => {
         console.log("response", response);
-        setData(response.data);
+        setData(response.data.data);
       })
       .catch((error) => {
         toast.error(

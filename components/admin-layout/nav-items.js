@@ -119,8 +119,15 @@ export const navItems = [
         ),
       },
       {
+        title: "افزودن هتل",
+        href: routes.admin["your-hotels"].add,
+        icon: (size, strokeWidth) => (
+          <Bed size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
         title: "هتل های شما",
-        href: routes.admin.hotels.root,
+        href: routes.admin["your-hotels"].root,
         icon: (size, strokeWidth) => (
           <Bed size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),

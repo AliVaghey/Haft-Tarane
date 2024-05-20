@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 import { routes } from "@/routes/routes";
 
-const DataTableHeader = ({ title, description, btnText }) => {
+const DataTableHeader = ({ title, description, btnText, href }) => {
   return (
     <div className="w-full">
       <div className="flex w-full items-center justify-between rounded-lg bg-gray-background p-2 px-3">
@@ -13,7 +13,7 @@ const DataTableHeader = ({ title, description, btnText }) => {
         </div>
         {btnText && (
           <div>
-            <Link href={routes.admin.cities.add}>
+            <Link href={href}>
               <Button className="min-w-36 rounded-3xl border-2 border-red-primary bg-white hover:bg-white/60">
                 {btnText}
               </Button>

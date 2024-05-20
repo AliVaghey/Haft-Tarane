@@ -49,7 +49,7 @@ const SearchTable = ({ queryTitle }) => {
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex">
           <Button
             type="button"
-            className="h-7 -translate-x-7 rounded-none bg-transparent px-2 hover:bg-transparent"
+            className="h-7 -translate-x-4 rounded-none bg-transparent px-0 hover:bg-transparent"
             onClick={() => {
               onSubmit({
                 q: "",
@@ -66,7 +66,7 @@ const SearchTable = ({ queryTitle }) => {
                 <Input
                   placeholder="جستجو..."
                   {...field}
-                  className="h-7 w-10 rounded-l-none pr-6 text-xs placeholder:text-xs focus-visible:ring-0 focus-visible:ring-offset-0 md:w-20 lg:w-32"
+                  className="h-7 w-10 rounded-l-none pr-4 text-xs placeholder:text-xs focus-visible:ring-0 focus-visible:ring-offset-0 md:w-14 lg:w-20"
                 />
               </FormItem>
             )}

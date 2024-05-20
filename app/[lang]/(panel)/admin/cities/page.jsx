@@ -7,6 +7,7 @@ import LoadingPage from "@/components/loading-page";
 import { axios } from "@/lib/axios";
 import DataTableHeader from "@/components/data-table-header";
 import { useDictionary } from "@/providers/dictionary-provider";
+import { routes } from "@/routes/routes";
 
 const AdminDashboardPage = () => {
   const dictionary = useDictionary();
@@ -38,6 +39,7 @@ const AdminDashboardPage = () => {
         title={dictionary["city"]["title"]}
         description={dictionary["city"]["description"]}
         btnText="افزودن شهر"
+        href={routes.admin.cities.add}
       />
 
       {isLoading ? (

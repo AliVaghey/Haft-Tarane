@@ -16,7 +16,7 @@ import { toast } from "sonner";
 import { enSignInSchema, signInSchema } from "@/lib/validation/auth/sign-in";
 import SubmitButton from "@/components/submit-button";
 import { redirect, useRouter } from "next/navigation";
-import { authLogo } from "@/constants/images";
+import { logo } from "@/constants/images";
 import { useDictionary } from "@/providers/dictionary-provider";
 import { CSRFToken, axios } from "@/lib/axios";
 import querystring from "querystring";
@@ -97,7 +97,7 @@ const LoginPage = () => {
           <div className="flex h-full w-full justify-center rounded-l-xl rounded-r-xl border bg-card p-3 md:w-2/3 ltr:md:rounded-l-none rtl:md:rounded-r-none">
             <div className="flex w-full flex-col items-center">
               <Image
-                src={authLogo}
+                src={logo}
                 alt="logo"
                 width={160}
                 height={80}

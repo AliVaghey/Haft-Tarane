@@ -10,7 +10,7 @@ import { useState } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { farsiNumber } from "@/lib/farsi-number";
 import Image from "next/image";
-import { authLogo } from "@/constants/images";
+import { logo } from "@/constants/images";
 import { useDictionary } from "@/providers/dictionary-provider";
 import { ChevronRight } from "lucide-react";
 
@@ -31,7 +31,7 @@ const SideBar = () => {
           <Link href="/" className="flex items-center gap-2 font-semibold">
             {/* <Package2 className="h-6 w-6 text-primary" /> */}
             <Image
-              src={authLogo}
+              src={logo}
               alt="logo"
               width={150}
               height={150}
