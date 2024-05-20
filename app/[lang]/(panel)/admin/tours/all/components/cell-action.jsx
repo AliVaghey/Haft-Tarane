@@ -128,13 +128,13 @@ const CellAction = ({ data }) => {
           </Button>
         </Link>
 
-        <Button
+        {/* <Button
           variant="ghost"
           className="h-8 rounded-3xl border border-red-primary text-red-primary"
           onClick={() => setOpen(true)}
         >
           رد کردن
-        </Button>
+        </Button> */}
 
         {/* <Button
           variant="ghost"

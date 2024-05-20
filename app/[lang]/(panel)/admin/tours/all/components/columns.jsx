@@ -1,7 +1,9 @@
 "use client";
 
+import SearchTable from "@/components/search-table";
 import CellAction from "./cell-action";
 import Number from "./number";
+import { persianPriceFormat } from "@/lib/persian-price-format";
 
 export const columns = [
   {
@@ -17,11 +19,21 @@ export const columns = [
   },
   {
     accessorKey: "title",
-    header: "عنوان",
+    header: ({ column }) => (
+      <div className="mt-2 flex flex-col gap-1">
+        <span>عنوان</span>
+        <SearchTable queryTitle="title" />
+      </div>
+    ),
   },
   {
     accessorKey: "trip_type",
-    header: "نوع تور",
+    header: ({ column }) => (
+      <div className="mt-2 flex flex-col gap-1">
+        <span>نوع تور</span>
+        <SearchTable queryTitle="trip_type" />
+      </div>
+    ),
   },
   {
     accessorKey: "capacity",
@@ -30,6 +42,27 @@ export const columns = [
   {
     accessorKey: "min_cost",
     header: "قیمت پایه",
+    cell: ({ row }) => {
+      return <span>{persianPriceFormat(row.original.min_cost)}</span>;
+    },
+  },
+  {
+    accessorKey: "origin",
+    header: ({ column }) => (
+      <div className="mt-2 flex flex-col gap-1">
+        <span>مبدا</span>
+        <SearchTable queryTitle="origin" />
+      </div>
+    ),
+  },
+  {
+    accessorKey: "destination",
+    header: ({ column }) => (
+      <div className="mt-2 flex flex-col gap-1">
+        <span>مقصد</span>
+        <SearchTable queryTitle="destination" />
+      </div>
+    ),
   },
   {
     id: "actions",

@@ -1,5 +1,6 @@
 "use client";
 
+import { persianPriceFormat } from "@/lib/persian-price-format";
 import CellAction from "./cell-action";
 import Number from "./number";
 
@@ -30,6 +31,9 @@ export const columns = [
   {
     accessorKey: "min_cost",
     header: "قیمت پایه",
+    cell: ({ row }) => {
+      return <span>{persianPriceFormat(row.original.min_cost)}</span>;
+    },
   },
   {
     id: "actions",
