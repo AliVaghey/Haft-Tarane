@@ -45,6 +45,12 @@ export const routes = {
       edit: (id) => `/admin/your-hotels/${id}/edit`,
       details: (id) => `/admin/your-hotels/${id}`,
     },
+    tours: {
+      all: "/admin/tours/all",
+      pending: "/admin/tours/pending",
+      active: "/admin/tours/active",
+      details: (id) => `/admin/tours/${id}`,
+    },
   },
 
   user: {

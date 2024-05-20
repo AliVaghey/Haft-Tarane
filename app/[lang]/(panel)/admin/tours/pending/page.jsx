@@ -8,26 +8,28 @@ import { axios } from "@/lib/axios";
 import DataTableHeader from "@/components/data-table-header";
 import { useDictionary } from "@/providers/dictionary-provider";
 import { routes } from "@/routes/routes";
+import PaginationComponent from "@/components/pagination";
 
-const AdminDashboardPage = () => {
+const AdminDashboardPage = ({ searchParams: { page } }) => {
   const dictionary = useDictionary();
 
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchCities();
-  }, []);
+    fetchPendingTours();
+  }, [page]);
 
-  const fetchCities = async () => {
+  const fetchPendingTours = async () => {
     setIsLoading(true);
     await axios
-      .get("/api/cities")
+      .get(`/api/admin/my-pending-tours?page=${page || 1}`)
       .then((response) => {
-        setData(response.data.data);
+        console.log("fetchPendingToursres", response.data);
+        setData(response.data);
       })
       .catch((err) => {
-        console.log("getCitiesError", err);
+        console.log("fetchPendingTourserror", err);
       })
       .finally(() => {
         setIsLoading(false);
@@ -38,14 +40,19 @@ const AdminDashboardPage = () => {
       <DataTableHeader
         title={dictionary["city"]["title"]}
         description={dictionary["city"]["description"]}
-        btnText="افزودن شهر"
-        href={routes.admin.cities.add}
       />
 
       {isLoading ? (
         <LoadingPage />
       ) : (
-        <DataTable columns={columns} data={data} />
+        <>
+          <DataTable columns={columns} data={data.data} />
+          <PaginationComponent
+            total={data?.meta?.total || 0}
+            page={data?.meta?.current_page || 1}
+            perPage={data?.meta?.per_page || 10}
+          />
+        </>
       )}
     </div>
   );
