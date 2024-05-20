@@ -144,21 +144,21 @@ export const navItems = [
     subMenu: [
       {
         title: "همه تور های فعال",
-        href: routes.admin.hotels.root,
+        href: routes.admin.tours.all,
         icon: (size, strokeWidth) => (
           <ClipboardList size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
       {
-        title: "تور های شما",
-        href: routes.admin.hotels.root,
+        title: "تور های فعال شما",
+        href: routes.admin.tours.active,
         icon: (size, strokeWidth) => (
           <Pyramid size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
       {
         title: "تور های در انتظار تایید",
-        href: routes.admin.hotels.root,
+        href: routes.admin.tours.pending,
         icon: (size, strokeWidth) => (
           <ShieldEllipsis size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
