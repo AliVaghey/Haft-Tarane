@@ -25,7 +25,7 @@ const HotelPage = ({ searchParams: { page, name, country, state, city } }) => {
 
     await axios
       .get(
-        `/api/admin/hotels?page=${page || 1}&name=${name || ""}&country=${country || ""}&state=${state || ""}&city=${city || ""}`,
+        `/api/admin/my-hotels?page=${page || 1}&name=${name || ""}&country=${country || ""}&state=${state || ""}&city=${city || ""}`,
       )
       .then((response) => {
         setData(response.data);
@@ -43,7 +43,7 @@ const HotelPage = ({ searchParams: { page, name, country, state, city } }) => {
         title={dictionary["user"]["title"]}
         description={dictionary["user"]["description"]}
         btnText="افزودن هتل"
-        href={routes.admin.hotels.add}
+        href={routes.admin["your-hotels"].add}
       />
 
       {isLoading ? (

@@ -7,7 +7,7 @@ import { routes } from "@/routes/routes";
 const CellAction = ({ data }) => {
   return (
     <div className="flex items-center justify-center gap-1">
-      <Link href={routes.admin.agencies.details(data.id)}>
+      <Link href={routes.admin.hotels.details(data.id)}>
         <Button
           variant="ghost"
           className="flex gap-3 rounded-3xl border-2 border-red-primary text-xs"
