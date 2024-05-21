@@ -1,3 +1,5 @@
+import { root } from "postcss";
+
 export const routes = {
   landing: {
     root: "/",
@@ -58,6 +60,26 @@ export const routes = {
   },
 
   agency: {
-    dashboard: "/user/dashboard",
+    dashboard: "/agency/dashboard",
+    "support-team": {
+      root: "/agency/support-team",
+      add: "/agency/support-team/add",
+    },
+    currencies: {
+      root: "/agency/currencies",
+    },
+    tours: {
+      all: "/agency/tours/all",
+      draft: "/agency/tours/draft",
+      pending: "/agency/tours/pending",
+      rejected: "/agency/tours/rejected",
+      add: "/agency/tours/add",
+    },
+    sales: {
+      all: "/agency/sales/all",
+      "pending-pay": "/agency/sales/pending-pay",
+      accounting: "/agency/sales/accounting",
+      leads: "/agency/sales/leads",
+    },
   },
 };
