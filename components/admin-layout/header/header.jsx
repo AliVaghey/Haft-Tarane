@@ -73,8 +73,9 @@ const Header = () => {
 
     const fetchData = () => {
       return new Promise(async (resolve) => {
-        await axios.post("/logout");
-        resolve("خارج شدید");
+        await axios.post("/logout").finally(() => {
+          resolve("خارج شدید");
+        });
       });
     };
 

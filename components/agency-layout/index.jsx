@@ -43,7 +43,7 @@ const AgencyLayout = ({ children }) => {
   };
 
   if (!isAgency && !isLoading) {
-    // router.push(routes.auth.signIn);
+    router.push(routes.auth.signIn);
   }
 
   if (!isAgency && !isLoading) {
