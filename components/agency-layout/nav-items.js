@@ -10,7 +10,6 @@ import {
   WalletMinimal,
   UserCog,
   Wallet,
-  CircleDollarSign,
   Edit,
 } from "lucide-react";
 
@@ -36,16 +35,6 @@ export const navItems = [
     href: routes.agency["support-team"].root,
     icon: (size, strokeWidth) => (
       <ServerCog size={size || 18} strokeWidth={strokeWidth || 1.5} />
-    ),
-    subMenu: [],
-  },
-
-  {
-    title: "ارز ها",
-    type: "link",
-    href: routes.agency.currencies.root,
-    icon: (size, strokeWidth) => (
-      <CircleDollarSign size={size || 18} strokeWidth={strokeWidth || 1.5} />
     ),
     subMenu: [],
   },

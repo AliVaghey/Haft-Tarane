@@ -66,9 +66,6 @@ export const routes = {
       add: "/agency/support-team/add",
       edit: (id) => `/agency/support-team/${id}/edit`,
     },
-    currencies: {
-      root: "/agency/currencies",
-    },
     tours: {
       all: "/agency/tours/all",
       draft: "/agency/tours/draft",
