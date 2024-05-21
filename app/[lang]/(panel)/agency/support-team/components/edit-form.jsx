@@ -23,12 +23,15 @@ import {
 } from "@/components/ui/form";
 import SubmitButton from "@/components/submit-button";
 import { toast } from "sonner";
-import { citySchema, enCitySchema } from "@/lib/validation/auth/city";
 import { CSRFToken, axios } from "@/lib/axios";
 import { useDictionary } from "@/providers/dictionary-provider";
 import querystring from "querystring";
 import ToastError from "@/components/toast/toast-error";
 import { defaultMessages } from "@/lib/default-messages";
+import {
+  enSuportTeamSchema,
+  suportTeamSchema,
+} from "@/lib/validation/agency/support-team";
 
 const EditForm = ({ data }) => {
   const dictionary = useDictionary();
@@ -37,14 +40,17 @@ const EditForm = ({ data }) => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const isAddPage = pathname.endsWith(routes.admin.cities.edit(data.id));
+  const isAddPage = pathname.endsWith(
+    routes.agency["support-team"].edit(data.id),
+  );
 
   const form = useForm({
     resolver: zodResolver(
-      dictionary["language"] === "fa" ? citySchema : enCitySchema,
+      dictionary["language"] === "fa" ? suportTeamSchema : enSuportTeamSchema,
     ),
     defaultValues: {
       name: data.name,
+      phone: data.phone,
     },
     mode: "onSubmit",
   });
@@ -56,16 +62,15 @@ const EditForm = ({ data }) => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("values", values);
-
     const encodedFormData = querystring.stringify({
       name: values.name,
+      phone: values.phone,
     });
 
     await CSRFToken();
 
     await axios
-      .put(`/api/admin/city/${data.id}`, encodedFormData)
+      .put(`/api/agency/support/${data.id}`, encodedFormData)
       .then((response) => {
         if (response.status === 204) {
           toast.success(
@@ -73,11 +78,11 @@ const EditForm = ({ data }) => {
               <span>
                 <CircleCheckBig className="text-green-600" />
               </span>
-              <span>{"شهر با موفقیت ویرایش شد"}</span>
+              <span>{"پشتیبان با موفقیت ویرایش شد"}</span>
             </div>,
           );
 
-          router.push(routes.admin.cities.root);
+          router.push(routes.agency["support-team"].root);
           router.refresh();
         }
       })
@@ -101,7 +106,7 @@ const EditForm = ({ data }) => {
   return (
     <Dialog
       open={isAddPage}
-      onOpenChange={() => router.push(routes.admin.cities.root)}
+      onOpenChange={() => router.push(routes.agency["support-team"].root)}
     >
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
@@ -115,12 +120,32 @@ const EditForm = ({ data }) => {
                 name="name"
                 render={({ field }) => (
                   <FormItem className="col-span-3 lg:col-span-1">
-                    <FormLabel>نام شهر</FormLabel>
+                    <FormLabel>نام پشتیبان</FormLabel>
                     <FormControl>
                       <Input
                         className="rounded-2xl"
                         autoComplete="off"
                         placeholder="حداقل ۲ کاراکتر"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={control}
+                type="number"
+                name="phone"
+                render={({ field }) => (
+                  <FormItem className="col-span-3 lg:col-span-1">
+                    <FormLabel>شماره تماس</FormLabel>
+                    <FormControl>
+                      <Input
+                        className="rounded-2xl"
+                        autoComplete="off"
+                        placeholder="۰۹"
                         {...field}
                       />
                     </FormControl>
