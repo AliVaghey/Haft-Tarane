@@ -64,6 +64,7 @@ export const routes = {
     "support-team": {
       root: "/agency/support-team",
       add: "/agency/support-team/add",
+      edit: (id) => `/agency/support-team/${id}/edit`,
     },
     currencies: {
       root: "/agency/currencies",
