@@ -27,10 +27,6 @@ export const columns = [
     header: "نوع تور",
   },
   {
-    accessorKey: "trip_type",
-    header: "نوع تور",
-  },
-  {
     accessorKey: "status",
     header: "وضعیت",
     cell: ({ row }) => {

@@ -49,7 +49,7 @@ export function DataTable({ columns, data }) {
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
-                className="hover:bg-gray-background border-b-2 border-yellow-dark bg-white"
+                className="border-b-2 border-yellow-dark bg-white hover:bg-gray-background"
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id} className="border-x text-center">
