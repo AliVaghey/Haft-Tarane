@@ -4,7 +4,7 @@ import { persianPriceFormat } from "@/lib/persian-price-format";
 import Number from "./number";
 import { farsiNumber } from "@/lib/farsi-number";
 import CellAction from "./cell-action";
-import { getTourStatus } from "@/lib/validation/get-tour-status";
+import { getTourStatus } from "@/lib/get-tour-status";
 
 export const columns = [
   {
