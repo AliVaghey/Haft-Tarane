@@ -22,7 +22,7 @@ const AdminDashboardPage = ({ searchParams: { page } }) => {
   const fetchData = async () => {
     setIsLoading(true);
     await axios
-      .get(`/api/agency/tours?page=${page || 1}`)
+      .get(`/api/agency/tours?type=draft&page=${page || 1}`)
       .then((response) => {
         console.log("allAgencies", response);
         setData(response.data);
@@ -34,7 +34,6 @@ const AdminDashboardPage = ({ searchParams: { page } }) => {
         setIsLoading(false);
       });
   };
-
   return (
     <div className="px-0 lg:px-10">
       <DataTableHeader
@@ -46,7 +45,7 @@ const AdminDashboardPage = ({ searchParams: { page } }) => {
         <LoadingPage />
       ) : (
         <>
-          <DataTable columns={columns} data={data.data} />
+          <DataTable columns={columns} data={data.data} fetchData={fetchData} />
           <PaginationComponent
             total={data?.meta?.total || 0}
             page={data?.meta?.current_page || 1}
