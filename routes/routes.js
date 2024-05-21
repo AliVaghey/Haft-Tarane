@@ -72,6 +72,7 @@ export const routes = {
       pending: "/agency/tours/pending",
       rejected: "/agency/tours/rejected",
       add: "/agency/tours/add",
+      details: (id) => `/agency/tours/${id}`,
     },
     sales: {
       all: "/agency/sales/all",
