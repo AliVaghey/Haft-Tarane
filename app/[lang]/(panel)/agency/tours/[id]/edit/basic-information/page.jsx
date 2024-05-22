@@ -1,5 +1,11 @@
-const DocumentsPage = () => {
-  return <div>اطلاعات اولیه</div>;
+import BasicInformationForm from "@/components/tours/basic-information-form";
+
+const BasicInformationPage = () => {
+  return (
+    <div>
+      <BasicInformationForm />
+    </div>
+  );
 };
 
-export default DocumentsPage;
+export default BasicInformationPage;
