@@ -16,11 +16,6 @@ import {
 export const navItems = [
   {
     title: "داشبورد",
-    type: "text",
-  },
-
-  {
-    title: "داشبورد",
     type: "link",
     href: routes.agency.dashboard,
     icon: (size, strokeWidth) => (
@@ -46,6 +41,13 @@ export const navItems = [
       <Plane size={size || 18} strokeWidth={strokeWidth || 1.5} />
     ),
     subMenu: [
+      {
+        title: "ایجاد تور",
+        href: routes.agency.tours.create,
+        icon: (size, strokeWidth) => (
+          <Plane size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
       {
         title: "همه تور ها",
         href: routes.agency.tours.all,

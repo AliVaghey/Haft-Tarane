@@ -71,8 +71,16 @@ export const routes = {
       draft: "/agency/tours/draft",
       pending: "/agency/tours/pending",
       rejected: "/agency/tours/rejected",
-      add: "/agency/tours/add",
+      create: "/agency/tours/create",
       details: (id) => `/agency/tours/${id}`,
+      edit: {
+        "basic-information": (id) =>
+          `/agency/tours/${id}/edit/basic-information`,
+        "travel-plans": (id) => `/agency/tours/${id}/edit/travel-plans`,
+        documents: (id) => `/agency/tours/${id}/edit/documents`,
+        hotels: (id) => `/agency/tours/${id}/edit/hotels`,
+        dates: (id) => `/agency/tours/${id}/edit/dates`,
+      },
     },
     sales: {
       all: "/agency/sales/all",
