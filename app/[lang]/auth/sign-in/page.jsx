@@ -15,8 +15,8 @@ import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { enSignInSchema, signInSchema } from "@/lib/validation/auth/sign-in";
 import SubmitButton from "@/components/submit-button";
-import { redirect, useRouter } from "next/navigation";
-import { logo } from "@/constants/images";
+import { useRouter } from "next/navigation";
+import { logoGold } from "@/constants/images";
 import { useDictionary } from "@/providers/dictionary-provider";
 import { CSRFToken, axios } from "@/lib/axios";
 import querystring from "querystring";
@@ -97,13 +97,13 @@ const LoginPage = () => {
           <div className="flex h-full w-full justify-center rounded-l-xl rounded-r-xl border bg-card p-3 md:w-2/3 ltr:md:rounded-l-none rtl:md:rounded-r-none">
             <div className="flex w-full flex-col items-center">
               <Image
-                src={logo}
+                src={logoGold}
                 alt="logo"
                 width={160}
                 height={80}
-                className="h-36 w-60"
+                className="mt-2 h-36 w-72"
               />
-              <h1 className="text-2xl font-bold text-primary">
+              <h1 className="mt-2 text-2xl font-bold text-primary">
                 {dictionary["loginPage"]["title"]}
               </h1>
               <div className="mt-4 flex flex-col items-center gap-2">

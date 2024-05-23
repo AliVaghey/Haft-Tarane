@@ -10,7 +10,7 @@ import { useState } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { farsiNumber } from "@/lib/farsi-number";
 import Image from "next/image";
-import { logo } from "@/constants/images";
+import { logoRed } from "@/constants/images";
 import { useDictionary } from "@/providers/dictionary-provider";
 import { ChevronRight } from "lucide-react";
 
@@ -28,18 +28,21 @@ const SideBar = () => {
     <div className="sticky top-0 hidden h-screen bg-primary md:block ltr:rounded-r-3xl rtl:rounded-l-3xl">
       <div className="flex h-full max-h-screen flex-col gap-2">
         <div className="flex h-14 items-center px-3 lg:h-[60px] lg:px-6">
-          <Link href="/" className="flex items-center gap-2 font-semibold">
+          <Link
+            href="/"
+            className="flex w-full items-center justify-center gap-2 font-semibold"
+          >
             {/* <Package2 className="h-6 w-6 text-primary" /> */}
             <Image
-              src={logo}
+              src={logoRed}
               alt="logo"
-              width={150}
-              height={150}
-              className="h10 w-16"
+              width={250}
+              height={100}
+              className="mt-4 h-16 w-40"
             />
-            <span className="text-xl">
+            {/* <span className="text-xl">
               {dictionary["const"]["Bibak Safar"]}
-            </span>
+            </span> */}
           </Link>
         </div>
         <ScrollArea

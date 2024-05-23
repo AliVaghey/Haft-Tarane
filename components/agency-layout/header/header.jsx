@@ -31,6 +31,8 @@ import { useUser } from "@/hooks/use-user";
 import { CSRFToken, axios } from "@/lib/axios";
 import { routes } from "@/routes/routes";
 import { toast } from "sonner";
+import Image from "next/image";
+import { logoRed } from "@/constants/images";
 
 const Header = () => {
   const dictionary = useDictionary();
@@ -110,6 +112,24 @@ const Header = () => {
           side="right"
           className="flex flex-col bg-primary p-1 px-2"
         >
+          <div className="flex items-center px-3 lg:h-[60px] lg:px-6">
+            <Link
+              href="/"
+              className="flex w-full items-center justify-center gap-2 font-semibold"
+            >
+              {/* <Package2 className="h-6 w-6 text-primary" /> */}
+              <Image
+                src={logoRed}
+                alt="logo"
+                width={250}
+                height={100}
+                className="mt-4 h-16 w-40"
+              />
+              {/* <span className="text-xl">
+              {dictionary["const"]["Bibak Safar"]}
+            </span> */}
+            </Link>
+          </div>
           <ScrollArea
             dir={dictionary["language"] === "en" ? "ltr" : "rtl"}
             className="mt-5 flex-1 overflow-y-auto"

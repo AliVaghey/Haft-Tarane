@@ -43,8 +43,6 @@ const CreateTourHeader = () => {
     ? [tourItems[0]]
     : tourItems.find((item) => pathName.endsWith(item.link(params.id)));
 
-  console.log("currentStep", currentStep);
-
   const isDisableButton = (item, index) => {
     if (isCreatePage && item.title !== "مشخصات") {
       return true;

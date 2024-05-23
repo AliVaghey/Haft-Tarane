@@ -39,7 +39,11 @@ import {
 } from "@/components/ui/select";
 import ToastSuccess from "@/components/toast/toast-success";
 
-const BasicInformationForm = () => {
+const BasicInformationForm = ({ data }) => {
+  console.log(
+    "dataqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqa",
+    data,
+  );
   const dictionary = useDictionary();
   const mount = useMount();
   const router = useRouter();
