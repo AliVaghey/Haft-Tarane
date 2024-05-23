@@ -19,10 +19,11 @@ import {
 import { axios } from "@/lib/axios";
 import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
+import qs from "query-string";
 
-const SearchableSelect = ({ changeValue, placeholder, api }) => {
+const SearchableSelect = ({ changeValue, placeholder, api, query }) => {
   const [currentValue, setCurrentValue] = useState("");
-  const [searchInput, setSearchInput] = useState("");
+  const [searchState, setSearchState] = useState("");
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -32,22 +33,29 @@ const SearchableSelect = ({ changeValue, placeholder, api }) => {
     clearTimeout(timeoutId);
 
     timeoutId = setTimeout(() => {
-      fetchData(searchInput);
+      fetchData();
     }, 1000);
 
     return () => clearTimeout(timeoutId);
-  }, [searchInput]);
+  }, [searchState]);
 
-  const fetchData = async (q) => {
+  const fetchData = async () => {
+    const url = qs.stringifyUrl(
+      {
+        url: api,
+        query: {
+          [query]: searchState,
+        },
+      },
+      { skipNull: true },
+    );
+
+    console.log("url", url);
+
     try {
-      const res = await axios.get(`${api}`);
+      const res = await axios.get(`${url}`);
 
-      setData([
-        { name: "مازندران", id: 0 },
-        { name: "مشهد", id: 1 },
-        { name: "کرمان", id: 2 },
-      ]);
-      // setData(res.data.data);
+      setData(res.data.data);
     } catch (error) {
     } finally {
       setIsLoading(false);
@@ -62,19 +70,24 @@ const SearchableSelect = ({ changeValue, placeholder, api }) => {
       }}
       value={currentValue}
     >
-      <FormControl>
-        <SelectTrigger>
-          <SelectValue placeholder={placeholder} />
-        </SelectTrigger>
-      </FormControl>
+      {/* <FormControl> */}
+      <SelectTrigger>
+        <SelectValue placeholder={placeholder} />
+      </SelectTrigger>
+      {/* </FormControl> */}
+
       <SelectContent dir="rtl">
-        <Input
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-          type="text"
-          placeholder="جستجو..."
-          className="rounded-none border-0 border-b border-primary outline-0 ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-        />
+        <div>
+          <Input
+            value={searchState}
+            onChange={(e) => {
+              setSearchState(e.target.value);
+            }}
+            type="text"
+            placeholder="جستجو..."
+            className="rounded-none border-0 border-b border-primary outline-0 ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+          />
+        </div>
         {data.length === 0 ? (
           <div className="flex items-center justify-center p-3 text-sm">
             داده ای وجود ندارد

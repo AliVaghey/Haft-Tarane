@@ -159,7 +159,8 @@ const BasicInformationForm = () => {
                     changeValue={(value) => {
                       field.onChange(value);
                     }}
-                    api={"/api/agency/hotels"}
+                    api={"/api/cities"}
+                    query="name"
                     placeholder={"مبدا"}
                   />
 
@@ -173,12 +174,13 @@ const BasicInformationForm = () => {
               name="destination"
               render={({ field }) => (
                 <FormItem className="col-span-3 text-right lg:col-span-1">
-                  <FormLabel>مبدا</FormLabel>
+                  <FormLabel>مقصد</FormLabel>
                   <SearchableSelect
                     changeValue={(value) => {
                       field.onChange(value);
                     }}
-                    api={"/api/agency/hotels"}
+                    api={"/api/cities"}
+                    query="name"
                     placeholder={"مقصد"}
                   />
 
