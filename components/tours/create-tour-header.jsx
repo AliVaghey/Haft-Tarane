@@ -60,13 +60,13 @@ const CreateTourHeader = () => {
   };
 
   return (
-    <div className="flex items-center justify-center gap-6">
+    <div className="flex flex-wrap items-center justify-center gap-6">
       {tourItems.map((item, index) => (
         <Link key={item.title} href={isCreatePage ? "" : item.link(params.id)}>
           <Button
             disabled={isDisableButton(item, index)}
-            className="w-32 text-base hover:border-2 hover:border-primary hover:bg-transparent
-            disabled:bg-gray-400"
+            className="h-8 w-16 text-xs hover:border-2 hover:border-primary hover:bg-transparent 
+            disabled:bg-gray-400 md:h-9 md:w-24 md:text-sm lg:w-32"
           >
             {item.title}
           </Button>

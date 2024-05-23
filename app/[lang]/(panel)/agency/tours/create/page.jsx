@@ -148,7 +148,7 @@ const BasicInformationForm = () => {
     <div className="w-full">
       <Form {...form}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="grid w-full grid-cols-1 gap-2 lg:grid-cols-2">
+          <div className="grid w-full grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-5">
             <FormField
               control={control}
               name="origin"
