@@ -55,7 +55,7 @@ const Header = () => {
   }, [pathname]);
 
   const changeNavBg = () => {
-    if (window.scrollY > 80) {
+    if (window.scrollY > 70) {
       setNavbar(true);
     } else {
       setNavbar(false);

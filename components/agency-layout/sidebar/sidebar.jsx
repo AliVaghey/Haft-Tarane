@@ -121,7 +121,7 @@ const SideBar = () => {
                     <div
                       className={cn(
                         "text-paragraph mr-4  flex max-h-0 flex-col gap-y-2 overflow-hidden text-xs font-normal opacity-50 transition-all duration-300",
-                        activeMenu === index && "mt-2 max-h-40 opacity-100",
+                        activeMenu === index && "mt-2 max-h-56 opacity-100",
                       )}
                     >
                       {item.subMenu.map((subMenuItem, subMenuIndex) => (

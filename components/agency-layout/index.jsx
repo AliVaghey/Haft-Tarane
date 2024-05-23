@@ -25,8 +25,6 @@ const AgencyLayout = ({ children }) => {
     await axios
       .get("/api/user/info")
       .then((response) => {
-        console.log("getAgencyInfores", response?.data?.data);
-
         if (response.status === 200) {
           userHook.setUserData(response?.data?.data);
           if (response?.data?.data?.access_type === "agency") {

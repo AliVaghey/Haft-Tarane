@@ -65,7 +65,7 @@ const CellAction = ({ data }) => {
           </Button>
         </Link>
 
-        <Link href={"#"}>
+        <Link href={routes.agency.tours.edit["basic-information"](data.id)}>
           <Button
             variant="ghost"
             className="h-8 rounded-3xl border border-blue-500 text-blue-500"
