@@ -2,7 +2,7 @@ import BasicInformationForm from "@/components/tours/basic-information-form";
 
 const BasicInformationPage = () => {
   return (
-    <div>
+    <div className="w-full">
       <BasicInformationForm />
     </div>
   );
