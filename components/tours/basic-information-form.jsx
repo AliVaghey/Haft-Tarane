@@ -148,7 +148,7 @@ const BasicInformationForm = () => {
     <div className="w-full">
       <Form {...form}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="grid w-full grid-cols-1 gap-2 lg:grid-cols-2">
+          <div className="grid w-full grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-5">
             <FormField
               control={control}
               name="origin"
@@ -159,7 +159,8 @@ const BasicInformationForm = () => {
                     changeValue={(value) => {
                       field.onChange(value);
                     }}
-                    api={"/api/agency/hotels"}
+                    api={"/api/cities"}
+                    query="name"
                     placeholder={"مبدا"}
                   />
 
@@ -173,12 +174,13 @@ const BasicInformationForm = () => {
               name="destination"
               render={({ field }) => (
                 <FormItem className="col-span-3 text-right lg:col-span-1">
-                  <FormLabel>مبدا</FormLabel>
+                  <FormLabel>مقصد</FormLabel>
                   <SearchableSelect
                     changeValue={(value) => {
                       field.onChange(value);
                     }}
-                    api={"/api/agency/hotels"}
+                    api={"/api/cities"}
+                    query="name"
                     placeholder={"مقصد"}
                   />
 

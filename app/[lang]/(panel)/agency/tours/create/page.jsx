@@ -101,7 +101,7 @@ const BasicInformationForm = () => {
       trip_type,
       expiration,
       selling_type,
-      tour_styles: `{${tour_styles.join(",")}}`,
+      tour_styles,
       capacity,
       evening_support: evening_support ? "1" : "0",
       midnight_support: midnight_support ? "1" : "0",
@@ -359,7 +359,7 @@ const BasicInformationForm = () => {
                       placeholder="امکانات"
                       onChange={(data) => {
                         console.log("data", data);
-                        setValue("tour_styles", data);
+                        setValue("tour_styles", data, { shouldValidate: true });
                       }}
                     />
                   </FormControl>
