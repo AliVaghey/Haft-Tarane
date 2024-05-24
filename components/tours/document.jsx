@@ -3,13 +3,12 @@
 import { Input } from "@/components/ui/input";
 import useMount from "@/hooks/use-mount";
 import { routes } from "@/routes/routes";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -17,36 +16,25 @@ import {
 } from "@/components/ui/form";
 import SubmitButton from "@/components/submit-button";
 import { toast } from "sonner";
-import { citySchema, enCitySchema } from "@/lib/validation/auth/city";
 import { CSRFToken, axios } from "@/lib/axios";
 import { useDictionary } from "@/providers/dictionary-provider";
 import querystring from "querystring";
 import ToastError from "@/components/toast/toast-error";
 import { defaultMessages } from "@/lib/default-messages";
 import ChipInput from "@/components/ui/chip-input";
-import {
-  basicInformationSchema,
-  enBasicInformationSchema,
-} from "@/lib/validation/tour/basic-information";
-import { Checkbox } from "@/components/ui/checkbox";
-import SearchableSelect from "@/components/ui/searchable-select";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import ToastSuccess from "@/components/toast/toast-success";
 import { Textarea } from "@/components/ui/textarea";
 import {
   documentSchema,
   endocumentSchema,
 } from "@/lib/validation/tour/document";
+import { useTour } from "@/hooks/use-tour";
 
 const Document = ({ data }) => {
-  console.log("data", data);
+  const tourHook = useTour();
+
   const dictionary = useDictionary();
+
   const mount = useMount();
   const router = useRouter();
   const params = useParams();
@@ -91,11 +79,13 @@ const Document = ({ data }) => {
 
     await axios
       .post("/api/agency/tour/certificates", encodedFormData)
-      .then((response) => {
+      .then(async (response) => {
         console.log("certificates-response", response.data);
 
         if (response.status === 204) {
+          await tourHook.getCurrentTour(data.tour_id);
           toast.success(<ToastSuccess text={"مدارک با موفقیت اضافه شدند"} />);
+
           router.push(routes.agency.tours.edit.hotels(params.id));
         }
       })

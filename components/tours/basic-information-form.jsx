@@ -3,13 +3,12 @@
 import { Input } from "@/components/ui/input";
 import useMount from "@/hooks/use-mount";
 import { routes } from "@/routes/routes";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -37,9 +36,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import ToastSuccess from "@/components/toast/toast-success";
+import { useTour } from "@/hooks/use-tour";
 
 const BasicInformationForm = ({ data }) => {
-  console.log("data", data);
+  const tourHook = useTour();
+
   const dictionary = useDictionary();
   const mount = useMount();
   const router = useRouter();
@@ -129,10 +130,11 @@ const BasicInformationForm = ({ data }) => {
     if (data) {
       await axios
         .put(`/api/agency/tour/${data.id}`, encodedFormData)
-        .then((response) => {
+        .then(async (response) => {
           console.log("edit-draft-response", response.data);
 
           if (response.status === 204) {
+            await tourHook.getCurrentTour(data.id);
             toast.success(
               <ToastSuccess text={"اطلاعات اصلی  با موفقیت ویرایش شدند"} />,
             );

@@ -2,7 +2,6 @@
 
 import Document from "@/components/tours/document";
 import { useTour } from "@/hooks/use-tour";
-import { data } from "autoprefixer";
 
 const DocumentPage = () => {
   const tourHook = useTour();
