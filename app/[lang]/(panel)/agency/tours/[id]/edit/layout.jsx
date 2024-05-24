@@ -19,7 +19,7 @@ const EditTour = ({ children }) => {
     return () => {
       console.log("cleaned up");
     };
-  }, []);
+  }, [tourHook.flag]);
 
   const fetchData = async () => {
     setLoading(true);

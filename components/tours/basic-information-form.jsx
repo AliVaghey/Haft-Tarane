@@ -134,7 +134,7 @@ const BasicInformationForm = ({ data }) => {
           console.log("edit-draft-response", response.data);
 
           if (response.status === 204) {
-            await tourHook.getCurrentTour(data.id);
+            tourHook.setFlag(!tourHook.flag);
             toast.success(
               <ToastSuccess text={"اطلاعات اصلی  با موفقیت ویرایش شدند"} />,
             );

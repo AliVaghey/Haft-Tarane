@@ -83,7 +83,7 @@ const Document = ({ data }) => {
         console.log("certificates-response", response.data);
 
         if (response.status === 204) {
-          await tourHook.getCurrentTour(data.tour_id);
+          await tourHook.setFlag(!tourHook.flag);
           toast.success(<ToastSuccess text={"مدارک با موفقیت اضافه شدند"} />);
 
           router.push(routes.agency.tours.edit.hotels(params.id));
