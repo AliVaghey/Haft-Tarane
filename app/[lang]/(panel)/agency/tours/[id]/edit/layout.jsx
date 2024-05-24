@@ -16,6 +16,9 @@ const EditTour = ({ children }) => {
 
   useEffect(() => {
     fetchData();
+    return () => {
+      console.log("cleaned up");
+    };
   }, []);
 
   const fetchData = async () => {
@@ -24,6 +27,7 @@ const EditTour = ({ children }) => {
       .get(`api/agency/tour/${params.id}`)
       .then((response) => {
         tourHook.setCurrentTour(response.data.data);
+        tourHook.setIsEditPage(true);
       })
       .catch((error) => {
         console.log("error", error);

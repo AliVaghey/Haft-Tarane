@@ -17,7 +17,6 @@ import {
 } from "@/components/ui/form";
 import SubmitButton from "@/components/submit-button";
 import { toast } from "sonner";
-import { citySchema, enCitySchema } from "@/lib/validation/auth/city";
 import { CSRFToken, axios } from "@/lib/axios";
 import { useDictionary } from "@/providers/dictionary-provider";
 import querystring from "querystring";
@@ -40,10 +39,7 @@ import {
 import ToastSuccess from "@/components/toast/toast-success";
 
 const BasicInformationForm = ({ data }) => {
-  console.log(
-    "dataqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqa",
-    data,
-  );
+  console.log("data", data);
   const dictionary = useDictionary();
   const mount = useMount();
   const router = useRouter();
@@ -54,20 +50,35 @@ const BasicInformationForm = ({ data }) => {
         ? basicInformationSchema
         : enBasicInformationSchema,
     ),
-    defaultValues: {
-      title: "",
-      trip_type: "",
-      expiration: "",
-      selling_type: "",
-      tour_styles: [],
-      capacity: "",
-      evening_support: false,
-      midnight_support: false,
-      origin: "",
-      destination: "",
-      staying_nights: "",
-      transportation_type: "",
-    },
+    defaultValues: data
+      ? {
+          title: data.title,
+          trip_type: data.trip_type,
+          expiration: data.expiration,
+          selling_type: data.selling_type,
+          tour_styles: data.tour_styles ? JSON.parse(data.tour_styles) : [],
+          capacity: data.capacity,
+          evening_support: data.evening_support,
+          midnight_support: data.midnight_support,
+          origin: data.origin,
+          destination: data.destination,
+          staying_nights: data.staying_nights,
+          transportation_type: data.transportation_type,
+        }
+      : {
+          title: "",
+          trip_type: "",
+          expiration: "",
+          selling_type: "",
+          tour_styles: [],
+          capacity: "",
+          evening_support: false,
+          midnight_support: false,
+          origin: "",
+          destination: "",
+          staying_nights: "",
+          transportation_type: "",
+        },
     mode: "onSubmit",
   });
 
@@ -115,33 +126,57 @@ const BasicInformationForm = ({ data }) => {
       transportation_type,
     });
 
-    console.log("encodedFormData", encodedFormData);
+    if (data) {
+      await axios
+        .put(`/api/agency/tour/${data.id}`, encodedFormData)
+        .then((response) => {
+          console.log("edit-draft-response", response.data);
 
-    await axios
-      .post("/api/agency/tour", encodedFormData)
-      .then((response) => {
-        console.log("draft-response", response.data);
+          if (response.status === 204) {
+            toast.success(
+              <ToastSuccess text={"اطلاعات اصلی  با موفقیت ویرایش شدند"} />,
+            );
+            router.push(routes.agency.tours.edit["travel-plans"](data.id));
+          }
+        })
+        .catch((error) => {
+          console.log("edit-draft-error", error);
+          toast.error(
+            <ToastError
+              text={
+                error?.response?.data?.message ||
+                defaultMessages.errors.internalError
+              }
+            />,
+          );
+        });
+    } else {
+      await axios
+        .post("/api/agency/tour", encodedFormData)
+        .then((response) => {
+          console.log("draft-response", response.data);
 
-        if (response.status === 201) {
-          toast.success(
-            <ToastSuccess text={"پیش نویس تور با موفقیت ایجاد شد"} />,
+          if (response.status === 201) {
+            toast.success(
+              <ToastSuccess text={"پیش نویس تور با موفقیت ایجاد شد"} />,
+            );
+            router.push(
+              routes.agency.tours.edit["travel-plans"](response.data.data.id),
+            );
+          }
+        })
+        .catch((error) => {
+          console.log("draft-error", error);
+          toast.error(
+            <ToastError
+              text={
+                error?.response?.data?.message ||
+                defaultMessages.errors.internalError
+              }
+            />,
           );
-          router.push(
-            routes.agency.tours.edit["travel-plans"](response.data.data.id),
-          );
-        }
-      })
-      .catch((error) => {
-        console.log("draft-error", error);
-        toast.error(
-          <ToastError
-            text={
-              error?.response?.data?.message ||
-              defaultMessages.errors.internalError
-            }
-          />,
-        );
-      });
+        });
+    }
   };
 
   if (!mount) {
@@ -162,6 +197,7 @@ const BasicInformationForm = ({ data }) => {
                   changeValue={(value) => {
                     field.onChange(value);
                   }}
+                  defaultValue={getValues("origin")}
                   api={"/api/cities"}
                   query="name"
                   placeholder={"مبدا"}
@@ -182,6 +218,7 @@ const BasicInformationForm = ({ data }) => {
                   changeValue={(value) => {
                     field.onChange(value);
                   }}
+                  defaultValue={getValues("destination")}
                   api={"/api/cities"}
                   query="name"
                   placeholder={"مقصد"}
@@ -400,7 +437,7 @@ const BasicInformationForm = ({ data }) => {
         </div>
 
         <SubmitButton className="mt-3" loading={isSubmitting}>
-          ارسال
+          {data ? "ویرایش" : "ارسال"}
         </SubmitButton>
       </form>
     </Form>

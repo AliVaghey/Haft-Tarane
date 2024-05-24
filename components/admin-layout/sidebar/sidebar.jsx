@@ -32,7 +32,6 @@ const SideBar = () => {
             href="/"
             className="flex w-full items-center justify-center gap-2 font-semibold"
           >
-            {/* <Package2 className="h-6 w-6 text-primary" /> */}
             <Image
               src={logoRed}
               alt="logo"
@@ -40,14 +39,11 @@ const SideBar = () => {
               height={100}
               className="mt-4 h-16 w-40"
             />
-            {/* <span className="text-xl">
-              {dictionary["const"]["Bibak Safar"]}
-            </span> */}
           </Link>
         </div>
         <ScrollArea
           dir={dictionary["language"] === "en" ? "ltr" : "rtl"}
-          className="flex-1 overflow-y-auto"
+          className="mt-5 flex-1 overflow-y-auto"
         >
           <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
             {navItems.map((item, index) => (

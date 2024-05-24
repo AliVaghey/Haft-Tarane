@@ -44,7 +44,8 @@ import {
   endocumentSchema,
 } from "@/lib/validation/tour/document";
 
-const Document = () => {
+const Document = ({ data }) => {
+  console.log("data", data);
   const dictionary = useDictionary();
   const mount = useMount();
   const router = useRouter();
@@ -55,10 +56,10 @@ const Document = () => {
       dictionary["language"] === "fa" ? documentSchema : endocumentSchema,
     ),
     defaultValues: {
-      free_services: [],
-      certificates: [],
-      descriptions: "",
-      cancel_rules: "",
+      free_services: data.free_services ? data.free_services : [],
+      certificates: data.certificates ? data.certificates : [],
+      descriptions: data.descriptions ? data.descriptions : "",
+      cancel_rules: data.cancel_rules ? data.cancel_rules : "",
     },
     mode: "onSubmit",
   });
@@ -79,7 +80,7 @@ const Document = () => {
     await CSRFToken();
 
     const encodedFormData = querystring.stringify({
-      tour_id: params.id,
+      tour_id: data.tour_id,
       free_services: JSON.stringify(free_services),
       certificates: JSON.stringify(certificates),
       descriptions,
