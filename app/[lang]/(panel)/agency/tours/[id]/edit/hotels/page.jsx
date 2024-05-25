@@ -10,7 +10,6 @@ const HotelPage = () => {
     <div className="w-full">
       <Hotel
         data={{
-          hotels: tourHook.currentTour.hotels,
           costs: tourHook.currentTour.costs,
           tour_id: tourHook.currentTour.id,
         }}

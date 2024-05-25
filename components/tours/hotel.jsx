@@ -1,13 +1,10 @@
 "use client";
 
-import { useTour } from "@/hooks/use-tour";
 import HotelCosts from "./hotel-costs";
 import { useState } from "react";
+import AddHotelPackage from "./add-hotel-package";
 
 const Hotel = ({ data }) => {
-  const tourHook = useTour();
-
-  const [hotels, setHotels] = useState(data.Hotels || []);
   const [costs, setCosts] = useState(data.costs || []);
 
   return (
@@ -21,6 +18,10 @@ const Hotel = ({ data }) => {
             tour_id={data.tour_id}
           />
         ))}
+
+        <div>
+          <AddHotelPackage tour_id={data.tour_id} />
+        </div>
       </div>
     </div>
   );

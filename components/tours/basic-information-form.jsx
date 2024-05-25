@@ -195,16 +195,17 @@ const BasicInformationForm = ({ data }) => {
             render={({ field }) => (
               <FormItem className="col-span-3 text-right lg:col-span-1">
                 <FormLabel>مبدا</FormLabel>
-                <SearchableSelect
-                  changeValue={(value) => {
-                    field.onChange(value);
-                  }}
-                  defaultValue={getValues("origin")}
-                  api={"/api/cities"}
-                  query="name"
-                  placeholder={"مبدا"}
-                />
-
+                <FormControl>
+                  <SearchableSelect
+                    changeValue={(value) => {
+                      field.onChange(value);
+                    }}
+                    defaultValue={getValues("origin")}
+                    api={"/api/cities"}
+                    query="name"
+                    placeholder={"مبدا"}
+                  />
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
@@ -216,16 +217,17 @@ const BasicInformationForm = ({ data }) => {
             render={({ field }) => (
               <FormItem className="col-span-3 text-right lg:col-span-1">
                 <FormLabel>مقصد</FormLabel>
-                <SearchableSelect
-                  changeValue={(value) => {
-                    field.onChange(value);
-                  }}
-                  defaultValue={getValues("destination")}
-                  api={"/api/cities"}
-                  query="name"
-                  placeholder={"مقصد"}
-                />
-
+                <FormControl>
+                  <SearchableSelect
+                    changeValue={(value) => {
+                      field.onChange(value);
+                    }}
+                    defaultValue={getValues("destination")}
+                    api={"/api/cities"}
+                    query="name"
+                    placeholder={"مقصد"}
+                  />
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}

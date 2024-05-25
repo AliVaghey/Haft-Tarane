@@ -5,10 +5,12 @@ import { Trash2 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import CostItems from "./cost-items";
 import { useState } from "react";
-import { CircleCheckBig } from "lucide-react";
 import { toast } from "sonner";
 import { useTour } from "@/hooks/use-tour";
 import { CSRFToken, axios } from "@/lib/axios";
+import ToastError from "@/components/toast/toast-error";
+import { defaultMessages } from "@/lib/default-messages";
+import ToastSuccess from "../toast/toast-success";
 
 const HotelCosts = ({ data, number, tour_id }) => {
   const tourHook = useTour();
@@ -22,20 +24,19 @@ const HotelCosts = ({ data, number, tour_id }) => {
 
     await axios
       .delete(`/api/agency/tour/cost/${data.id}`)
-      .then(async (response) => {
+      .then((response) => {
+        toast.success(<ToastSuccess text="پکیج مورد نظر با موفقیت حذف شد" />);
         tourHook.setFlag(!tourHook.flag);
-        toast.success(
-          <div className="flex items-center gap-2">
-            <span>
-              <CircleCheckBig className="text-green-600" />
-            </span>
-            <span>{"پکیج انتخاب شده حذف شد"}</span>
-          </div>,
-        );
       })
-      .catch((erroe) => {
-        console.log("erroe", erroe);
-        toast.error("مشکلی پیش آمده است. لطفا مجددا تلاش فرمایید");
+      .catch((error) => {
+        toast.error(
+          <ToastError
+            text={
+              error?.response?.data?.message ||
+              defaultMessages.errors.internalError
+            }
+          />,
+        );
       })
       .finally(() => {
         setIsLoading(false);
@@ -43,7 +44,7 @@ const HotelCosts = ({ data, number, tour_id }) => {
   };
 
   return (
-    <div className="shadow-cards flex flex-col gap-2 rounded-xl border p-2">
+    <div className="flex flex-col gap-2 rounded-xl border p-2 shadow-cards">
       <div className="flex items-center justify-between px-3 py-2">
         <span className="font-semibold text-muted-foreground">
           {number}- {data.hotel.name}

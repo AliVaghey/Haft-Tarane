@@ -19,6 +19,7 @@ const SearchableSelect = ({
   api,
   query,
   defaultValue,
+  keyValue,
 }) => {
   const [currentValue, setCurrentValue] = useState(defaultValue);
   const [searchState, setSearchState] = useState(defaultValue);
@@ -63,10 +64,11 @@ const SearchableSelect = ({
   return (
     <Select
       onValueChange={(e) => {
+        console.log("e", e);
         setCurrentValue(e);
         changeValue(e);
       }}
-      value={currentValue}
+      value={keyValue ? +currentValue : currentValue}
       defaultValue={defaultValue}
     >
       {/* <FormControl> */}
@@ -98,7 +100,10 @@ const SearchableSelect = ({
         ) : (
           data.map((item) => {
             return (
-              <SelectItem value={item.name} key={item.id}>
+              <SelectItem
+                value={keyValue ? item[keyValue] : item.name}
+                key={item.id}
+              >
                 {item.name}
               </SelectItem>
             );
