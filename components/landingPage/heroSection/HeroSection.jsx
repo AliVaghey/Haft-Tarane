@@ -14,7 +14,7 @@ export default function HeroSection() {
             alt="alt"
             width={1080}
             height={720}
-            className="w-[666px]"
+            className="h-96 w-[666px]"
           />
           <div className="flex items-center justify-between ">
             <h1 className="text-4xl font-bold max-lg:text-xl max-md:text-sm">
@@ -32,9 +32,9 @@ export default function HeroSection() {
             <Image
               src={btnSvg}
               alt="alt"
-              width={1080}
-              height={720}
-              className="size-9 max-md:size-6"
+              width={100}
+              height={100}
+              className="h-9 w-9 max-md:size-6"
             />
           </Button>
           <Button

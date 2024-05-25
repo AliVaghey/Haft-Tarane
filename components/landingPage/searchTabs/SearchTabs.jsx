@@ -27,7 +27,7 @@ import person from "@/public/img/person.svg";
 import search from "@/public/img/search-icon.svg";
 
 const tabData = [
-  { value: "in", label: "پرواز داخلی", img: inAirplane},
+  { value: "in", label: "پرواز داخلی", img: inAirplane },
   { value: "out", label: "پرواز خارجی", img: outAirplane },
   { value: "class", label: "کلاس پرواز", img: arrow },
   { value: "tour", label: "تور", img: tour },
@@ -67,9 +67,9 @@ export default function SearchTabs({ className }) {
                 {tab.label}
                 <Image
                   src={tab.img}
-                  width={1080}
-                  height={720}
-                  className="size-4 max-lg:size-3"
+                  width={100}
+                  height={100}
+                  className="h-4 w-4 max-lg:w-3 lg:h-3"
                   alt="alt"
                 />
               </TabsTrigger>
@@ -93,9 +93,9 @@ export default function SearchTabs({ className }) {
                         <Image
                           src={field.img}
                           alt="alt"
-                          className="size-7 max-lg:size-3"
-                          width={1080}
-                          height={720}
+                          className="h-7 w-7 max-lg:h-3 max-lg:w-3"
+                          width={100}
+                          height={100}
                         />
                       </div>
                       {field.isDatePicker ? (
@@ -128,9 +128,9 @@ export default function SearchTabs({ className }) {
                   <Image
                     src={search}
                     alt="alt"
-                    width={1080}
-                    height={720}
-                    className="size-6 max-lg:size-4"
+                    width={100}
+                    height={100}
+                    className="h-4 w-4 "
                   />
                   <p className="rounded-xl border border-gray-dark bg-gray-dark text-white group-hover:bg-gray-dark group-hover:text-yellow-primary max-lg:text-sm">
                     جست و جو

@@ -115,10 +115,8 @@ const AddDate = ({ tour_id }) => {
   }
 
   return (
-    <div className="flex w-full items-center justify-center">
-      <Button onClick={() => setIsOpen(true)} className="mt-2">
-        افزودن تاریخ
-      </Button>
+    <div className="">
+      <Button onClick={() => setIsOpen(true)}>افزودن تاریخ</Button>
       <Dialog open={isOpen} onOpenChange={() => setIsOpen(false)}>
         <DialogContent className="sm:max-w-[825px]">
           <DialogHeader>

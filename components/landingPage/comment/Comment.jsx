@@ -21,9 +21,9 @@ export default function Comment() {
             <Image
               src={imgComment}
               alt="alt"
-              width="480"
-              height="360"
-              className="size-28"
+              width={480}
+              height={360}
+              className="h-28 w-28"
             />
             <h2 className="text-2xl font-bold text-[#2E2828]">علی محمدی</h2>
             <h3 className="text-sm text-[#444]">مسافر هواپیما</h3>

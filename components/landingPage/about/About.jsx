@@ -14,9 +14,9 @@ export default function About() {
             <Image
               src={branches}
               alt="alt"
-              width={1080}
-              height={720}
-              className="size-9"
+              width={100}
+              height={100}
+              className="h-9 w-9"
             />
             <p className="text-xl text-white">شعب ما</p>
           </div>
@@ -24,9 +24,9 @@ export default function About() {
             <Image
               src={location}
               alt="alt"
-              width={1080}
-              height={720}
-              className="size-9"
+              width={100}
+              height={100}
+              className="h-9 w-9"
             />
             <p className="text-xl text-white">مقاصد محبوب</p>
           </div>
@@ -34,9 +34,9 @@ export default function About() {
             <Image
               src={collaberation}
               alt="alt"
-              width={1080}
-              height={720}
-              className="size-9"
+              width={100}
+              height={100}
+              className="h-9 w-9"
             />
             <p className="text-xl text-white">همکاری با ما</p>
           </div>
@@ -44,9 +44,9 @@ export default function About() {
             <Image
               src={about}
               alt="alt"
-              width={1080}
-              height={720}
-              className="size-9"
+              width={100}
+              height={100}
+              className="h-9 w-9"
             />
             <p className="text-xl text-white">درباره بی باک سفر</p>
           </div>

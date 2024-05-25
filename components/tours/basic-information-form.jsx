@@ -57,7 +57,7 @@ const BasicInformationForm = ({ data }) => {
           trip_type: data.trip_type,
           expiration: data.expiration,
           selling_type: data.selling_type,
-          tour_styles: data.tour_styles ? JSON.parse(data.tour_styles) : [],
+          tour_styles: data.tour_styles ? data.tour_styles : [],
           capacity: data.capacity,
           evening_support: data.evening_support,
           midnight_support: data.midnight_support,

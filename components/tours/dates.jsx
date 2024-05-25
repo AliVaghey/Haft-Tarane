@@ -1,6 +1,7 @@
 "use client";
 
 import AddDate from "./add-date";
+import ConfirmTour from "./cconfirm-tour";
 import DateCard from "./date-card";
 
 const Dates = ({ data }) => {
@@ -11,8 +12,9 @@ const Dates = ({ data }) => {
           <DateCard key={index} data={item} number={index + 1} />
         ))}
 
-        <div>
+        <div className="mt-2 flex items-center gap-4">
           <AddDate tour_id={data.tour_id} />
+          <ConfirmTour tour_id={data.tour_id} />
         </div>
       </div>
     </div>
