@@ -1,13 +1,5 @@
 "use client";
 
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -21,9 +13,16 @@ import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import qs from "query-string";
 
-const SearchableSelect = ({ changeValue, placeholder, api, query }) => {
-  const [currentValue, setCurrentValue] = useState("");
-  const [searchState, setSearchState] = useState("");
+const SearchableSelect = ({
+  changeValue,
+  placeholder,
+  api,
+  query,
+  defaultValue,
+  keyValue,
+}) => {
+  const [currentValue, setCurrentValue] = useState(defaultValue);
+  const [searchState, setSearchState] = useState(defaultValue);
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -65,10 +64,12 @@ const SearchableSelect = ({ changeValue, placeholder, api, query }) => {
   return (
     <Select
       onValueChange={(e) => {
+        console.log("e", e);
         setCurrentValue(e);
         changeValue(e);
       }}
-      value={currentValue}
+      value={keyValue ? +currentValue : currentValue}
+      defaultValue={defaultValue}
     >
       {/* <FormControl> */}
       <SelectTrigger>
@@ -99,7 +100,10 @@ const SearchableSelect = ({ changeValue, placeholder, api, query }) => {
         ) : (
           data.map((item) => {
             return (
-              <SelectItem value={item.name} key={item.id}>
+              <SelectItem
+                value={keyValue ? item[keyValue] : item.name}
+                key={item.id}
+              >
                 {item.name}
               </SelectItem>
             );
