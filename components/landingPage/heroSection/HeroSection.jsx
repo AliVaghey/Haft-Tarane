@@ -1,50 +1,47 @@
-import React from "react";
 import Image from "next/image";
+import React from "react";
 import cheetah from "@/public/img/cheetah.svg";
-import { Button } from "@/components/ui/button";
-import btnSvg from "@/public/img/video-btn.svg";
+import videoBtn from "@/public/img/video-btn.svg";
+import SearchBox from "../searchBox/SearchBox";
+import ResponsiveBox from "../responsiveSearchBox/ResponsiveBox";
 
-export default function HeroSection() {
+function HeroSection() {
   return (
-    <div className="bg-yellow-primary ">
-      <div className="mx-auto w-4/5">
-        <div className=" flex flex-col items-center justify-center">
-          <Image
-            src={cheetah}
-            alt="alt"
-            width={1080}
-            height={720}
-            className="h-96 w-[666px]"
-          />
-          <div className="flex items-center justify-between ">
-            <h1 className="text-4xl font-bold max-lg:text-xl max-md:text-sm">
-              خرید بلیط ارزان از
-              <span className="text-[#2B303D]">بی باک سفر</span>
-            </h1>
-          </div>
+    <div className="h-screen ">
+      <div className="flex flex-col justify-center items-center">
+        <Image
+          src={cheetah}
+          alt="alt"
+          width={480}
+          height={360}
+          className="w-[777px] max-lg:w-80 max-lg:h-60 h-96 max-md:w-44 max-md:h-32"
+        />
+        <div className="">
+          <h2 className="text-4xl max-md:text-sm font-bold max-lg:text-xl ">
+            خرید بلیط ارزان از{" "}
+            <span className="text-[#2B303D]">بی باک سفر</span>
+          </h2>
         </div>
-        <div className=" flex items-center gap-7 max-lg:hidden max-md:justify-center  lg:-mt-12">
-          <Button
-            variant="outline"
-            className="flex items-center gap-2 rounded-xl border border-gray-dark p-7 text-xl text-gray-dark hover:text-yellow-primary max-lg:p-4 max-lg:text-lg max-md:p-2 max-md:text-sm   "
-          >
-            ویدئو معرفی
+        <div className="flex items-center gap-4 lg:-mt-9 max-md:mt-4 mb-9 ml-[777px] max-lg:ml-0 max-lg:mt-7 max-md:ml-4 ">
+          <div className="flex justify-between items-center gap-3 max-md:gap-1 bg-white max-md:px-4 max-md:py-2 px-5 py-3 rounded-3xl">
+            <p className="max-md:text-sm">ویدئو معرفی</p>
             <Image
-              src={btnSvg}
+              src={videoBtn}
               alt="alt"
               width={100}
               height={100}
-              className="h-9 w-9 max-md:size-6"
+              className="w-7 h-7 max-md:w-4 max-md:h-4"
             />
-          </Button>
-          <Button
-            variant="outline"
-            className="rounded-xl border border-gray-dark bg-gray-dark text-white hover:bg-gray-dark hover:text-yellow-primary"
-          >
-            رزرو بلیط
-          </Button>
+          </div>
+          <div className="bg-[#2B303D] text-white max-md:px-3 max-md:py-2 px-4 py-2 rounded-3xl flex items-center justify-center shadow-2xl ">
+            <p className="max-md:text-xs">رزرو بلیط</p>
+          </div>
         </div>
       </div>
+      <SearchBox className="max-lg:hidden" />
+      <ResponsiveBox className="max-lg:visible lg:hidden" />
     </div>
   );
 }
+
+export default HeroSection;

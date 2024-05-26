@@ -55,8 +55,8 @@ export default function Nav() {
               <Image
                 src={logo}
                 alt="alt"
-                width={1080}
-                height={720}
+                width={480}
+                height={360}
                 className="w-32"
               />
             </Link>
