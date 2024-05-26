@@ -30,7 +30,7 @@ export default function Footer() {
                     alt="alt"
                     width={100}
                     height={100}
-                    className="w-32"
+                    className="w-32 max-lg:w-16"
                   />
                   <h2 className="bg-gradient-to-r from-[#1D91CC] to-[#F85E9F] bg-clip-text text-2xl text-transparent">
                     بی باک سفر
@@ -81,7 +81,7 @@ export default function Footer() {
                         alt="alt"
                         width={100}
                         height={100}
-                        className="size-7"
+                        className="w-7 h-7"
                       />
                     </a>
                   </li>
@@ -92,7 +92,7 @@ export default function Footer() {
                         alt="alt"
                         width={100}
                         height={100}
-                        className="size-7"
+                        className="w-7 h-7"
                       />
                     </a>
                   </li>
@@ -103,7 +103,7 @@ export default function Footer() {
                         alt="alt"
                         width={100}
                         height={100}
-                        className="size-7"
+                        className="w-7 h-7"
                       />
                     </a>
                   </li>

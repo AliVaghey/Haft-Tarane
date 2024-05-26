@@ -145,7 +145,7 @@ const Header = () => {
                       key={index}
                       href={item.href}
                       className={cn(
-                        "flex items-center gap-3 rounded-lg bg-yellow-light p-2 hover:bg-white",
+                        "flex items-center gap-3 rounded-lg bg--light p-2 hover:bg-white",
                         pathname.endsWith(item.href) && "bg-white",
                       )}
                       onClick={() => {

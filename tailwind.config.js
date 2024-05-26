@@ -21,6 +21,7 @@ module.exports = {
         cards: "0 4px 18px rgba(47,43,61,.1),0 0 transparent,0 0 transparent",
       },
       colors: {
+        yellow: "#F1C107",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
