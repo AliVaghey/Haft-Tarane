@@ -34,10 +34,13 @@ import { Input } from "@/components/ui/input";
 import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
-import { dateSchema, enDatelSchema } from "@/lib/validation/tour/date";
 import { DateForm } from "@/lib/date-form";
+import {
+  entransportationSchema,
+  transportationSchema,
+} from "@/lib/validation/tour/transportation";
 
-const AddDate = ({ tour_id }) => {
+const AddTransportation = ({ tour_id }) => {
   const dictionary = useDictionary();
 
   const tourHook = useTour();
@@ -50,9 +53,17 @@ const AddDate = ({ tour_id }) => {
 
   const form = useForm({
     resolver: zodResolver(
-      dictionary["language"] === "fa" ? dateSchema : enDatelSchema,
+      dictionary["language"] === "fa"
+        ? transportationSchema
+        : entransportationSchema,
     ),
     defaultValues: {
+      type: "",
+      duration: "",
+      company_name: "",
+      transportation_type: "",
+      origin: "",
+      destination: "",
       start: new Date(),
       end: new Date(),
     },
@@ -70,11 +81,26 @@ const AddDate = ({ tour_id }) => {
   const onSubmit = async (values) => {
     console.log("valuesssssss", values);
 
-    const { start, end } = values;
+    const {
+      type,
+      duration,
+      company_name,
+      transportation_type,
+      origin,
+      destination,
+      start,
+      end,
+    } = values;
 
     const encodedFormData = querystring.stringify({
       start: DateForm(start),
       end: DateForm(end),
+      type,
+      duration,
+      company_name,
+      transportation_type,
+      origin,
+      destination,
     });
 
     console.log("encodedFormData", encodedFormData);
@@ -82,7 +108,7 @@ const AddDate = ({ tour_id }) => {
     await CSRFToken();
 
     await axios
-      .post(`/api/agency/tour/${tour_id}/date`, encodedFormData)
+      .post(`/api/agency/tour/${tour_id}/transportation`, encodedFormData)
       .then((response2) => {
         if (response2.status === 201) {
           toast.success(
@@ -90,7 +116,7 @@ const AddDate = ({ tour_id }) => {
               <span>
                 <CircleCheckBig className="text-green-600" />
               </span>
-              <span>{"تاریخ با موفقیت اضافه شد"}</span>
+              <span>{"حمل و نقل با موفقیت اضافه شد"}</span>
             </div>,
           );
 
@@ -116,16 +142,101 @@ const AddDate = ({ tour_id }) => {
 
   return (
     <div className="">
-      <Button onClick={() => setIsOpen(true)}>افزودن تاریخ</Button>
+      <Button onClick={() => setIsOpen(true)}>افزودن حمل و نقل</Button>
       <Dialog open={isOpen} onOpenChange={() => setIsOpen(false)}>
         <DialogContent className="sm:max-w-[825px]">
           <DialogHeader>
-            <DialogTitle className="mr-4 text-right">افزودن تاریخ</DialogTitle>
+            <DialogTitle className="mr-4 text-right">
+              افزودن حمل و نقل
+            </DialogTitle>
           </DialogHeader>
           <div className="w-full">
             <Form {...form}>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid grid-cols-2 gap-5">
+                  <FormField
+                    control={control}
+                    name="type"
+                    render={({ field }) => (
+                      <FormItem className="col-span-3 lg:col-span-1">
+                        <FormLabel>نوع</FormLabel>
+                        <FormControl>
+                          <Input
+                            className=""
+                            autoComplete="off"
+                            placeholder="حداقل ۲ کاراکتر"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={control}
+                    name="duration"
+                    render={({ field }) => (
+                      <FormItem className="col-span-3 lg:col-span-1">
+                        <FormLabel>مدت زمان سفر</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="number"
+                            className=""
+                            autoComplete="off"
+                            placeholder="بر اساس ساعت"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={control}
+                    name="origin"
+                    render={({ field }) => (
+                      <FormItem className="col-span-3 text-right lg:col-span-1">
+                        <FormLabel>مبدا</FormLabel>
+                        <FormControl>
+                          <SearchableSelect
+                            changeValue={(value) => {
+                              field.onChange(value);
+                            }}
+                            defaultValue={getValues("origin")}
+                            api={"/api/cities"}
+                            query="name"
+                            placeholder={"مبدا"}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={control}
+                    name="destination"
+                    render={({ field }) => (
+                      <FormItem className="col-span-3 text-right lg:col-span-1">
+                        <FormLabel>مقصد</FormLabel>
+                        <FormControl>
+                          <SearchableSelect
+                            changeValue={(value) => {
+                              field.onChange(value);
+                            }}
+                            defaultValue={getValues("destination")}
+                            api={"/api/cities"}
+                            query="name"
+                            placeholder={"مقصد"}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
                   <FormField
                     control={control}
                     name="start"
@@ -189,6 +300,44 @@ const AddDate = ({ tour_id }) => {
                       </FormItem>
                     )}
                   />
+
+                  <FormField
+                    control={control}
+                    name="company_name"
+                    render={({ field }) => (
+                      <FormItem className="col-span-3 lg:col-span-1">
+                        <FormLabel>نام شرکت مسافربری</FormLabel>
+                        <FormControl>
+                          <Input
+                            className=""
+                            autoComplete="off"
+                            placeholder="حداقل ۲ کاراکتر"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={control}
+                    name="transportation_type"
+                    render={({ field }) => (
+                      <FormItem className="col-span-3 lg:col-span-1">
+                        <FormLabel>نوع وسیله نقلیه</FormLabel>
+                        <FormControl>
+                          <Input
+                            className=""
+                            autoComplete="off"
+                            placeholder="حداقل ۲ کاراکتر"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                 </div>
                 <SubmitButton className="mt-3" loading={isSubmitting}>
                   ارسال
@@ -202,4 +351,4 @@ const AddDate = ({ tour_id }) => {
   );
 };
 
-export default AddDate;
+export default AddTransportation;

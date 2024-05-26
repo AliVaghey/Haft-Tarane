@@ -2,7 +2,7 @@ import { CSRFToken, axios } from "@/lib/axios";
 import { create } from "zustand";
 
 export const useTour = create((set, get) => ({
-  currentTour: { certificate: {}, dates: [] },
+  currentTour: { certificate: {}, dates: [], transportations: [] },
   isEditPage: false,
   flag: false,
   setCurrentTour: (data) => set({ currentTour: data }),
