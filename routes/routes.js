@@ -10,23 +10,78 @@ export const routes = {
     signUp: "/auth/sign-up",
   },
 
+  superadmin: {
+    dashboard: "/superadmin/dashboard",
+    cities: {
+      root: "/superadmin/cities",
+      add: "/superadmin/cities/add",
+      edit: (id) => `/superadmin/cities/${id}/edit`,
+    },
+    users: {
+      root: "/superadmin/users",
+      edit: (id) => `/superadmin/users/${id}/edit`,
+      details: (id) => `/superadmin/users/${id}`,
+    },
+    admins: {
+      root: "/superadmin/admins",
+      edit: (id) => `/superadmin/admins/${id}/edit`,
+      details: (id) => `/superadmin/admins/${id}`,
+    },
+    agencies: {
+      root: "/superadmin/agencies",
+      details: (id) => `/superadmin/agencies/${id}`,
+    },
+    "your-agencies": {
+      root: "/superadmin/your-agencies",
+      details: (id) => `/superadmin/your-agencies/${id}`,
+    },
+    hotels: {
+      root: "/superadmin/hotels",
+      add: "/superadmin/hotels/add",
+      edit: (id) => `/superadmin/hotels/${id}/edit`,
+      details: (id) => `/superadmin/hotels/${id}`,
+    },
+    "your-hotels": {
+      root: "/superadmin/your-hotels",
+      add: "/superadmin/your-hotels/add",
+      edit: (id) => `/superadmin/your-hotels/${id}/edit`,
+      details: (id) => `/superadmin/your-hotels/${id}`,
+    },
+    tours: {
+      all: "/superadmin/tours/all",
+      pending: "/superadmin/tours/pending",
+      active: "/superadmin/tours/active",
+      details: (id) => `/superadmin/tours/${id}`,
+    },
+    "special-tours": {
+      root: "/superadmin/special-tours",
+      add: "/superadmin/special-tours/add",
+      edit: (id) => `/superadmin/special-tours/${id}/edit`,
+    },
+    alerts: {
+      root: "/superadmin/alerts",
+      add: "/superadmin/alerts/add",
+      edit: (id) => `/superadmin/alerts/${id}/edit`,
+    },
+  },
+
   admin: {
     dashboard: "/admin/dashboard",
-    cities: {
-      root: "/admin/cities",
-      add: "/admin/cities/add",
-      edit: (id) => `/admin/cities/${id}/edit`,
-    },
+    // cities: {
+    //   root: "/admin/cities",
+    //   add: "/admin/cities/add",
+    //   edit: (id) => `/admin/cities/${id}/edit`,
+    // },
     users: {
       root: "/admin/users",
       edit: (id) => `/admin/users/${id}/edit`,
       details: (id) => `/admin/users/${id}`,
     },
-    admins: {
-      root: "/admin/admins",
-      edit: (id) => `/admin/admins/${id}/edit`,
-      details: (id) => `/admin/admins/${id}`,
-    },
+    // admins: {
+    //   root: "/admin/admins",
+    //   edit: (id) => `/admin/admins/${id}/edit`,
+    //   details: (id) => `/admin/admins/${id}`,
+    // },
     agencies: {
       root: "/admin/agencies",
       details: (id) => `/admin/agencies/${id}`,
