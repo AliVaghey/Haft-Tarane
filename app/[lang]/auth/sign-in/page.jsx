@@ -24,7 +24,10 @@ import ToastSuccess from "@/components/toast/toast-success";
 import { defaultMessages } from "@/lib/default-messages";
 import ToastError from "@/components/toast/toast-error";
 
+import { useCookies } from "next-client-cookies";
+
 const LoginPage = () => {
+  const cookies = useCookies();
   const dictionary = useDictionary();
 
   const router = useRouter();
@@ -54,6 +57,8 @@ const LoginPage = () => {
       phone: phoneNumber,
       password,
     });
+
+    console.log("cookies", cookies.get("XSRF-TOKEN"));
 
     await axios
       .post("/login", encodedFormData)
