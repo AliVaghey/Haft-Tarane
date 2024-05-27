@@ -3,10 +3,8 @@
 import Dates from "@/components/tours/dates";
 import { useTour } from "@/hooks/use-tour";
 
-const HotelPage = () => {
+const DatePage = () => {
   const tourHook = useTour();
-
-  console.log("tourHook.currentTourdddddddddddd", tourHook.currentTour);
 
   return (
     <div className="w-full">
@@ -20,4 +18,4 @@ const HotelPage = () => {
   );
 };
 
-export default HotelPage;
+export default DatePage;

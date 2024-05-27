@@ -120,7 +120,7 @@ const AddDate = ({ tour_id }) => {
       <Dialog open={isOpen} onOpenChange={() => setIsOpen(false)}>
         <DialogContent className="sm:max-w-[825px]">
           <DialogHeader>
-            <DialogTitle className="mr-4 text-right">افزودن هتل</DialogTitle>
+            <DialogTitle className="mr-4 text-right">افزودن تاریخ</DialogTitle>
           </DialogHeader>
           <div className="w-full">
             <Form {...form}>
