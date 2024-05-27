@@ -46,18 +46,18 @@ export default function Nav() {
 
   return (
     <div
-      className={`sticky top-0 z-[999] !bg-yellow-primary bg-transparent py-4 transition-all duration-500 ${scrollBackground ? "z-[9999] bg-yellow-primary" : "bg-transparent"}`}
+      className={`fixed top-0 z-[999] w-full !bg-yellow-primary bg-transparent  transition-all duration-500 ${scrollBackground ? "z-[9999] bg-yellow-primary" : "bg-transparent"}`}
     >
-      <div className="mx-auto w-4/5">
-        <div className="flex items-center justify-between">
+      <div className="mx-auto shadow-lg">
+        <div className="flex h-full items-center justify-between px-5 py-2 md:px-10 lg:px-16">
           <div className="flex items-center justify-between gap-9">
             <Link href="/">
               <Image
                 src={logo}
                 alt="alt"
-                width={480}
-                height={360}
-                className="w-32"
+                width={260}
+                height={160}
+                className="h-14 w-28"
               />
             </Link>
             {!isMobile && (

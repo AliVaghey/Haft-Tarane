@@ -31,7 +31,7 @@ import search from "@/public/img/search-icon.svg";
 export default function SearchBox({ className }) {
   return (
     <div className={cn(className)}>
-      <div className="w-4/5 mx-auto rtl">
+      <div className="rtl mx-auto w-4/5">
         <Tabs defaultValue="in" className="" dir="rtl">
           <TabsList>
             <TabsTrigger value="in">
@@ -42,7 +42,7 @@ export default function SearchBox({ className }) {
                   alt="alt"
                   width={100}
                   height={100}
-                  className="w-4 h-4"
+                  className="h-4 w-4"
                 />
               </div>
             </TabsTrigger>
@@ -55,7 +55,7 @@ export default function SearchBox({ className }) {
                   alt="alt"
                   width={100}
                   height={100}
-                  className="w-4 h-4"
+                  className="h-4 w-4"
                 />
               </div>
             </TabsTrigger>
@@ -68,7 +68,7 @@ export default function SearchBox({ className }) {
                   alt="alt"
                   width={100}
                   height={100}
-                  className="w-2 h-2"
+                  className="h-2 w-2"
                 />
               </div>
             </TabsTrigger>
@@ -82,7 +82,7 @@ export default function SearchBox({ className }) {
                   alt="alt"
                   width={100}
                   height={100}
-                  className="w-4 h-4"
+                  className="h-4 w-4"
                 />
               </div>
             </TabsTrigger>
@@ -94,26 +94,26 @@ export default function SearchBox({ className }) {
                   alt="alt"
                   width={100}
                   height={100}
-                  className="w-4 h-4"
+                  className="h-4 w-4"
                 />
               </div>
             </TabsTrigger>
           </TabsList>
           <TabsContent
             value="in"
-            className="bg-white rounded-b-xl rounded-l-xl shadow-2xl w-[1111px]"
+            className="w-[1111px] rounded-b-xl rounded-l-xl bg-white shadow-2xl"
           >
             <div className="flex justify-between">
               {" "}
-              <div className="w-full flex justify-around py-7 ">
-                <div className="flex flex-col justify-center items-center gap-4">
-                  <div className="flex justify-between items-center gap-6 p-2">
+              <div className="flex w-full justify-around py-7 ">
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">مبدأ</p>
                     <Image
                       src={f}
                       alt="alt"
-                      className="w-4 h-4"
+                      className="h-4 w-4"
                       width={100}
                       height={100}
                     />
@@ -129,14 +129,14 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col justify-center items-center gap-4">
-                  <div className="flex justify-between items-center gap-6 p-2">
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">مقصد</p>
                     <Image
                       src={g}
                       alt="alt"
-                      className="w-4 h-4"
+                      className="h-4 w-4"
                       width={100}
                       height={100}
                     />
@@ -152,14 +152,14 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col justify-center items-center gap-4">
-                  <div className="flex justify-between items-center gap-6 p-2">
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">تاریخ رفت و برگشت</p>
                     <Image
                       src={h}
                       alt="alt"
-                      className="w-4 h-4"
+                      className="h-4 w-4"
                       width={100}
                       height={100}
                     />
@@ -175,14 +175,14 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col justify-center items-center gap-4">
-                  <div className="flex justify-between items-center gap-6 p-2">
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">تعداد مسافران</p>
                     <Image
                       src={i}
                       alt="alt"
-                      className="w-4 h-4"
+                      className="h-4 w-4"
                       width={100}
                       height={100}
                     />
@@ -199,15 +199,15 @@ export default function SearchBox({ className }) {
                   </Select>
                 </div>
               </div>
-              <div className="w-44 max-lg:w-20 bg-[#2B303D] rounded-l-xl flex flex-col justify-center items-center gap-2 group cursor-pointer">
+              <div className="group flex w-44 cursor-pointer flex-col items-center justify-center gap-2 rounded-l-xl bg-[#2B303D] max-lg:w-20">
                 <Image
                   src={search}
                   alt="alt"
                   width={100}
                   height={100}
-                  className="w-9 h-9"
+                  className="h-9 w-9"
                 />
-                <p className="border border-[#2B303D] rounded-xl text-white bg-dark_grey group-hover:bg-dark_grey group-hover:text-primary_yellow max-lg:text-sm">
+                <p className="bg-dark_grey group-hover:bg-dark_grey group-hover:text-primary_yellow rounded-xl border border-[#2B303D] text-white max-lg:text-sm">
                   جست و جو
                 </p>
               </div>{" "}
@@ -215,19 +215,19 @@ export default function SearchBox({ className }) {
           </TabsContent>
           <TabsContent
             value="out"
-            className="bg-white rounded-b-xl rounded-l-xl shadow-2xl w-[1111px]"
+            className="w-[1111px] rounded-b-xl rounded-l-xl bg-white shadow-2xl"
           >
             <div className="flex justify-between">
               {" "}
-              <div className="w-full flex justify-around py-7 ">
-                <div className="flex flex-col justify-center items-center gap-4">
-                  <div className="flex justify-between items-center gap-6 p-2">
+              <div className="flex w-full justify-around py-7 ">
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">مبدأ</p>
                     <Image
                       src={f}
                       alt="alt"
-                      className="w-4 h-4"
+                      className="h-4 w-4"
                       width={100}
                       height={100}
                     />
@@ -243,14 +243,14 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col justify-center items-center gap-4">
-                  <div className="flex justify-between items-center gap-6 p-2">
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">مقصد</p>
                     <Image
                       src={g}
                       alt="alt"
-                      className="w-4 h-4"
+                      className="h-4 w-4"
                       width={100}
                       height={100}
                     />
@@ -266,14 +266,14 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col justify-center items-center gap-4">
-                  <div className="flex justify-between items-center gap-6 p-2">
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">تاریخ رفت و برگشت</p>
                     <Image
                       src={h}
                       alt="alt"
-                      className="w-4 h-4"
+                      className="h-4 w-4"
                       width={100}
                       height={100}
                     />
@@ -289,14 +289,14 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col justify-center items-center gap-4">
-                  <div className="flex justify-between items-center gap-6 p-2">
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">تعداد مسافران</p>
                     <Image
                       src={i}
                       alt="alt"
-                      className="w-4 h-4"
+                      className="h-4 w-4"
                       width={100}
                       height={100}
                     />
@@ -313,15 +313,15 @@ export default function SearchBox({ className }) {
                   </Select>
                 </div>
               </div>
-              <div className="w-44 max-lg:w-20 bg-[#2B303D] rounded-l-xl flex flex-col justify-center items-center gap-2 group cursor-pointer">
+              <div className="group flex w-44 cursor-pointer flex-col items-center justify-center gap-2 rounded-l-xl bg-[#2B303D] max-lg:w-20">
                 <Image
                   src={search}
                   alt="alt"
                   width={100}
                   height={100}
-                  className="w-9 h-9"
+                  className="h-9 w-9"
                 />
-                <p className="border border-[#2B303D] rounded-xl text-white bg-dark_grey group-hover:bg-dark_grey group-hover:text-primary_yellow max-lg:text-sm">
+                <p className="bg-dark_grey group-hover:bg-dark_grey group-hover:text-primary_yellow rounded-xl border border-[#2B303D] text-white max-lg:text-sm">
                   جست و جو
                 </p>
               </div>{" "}
@@ -329,19 +329,19 @@ export default function SearchBox({ className }) {
           </TabsContent>
           <TabsContent
             value="class"
-            className="bg-white rounded-b-xl rounded-l-xl shadow-2xl w-[1111px]"
+            className="w-[1111px] rounded-b-xl rounded-l-xl bg-white shadow-2xl"
           >
             <div className="flex justify-between">
               {" "}
-              <div className="w-full flex justify-around py-7 ">
-                <div className="flex flex-col justify-center items-center gap-4">
-                  <div className="flex justify-between items-center gap-6 p-2">
+              <div className="flex w-full justify-around py-7 ">
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">مبدأ</p>
                     <Image
                       src={f}
                       alt="alt"
-                      className="w-4 h-4"
+                      className="h-4 w-4"
                       width={100}
                       height={100}
                     />
@@ -357,14 +357,14 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col justify-center items-center gap-4">
-                  <div className="flex justify-between items-center gap-6 p-2">
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">مقصد</p>
                     <Image
                       src={g}
                       alt="alt"
-                      className="w-4 h-4"
+                      className="h-4 w-4"
                       width={100}
                       height={100}
                     />
@@ -380,14 +380,14 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col justify-center items-center gap-4">
-                  <div className="flex justify-between items-center gap-6 p-2">
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">تاریخ رفت و برگشت</p>
                     <Image
                       src={h}
                       alt="alt"
-                      className="w-4 h-4"
+                      className="h-4 w-4"
                       width={100}
                       height={100}
                     />
@@ -403,14 +403,14 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col justify-center items-center gap-4">
-                  <div className="flex justify-between items-center gap-6 p-2">
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">تعداد مسافران</p>
                     <Image
                       src={i}
                       alt="alt"
-                      className="w-4 h-4"
+                      className="h-4 w-4"
                       width={100}
                       height={100}
                     />
@@ -427,15 +427,15 @@ export default function SearchBox({ className }) {
                   </Select>
                 </div>
               </div>
-              <div className="w-44 max-lg:w-20 bg-[#2B303D] rounded-l-xl flex flex-col justify-center items-center gap-2 group cursor-pointer">
+              <div className="group flex w-44 cursor-pointer flex-col items-center justify-center gap-2 rounded-l-xl bg-[#2B303D] max-lg:w-20">
                 <Image
                   src={search}
                   alt="alt"
                   width={100}
                   height={100}
-                  className="w-9 h-9"
+                  className="h-9 w-9"
                 />
-                <p className="border border-[#2B303D] rounded-xl text-white bg-dark_grey group-hover:bg-dark_grey group-hover:text-primary_yellow max-lg:text-sm">
+                <p className="bg-dark_grey group-hover:bg-dark_grey group-hover:text-primary_yellow rounded-xl border border-[#2B303D] text-white max-lg:text-sm">
                   جست و جو
                 </p>
               </div>{" "}
@@ -443,19 +443,19 @@ export default function SearchBox({ className }) {
           </TabsContent>
           <TabsContent
             value="tour"
-            className="bg-white rounded-b-xl rounded-l-xl shadow-2xl w-[1111px]"
+            className="w-[1111px] rounded-b-xl rounded-l-xl bg-white shadow-2xl"
           >
             <div className="flex justify-between">
               {" "}
-              <div className="w-full flex justify-around py-7 ">
-                <div className="flex flex-col justify-center items-center gap-4">
-                  <div className="flex justify-between items-center gap-6 p-2">
+              <div className="flex w-full justify-around py-7 ">
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">مبدأ</p>
                     <Image
                       src={f}
                       alt="alt"
-                      className="w-4 h-4"
+                      className="h-4 w-4"
                       width={100}
                       height={100}
                     />
@@ -471,14 +471,14 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col justify-center items-center gap-4">
-                  <div className="flex justify-between items-center gap-6 p-2">
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">مقصد</p>
                     <Image
                       src={g}
                       alt="alt"
-                      className="w-4 h-4"
+                      className="h-4 w-4"
                       width={100}
                       height={100}
                     />
@@ -494,14 +494,14 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col justify-center items-center gap-4">
-                  <div className="flex justify-between items-center gap-6 p-2">
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">تاریخ رفت و برگشت</p>
                     <Image
                       src={h}
                       alt="alt"
-                      className="w-4 h-4"
+                      className="h-4 w-4"
                       width={100}
                       height={100}
                     />
@@ -517,14 +517,14 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col justify-center items-center gap-4">
-                  <div className="flex justify-between items-center gap-6 p-2">
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">تعداد مسافران</p>
                     <Image
                       src={i}
                       alt="alt"
-                      className="w-4 h-4"
+                      className="h-4 w-4"
                       width={100}
                       height={100}
                     />
@@ -541,15 +541,15 @@ export default function SearchBox({ className }) {
                   </Select>
                 </div>
               </div>
-              <div className="w-44 max-lg:w-20 bg-[#2B303D] rounded-l-xl flex flex-col justify-center items-center gap-2 group cursor-pointer">
+              <div className="group flex w-44 cursor-pointer flex-col items-center justify-center gap-2 rounded-l-xl bg-[#2B303D] max-lg:w-20">
                 <Image
                   src={search}
                   alt="alt"
                   width={100}
                   height={100}
-                  className="w-9 h-9"
+                  className="h-9 w-9"
                 />
-                <p className="border border-[#2B303D] rounded-xl text-white bg-dark_grey group-hover:bg-dark_grey group-hover:text-primary_yellow max-lg:text-sm">
+                <p className="bg-dark_grey group-hover:bg-dark_grey group-hover:text-primary_yellow rounded-xl border border-[#2B303D] text-white max-lg:text-sm">
                   جست و جو
                 </p>
               </div>{" "}
@@ -557,19 +557,19 @@ export default function SearchBox({ className }) {
           </TabsContent>
           <TabsContent
             value="train"
-            className="bg-white rounded-b-xl rounded-l-xl shadow-2xl w-[1111px]"
+            className="w-[1111px] rounded-b-xl rounded-l-xl bg-white shadow-2xl"
           >
             <div className="flex justify-between">
               {" "}
-              <div className="w-full flex justify-around py-7 ">
-                <div className="flex flex-col justify-center items-center gap-4">
-                  <div className="flex justify-between items-center gap-6 p-2">
+              <div className="flex w-full justify-around py-7 ">
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">مبدأ</p>
                     <Image
                       src={f}
                       alt="alt"
-                      className="w-4 h-4"
+                      className="h-4 w-4"
                       width={100}
                       height={100}
                     />
@@ -585,14 +585,14 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col justify-center items-center gap-4">
-                  <div className="flex justify-between items-center gap-6 p-2">
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">مقصد</p>
                     <Image
                       src={g}
                       alt="alt"
-                      className="w-4 h-4"
+                      className="h-4 w-4"
                       width={100}
                       height={100}
                     />
@@ -608,14 +608,14 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col justify-center items-center gap-4">
-                  <div className="flex justify-between items-center gap-6 p-2">
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">تاریخ رفت و برگشت</p>
                     <Image
                       src={h}
                       alt="alt"
-                      className="w-4 h-4"
+                      className="h-4 w-4"
                       width={100}
                       height={100}
                     />
@@ -631,14 +631,14 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col justify-center items-center gap-4">
-                  <div className="flex justify-between items-center gap-6 p-2">
+                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">تعداد مسافران</p>
                     <Image
                       src={i}
                       alt="alt"
-                      className="w-4 h-4"
+                      className="h-4 w-4"
                       width={100}
                       height={100}
                     />
@@ -655,15 +655,15 @@ export default function SearchBox({ className }) {
                   </Select>
                 </div>
               </div>
-              <div className="w-44 max-lg:w-20 bg-[#2B303D] rounded-l-xl flex flex-col justify-center items-center gap-2 group cursor-pointer">
+              <div className="group flex w-44 cursor-pointer flex-col items-center justify-center gap-2 rounded-l-xl bg-[#2B303D] max-lg:w-20">
                 <Image
                   src={search}
                   alt="alt"
                   width={100}
                   height={100}
-                  className="w-9 h-9"
+                  className="h-9 w-9"
                 />
-                <p className="border border-[#2B303D] rounded-xl text-white bg-dark_grey group-hover:bg-dark_grey group-hover:text-primary_yellow max-lg:text-sm">
+                <p className="bg-dark_grey group-hover:bg-dark_grey group-hover:text-primary_yellow rounded-xl border border-[#2B303D] text-white max-lg:text-sm">
                   جست و جو
                 </p>
               </div>{" "}
