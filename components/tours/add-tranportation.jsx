@@ -34,11 +34,19 @@ import { Input } from "@/components/ui/input";
 import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
+import TimePicker from "react-multi-date-picker/plugins/time_picker";
 import { DateForm } from "@/lib/date-form";
 import {
   entransportationSchema,
   transportationSchema,
 } from "@/lib/validation/tour/transportation";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const AddTransportation = ({ tour_id }) => {
   const dictionary = useDictionary();
@@ -103,7 +111,7 @@ const AddTransportation = ({ tour_id }) => {
       destination,
     });
 
-    console.log("encodedFormData", encodedFormData);
+    console.log("DateForm(start)", DateForm(start));
 
     await CSRFToken();
 
@@ -155,19 +163,27 @@ const AddTransportation = ({ tour_id }) => {
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid grid-cols-2 gap-5">
                   <FormField
-                    control={control}
+                    control={form.control}
                     name="type"
                     render={({ field }) => (
-                      <FormItem className="col-span-3 lg:col-span-1">
-                        <FormLabel>نوع</FormLabel>
-                        <FormControl>
-                          <Input
-                            className=""
-                            autoComplete="off"
-                            placeholder="حداقل ۲ کاراکتر"
-                            {...field}
-                          />
-                        </FormControl>
+                      <FormItem>
+                        <FormLabel>نوع حمل و نقل</FormLabel>
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="نوع حمل و نقل" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="قطار">قطار</SelectItem>
+                            <SelectItem value="هواپیما">هواپیما</SelectItem>
+                            <SelectItem value="اتوبوس">اتوبوس</SelectItem>
+                          </SelectContent>
+                        </Select>
+
                         <FormMessage />
                       </FormItem>
                     )}
@@ -251,11 +267,22 @@ const AddTransportation = ({ tour_id }) => {
                                 ? setValue("start", new Date(date))
                                 : "";
                             }}
-                            format={false ? "MM/DD/YYYY" : "YYYY/MM/DD"}
+                            format={
+                              false ? "MM/DD/YYYY HH:mm" : "YYYY/MM/DD HH:mm"
+                            }
                             calendar={persian}
                             locale={persian_fa}
                             calendarPosition="bottom-right"
                             minDate={new Date()}
+                            plugins={[
+                              <TimePicker
+                                key={1}
+                                position="bottom"
+                                hStep={1}
+                                mStep={1}
+                                hideSeconds
+                              />,
+                            ]}
                             style={{
                               width: "100%",
                               paddingTop: "19px",
@@ -283,11 +310,22 @@ const AddTransportation = ({ tour_id }) => {
                                 ? setValue("end", new Date(date))
                                 : "";
                             }}
-                            format={false ? "MM/DD/YYYY" : "YYYY/MM/DD"}
+                            format={
+                              false ? "MM/DD/YYYY HH:mm" : "YYYY/MM/DD HH:mm"
+                            }
                             calendar={persian}
                             locale={persian_fa}
                             calendarPosition="bottom-right"
                             minDate={new Date()}
+                            plugins={[
+                              <TimePicker
+                                key={1}
+                                position="bottom"
+                                hStep={1}
+                                mStep={1}
+                                hideSeconds
+                              />,
+                            ]}
                             style={{
                               width: "100%",
                               paddingTop: "19px",
