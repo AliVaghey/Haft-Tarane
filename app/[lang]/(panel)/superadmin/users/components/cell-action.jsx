@@ -22,9 +22,9 @@ import { Edit } from "lucide-react";
 import { routes } from "@/routes/routes";
 
 const accessTypes = [
-  // {
-  //   title: "ادمین",
-  // },
+  {
+    title: "ادمین",
+  },
   {
     title: "آژانس",
   },
@@ -36,17 +36,22 @@ const accessTypes = [
 const CellAction = ({ data }) => {
   const [loading, setLoading] = useState(false);
   const [role, setRole] = useState(
-    // data.access_type === "admin"? "ادمین":
-
-    data.access_type === "agency" ? "آژانس" : "کاربر",
+    data.access_type === "admin"
+      ? "ادمین"
+      : data.access_type === "agency"
+        ? "آژانس"
+        : "کاربر",
   );
 
   const changeAccess = async (accessName) => {
     setLoading(true);
 
     const newAccessName =
-      // accessName === "ادمین"? "admin":
-      accessName === "آژانس" ? "agency" : "user";
+      accessName === "ادمین"
+        ? "admin"
+        : accessName === "آژانس"
+          ? "agency"
+          : "user";
 
     await CSRFToken();
 
@@ -79,13 +84,13 @@ const CellAction = ({ data }) => {
 
   return (
     <div className="flex items-center justify-center gap-1">
-      <Link href={routes.admin.users.details(data.id)}>
+      <Link href={routes.superadmin.users.details(data.id)}>
         <div className="cursor-pointer rounded-md p-1 transition-all duration-200 hover:bg-muted">
           <Eye size={18} strokeWidth={1.5} className="text-primary" />
         </div>
       </Link>
 
-      <Link href={routes.admin.users.edit(data.id)}>
+      <Link href={routes.superadmin.users.edit(data.id)}>
         <div className="cursor-pointer rounded-md p-1 transition-all duration-200 hover:bg-muted">
           <Edit size={18} strokeWidth={1.5} className="text-primary" />
         </div>

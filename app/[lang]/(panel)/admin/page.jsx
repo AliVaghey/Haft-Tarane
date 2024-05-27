@@ -1,5 +1,8 @@
+import { routes } from "@/routes/routes";
+import { redirect } from "next/navigation";
+
 const AdminPage = () => {
-  return <div>admin</div>;
+  redirect(routes.admin.dashboard);
 };
 
 export default AdminPage;
