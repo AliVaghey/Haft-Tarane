@@ -14,7 +14,7 @@ function HeroSection() {
           alt="alt"
           width={480}
           height={360}
-          className="h-96 w-[500px] max-lg:h-60 max-lg:w-80 max-md:h-32 max-md:w-44"
+          className="mt-12 h-96 w-[500px] max-lg:h-60 max-lg:w-80 max-md:h-32 max-md:w-44 lg:-mb-14"
         />
         <div className="">
           <h2 className="text-4xl font-bold max-lg:text-xl max-md:text-sm ">
@@ -33,7 +33,7 @@ function HeroSection() {
               className="h-7 w-7 max-md:h-4 max-md:w-4"
             />
           </div>
-          <div className="flex items-center justify-center rounded-3xl bg-[#2B303D] px-4 py-2 text-white shadow-2xl max-md:px-3 max-md:py-2 ">
+          <div className="flex items-center justify-center rounded-3xl bg-[#2B303D] px-4 pb-3 pt-2 text-white shadow-2xl max-md:px-3 max-md:py-2 ">
             <p className="max-md:text-xs">رزرو بلیط</p>
           </div>
         </div>

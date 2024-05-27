@@ -101,12 +101,12 @@ export default function SearchBox({ className }) {
           </TabsList>
           <TabsContent
             value="in"
-            className="w-[1111px] rounded-b-xl rounded-l-xl bg-white shadow-2xl"
+            className="w-[999px] rounded-b-xl rounded-l-xl bg-white shadow-2xl"
           >
-            <div className="flex justify-between">
+            <div className="flex justify-around">
               {" "}
-              <div className="flex w-full justify-around py-7 ">
-                <div className="flex flex-col items-center justify-center gap-4">
+              <div className="flex w-full justify-around py-4 ">
+                <div className="flex flex-col items-center justify-center gap-2">
                   <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">مبدأ</p>
@@ -129,7 +129,7 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col items-center justify-center gap-4">
+                <div className="flex flex-col items-center justify-center gap-2">
                   <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">مقصد</p>
@@ -152,7 +152,7 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col items-center justify-center gap-4">
+                <div className="flex flex-col items-center justify-center gap-2">
                   <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">تاریخ رفت و برگشت</p>
@@ -175,7 +175,7 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col items-center justify-center gap-4">
+                <div className="flex flex-col items-center justify-center gap-2">
                   <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">تعداد مسافران</p>
@@ -219,8 +219,8 @@ export default function SearchBox({ className }) {
           >
             <div className="flex justify-between">
               {" "}
-              <div className="flex w-full justify-around py-7 ">
-                <div className="flex flex-col items-center justify-center gap-4">
+              <div className="flex w-full justify-around py-4 ">
+                <div className="flex flex-col items-center justify-center gap-2">
                   <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">مبدأ</p>
@@ -243,7 +243,7 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col items-center justify-center gap-4">
+                <div className="2 flex flex-col items-center justify-center">
                   <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">مقصد</p>
@@ -266,7 +266,7 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col items-center justify-center gap-4">
+                <div className="flex flex-col items-center justify-center gap-2">
                   <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">تاریخ رفت و برگشت</p>
@@ -289,7 +289,7 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col items-center justify-center gap-4">
+                <div className="flex flex-col items-center justify-center gap-2">
                   <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">تعداد مسافران</p>
@@ -333,8 +333,8 @@ export default function SearchBox({ className }) {
           >
             <div className="flex justify-between">
               {" "}
-              <div className="flex w-full justify-around py-7 ">
-                <div className="flex flex-col items-center justify-center gap-4">
+              <div className="flex w-full justify-around py-4 ">
+                <div className="flex flex-col items-center justify-center gap-2">
                   <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">مبدأ</p>
@@ -357,7 +357,7 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col items-center justify-center gap-4">
+                <div className="flex flex-col items-center justify-center gap-2">
                   <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">مقصد</p>
@@ -380,7 +380,7 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col items-center justify-center gap-4">
+                <div className="flex flex-col items-center justify-center gap-2">
                   <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">تاریخ رفت و برگشت</p>
@@ -403,7 +403,7 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col items-center justify-center gap-4">
+                <div className="flex flex-col items-center justify-center gap-2">
                   <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">تعداد مسافران</p>
@@ -447,8 +447,8 @@ export default function SearchBox({ className }) {
           >
             <div className="flex justify-between">
               {" "}
-              <div className="flex w-full justify-around py-7 ">
-                <div className="flex flex-col items-center justify-center gap-4">
+              <div className="flex w-full justify-around py-4 ">
+                <div className="flex flex-col items-center justify-center gap-2">
                   <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">مبدأ</p>
@@ -471,7 +471,7 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col items-center justify-center gap-4">
+                <div className="flex flex-col items-center justify-center gap-2">
                   <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">مقصد</p>
@@ -494,7 +494,7 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col items-center justify-center gap-4">
+                <div className="flex flex-col items-center justify-center gap-2">
                   <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">تاریخ رفت و برگشت</p>
@@ -517,7 +517,7 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col items-center justify-center gap-4">
+                <div className="flex flex-col items-center justify-center gap-2">
                   <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">تعداد مسافران</p>
@@ -561,8 +561,8 @@ export default function SearchBox({ className }) {
           >
             <div className="flex justify-between">
               {" "}
-              <div className="flex w-full justify-around py-7 ">
-                <div className="flex flex-col items-center justify-center gap-4">
+              <div className="flex w-full justify-around py-4 ">
+                <div className="flex flex-col items-center justify-center gap-2">
                   <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">مبدأ</p>
@@ -585,7 +585,7 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col items-center justify-center gap-4">
+                <div className="flex flex-col items-center justify-center gap-2">
                   <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">مقصد</p>
@@ -608,7 +608,7 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col items-center justify-center gap-4">
+                <div className="flex flex-col items-center justify-center gap-2">
                   <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">تاریخ رفت و برگشت</p>
@@ -631,7 +631,7 @@ export default function SearchBox({ className }) {
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex flex-col items-center justify-center gap-4">
+                <div className="flex flex-col items-center justify-center gap-2">
                   <div className="flex items-center justify-between gap-6 p-2">
                     {" "}
                     <p className="">تعداد مسافران</p>
