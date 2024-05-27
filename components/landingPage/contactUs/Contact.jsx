@@ -13,7 +13,6 @@ import v from "@/public/img/v.svg";
 import ig from "@/public/img/ig.svg";
 import cg from "@/public/img/cg.svg";
 
-
 export default function ContactUs() {
   return (
     <div>
@@ -23,25 +22,25 @@ export default function ContactUs() {
           alt="airplane"
           width={100}
           height={100}
-          className="w-full -z-10"
+          className="-z-10 w-full"
         />
         <div className=" px-44">
           <div className="-mt-20">
-            <div className=" w-72 flex justify-between items-center gap-7">
+            <div className=" flex w-72 items-center justify-between gap-7">
               <Link href="/about">
-                <p className="bg-white text-[#a6a6a6] border border-yellow-primary w-32 py-3 rounded-xl text-center cursor-pointer">
+                <p className="w-32 cursor-pointer rounded-xl border border-yellow-primary bg-white py-3 text-center text-[#a6a6a6]">
                   درباره ما
                 </p>
               </Link>
               <Link href="/contact">
-                <p className="bg-yellow-primary text-black w-32 py-3 rounded-xl text-center cursor-pointer">
+                <p className="w-32 cursor-pointer rounded-xl bg-yellow-primary py-3 text-center text-black">
                   تماس با ما
                 </p>
               </Link>
             </div>
           </div>
         </div>{" "}
-        <div className="mt-20 text-center flex flex-col gap-6">
+        <div className="mt-20 flex flex-col gap-6 text-center">
           <p className="px-4">
             ما در مجموعه بیلیتو همواره به نظرات، پیشنهادات و سوالات شما عزیزان
             ارزش قائلیم و مشتاقانه منتظر کمک به شما هستیم.
@@ -50,7 +49,7 @@ export default function ContactUs() {
             درصورتی که سوالی دارید یا نیاز به راهنمایی دارید، با شماره پشتیبانی
             ما تماس بگیرید.
           </p>
-          <div className="flex justify-between gap-9 mt-20">
+          <div className="mt-20 flex justify-between gap-9">
             <Image
               src={cc}
               alt="alt"
@@ -59,11 +58,11 @@ export default function ContactUs() {
               className="w-14 max-lg:w-16"
             />
 
-            <div className="flex justify-between max-lg:flex-col  gap-9 ">
+            <div className="flex justify-between gap-9  max-lg:flex-col ">
               <div>
-                <div className="bg-yellow-primary xl:w-96 lg:w-72 py-12 flex flex-col gap-9 rounded-2xl px-9 mb-20">
+                <div className="mb-20 flex flex-col gap-9 rounded-2xl bg-yellow-primary px-9 py-12 lg:w-72 xl:w-96">
                   <div>
-                    <h2 className="text-center text-white text-3xl">
+                    <h2 className="text-center text-3xl text-white">
                       جستجوی بلیط
                     </h2>
                   </div>
@@ -74,7 +73,7 @@ export default function ContactUs() {
                         alt="alt"
                         width={100}
                         height={100}
-                        className="size-7"
+                        className="h-7 w-7"
                       />
                       <p>novinbin@gmail.com</p>
                     </div>
@@ -84,7 +83,7 @@ export default function ContactUs() {
                         alt="alt"
                         width={100}
                         height={100}
-                        className="size-7"
+                        className="h-7 w-7"
                       />
                       <p>novinbin@gmail.com</p>
                     </div>
@@ -94,15 +93,13 @@ export default function ContactUs() {
                         alt="alt"
                         width={100}
                         height={100}
-                        className="size-7"
+                        className="h-7 w-7"
                       />
-                      <p className="text-right">
-                        Lorem ipsum dolor sit amet  
-                      </p>
+                      <p className="text-right">Lorem ipsum dolor sit amet</p>
                     </div>
                   </div>
                   <div>
-                    <h2 className="text-white my-4 text-xl text-center">
+                    <h2 className="my-4 text-center text-xl text-white">
                       شبکه های اجتماعی
                     </h2>
                     <div className="flex flex-col gap-4">
@@ -112,7 +109,7 @@ export default function ContactUs() {
                           alt="alt"
                           width={100}
                           height={100}
-                          className="size-7"
+                          className="h-7 w-7"
                         />
                         <p>novinbin@gmail.com</p>
                       </div>
@@ -122,7 +119,7 @@ export default function ContactUs() {
                           alt="alt"
                           width={100}
                           height={100}
-                          className="size-7"
+                          className="h-7 w-7"
                         />
                         <p>novinbin@gmail.com</p>
                       </div>
@@ -132,7 +129,7 @@ export default function ContactUs() {
                           alt="alt"
                           width={100}
                           height={100}
-                          className="size-7"
+                          className="h-7 w-7"
                         />
                         <p>novinbin@gmail.com</p>
                       </div>
@@ -142,7 +139,7 @@ export default function ContactUs() {
                           alt="alt"
                           width={100}
                           height={100}
-                          className="size-7"
+                          className="h-7 w-7"
                         />
                         <p>novinbin@gmail.com</p>
                       </div>
@@ -152,20 +149,20 @@ export default function ContactUs() {
                           alt="alt"
                           width={100}
                           height={100}
-                          className="size-7"
+                          className="h-7 w-7"
                         />
                         <p>novinbin@gmail.com</p>
                       </div>
                     </div>
                   </div>
                   <div>
-                    <h2 className="text-white text-xl text-center mb-7">
+                    <h2 className="mb-7 text-center text-xl text-white">
                       ساعت پاسخگویی
                     </h2>
-                    <p className="text-white text-center pb-3 ">
+                    <p className="pb-3 text-center text-white ">
                       12:00 - 08:00 Uhr
                     </p>
-                    <p className="text-white text-center">17:00 - 13:00 Uhr</p>
+                    <p className="text-center text-white">17:00 - 13:00 Uhr</p>
                   </div>
                 </div>
               </div>
@@ -174,7 +171,7 @@ export default function ContactUs() {
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6890.914143557435!2d57.057602458349685!3d30.281047037322043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f021964f15bdfcd%3A0xcf3074f6cfd82da0!2sNovinbin%20Digital%20Marketing!5e0!3m2!1sen!2s!4v1716012431260!5m2!1sen!2s"
                   //   width="1111"
                   //   height="750"
-                  className="rounded-lg max-lg:size-[499px] max-lg:pb-9 lg:w-[525px] lg:h-[750px] xl:w-[777px]"
+                  className="rounded-lg max-lg:size-[499px] max-lg:pb-9 lg:h-[750px] lg:w-[525px] xl:w-[777px]"
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -187,7 +184,7 @@ export default function ContactUs() {
               alt="alt"
               width={100}
               height={100}
-              className="xl:w-44 lg:w-20 max-lg:w-20 max-lg:-mt-[666px]"
+              className="max-lg:-mt-[666px] max-lg:w-20 lg:w-20 xl:w-44"
             />
           </div>
         </div>
