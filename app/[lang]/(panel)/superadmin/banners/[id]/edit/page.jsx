@@ -1,16 +1,15 @@
 "use client";
 
 import ToastError from "@/components/toast/toast-error";
+import EditForm from "../../components/edit-form";
 import LoadingPage from "@/components/loading-page";
 import { useEffect, useState } from "react";
 import { axios } from "@/lib/axios";
 import { toast } from "sonner";
-import Details from "../components/details";
+import { defaultMessages } from "@/lib/default-messages";
 
-const EditCityPage = ({ params }) => {
-  const [data, setData] = useState({
-    gallery: ["a"],
-  });
+const EditSpecialTourPage = ({ params }) => {
+  const [data, setData] = useState({});
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,10 +20,10 @@ const EditCityPage = ({ params }) => {
   const fetchDefaultData = async () => {
     setIsLoading(true);
     await axios
-      .get(`/api/admin/hotel/${params.id}`)
+      .get(`/api/admin/banner/${params.id}`)
       .then((response) => {
-        console.log("response", response);
-        setData(response.data.data);
+        console.log("responsesssssssssssss", response);
+        setData(response.data);
       })
       .catch((error) => {
         toast.error(
@@ -41,11 +40,7 @@ const EditCityPage = ({ params }) => {
       });
   };
 
-  return (
-    <div className="h-full">
-      {isLoading ? <LoadingPage /> : <Details data={data} />}
-    </div>
-  );
+  return <div>{isLoading ? <LoadingPage /> : <EditForm data={data} />}</div>;
 };
 
-export default EditCityPage;
+export default EditSpecialTourPage;

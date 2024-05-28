@@ -58,10 +58,10 @@ export const routes = {
       add: "/superadmin/special-tours/add",
       edit: (id) => `/superadmin/special-tours/${id}/edit`,
     },
-    alerts: {
-      root: "/superadmin/alerts",
-      add: "/superadmin/alerts/add",
-      edit: (id) => `/superadmin/alerts/${id}/edit`,
+    banners: {
+      root: "/superadmin/banners",
+      add: "/superadmin/banners/add",
+      edit: (id) => `/superadmin/banners/${id}/edit`,
     },
   },
 

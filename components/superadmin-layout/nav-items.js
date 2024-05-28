@@ -196,22 +196,22 @@ export const navItems = [
   },
 
   {
-    title: "هشدار ها",
+    title: "بنر ها",
     type: "subMenu",
     icon: (size, strokeWidth) => (
       <AlertCircle size={size || 18} strokeWidth={strokeWidth || 1.5} />
     ),
     subMenu: [
       {
-        title: "همه هشدار ها",
-        href: routes.superadmin.alerts.root,
+        title: "همه بنر ها",
+        href: routes.superadmin.banners.root,
         icon: (size, strokeWidth) => (
           <AlertCircleIcon size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
       {
         title: "افزودن",
-        href: routes.superadmin.alerts.add,
+        href: routes.superadmin.banners.add,
         icon: (size, strokeWidth) => (
           <PlusCircle size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),

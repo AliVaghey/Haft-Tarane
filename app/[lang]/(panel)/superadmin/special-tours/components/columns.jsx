@@ -53,7 +53,6 @@ export const columns = [
     header: "مقصد",
     cell: ({ row }) => <span>{row.original.tour.destination}</span>,
   },
-
   {
     id: "actions",
     header: "اقدامات",

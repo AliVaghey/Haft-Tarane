@@ -10,7 +10,7 @@ import { useDictionary } from "@/providers/dictionary-provider";
 import PaginationComponent from "@/components/pagination";
 import { routes } from "@/routes/routes";
 
-const HotelPage = ({ searchParams: { page } }) => {
+const BannersPage = ({ searchParams: { page } }) => {
   const dictionary = useDictionary();
 
   const [data, setData] = useState([]);
@@ -24,7 +24,7 @@ const HotelPage = ({ searchParams: { page } }) => {
     setIsLoading(true);
 
     await axios
-      .get(`/api/admin/special-tours?page=${page || 1}}`)
+      .get(`/api/admin/banners?page=${page || 1}}`)
       .then((response) => {
         console.log("special", response.data);
         setData(response.data);
@@ -39,17 +39,17 @@ const HotelPage = ({ searchParams: { page } }) => {
   return (
     <div className="px-0 lg:px-10">
       <DataTableHeader
-        title="افزودن تور ویژه"
-        description="افزودن تور ویژه برای نمایش در صفحه اول"
-        btnText="افزودن تور ویژه"
-        href={routes.superadmin["special-tours"].add}
+        title="افزودن بنر"
+        description="افزودن بنر برای نمایش در صفحه اول"
+        btnText="افزودن بنر"
+        href={routes.superadmin.banners.add}
       />
 
       {isLoading ? (
         <LoadingPage />
       ) : (
         <>
-          <DataTable columns={columns} data={data.data} />
+          <DataTable columns={columns} data={data} />
           <PaginationComponent
             total={data?.meta?.total || 0}
             page={data?.meta?.current_page || 1}
@@ -61,4 +61,4 @@ const HotelPage = ({ searchParams: { page } }) => {
   );
 };
 
-export default HotelPage;
+export default BannersPage;
