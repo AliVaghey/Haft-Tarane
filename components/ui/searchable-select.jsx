@@ -104,7 +104,7 @@ const SearchableSelect = ({
                 value={keyValue ? item[keyValue] : item.name}
                 key={item.id}
               >
-                {item.name}
+                {item.name || item.title}
               </SelectItem>
             );
           })
