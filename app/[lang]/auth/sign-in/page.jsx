@@ -23,12 +23,13 @@ import querystring from "querystring";
 import ToastSuccess from "@/components/toast/toast-success";
 import { defaultMessages } from "@/lib/default-messages";
 import ToastError from "@/components/toast/toast-error";
-
-import { useCookies } from "next-client-cookies";
+import { routes } from "@/routes/routes";
+import { useUser } from "@/hooks/use-user";
 
 const LoginPage = () => {
-  const cookies = useCookies();
   const dictionary = useDictionary();
+
+  const userHook = useUser();
 
   const router = useRouter();
 
@@ -58,16 +59,27 @@ const LoginPage = () => {
       password,
     });
 
-    console.log("cookies", cookies.get("XSRF-TOKEN"));
-
     await axios
       .post("/login", encodedFormData)
-      .then((response) => {
-        console.log("login-response", response.data);
-
+      .then(async (response) => {
         if (response.status === 204 || response.status === 200) {
-          toast.success(<ToastSuccess text={defaultMessages.login.default} />);
-          router.push("/");
+          await axios.get("/api/user/info").then((res) => {
+            console.log("res", res.data);
+
+            userHook.setUserData(res?.data?.data);
+
+            res.data.data.access_type === "superadmin" &&
+              router.push(routes.superadmin.dashboard);
+            res.data.data.access_type === "admin" &&
+              router.push(routes.admin.dashboard);
+            res.data.data.access_type === "agency" &&
+              router.push(routes.agency.dashboard);
+            res.data.data.access_type === "user" && router.push("/");
+
+            toast.success(
+              <ToastSuccess text={defaultMessages.login.default} />,
+            );
+          });
         }
       })
       .catch((error) => {

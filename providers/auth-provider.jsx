@@ -3,7 +3,8 @@
 import LoadingPage from "@/components/loading-page";
 import { useUser } from "@/hooks/use-user";
 import { axios } from "@/lib/axios";
-import { useRouter } from "next/navigation";
+import { routes } from "@/routes/routes";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const AuthProvider = ({ children }) => {
@@ -12,6 +13,8 @@ const AuthProvider = ({ children }) => {
   const userHook = useUser();
 
   const router = useRouter();
+
+  const pathname = usePathname();
 
   const userInfo = async () => {
     setIsLoading(true);
@@ -23,20 +26,30 @@ const AuthProvider = ({ children }) => {
 
         if (response.status === 200) {
           userHook.setUserData(response?.data?.data);
-          // router.push("/");
+
+          if (pathname.endsWith(routes.auth.signIn)) {
+            response.data.data.access_type === "superadmin" &&
+              router.push(routes.superadmin.dashboard);
+            response.data.data.access_type === "admin" &&
+              router.push(routes.admin.dashboard);
+            response.data.data.access_type === "agency" &&
+              router.push(routes.agency.dashboard);
+            response.data.data.access_type === "user" && router.push("/");
+          }
         }
       })
       .catch((err) => {
         console.log("getUserInfoError", err);
+        userHook.setUserData(false);
       })
       .finally(() => {
         setIsLoading(false);
       });
   };
 
-  // useEffect(() => {
-  //   userInfo();
-  // }, []);
+  useEffect(() => {
+    userInfo();
+  }, []);
 
   return isLoading ? <LoadingPage /> : <main>{children}</main>;
 };
