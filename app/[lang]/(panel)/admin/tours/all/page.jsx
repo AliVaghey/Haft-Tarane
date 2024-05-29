@@ -9,7 +9,9 @@ import DataTableHeader from "@/components/data-table-header";
 import { useDictionary } from "@/providers/dictionary-provider";
 import PaginationComponent from "@/components/pagination";
 
-const AdminDashboardPage = ({ searchParams: { page, title, trip_type } }) => {
+const AdminDashboardPage = ({
+  searchParams: { page, title, trip_type, id },
+}) => {
   const dictionary = useDictionary();
 
   const [data, setData] = useState([]);
@@ -17,13 +19,13 @@ const AdminDashboardPage = ({ searchParams: { page, title, trip_type } }) => {
 
   useEffect(() => {
     fetchPendingTours();
-  }, [page, title, trip_type]);
+  }, [page, title, trip_type, id]);
 
   const fetchPendingTours = async () => {
     setIsLoading(true);
     await axios
       .get(
-        `/api/admin/active-tours?page=${page || 1}&title=${title || ""}&trip_type=${trip_type || ""}`,
+        `/api/admin/active-tours?page=${page || 1}&title=${title || ""}&trip_type=${trip_type || ""}&id=${id || ""}`,
       )
       .then((response) => {
         console.log("fetchPendingToursres", response.data);

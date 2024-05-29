@@ -44,7 +44,7 @@ const ConfirmTour = ({ tour_id }) => {
   };
 
   return (
-    <SubmitButton loading={isLoading} onClick={confirmTour}>
+    <SubmitButton loading={isLoading} onClick={confirmTour} className="mr-auto">
       ثبت نهایی و ارسال برای ادمین
     </SubmitButton>
   );

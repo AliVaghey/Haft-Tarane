@@ -6,11 +6,15 @@ import Number from "./number";
 
 export const columns = [
   {
-    id: "شناسه",
-    header: "شناسه",
+    id: "#",
+    header: "#",
     cell: ({ row }) => {
       return <Number number={row.index + 1} />;
     },
+  },
+  {
+    accessorKey: "id",
+    header: "کد تور",
   },
   {
     accessorKey: "agency_name",

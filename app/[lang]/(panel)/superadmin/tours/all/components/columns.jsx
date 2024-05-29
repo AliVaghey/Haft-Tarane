@@ -7,11 +7,20 @@ import { persianPriceFormat } from "@/lib/persian-price-format";
 
 export const columns = [
   {
-    id: "شناسه",
-    header: "شناسه",
+    id: "#",
+    header: "#",
     cell: ({ row }) => {
       return <Number number={row.index + 1} />;
     },
+  },
+  {
+    accessorKey: "id",
+    header: ({ column }) => (
+      <div className="mt-2 flex flex-col gap-1">
+        <span>کد تور</span>
+        <SearchTable queryTitle="id" />
+      </div>
+    ),
   },
   {
     accessorKey: "agency_name",
