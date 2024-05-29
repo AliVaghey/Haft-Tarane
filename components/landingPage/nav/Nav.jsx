@@ -1,12 +1,20 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/public/logo/logo-red.png";
 import { Button } from "@/components/ui/button";
+import { useUser } from "@/hooks/use-user";
+import { routes } from "@/routes/routes";
+import { useRouter } from "next/navigation";
 // import { Bars3Icon, BeakerIcon, XMarkIcon } from "@heroicons/react/24/solid";
 
 export default function Nav() {
+  const router = useRouter();
+
+  const userHook = useUser();
+
   const [isMobile, setIsMobile] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -43,6 +51,20 @@ export default function Nav() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const pannelLink = () => {
+    if (userHook.userData.access_type === "superadmin") {
+      return routes.superadmin.dashboard;
+    } else if (userHook.userData.access_type === "admin") {
+      return routes.admin.dashboard;
+    } else if (userHook.userData.access_type === "agency") {
+      return routes.agency.dashboard;
+    } else if (userHook.userData.access_type === "user") {
+      return "/";
+    } else {
+      return routes.auth.signIn;
+    }
+  };
 
   return (
     <div
@@ -128,12 +150,12 @@ export default function Nav() {
                     ارتباط با ما
                   </Button>
                 </Link>
-                <Link href="/auth/sign-in">
+                <Link href={pannelLink()}>
                   <Button
                     variant="outline"
                     className="rounded-xl border border-gray-dark bg-gray-dark text-white hover:bg-gray-dark hover:text-yellow-primary"
                   >
-                    ورود یا ثبت نام
+                    {userHook.userData ? "پنل کاربری" : " ورود یا ثبت نام"}
                   </Button>
                 </Link>
               </>

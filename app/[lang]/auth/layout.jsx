@@ -1,11 +1,5 @@
-import { CookiesProvider } from "next-client-cookies/server";
-
 const AuthLayout = async ({ children }) => {
-  return (
-    <main>
-      <CookiesProvider>{children}</CookiesProvider>
-    </main>
-  );
+  return <main>{children}</main>;
 };
 
 export default AuthLayout;
