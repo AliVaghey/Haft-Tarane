@@ -29,6 +29,8 @@ import {
   endocumentSchema,
 } from "@/lib/validation/tour/document";
 import { useTour } from "@/hooks/use-tour";
+import Link from "next/link";
+import { Button } from "../ui/button";
 
 const Document = ({ data }) => {
   const tourHook = useTour();
@@ -86,7 +88,7 @@ const Document = ({ data }) => {
           await tourHook.setFlag(!tourHook.flag);
           toast.success(<ToastSuccess text={"مدارک با موفقیت اضافه شدند"} />);
 
-          router.push(routes.agency.tours.edit.hotels(params.id));
+          // router.push(routes.agency.tours.edit.hotels(params.id));
         }
       })
       .catch((error) => {
@@ -192,10 +194,19 @@ const Document = ({ data }) => {
             )}
           />
         </div>
-
-        <SubmitButton className="mt-3" loading={isSubmitting}>
-          ارسال
-        </SubmitButton>
+        <div className="mt-5 flex flex-col gap-2 md:flex-row">
+          <Link href={routes.agency.tours.edit["travel-plans"](params.id)}>
+            <Button type="button" variant="outline" className="border-primary">
+              قبلی
+            </Button>
+          </Link>
+          <Link href={routes.agency.tours.edit.hotels(params.id)}>
+            <Button type="button" variant="outline" className="border-primary">
+              بعدی
+            </Button>
+          </Link>
+          <SubmitButton loading={isSubmitting}>ارسال</SubmitButton>
+        </div>
       </form>
     </Form>
   );

@@ -54,6 +54,7 @@ const AddTransportation = ({ tour_id }) => {
   const tourHook = useTour();
 
   const [isOpen, setIsOpen] = useState(false);
+  const [deviceTypes, setDeviceTypes] = useState([]);
 
   const mount = useMount();
 
@@ -169,7 +170,17 @@ const AddTransportation = ({ tour_id }) => {
                       <FormItem>
                         <FormLabel>نوع حمل و نقل</FormLabel>
                         <Select
-                          onValueChange={field.onChange}
+                          onValueChange={(e) => {
+                            e === "اتوبوس" && setDeviceTypes(["معمولی", "vip"]);
+                            e === "هواپیما" &&
+                              setDeviceTypes(["هواپیما مسافربری"]);
+                            e === "قطار" &&
+                              setDeviceTypes(["۴ تخته", "۶ تخته", "اتوبوسی"]);
+                            field.onChange(e);
+                            setValue("transportation_type", "", {
+                              shouldValidate: true,
+                            });
+                          }}
                           defaultValue={field.value}
                         >
                           <FormControl>
@@ -364,14 +375,24 @@ const AddTransportation = ({ tour_id }) => {
                     render={({ field }) => (
                       <FormItem className="col-span-3 lg:col-span-1">
                         <FormLabel>نوع وسیله نقلیه</FormLabel>
-                        <FormControl>
-                          <Input
-                            className=""
-                            autoComplete="off"
-                            placeholder="حداقل ۲ کاراکتر"
-                            {...field}
-                          />
-                        </FormControl>
+                        <Select
+                          disabled={deviceTypes.length === 0}
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="نوع حمل و نقل" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            {deviceTypes.map((item) => (
+                              <SelectItem key={item} value={item}>
+                                {item}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
                         <FormMessage />
                       </FormItem>
                     )}

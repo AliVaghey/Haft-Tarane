@@ -34,7 +34,14 @@ import {
   enAssignHotelSchema,
 } from "@/lib/validation/tour/assign-hotel";
 import { useTour } from "@/hooks/use-tour";
-import { Input } from "../ui/input";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const AddHotelPackage = ({ tour_id }) => {
   const dictionary = useDictionary();
@@ -132,10 +139,8 @@ const AddHotelPackage = ({ tour_id }) => {
   }
 
   return (
-    <div className="flex w-full items-center justify-center">
-      <Button onClick={() => setIsOpen(true)} className="mt-2">
-        افزودن پکیج
-      </Button>
+    <div>
+      <Button onClick={() => setIsOpen(true)}>افزودن پکیج</Button>
       <Dialog open={isOpen} onOpenChange={() => setIsOpen(false)}>
         <DialogContent className="sm:max-w-[825px]">
           <DialogHeader>
@@ -174,14 +179,28 @@ const AddHotelPackage = ({ tour_id }) => {
                     render={({ field }) => (
                       <FormItem className="col-span-3 lg:col-span-1">
                         <FormLabel>نوع اتاق</FormLabel>
-                        <FormControl>
+                        {/* <FormControl>
                           <Input
                             className=""
                             autoComplete="off"
                             placeholder="حداقل ۲ کاراکتر"
                             {...field}
                           />
-                        </FormControl>
+                        </FormControl> */}
+
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="انتخاب کنید" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="استاندارد">استاندارد</SelectItem>
+                          </SelectContent>
+                        </Select>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -249,7 +268,7 @@ const AddHotelPackage = ({ tour_id }) => {
                     name="cld_6"
                     render={({ field }) => (
                       <FormItem className="col-span-3 lg:col-span-1">
-                        <FormLabel>هزینه برای بچه ۶ تا ۱۲ سال</FormLabel>
+                        <FormLabel>هزینه برای کودک ۶ تا ۱۲ سال</FormLabel>
                         <FormControl>
                           <Input
                             type="number"
@@ -268,7 +287,7 @@ const AddHotelPackage = ({ tour_id }) => {
                     name="cld_2"
                     render={({ field }) => (
                       <FormItem className="col-span-3 lg:col-span-1">
-                        <FormLabel>هزینه برای بچه ۲ تا ۶ سال</FormLabel>
+                        <FormLabel>هزینه برای کودک ۲ تا ۶ سال</FormLabel>
                         <FormControl>
                           <Input
                             type="number"
@@ -287,7 +306,7 @@ const AddHotelPackage = ({ tour_id }) => {
                     name="baby"
                     render={({ field }) => (
                       <FormItem className="col-span-3 lg:col-span-1">
-                        <FormLabel>هزینه کودک</FormLabel>
+                        <FormLabel>هزینه نوزاد</FormLabel>
                         <FormControl>
                           <Input
                             type="number"

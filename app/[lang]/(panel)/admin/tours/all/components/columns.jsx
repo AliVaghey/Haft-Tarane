@@ -14,6 +14,15 @@ export const columns = [
     },
   },
   {
+    accessorKey: "id",
+    header: ({ column }) => (
+      <div className="mt-2 flex flex-col gap-1">
+        <span>کد تور</span>
+        <SearchTable queryTitle="id" />
+      </div>
+    ),
+  },
+  {
     accessorKey: "agency_name",
     header: "نام آژانس",
   },

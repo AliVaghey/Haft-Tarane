@@ -1,10 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import AddDate from "./add-date";
 import ConfirmTour from "./cconfirm-tour";
 import DateCard from "./date-card";
+import { Button } from "../ui/button";
+import { routes } from "@/routes/routes";
+import { useParams } from "next/navigation";
 
 const Dates = ({ data }) => {
+  const params = useParams();
   return (
     <div className="mt-5">
       <div className="flex flex-col gap-2 lg:gap-4">
@@ -13,6 +18,11 @@ const Dates = ({ data }) => {
         ))}
 
         <div className="mt-2 flex items-center gap-4">
+          <Link href={routes.agency.tours.edit.hotels(params.id)}>
+            <Button type="button" variant="outline" className="border-primary">
+              قبلی
+            </Button>
+          </Link>
           <AddDate tour_id={data.tour_id} />
           <ConfirmTour tour_id={data.tour_id} />
         </div>

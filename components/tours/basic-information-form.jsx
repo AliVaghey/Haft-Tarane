@@ -37,6 +37,8 @@ import {
 } from "@/components/ui/select";
 import ToastSuccess from "@/components/toast/toast-success";
 import { useTour } from "@/hooks/use-tour";
+import Link from "next/link";
+import { Button } from "../ui/button";
 
 const BasicInformationForm = ({ data }) => {
   const tourHook = useTour();
@@ -258,14 +260,23 @@ const BasicInformationForm = ({ data }) => {
             render={({ field }) => (
               <FormItem className="col-span-3 lg:col-span-1">
                 <FormLabel>نوع تور</FormLabel>
-                <FormControl>
-                  <Input
-                    className=""
-                    autoComplete="off"
-                    placeholder="حداقل ۲ کاراکتر"
-                    {...field}
-                  />
-                </FormControl>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="انتخاب کنید" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="زیارتی">زیارتی</SelectItem>
+                    <SelectItem value="خانوادگی">خانوادگی</SelectItem>
+                    <SelectItem value="طبیعت گردی">طبیعت گردی</SelectItem>
+                    <SelectItem value="نوروزی">نوروزی</SelectItem>
+                    <SelectItem value="عید فطر">عید فطر</SelectItem>
+                  </SelectContent>
+                </Select>
                 <FormMessage />
               </FormItem>
             )}
@@ -335,13 +346,13 @@ const BasicInformationForm = ({ data }) => {
             name="expiration"
             render={({ field }) => (
               <FormItem className="col-span-3 lg:col-span-1">
-                <FormLabel>روز های باقی مانده</FormLabel>
+                <FormLabel>انقضا</FormLabel>
                 <FormControl>
                   <Input
                     type="number"
                     className=""
                     autoComplete="off"
-                    placeholder="روز های باقی مانده"
+                    placeholder="تعداد روزهایی که قبل از شروع تور ثبت نام متوقف میشود"
                     {...field}
                   />
                 </FormControl>
@@ -350,7 +361,7 @@ const BasicInformationForm = ({ data }) => {
             )}
           />
 
-          <div className="flex items-center justify-center gap-3 rounded-lg border p-2">
+          <div className="flex flex-col items-center justify-center gap-1 rounded-lg border p-2">
             <FormField
               control={form.control}
               name="evening_support"
@@ -364,7 +375,7 @@ const BasicInformationForm = ({ data }) => {
                   </FormControl>
                   <div className="pb-2">
                     <FormLabel className="cursor-pointer">
-                      پشتیبانی شبانه
+                      پشتیبانی شبانه (از ساعت ۲۰ تا ۲۴)
                     </FormLabel>
                   </div>
                 </FormItem>
@@ -383,7 +394,7 @@ const BasicInformationForm = ({ data }) => {
                   </FormControl>
                   <div className="pb-2">
                     <FormLabel className="cursor-pointer">
-                      پشتیبانی نیمه شب
+                      پشتیبانی نیمه شب (از ساعت ۲۴ تا ۸ صبح)
                     </FormLabel>
                   </div>
                 </FormItem>
@@ -424,13 +435,13 @@ const BasicInformationForm = ({ data }) => {
                 >
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="نوع حمل و نقل" />
+                      <SelectValue placeholder="انتخاب کنید" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="system">سیستم</SelectItem>
-                    <SelectItem value="self">شخصی</SelectItem>
-                    <SelectItem value="none">هیچ کدام</SelectItem>
+                    <SelectItem value="سیستمی">سیستمی</SelectItem>
+                    <SelectItem value="چارتری">چارتری</SelectItem>
+                    <SelectItem value="حمل و نقل من">حمل و نقل من</SelectItem>
                   </SelectContent>
                 </Select>
 
@@ -439,10 +450,17 @@ const BasicInformationForm = ({ data }) => {
             )}
           />
         </div>
+        <div className="mt-5 flex flex-col items-center justify-center gap-2 md:flex-row">
+          <SubmitButton loading={isSubmitting}>
+            {data ? "ذخیره" : "ارسال"}
+          </SubmitButton>
 
-        <SubmitButton className="mt-3" loading={isSubmitting}>
-          {data ? "ویرایش" : "ارسال"}
-        </SubmitButton>
+          <Link href={routes.agency.tours.edit["travel-plans"](data.id)}>
+            <Button type="button" variant="outline" className="border-primary">
+              بعدی
+            </Button>
+          </Link>
+        </div>
       </form>
     </Form>
   );
