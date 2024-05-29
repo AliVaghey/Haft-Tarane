@@ -62,7 +62,7 @@ export default function Nav() {
     } else if (userHook.userData.access_type === "user") {
       return "/";
     } else {
-      return "/";
+      return routes.auth.signIn;
     }
   };
 
