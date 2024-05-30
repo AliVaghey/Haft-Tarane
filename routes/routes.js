@@ -10,6 +10,11 @@ export const routes = {
     signUp: "/auth/sign-up",
   },
 
+  tours: {
+    root: "/tours",
+    details: (id) => `/tours/${id}`,
+  },
+
   superadmin: {
     dashboard: "/superadmin/dashboard",
     cities: {

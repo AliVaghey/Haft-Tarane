@@ -54,9 +54,14 @@ const PaginationComponent = ({ total, perPage }) => {
         )}
 
         {page > 3 && (
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
+          <>
+            <PaginationItem>
+              <PaginationLink onClick={() => handlePage(1)}>{1}</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+          </>
         )}
 
         {page > 2 && (
@@ -96,9 +101,16 @@ const PaginationComponent = ({ total, perPage }) => {
         )}
 
         {page < lastPage - 2 && (
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
+          <>
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink onClick={() => handlePage(lastPage)}>
+                {lastPage}
+              </PaginationLink>
+            </PaginationItem>
+          </>
         )}
 
         {page < lastPage && (
