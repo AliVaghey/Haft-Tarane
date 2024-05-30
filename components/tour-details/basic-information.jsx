@@ -61,8 +61,9 @@ const DetailsBasicInformation = ({ data }) => {
           <div className="flex flex-col gap-0">
             <span className="font-bold">نوع حمل و نقل</span>
             <span>
-              {data.transportations &&
-                data.transportations[0].transportation_type}
+              {/* {(data.transportations &&
+                data.transportations[0].transportation_type) ||
+                ""} */}
             </span>
           </div>
         </div>
