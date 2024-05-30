@@ -94,7 +94,7 @@ export default function Nav() {
                   <p className="text-xl">قطار</p>
                 </Link>
                 <Link href="/tours">
-                  <p className="text-xl">تورها</p>
+                  <p className="text-xl">تور</p>
                 </Link>
                 <Link href="/hotels">
                   <p className="text-xl">هتل</p>
