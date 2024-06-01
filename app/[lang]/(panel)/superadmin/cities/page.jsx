@@ -8,8 +8,9 @@ import { axios } from "@/lib/axios";
 import DataTableHeader from "@/components/data-table-header";
 import { useDictionary } from "@/providers/dictionary-provider";
 import { routes } from "@/routes/routes";
+import PaginationComponent from "@/components/pagination";
 
-const AdminDashboardPage = () => {
+const AdminDashboardPage = ({ searchParams: { page } }) => {
   const dictionary = useDictionary();
 
   const [data, setData] = useState([]);
@@ -17,14 +18,14 @@ const AdminDashboardPage = () => {
 
   useEffect(() => {
     fetchCities();
-  }, []);
+  }, [page]);
 
   const fetchCities = async () => {
     setIsLoading(true);
     await axios
-      .get("/api/cities")
+      .get(`/api/cities?page=${page || 1}`)
       .then((response) => {
-        setData(response.data.data);
+        setData(response.data);
       })
       .catch((err) => {
         console.log("getCitiesError", err);
@@ -45,7 +46,14 @@ const AdminDashboardPage = () => {
       {isLoading ? (
         <LoadingPage />
       ) : (
-        <DataTable columns={columns} data={data} />
+        <>
+          <DataTable columns={columns} data={data.data} />
+          <PaginationComponent
+            total={data?.meta?.total || 0}
+            page={data?.meta?.current_page || 1}
+            perPage={data?.meta?.per_page || 10}
+          />
+        </>
       )}
     </div>
   );
