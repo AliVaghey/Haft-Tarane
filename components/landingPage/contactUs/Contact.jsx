@@ -12,6 +12,7 @@ import youtube from "@/public/img/youtube.svg";
 import v from "@/public/img/v.svg";
 import ig from "@/public/img/ig.svg";
 import cg from "@/public/img/cg.svg";
+import { farsiNumber } from "@/lib/farsi-number";
 
 export default function ContactUs() {
   return (
@@ -42,8 +43,8 @@ export default function ContactUs() {
         </div>{" "}
         <div className="mt-20 flex flex-col gap-6 text-center">
           <p className="px-4">
-            ما در مجموعه بیلیتو همواره به نظرات، پیشنهادات و سوالات شما عزیزان
-            ارزش قائلیم و مشتاقانه منتظر کمک به شما هستیم.
+            ما در مجموعه بیباک سفر همواره به نظرات، پیشنهادات و سوالات شما
+            عزیزان ارزش قائلیم و مشتاقانه منتظر کمک به شما هستیم.
           </p>
           <p className="px-4">
             درصورتی که سوالی دارید یا نیاز به راهنمایی دارید، با شماره پشتیبانی
@@ -75,7 +76,7 @@ export default function ContactUs() {
                         height={100}
                         className="h-7 w-7"
                       />
-                      <p>novinbin@gmail.com</p>
+                      <p>bibaksafar2024@gmail.com</p>
                     </div>
                     <div className="flex items-center gap-4">
                       <Image
@@ -85,9 +86,29 @@ export default function ContactUs() {
                         height={100}
                         className="h-7 w-7"
                       />
-                      <p>novinbin@gmail.com</p>
+                      <p>{farsiNumber("02191012850")} </p>
                     </div>
                     <div className="flex items-center gap-4">
+                      <Image
+                        src={phone}
+                        alt="alt"
+                        width={100}
+                        height={100}
+                        className="h-7 w-7"
+                      />
+                      <p>{farsiNumber("09100940950")} </p>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <Image
+                        src={phone}
+                        alt="alt"
+                        width={100}
+                        height={100}
+                        className="h-7 w-7"
+                      />
+                      <p>{farsiNumber("09354027352")} </p>
+                    </div>
+                    {/* <div className="flex items-center gap-4">
                       <Image
                         src={map}
                         alt="alt"
@@ -96,7 +117,7 @@ export default function ContactUs() {
                         className="h-7 w-7"
                       />
                       <p className="text-right">Lorem ipsum dolor sit amet</p>
-                    </div>
+                    </div> */}
                   </div>
                   <div>
                     <h2 className="my-4 text-center text-xl text-white">
@@ -111,7 +132,7 @@ export default function ContactUs() {
                           height={100}
                           className="h-7 w-7"
                         />
-                        <p>novinbin@gmail.com</p>
+                        <p>bibaksafar@gmail.com</p>
                       </div>
                       <div className="flex items-center gap-4">
                         <Image
@@ -121,7 +142,7 @@ export default function ContactUs() {
                           height={100}
                           className="h-7 w-7"
                         />
-                        <p>novinbin@gmail.com</p>
+                        <p>bibaksafar@gmail.com</p>
                       </div>
                       <div className="flex items-center gap-4">
                         <Image
@@ -131,7 +152,7 @@ export default function ContactUs() {
                           height={100}
                           className="h-7 w-7"
                         />
-                        <p>novinbin@gmail.com</p>
+                        <p>bibaksafar@gmail.com</p>
                       </div>
                       <div className="flex items-center gap-4">
                         <Image
@@ -141,7 +162,7 @@ export default function ContactUs() {
                           height={100}
                           className="h-7 w-7"
                         />
-                        <p>novinbin@gmail.com</p>
+                        <p>bibaksafar@gmail.com</p>
                       </div>
                       <div className="flex items-center gap-4">
                         <Image
@@ -151,7 +172,7 @@ export default function ContactUs() {
                           height={100}
                           className="h-7 w-7"
                         />
-                        <p>novinbin@gmail.com</p>
+                        <p>bibaksafar@gmail.com</p>
                       </div>
                     </div>
                   </div>
@@ -168,7 +189,7 @@ export default function ContactUs() {
               </div>
               <div>
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6890.914143557435!2d57.057602458349685!3d30.281047037322043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f021964f15bdfcd%3A0xcf3074f6cfd82da0!2sNovinbin%20Digital%20Marketing!5e0!3m2!1sen!2s!4v1716012431260!5m2!1sen!2s"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6890.914143557435!2d57.057602458349685!3d30.281047037322043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f021964f15bdfcd%3A0xcf3074f6cfd82da0!2sbibaksafar%20Digital%20Marketing!5e0!3m2!1sen!2s!4v1716012431260!5m2!1sen!2s"
                   //   width="1111"
                   //   height="750"
                   className="rounded-lg max-lg:size-[499px] max-lg:pb-9 lg:h-[750px] lg:w-[525px] xl:w-[777px]"

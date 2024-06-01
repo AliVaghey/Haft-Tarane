@@ -6,6 +6,7 @@ import airplane from "@/public/logo/logo-red.png";
 import whatsapp from "@/public/img/whatsapp.svg";
 import insta from "@/public/img/instageram.svg";
 import telegram from "@/public/img/telegram.svg";
+import { farsiNumber } from "@/lib/farsi-number";
 
 export default function Footer() {
   return (
@@ -36,25 +37,26 @@ export default function Footer() {
                     بی باک سفر
                   </h2>
                 </div>
-                <p className="leading-9 text-[#868383]">
-                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
-                  با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و
+                <p className="text-justify leading-9 text-[#868383]">
+                  از لحظه‌ی رزرو تا رسیدن به مقصد، ما همراه شما خواهیم بود و
+                  اطمینان می‌دهیم که هر جزئیات سفر شما به بهترین شکل ممکن انجام
+                  شود
                 </p>
               </div>
             </div>
             <div className="w-1/5 max-lg:w-1/3 max-md:w-full ">
               <h2 className="pb-6 text-xl">ارتباط با ما</h2>
               <div className="flex flex-col gap-6">
-                <a href="tel:09131791663" className="text-[#868383]">
-                  09131791663
+                <a href="tel:02191012850" className="text-[#868383]">
+                  {farsiNumber("02191012850")}
                 </a>
                 <a
-                  href="mailto:info@safarmarket.com"
+                  href="mailto:bibaksafar2024@gmail.com"
                   className="text-[#868383]"
                 >
-                  info@safarmarket.com
+                  bibaksafar2024@gmail.com
                 </a>
-                <p className="text-[#868383]">کرمان خیابان خواجوی کرمانی</p>
+                <p className="text-[#868383]">تهران شهریار فاز یک</p>
               </div>
             </div>
             <div className="w-1/5 max-lg:w-1/3 max-md:w-full ">
@@ -81,7 +83,7 @@ export default function Footer() {
                         alt="alt"
                         width={100}
                         height={100}
-                        className="w-7 h-7"
+                        className="h-7 w-7"
                       />
                     </a>
                   </li>
@@ -92,7 +94,7 @@ export default function Footer() {
                         alt="alt"
                         width={100}
                         height={100}
-                        className="w-7 h-7"
+                        className="h-7 w-7"
                       />
                     </a>
                   </li>
@@ -103,7 +105,7 @@ export default function Footer() {
                         alt="alt"
                         width={100}
                         height={100}
-                        className="w-7 h-7"
+                        className="h-7 w-7"
                       />
                     </a>
                   </li>
