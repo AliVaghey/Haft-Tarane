@@ -1,5 +1,6 @@
 "use client";
 
+import LoadingChita from "@/components/loading-chita";
 import LoadingPage from "@/components/loading-page";
 import NoItem from "@/components/no-item";
 import TourCard from "@/components/pages/tour-card";
@@ -35,21 +36,24 @@ const TourPage = ({
     };
 
     console.log("url()", url());
-    await axios
-      .get(url())
-      .then((response) => {
-        console.log(
-          "responsetttttttttttttttttttttttttttttttttttttttttttt",
-          response.data,
-        );
-        setData(response.data);
-      })
-      .catch((err) => {
-        console.log("getToursErrrrrrrrrrrrrrrrrrrrr", err);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+
+    setTimeout(async () => {
+      await axios
+        .get(url())
+        .then((response) => {
+          console.log(
+            "responsetttttttttttttttttttttttttttttttttttttttttttt",
+            response.data,
+          );
+          setData(response.data);
+        })
+        .catch((err) => {
+          console.log("getToursErrrrrrrrrrrrrrrrrrrrr", err);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }, 1000);
   };
 
   return (
@@ -92,7 +96,8 @@ const TourPage = ({
                 </div>
               )
             ) : (
-              <LoadingPage />
+              // <LoadingPage />
+              <LoadingChita />
             )}
           </div>
         </>

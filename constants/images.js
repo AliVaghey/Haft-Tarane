@@ -9,6 +9,7 @@ import effect3 from "@/public/effects/effect-3.png";
 import defaultHotel from "@/public/defaults/default-hotel.jpg";
 import chita from "@/public/logo/chita.png";
 import airplain from "@/public/img/flightlanding.svg";
+import runningChita from "@/public/gifs/running-chita.gif";
 
 export {
   plain,
@@ -22,4 +23,5 @@ export {
   logoRed,
   logoGoldBlack,
   airplain,
+  runningChita,
 };
