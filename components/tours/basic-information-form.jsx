@@ -455,11 +455,17 @@ const BasicInformationForm = ({ data }) => {
             {data ? "ذخیره" : "ارسال"}
           </SubmitButton>
 
-          <Link href={routes.agency.tours.edit["travel-plans"](data.id)}>
-            <Button type="button" variant="outline" className="border-primary">
-              بعدی
-            </Button>
-          </Link>
+          {data && (
+            <Link href={routes.agency.tours.edit["travel-plans"](data.id)}>
+              <Button
+                type="button"
+                variant="outline"
+                className="border-primary"
+              >
+                بعدی
+              </Button>
+            </Link>
+          )}
         </div>
       </form>
     </Form>

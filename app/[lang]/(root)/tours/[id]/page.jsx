@@ -1,13 +1,12 @@
 "use client";
 
-import { effect3, pinkPlain } from "@/constants/images";
+import { pinkPlain } from "@/constants/images";
 import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ToastError from "@/components/toast/toast-error";
 import { useEffect, useState } from "react";
 import { axios } from "@/lib/axios";
 import LoadingPage from "@/components/loading-page";
-import { Plane } from "lucide-react";
 import DetailsBasicInformation from "@/components/tour-details/basic-information";
 import DetailsTourPlan from "@/components/tour-details/tour-plan";
 import DetailsDocuments from "@/components/tour-details/documents";
