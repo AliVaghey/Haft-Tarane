@@ -9,16 +9,18 @@ import DataTableHeader from "@/components/data-table-header";
 import { useDictionary } from "@/providers/dictionary-provider";
 import { routes } from "@/routes/routes";
 import PaginationComponent from "@/components/pagination";
+import { useTour } from "@/hooks/use-tour";
 
 const AdminDashboardPage = ({ searchParams: { page } }) => {
   const dictionary = useDictionary();
+  const tourHook = useTour();
 
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchPendingTours();
-  }, [page]);
+  }, [tourHook.flag, page]);
 
   const fetchPendingTours = async () => {
     setIsLoading(true);

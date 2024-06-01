@@ -1,5 +1,6 @@
 "use client";
 
+import SearchTable from "@/components/search-table";
 import CellAction from "./cell-action";
 import Number from "./number";
 
@@ -17,7 +18,12 @@ export const columns = [
   },
   {
     accessorKey: "name",
-    header: "نام شهر",
+    header: ({ column }) => (
+      <div className="mt-2 flex flex-col gap-1">
+        <span>نام شهر</span>
+        <SearchTable queryTitle="name" />
+      </div>
+    ),
   },
 
   {

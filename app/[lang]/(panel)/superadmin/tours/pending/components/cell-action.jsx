@@ -12,9 +12,12 @@ import { Button } from "@/components/ui/button";
 import RejectModal from "@/components/helpers/reject-dialog";
 import querystring from "querystring";
 import ConfirmTourModal from "@/components/helpers/confirm-tour-dialog";
+import { useTour } from "@/hooks/use-tour";
 
 const CellAction = ({ data }) => {
   const router = useRouter();
+
+  const tourHook = useTour();
 
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
@@ -37,8 +40,7 @@ const CellAction = ({ data }) => {
       );
 
       if (response.status === 204) {
-        console.log("first");
-        router.refresh();
+        tourHook.setFlag(!tourHook.flag);
         toast.success(
           <div className="flex items-center gap-2">
             <span>
@@ -75,8 +77,7 @@ const CellAction = ({ data }) => {
       const response = await axios.post(`/api/admin/tour/${data.id}/approve`);
 
       if (response.status === 204) {
-        console.log("first");
-        router.refresh();
+        tourHook.setFlag(!tourHook.flag);
         toast.success(
           <div className="flex items-center gap-2">
             <span>

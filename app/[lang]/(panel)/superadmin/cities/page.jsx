@@ -10,7 +10,7 @@ import { useDictionary } from "@/providers/dictionary-provider";
 import { routes } from "@/routes/routes";
 import PaginationComponent from "@/components/pagination";
 
-const AdminDashboardPage = ({ searchParams: { page } }) => {
+const AdminDashboardPage = ({ searchParams: { page, name } }) => {
   const dictionary = useDictionary();
 
   const [data, setData] = useState([]);
@@ -18,12 +18,12 @@ const AdminDashboardPage = ({ searchParams: { page } }) => {
 
   useEffect(() => {
     fetchCities();
-  }, [page]);
+  }, [page, name]);
 
   const fetchCities = async () => {
     setIsLoading(true);
     await axios
-      .get(`/api/cities?page=${page || 1}`)
+      .get(`/api/cities?page=${page || 1}&name=${name || ""}`)
       .then((response) => {
         setData(response.data);
       })
