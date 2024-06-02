@@ -1,10 +1,38 @@
+"use client";
+
 import Image from "next/image";
 import circle from "@/public/img/tour-circle.svg";
 import nature from "@/public/img/nature.jpg";
+import { useUser } from "@/hooks/use-user";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { routes } from "@/routes/routes";
+import { Button } from "@/components/ui/button";
 
 function SpecialTours() {
+  const userHook = useUser();
+
+  const [currentTour, setCurrentTour] = useState(
+    userHook.specialTours.length > 0
+      ? userHook.specialTours[0]
+      : {
+          tour: {},
+          advertisement: "",
+          photo: nature,
+        },
+  );
+
   return (
-    <div className="lg:mb-20 lg:h-screen">
+    <div className="lg:mb-20 ">
       <div className="relative">
         <Image
           src={circle}
@@ -44,7 +72,7 @@ function SpecialTours() {
                 </div>
               </div>
             </div>
-            <div className="w-full">
+            <div className="relative w-full">
               <h2 className="text-center text-3xl font-bold max-lg:text-lg max-md:text-sm">
                 تورهای ویژه
               </h2>
@@ -53,7 +81,7 @@ function SpecialTours() {
               </p>
               <div className="relative">
                 <Image
-                  src={nature}
+                  src={currentTour?.photo}
                   alt="alt"
                   width={480}
                   height={360}
@@ -61,17 +89,77 @@ function SpecialTours() {
                 />
                 <div className="absolute right-9 top-9">
                   <h2 className="pb-7 text-2xl font-bold text-white max-lg:text-lg max-md:text-xs">
-                    تور ترکیه
+                    {currentTour?.tour?.title}
                   </h2>
-                  <p className="line-clamp-3 w-1/2 text-justify leading-7 text-white max-md:w-full max-md:pl-9 max-md:text-xs">
-                    ترکیه کشور زیبای آسیایی-اروپایی است که نزد ایرانیان محبوبیت
-                    زیادی دارد و علت آن نیز علاوه بر نزدیکی جغرافیایی و فرهنگی
-                    این کشور، عدم نیاز به ویزا برای ورود به آن است
+                  <p className="text-lg font-semibold text-white">
+                    از {currentTour?.tour?.origin} به{" "}
+                    {currentTour?.tour?.destination}
                   </p>
+                  <p className="mt-2 rounded-lg bg-white bg-opacity-30 p-2 text-white">
+                    {currentTour?.advertisement}
+                  </p>
+                  <Link href={routes.tours.details(currentTour.tour.id)}>
+                    <Button className="mt-5">مشاهده جزئیات</Button>
+                  </Link>
                 </div>
+              </div>
+
+              <div className="absolute bottom-5 flex w-full justify-center px-14">
+                <Carousel
+                  dir="ltr"
+                  opts={{
+                    align: "start",
+                  }}
+                  className="w-full"
+                >
+                  <CarouselContent>
+                    {userHook.specialTours.map((tour, index) => (
+                      <CarouselItem
+                        key={index}
+                        className="cursor-pointer md:basis-1/3 lg:basis-1/5"
+                        onClick={() => setCurrentTour(tour)}
+                      >
+                        <div
+                          key={index}
+                          className={cn(
+                            "rounded-2xl",
+
+                            currentTour.id === tour.id &&
+                              "border-8 border-white",
+                          )}
+                        >
+                          <Image
+                            src={tour.photo}
+                            width={200}
+                            height={250}
+                            alt="tour"
+                            className="h-40 w-full rounded-2xl object-cover"
+                          />
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious />
+                  <CarouselNext />
+                </Carousel>
               </div>
             </div>
           </div>
+        </div>
+        <div className="flex w-full justify-center">
+          {/* <div className="flex flex-wrap gap-5 p-2 md:p-4">
+            {userHook.specialTours.map((tour, index) => (
+              <div key={index}>
+                <Image
+                  src={tour.photo}
+                  width={200}
+                  height={250}
+                  alt="tour"
+                  className="h-40 w-28 rounded-2xl"
+                />
+              </div>
+            ))}
+          </div> */}
         </div>
       </div>
     </div>

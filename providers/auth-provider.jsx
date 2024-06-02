@@ -16,6 +16,22 @@ const AuthProvider = ({ children }) => {
 
   const pathname = usePathname();
 
+  const getSpecialTours = async () => {
+    axios
+      .get("/api/specials")
+      .then((response) => {
+        console.log("getSpecials", response?.data?.data);
+
+        if (response.status === 200) {
+          userHook.setSpecialTours(response?.data?.data);
+        }
+      })
+      .catch((err) => {
+        console.log("getSpecialsError", err);
+      })
+      .finally(() => {});
+  };
+
   const getBanners = async () => {
     axios
       .get("/api/banners")
@@ -66,6 +82,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     userInfo();
     getBanners();
+    getSpecialTours();
   }, []);
 
   return isLoading ? <LoadingPage /> : <main>{children}</main>;
