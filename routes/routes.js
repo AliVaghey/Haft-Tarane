@@ -17,6 +17,9 @@ export const routes = {
 
   superadmin: {
     dashboard: "/superadmin/dashboard",
+    profile: {
+      "user-info": "/superadmin/profile/user-info",
+    },
     cities: {
       root: "/superadmin/cities",
       add: "/superadmin/cities/add",
@@ -72,6 +75,9 @@ export const routes = {
 
   admin: {
     dashboard: "/admin/dashboard",
+    profile: {
+      "user-info": "/admin/profile/user-info",
+    },
     // cities: {
     //   root: "/admin/cities",
     //   add: "/admin/cities/add",
