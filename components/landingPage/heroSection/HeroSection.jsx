@@ -14,7 +14,7 @@ function HeroSection() {
           alt="alt"
           width={480}
           height={360}
-          className="mt-12 h-96 w-[500px] max-lg:h-60 max-lg:w-80 max-md:h-32 max-md:w-44 lg:-mb-14"
+          className="mt-40 h-96 w-[500px] max-lg:h-72 max-lg:w-[430px] max-md:h-48 max-md:w-72 md:mt-28 lg:-mb-14 lg:mt-14"
         />
         <div className="">
           <h2 className="text-4xl font-bold max-lg:text-xl max-md:text-sm ">

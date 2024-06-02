@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { useUser } from "@/hooks/use-user";
 import { routes } from "@/routes/routes";
 import { useRouter } from "next/navigation";
+import { X } from "lucide-react";
 // import { Bars3Icon, BeakerIcon, XMarkIcon } from "@heroicons/react/24/solid";
 
 export default function Nav() {
@@ -202,6 +203,32 @@ export default function Nav() {
           </Link>
         </div>
       )}
+      <div className="flex flex-col gap-1 p-2 text-sm">
+        {userHook.banners.map((banner, bannerIndex) => (
+          <div
+            key={bannerIndex}
+            className="flex w-full flex-wrap items-center justify-between rounded-sm px-2 py-1 shadow-md"
+            style={{
+              backgroundColor: banner.background_color,
+              color: banner.text_color,
+            }}
+          >
+            <span>{banner.description}</span>
+            <X
+              onClick={() =>
+                userHook.setBanners(
+                  userHook.banners.filter(
+                    (filterItem, filterIndex) => filterIndex !== bannerIndex,
+                  ),
+                )
+              }
+              className="cursor-pointer text-black"
+              size={16}
+              strokeWidth={1}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
