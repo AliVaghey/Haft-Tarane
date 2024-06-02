@@ -16,6 +16,22 @@ const AuthProvider = ({ children }) => {
 
   const pathname = usePathname();
 
+  const getBanners = async () => {
+    axios
+      .get("/api/banners")
+      .then((response) => {
+        console.log("getBanners", response?.data);
+
+        if (response.status === 200) {
+          userHook.setBanners(response?.data);
+        }
+      })
+      .catch((err) => {
+        console.log("getBannersError", err);
+      })
+      .finally(() => {});
+  };
+
   const userInfo = async () => {
     setIsLoading(true);
 
@@ -49,6 +65,7 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     userInfo();
+    getBanners();
   }, []);
 
   return isLoading ? <LoadingPage /> : <main>{children}</main>;

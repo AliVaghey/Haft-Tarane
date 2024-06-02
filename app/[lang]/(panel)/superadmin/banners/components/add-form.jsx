@@ -47,8 +47,8 @@ const AddForm = () => {
       sort: "",
       link: "",
       description: "",
-      text_color: "#ffffff",
-      background_color: "#000000",
+      text_color: "#000000",
+      background_color: "#F1C107",
     },
     mode: "onSubmit",
   });
