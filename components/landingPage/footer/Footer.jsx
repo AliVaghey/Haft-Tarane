@@ -117,7 +117,7 @@ export default function Footer() {
       </div>
       <div className="bg-[#130D3A]">
         <p className="py-7 text-center text-lg text-yellow-primary">
-          &copy; تمامی حقوق سایت محفوظ است.
+          &copy; کلیه حقوق این سایت متعلق به شرکت بیباک سفر می‌باشد.
         </p>
       </div>
     </div>

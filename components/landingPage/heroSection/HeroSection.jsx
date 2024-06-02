@@ -7,7 +7,7 @@ import ResponsiveBox from "../responsiveSearchBox/ResponsiveBox";
 
 function HeroSection() {
   return (
-    <div className="h-screen">
+    <div className="mb-10 lg:mb-0 lg:h-screen">
       <div className="flex flex-col items-center justify-center">
         <Image
           src={cheetah}

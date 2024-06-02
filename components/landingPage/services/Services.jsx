@@ -7,9 +7,9 @@ import d from "@/public/img/bestDiscount.svg";
 
 export default function Services() {
   return (
-    <div className=" mt-6 max-lg:mt-64">
-      <div className="w-4/5 mx-auto">
-        <div className="grid grid-cols-2 justify-between max-lg:grid-cols-1 items-center gap-9">
+    <div className="mt-20 lg:mt-10">
+      <div className="mx-auto w-4/5">
+        <div className="grid grid-cols-2 items-center justify-between gap-9 max-lg:grid-cols-1">
           <div className=" ">
             <div>
               <Image
@@ -17,35 +17,35 @@ export default function Services() {
                 width={540}
                 height={480}
                 alt="alt"
-                className="max-lg:w-full max-lg:h-96"
+                className="max-lg:h-96 max-lg:w-full"
               />
             </div>
           </div>
           <div className="">
             <div>
-              <h4 className="text-white text-xl max-lg:text-lg max-md:text-sm">
+              <h4 className="text-xl text-white max-lg:text-lg max-md:text-sm">
                 خدمات اصلی
               </h4>
-              <h2 className="text-[#191825] text-3xl max-lg:text-xl max-md:text-lg py-4">
+              <h2 className="py-4 text-3xl text-[#191825] max-lg:text-xl max-md:text-lg">
                 ارائه بهترین خدمات
               </h2>
-              <p className="text-[#19182580] leading-9 pb-11 max-md:text-sm">
+              <p className="pb-11 leading-9 text-[#19182580] max-md:text-sm">
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
                 استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
                 در ستون و سطرآنچنان که لازم است،
               </p>
 
-              <div className="w-4/5 max-md:w-full flex flex-col  gap-9">
+              <div className="flex w-4/5 flex-col gap-9  max-md:w-full">
                 <div className="flex    gap-9 p-7">
                   <Image
                     src={b}
                     alt="alt"
                     width={100}
                     height={100}
-                    className="w-20 h-20 max-lg:w-14 max-lg:h-14 max-md:w-11 max-md:h-11"
+                    className="h-20 w-20 max-lg:h-14 max-lg:w-14 max-md:h-11 max-md:w-11"
                   />
                   <div>
-                    <h3 className="text-[#191825] text-xl max-lg:text-lg max-md:text-sm pb-4">
+                    <h3 className="pb-4 text-xl text-[#191825] max-lg:text-lg max-md:text-sm">
                       ارائه بهترین خدمات
                     </h3>
                     <p className="text-[#999] max-md:text-xs">
@@ -53,9 +53,9 @@ export default function Services() {
                     </p>
                   </div>
                 </div>
-                <div className="flex p-7   gap-9 border border-white rounded-3xl">
+                <div className="flex gap-9   rounded-3xl border border-white p-7">
                   <div>
-                    <h3 className="text-[#191825] text-xl max-lg:text-lg max-md:text-sm pb-4">
+                    <h3 className="pb-4 text-xl text-[#191825] max-lg:text-lg max-md:text-sm">
                       برنامه ریزی سفر
                     </h3>
                     <p className="text-[#999] max-md:text-xs">
@@ -67,19 +67,19 @@ export default function Services() {
                     alt="alt"
                     width={100}
                     height={100}
-                    className="w-20 h-20 max-lg:w-14 max-lg:h-14 max-md:w-11 max-md:h-11"
+                    className="h-20 w-20 max-lg:h-14 max-lg:w-14 max-md:h-11 max-md:w-11"
                   />
                 </div>
-                <div className="flex p-7  gap-9">
+                <div className="flex gap-9  p-7">
                   <Image
                     src={d}
                     alt="alt"
                     width={100}
                     height={100}
-                    className="w-20 h-20 max-lg:w-14 max-lg:h-14 max-md:w-11 max-md:h-11"
+                    className="h-20 w-20 max-lg:h-14 max-lg:w-14 max-md:h-11 max-md:w-11"
                   />
                   <div>
-                    <h3 className="text-[#191825] text-xl max-lg:text-lg max-md:text-sm pb-4">
+                    <h3 className="pb-4 text-xl text-[#191825] max-lg:text-lg max-md:text-sm">
                       ارائه بهترین تخفیف ها
                     </h3>
                     <p className="text-[#999] max-md:text-xs">

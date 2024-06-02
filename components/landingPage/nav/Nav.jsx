@@ -204,30 +204,57 @@ export default function Nav() {
         </div>
       )}
       <div className="flex flex-col gap-1 p-2 text-sm">
-        {userHook.banners.map((banner, bannerIndex) => (
-          <div
-            key={bannerIndex}
-            className="flex w-full flex-wrap items-center justify-between rounded-sm px-2 py-1 shadow-md"
-            style={{
-              backgroundColor: banner.background_color,
-              color: banner.text_color,
-            }}
-          >
-            <span>{banner.description}</span>
-            <X
-              onClick={() =>
-                userHook.setBanners(
-                  userHook.banners.filter(
-                    (filterItem, filterIndex) => filterIndex !== bannerIndex,
-                  ),
-                )
-              }
-              className="cursor-pointer text-black"
-              size={16}
-              strokeWidth={1}
-            />
-          </div>
-        ))}
+        {userHook.banners.map((banner, bannerIndex) =>
+          banner.link ? (
+            <div
+              key={bannerIndex}
+              className="flex w-full cursor-pointer flex-wrap items-center justify-between rounded-sm pl-2 shadow-md"
+              style={{
+                backgroundColor: banner.background_color,
+                color: banner.text_color,
+              }}
+            >
+              <Link href={banner.link} className="flex-1 px-2 py-1">
+                {banner.description}
+              </Link>
+              <X
+                onClick={() =>
+                  userHook.setBanners(
+                    userHook.banners.filter(
+                      (filterItem, filterIndex) => filterIndex !== bannerIndex,
+                    ),
+                  )
+                }
+                className="cursor-pointer text-black"
+                size={16}
+                strokeWidth={1}
+              />
+            </div>
+          ) : (
+            <div
+              key={bannerIndex}
+              className="flex w-full flex-wrap items-center justify-between rounded-sm px-2 py-1 shadow-md"
+              style={{
+                backgroundColor: banner.background_color,
+                color: banner.text_color,
+              }}
+            >
+              <span>{banner.description}</span>
+              <X
+                onClick={() =>
+                  userHook.setBanners(
+                    userHook.banners.filter(
+                      (filterItem, filterIndex) => filterIndex !== bannerIndex,
+                    ),
+                  )
+                }
+                className="cursor-pointer text-black"
+                size={16}
+                strokeWidth={1}
+              />
+            </div>
+          ),
+        )}
       </div>
     </div>
   );

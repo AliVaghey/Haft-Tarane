@@ -6,23 +6,24 @@ import c from "@/public/img/GroupLast.svg";
 
 export default function OurService() {
   return (
-    <div className="h-screen">
-      <div className="lg:relative max-lg:mt-16   ">
+    <div className="lg:relative lg:h-screen">
+      <div className="max-lg:mt-8">
         <Image
           src={a}
           width={360}
           height={240}
-          className=" lg:absolute lg:right-0 h-[666px] max-lg:hidden"
+          alt=""
+          className="h-[666px] animate-pulse max-lg:hidden lg:absolute lg:-right-20"
         />
       </div>
-      <div className=" z-40 mx-auto w-4/5">
+      <div className="relative z-10 mx-auto w-4/5">
         <div className="flex flex-wrap items-center justify-between max-lg:flex-col-reverse">
-          <div className="w-1/2 max-lg:w-full pt-14">
-            <h2 className="text-xl font-semibold text-[#2D2C2C] max-lg:text-lg max-md:text-sm">
+          <div className="w-1/2 rounded-lg p-2 pt-14 text-muted-foreground max-lg:w-full lg:pr-16">
+            <h2 className="z-50 text-xl font-semibold text-[#2D2C2C] max-lg:text-lg max-md:text-sm">
               {" "}
               خدمات ما
             </h2>
-            <h3 className="w-1/2 py-9 max-lg:py-4 text-4xl text-[#2D2C2C] max-lg:text-lg max-md:w-full max-md:text-sm">
+            <h3 className="w-1/2 py-9 text-4xl max-lg:py-4 max-lg:text-lg max-md:w-full max-md:text-sm">
               بهترین خدمات مسافرتی برای شما
             </h3>
             <p className="w-2/3 text-justify leading-9 text-[#5B5F62] max-lg:w-full max-lg:text-sm max-md:text-xs">
