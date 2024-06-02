@@ -120,6 +120,10 @@ export const routes = {
   },
 
   agency: {
+    profile: {
+      "user-info": "/agency/profile/user-info",
+      "agency-info": "/agency/profile/agency-info",
+    },
     dashboard: "/agency/dashboard",
     "support-team": {
       root: "/agency/support-team",
