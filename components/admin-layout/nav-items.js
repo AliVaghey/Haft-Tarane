@@ -1,5 +1,5 @@
 import { routes } from "@/routes/routes";
-import { Building } from "lucide-react";
+import { Building, User, User2 } from "lucide-react";
 import {
   Hotel,
   ClipboardList,
@@ -30,6 +30,23 @@ export const navItems = [
       <LayoutDashboard size={size || 18} strokeWidth={strokeWidth || 1.5} />
     ),
     subMenu: [],
+  },
+
+  {
+    title: "اطلاعات کاربری",
+    type: "subMenu",
+    icon: (size, strokeWidth) => (
+      <User size={size || 18} strokeWidth={strokeWidth || 1.5} />
+    ),
+    subMenu: [
+      {
+        title: "مشخصات کاربر",
+        href: routes.admin.profile["user-info"],
+        icon: (size, strokeWidth) => (
+          <User2 size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+    ],
   },
 
   // {
