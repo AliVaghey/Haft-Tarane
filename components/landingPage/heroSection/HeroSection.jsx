@@ -4,6 +4,7 @@ import cheetah from "@/public/img/cheetah.svg";
 import videoBtn from "@/public/img/video-btn.svg";
 import SearchBox from "../searchBox/SearchBox";
 import ResponsiveBox from "../responsiveSearchBox/ResponsiveBox";
+import FullSearch from "../full-search/full-search";
 
 function HeroSection() {
   return (
@@ -38,8 +39,9 @@ function HeroSection() {
           </div>
         </div>
       </div>
-      <SearchBox className="max-lg:hidden" />
-      <ResponsiveBox className="max-lg:visible lg:hidden" />
+      {/* <SearchBox className="max-lg:hidden" />
+      <ResponsiveBox className="max-lg:visible lg:hidden" /> */}
+      <FullSearch />
     </div>
   );
 }
