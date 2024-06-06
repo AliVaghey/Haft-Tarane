@@ -111,14 +111,14 @@ const LoginPage = () => {
             </p>
           </div>
 
-          <div className="flex h-full w-full justify-center rounded-l-xl rounded-r-xl border bg-card p-3 md:w-2/3 ltr:md:rounded-l-none rtl:md:rounded-r-none">
+          <div className="flex h-full w-full items-center justify-center rounded-l-xl rounded-r-xl border bg-card p-3 md:w-2/3 ltr:md:rounded-l-none rtl:md:rounded-r-none">
             <div className="flex w-full flex-col items-center">
               <Image
                 src={logoGold}
                 alt="logo"
                 width={160}
                 height={80}
-                className="mt-2 h-36 w-72"
+                className="h-36 w-72"
               />
               <h1 className="mt-2 text-2xl font-bold text-primary">
                 {dictionary["loginPage"]["title"]}

@@ -9,8 +9,8 @@ import AuthProvider from "@/providers/auth-provider";
 const vazir = Vazirmatn({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "بیباک سفر",
-  description: "بیباک سفر",
+  title: "بی باک سفر",
+  description: "بی باک سفر",
 };
 
 const RootLayout = async ({ children, params }) => {

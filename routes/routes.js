@@ -15,6 +15,10 @@ export const routes = {
     details: (id) => `/tours/${id}`,
   },
 
+  flights: {
+    root: "/flights",
+  },
+
   superadmin: {
     dashboard: "/superadmin/dashboard",
     profile: {

@@ -46,7 +46,7 @@ const EditForm = ({ data }) => {
     ),
     defaultValues: {
       sort: data?.sort,
-      link: data?.link,
+      link: data?.link === null ? "" : data?.link,
       description: data?.description,
       text_color: data?.text_color,
       background_color: data?.background_color,
@@ -117,7 +117,7 @@ const EditForm = ({ data }) => {
     >
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle className="mr-4 text-right">افزودن بنر</DialogTitle>
+          <DialogTitle className="mr-4 text-right">ویرایش بنر</DialogTitle>
         </DialogHeader>
         <div className="w-full">
           <Form {...form}>

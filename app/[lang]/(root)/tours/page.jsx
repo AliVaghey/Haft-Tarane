@@ -31,7 +31,7 @@ const TourPage = ({
       if (!origin && !destination && !start && !end) {
         return `/api/tours?all=true&page=${page || 1}`;
       } else {
-        return `/api/tours?page=${page || 1}&origin=${origin}`;
+        return `/api/tours?page=${page || 1}&origin=${origin}&destination=${destination}&start=${start}&end=${end}`;
       }
     };
 
@@ -70,7 +70,16 @@ const TourPage = ({
             />
           </div>
           <div>
-            <TourSearch />
+            <TourSearch
+              currentSearchParams={{
+                page,
+                all,
+                origin,
+                destination,
+                start,
+                end,
+              }}
+            />
           </div>
           <div>
             {!isLoading ? (

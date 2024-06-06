@@ -1,21 +1,23 @@
 import Image from "next/image";
 import React from "react";
-import cheetah from "@/public/img/cheetah.svg";
+// import cheetah from "@/public/img/cheetah.svg";
 import videoBtn from "@/public/img/video-btn.svg";
-import SearchBox from "../searchBox/SearchBox";
-import ResponsiveBox from "../responsiveSearchBox/ResponsiveBox";
+// import SearchBox from "../searchBox/SearchBox";
+// import ResponsiveBox from "../responsiveSearchBox/ResponsiveBox";
 import FullSearch from "../full-search/full-search";
+import { chita } from "@/constants/images";
 
 function HeroSection() {
   return (
-    <div className="mb-10 lg:mb-0 lg:h-screen">
+    <div className="mb-10 pt-36 lg:mb-0">
       <div className="flex flex-col items-center justify-center">
         <Image
-          src={cheetah}
+          src={chita}
           alt="alt"
-          width={480}
-          height={360}
-          className="mt-40 h-96 w-[500px] max-lg:h-72 max-lg:w-[430px] max-md:h-48 max-md:w-72 md:mt-28 lg:-mb-14 lg:mt-14"
+          width={720}
+          height={480}
+          // className="mt-40 h-96 w-[500px] max-lg:h-72 max-lg:w-[430px] max-md:h-48 max-md:w-72 md:mt-28 lg:-mb-14 lg:mt-14"
+          className="aspect-video w-4/5 md:w-3/5 lg:w-[28%]"
         />
         <div className="">
           <h2 className="text-4xl font-bold max-lg:text-xl max-md:text-sm ">

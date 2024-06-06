@@ -19,17 +19,21 @@ import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import qs from "query-string";
 import { routes } from "@/routes/routes";
+import { baseDateForm } from "@/lib/date-form";
 
-const TourSearch = () => {
+const TourSearch = ({ currentSearchParams }) => {
+  console.log("currentSearchParams", currentSearchParams);
   const searchParams = useSearchParams();
   const router = useRouter();
 
+  const { page, all, origin, destination, start, end } = currentSearchParams;
+
   const form = useForm({
     defaultValues: {
-      origin: "",
-      destination: "",
-      start: "",
-      end: "",
+      origin,
+      destination,
+      start: start ? new Date(start) : null,
+      end: end ? new Date(end) : null,
     },
     mode: "onSubmit",
   });
@@ -56,17 +60,16 @@ const TourSearch = () => {
       }
     }
 
-    const { start, end, origin, destination } = values;
     const page = +searchParams.get("page") || 1;
 
     const current = qs.parse(searchParams.toString());
 
     const query = {
       ...current,
-      start,
-      end,
-      origin,
-      destination,
+      start: values.start ? baseDateForm(values.start) : null,
+      end: values.end ? baseDateForm(values.end) : null,
+      origin: values.origin,
+      destination: values.destination,
     };
 
     console.log("query", query);
@@ -75,7 +78,7 @@ const TourSearch = () => {
       query["page"] = null;
     }
 
-    if (origin || destination || start || end) {
+    if (values.origin || values.destination || values.start || values.end) {
       query["all"] = null;
     }
 
