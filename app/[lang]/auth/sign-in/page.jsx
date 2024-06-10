@@ -1,106 +1,21 @@
 "use client";
 
 import Image from "next/image";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { toast } from "sonner";
-import { enSignInSchema, signInSchema } from "@/lib/validation/auth/sign-in";
-import SubmitButton from "@/components/submit-button";
-import { useRouter } from "next/navigation";
 import { logoGold } from "@/constants/images";
 import { useDictionary } from "@/providers/dictionary-provider";
-import { CSRFToken, axios } from "@/lib/axios";
-import querystring from "querystring";
-import ToastSuccess from "@/components/toast/toast-success";
-import { defaultMessages } from "@/lib/default-messages";
-import ToastError from "@/components/toast/toast-error";
 import { routes } from "@/routes/routes";
-import { useUser } from "@/hooks/use-user";
 import Link from "next/link";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import UserPass from "./components/user-pass";
+import OTPForm from "./components/otp";
 
 const LoginPage = () => {
   const dictionary = useDictionary();
 
-  const userHook = useUser();
-
-  const router = useRouter();
-
-  const form = useForm({
-    resolver: zodResolver(
-      dictionary["language"] === "fa" ? signInSchema : enSignInSchema,
-    ),
-    defaultValues: {
-      phoneNumber: "",
-      password: "",
-    },
-  });
-
-  const {
-    handleSubmit,
-    control,
-    formState: { isSubmitting, errors },
-  } = form;
-
-  const onSubmit = async (values) => {
-    const { password, phoneNumber } = values;
-
-    await CSRFToken();
-
-    const encodedFormData = querystring.stringify({
-      phone: phoneNumber,
-      password,
-    });
-
-    await axios
-      .post("/login", encodedFormData)
-      .then(async (response) => {
-        if (response.status === 204 || response.status === 200) {
-          await axios.get("/api/user/info").then((res) => {
-            console.log("res", res.data);
-
-            userHook.setUserData(res?.data?.data);
-
-            res.data.data.access_type === "superadmin" &&
-              router.push(routes.superadmin.dashboard);
-            res.data.data.access_type === "admin" &&
-              router.push(routes.admin.dashboard);
-            res.data.data.access_type === "agency" &&
-              router.push(routes.agency.dashboard);
-            res.data.data.access_type === "user" &&
-              router.push(routes.user.dashboard);
-
-            toast.success(
-              <ToastSuccess text={defaultMessages.login.default} />,
-            );
-          });
-        }
-      })
-      .catch((error) => {
-        console.log("login-error", error);
-        toast.error(
-          <ToastError
-            text={
-              error?.response?.data?.message ||
-              defaultMessages.errors.internalError
-            }
-          />,
-        );
-      });
-  };
-
   return (
     <section className="h-screen w-screen bg-card">
-      <div className="md:p0 flex h-full w-full items-center justify-center p-5">
-        <div className="flex h-full w-full rounded-xl shadow-lg md:h-5/6 md:w-5/6 lg:w-2/3">
+      <div className="md:p0 flex h-full w-full items-center justify-center py-5">
+        <div className="md:min-h-5/6 flex h-full w-full rounded-xl shadow-lg md:w-5/6 lg:w-2/3">
           <div
             className="hidden h-full w-1/2 flex-col items-center justify-center gap-2 bg-gradient-to-r from-[#F6F60A]
             to-[#FFDB2F] p-3 text-muted-foreground dark:text-accent-foreground md:flex ltr:rounded-l-xl rtl:rounded-r-xl"
@@ -130,60 +45,26 @@ const LoginPage = () => {
                   {dictionary["loginPage"]["loginText"]}
                 </span>
 
-                <Form {...form}>
-                  <form
-                    onSubmit={handleSubmit(onSubmit)}
-                    className="mt-3 w-full space-y-3"
-                  >
-                    <FormField
-                      control={control}
-                      name="phoneNumber"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>
-                            {dictionary["loginPage"]["phoneNumber"]}
-                          </FormLabel>
-                          <FormControl>
-                            <Input
-                              type="number"
-                              placeholder="09"
-                              className="focus-visible:ring-primary"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                <Tabs
+                  defaultValue="userPass"
+                  className="w-full flex-1 text-right text-sm"
+                >
+                  <TabsList className="w-full">
+                    <TabsTrigger value="verifyCode">
+                      ورود با رمز یک بار مصرف
+                    </TabsTrigger>{" "}
+                    <TabsTrigger value="userPass" className="flex-1">
+                      ورود با نام کاربری
+                    </TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="userPass" className="flex-1">
+                    <UserPass />
+                  </TabsContent>
+                  <TabsContent value="verifyCode">
+                    <OTPForm />
+                  </TabsContent>
+                </Tabs>
 
-                    <FormField
-                      control={control}
-                      name="password"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>
-                            {dictionary["loginPage"]["password"]}
-                          </FormLabel>
-                          <FormControl>
-                            <Input
-                              type="password"
-                              placeholder={dictionary["loginPage"]["password"]}
-                              className="focus-visible:ring-primary"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <SubmitButton
-                      className="!mt-5 w-full bg-gradient-to-r from-[#F6F60A] to-[#FFDB2F]"
-                      loading={isSubmitting}
-                    >
-                      {dictionary["loginPage"]["signIn"]}
-                    </SubmitButton>
-                  </form>
-                </Form>
                 <span className="text-sm font-normal">
                   در صورت نداشتن حساب کاربری در سایت{" "}
                   <Link
