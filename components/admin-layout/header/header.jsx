@@ -242,8 +242,9 @@ const Header = () => {
           <Button className="flex items-center justify-center gap-2 bg-red-primary text-white hover:bg-red-dark">
             <CircleUserRound size={24} />
             <div className="flex items-center gap-1">
-              <span>{userHook?.userData?.first_name_fa}</span>
-              <span>{userHook?.userData?.last_name_fa}</span>
+              {/* <span>{userHook?.userData?.first_name_fa}</span>
+              <span>{userHook?.userData?.last_name_fa}</span> */}
+              <span>{userHook?.userData?.username}</span>
             </div>
             <ChevronDown size={20} strokeWidth={3} />
           </Button>
