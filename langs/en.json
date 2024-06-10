@@ -31,9 +31,11 @@
     "description": "Lorem Epsom is a mock text with an incomprehensible simplicity produced by the printing industry and used by graphic designers. Printers and texts, but also newspapers and magazines in columns and rows as necessary and for the current conditions of technology required and diverse applications with the aim of improving practical tools.",
     "phoneNumber": "phone number",
     "password": "password",
+    "password confirmation": "password confirmation",
     "signIn": "login",
     "signUp": "sign up",
-    "loginText": "Please enter your user information to use the site's facilities"
+    "loginText": "Please enter your user information to use the site's facilities",
+    "username": "username"
   },
   "delete-dialog": {
     "confirm": "confirm",

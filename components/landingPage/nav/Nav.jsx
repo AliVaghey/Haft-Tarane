@@ -64,7 +64,7 @@ export default function Nav() {
     } else if (userHook.userData.access_type === "agency") {
       return routes.agency.dashboard;
     } else if (userHook.userData.access_type === "user") {
-      return "/";
+      return routes.user.dashboard;
     } else {
       return routes.auth.signIn;
     }
