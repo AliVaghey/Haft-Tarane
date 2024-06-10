@@ -132,7 +132,7 @@ const EditForm = ({ data }) => {
               name="last_name_fa"
               render={({ field }) => (
                 <FormItem className="col-span-3 lg:col-span-1">
-                  <FormLabel>نام</FormLabel>
+                  <FormLabel>نام خانوادگی</FormLabel>
                   <FormControl>
                     <Input
                       autoComplete="off"
