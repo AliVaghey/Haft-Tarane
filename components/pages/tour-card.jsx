@@ -18,7 +18,7 @@ const TourCard = ({ data }) => {
             src={data.costs.length > 0 ? data.costs[0].hotel.photo : chita}
             width={360}
             height={360}
-            className="h-full w-52 rounded-r-lg object-contain object-center"
+            className="h-full w-52 rounded-r-lg object-cover object-center"
             alt="hotel"
           />
         </div>

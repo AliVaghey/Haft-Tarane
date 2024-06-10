@@ -21,8 +21,8 @@ function HeroSection() {
         />
         <div className="">
           <h2 className="text-4xl font-bold max-lg:text-xl max-md:text-sm ">
-            خرید بلیط ارزان از{" "}
-            <span className="text-[#2B303D]">بی باک سفر</span>
+            سفر ضرورتی برای زندگی{" "}
+            {/* <span className="text-[#2B303D]">بی باک سفر</span> */}
           </h2>
         </div>
         <div className="mb-9 ml-[777px] flex items-center gap-4 max-lg:ml-0 max-lg:mt-7 max-md:ml-4 max-md:mt-4 lg:-mt-9 ">

@@ -275,6 +275,7 @@ const BasicInformationForm = ({ data }) => {
                     <SelectItem value="طبیعت گردی">طبیعت گردی</SelectItem>
                     <SelectItem value="نوروزی">نوروزی</SelectItem>
                     <SelectItem value="عید فطر">عید فطر</SelectItem>
+                    <SelectItem value="سیاحتی">سیاحتی</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -440,7 +441,7 @@ const BasicInformationForm = ({ data }) => {
                   </FormControl>
                   <SelectContent>
                     <SelectItem value="سیستمی">سیستمی</SelectItem>
-                    <SelectItem value="چارتری">چارتری</SelectItem>
+                    {/* <SelectItem value="چارتری">چارتری</SelectItem> */}
                     <SelectItem value="حمل و نقل من">حمل و نقل من</SelectItem>
                   </SelectContent>
                 </Select>
