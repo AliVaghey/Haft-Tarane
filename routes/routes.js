@@ -125,10 +125,6 @@ export const routes = {
     },
   },
 
-  user: {
-    dashboard: "/user/dashboard",
-  },
-
   agency: {
     profile: {
       "user-info": "/agency/profile/user-info",
@@ -161,6 +157,13 @@ export const routes = {
       "pending-pay": "/agency/sales/pending-pay",
       accounting: "/agency/sales/accounting",
       leads: "/agency/sales/leads",
+    },
+  },
+
+  user: {
+    dashboard: "/user/dashboard",
+    profile: {
+      "user-info": "/user/profile/user-info",
     },
   },
 };

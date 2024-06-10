@@ -25,6 +25,7 @@ import ToastError from "@/components/toast/toast-error";
 import { routes } from "@/routes/routes";
 import { useUser } from "@/hooks/use-user";
 import { enSignUpSchema, signUpSchema } from "@/lib/validation/auth/sign-up";
+import Link from "next/link";
 
 const LoginPage = () => {
   const dictionary = useDictionary();
@@ -236,6 +237,16 @@ const LoginPage = () => {
                     </SubmitButton>
                   </form>
                 </Form>
+                <span className="text-sm font-normal">
+                  در صورت داشتن حساب کاربری به سایت{" "}
+                  <Link
+                    href={routes.auth.signIn}
+                    className="font-semibold text-yellow-dark hover:underline"
+                  >
+                    وارد
+                  </Link>{" "}
+                  شوید
+                </span>
               </div>
             </div>
           </div>

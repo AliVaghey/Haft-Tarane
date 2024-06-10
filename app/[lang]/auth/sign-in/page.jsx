@@ -25,6 +25,7 @@ import { defaultMessages } from "@/lib/default-messages";
 import ToastError from "@/components/toast/toast-error";
 import { routes } from "@/routes/routes";
 import { useUser } from "@/hooks/use-user";
+import Link from "next/link";
 
 const LoginPage = () => {
   const dictionary = useDictionary();
@@ -74,7 +75,8 @@ const LoginPage = () => {
               router.push(routes.admin.dashboard);
             res.data.data.access_type === "agency" &&
               router.push(routes.agency.dashboard);
-            res.data.data.access_type === "user" && router.push("/");
+            res.data.data.access_type === "user" &&
+              router.push(routes.user.dashboard);
 
             toast.success(
               <ToastSuccess text={defaultMessages.login.default} />,
@@ -182,6 +184,16 @@ const LoginPage = () => {
                     </SubmitButton>
                   </form>
                 </Form>
+                <span className="text-sm font-normal">
+                  در صورت نداشتن حساب کاربری در سایت{" "}
+                  <Link
+                    href={routes.auth.signUp}
+                    className="font-semibold text-yellow-dark hover:underline"
+                  >
+                    ثبت نام
+                  </Link>{" "}
+                  کنید
+                </span>
               </div>
             </div>
           </div>
