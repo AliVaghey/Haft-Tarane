@@ -48,6 +48,7 @@ const AddForm = () => {
       country: "",
       state: "",
       city: "",
+      stars: "",
       images: [],
     },
     mode: "onSubmit",
@@ -73,6 +74,7 @@ const AddForm = () => {
       country: values.country,
       state: values.state,
       city: values.city,
+      stars: values.stars,
     });
 
     await CSRFToken();
@@ -263,6 +265,25 @@ const AddForm = () => {
                       className="rounded-lg shadow-lg"
                       autoComplete="off"
                       placeholder="حداقل ۲ کاراکتر"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage className="text-red-primary" />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={control}
+              name="stars"
+              render={({ field }) => (
+                <FormItem className="col-span-3 lg:col-span-1">
+                  <FormLabel>ستاره هتل</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="number"
+                      autoComplete="off"
+                      placeholder="بین ۱ تا ۵"
                       {...field}
                     />
                   </FormControl>

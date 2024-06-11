@@ -2,9 +2,10 @@
 
 import { defaultHotel, effect1, effect2 } from "@/constants/images";
 import useMount from "@/hooks/use-mount";
+import { farsiNumber } from "@/lib/farsi-number";
 import { cn } from "@/lib/utils";
 import { useDictionary } from "@/providers/dictionary-provider";
-import { Facebook } from "lucide-react";
+import { Facebook, Star } from "lucide-react";
 import { Linkedin } from "lucide-react";
 import { Instagram } from "lucide-react";
 import Image from "next/image";
@@ -51,8 +52,16 @@ const Details = ({ data }) => {
         alt="effect"
         className="absolute bottom-0 left-10 md:left-60"
       />
-      <div className="mt-20 md:mt-4">
-        <h1 className="text-6xl text-red-dark">{data.name}</h1>
+      <div className="mt-20 flex flex-col gap-1 md:mt-4">
+        <h1 className="text-4xl text-red-dark">{`هتل ${farsiNumber(data.stars)} ستاره ${data.name}`}</h1>
+        <div className="flex gap-1">
+          {data.stars &&
+            new Array(data.stars)
+              .fill("")
+              .map((item, index) => (
+                <Star key={index} className="text-yellow-primary" />
+              ))}
+        </div>
       </div>
       <div className="mt-5 flex w-full flex-col rounded-lg lg:flex-row">
         <div className="grid w-1/2 grid-cols-1 gap-1 md:grid-cols-2">
