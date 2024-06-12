@@ -80,6 +80,11 @@ export const routes = {
       add: "/superadmin/profit-rates/add",
       edit: (id) => `/superadmin/profit-rates/${id}/edit`,
     },
+    "transportation-api": {
+      flights: {
+        root: "/superadmin/transportation-api/flights",
+      },
+    },
   },
 
   admin: {

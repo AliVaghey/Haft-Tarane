@@ -26,7 +26,7 @@ const SideBar = () => {
 
   return (
     <div className="sticky top-0 hidden h-screen bg-primary md:block ltr:rounded-r-3xl rtl:rounded-l-3xl">
-      <div className="flex h-full max-h-screen flex-col gap-2">
+      <div className="flex h-full max-h-screen flex-col gap-2 pb-3">
         <div className="flex items-center px-3 lg:h-[60px] lg:px-6">
           <Link
             href="/"

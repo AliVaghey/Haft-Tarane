@@ -3,6 +3,7 @@ import {
   AlertCircle,
   AlertCircleIcon,
   Building,
+  Cog,
   Percent,
   PlusCircle,
   User,
@@ -26,7 +27,7 @@ import {
 
 export const navItems = [
   {
-    title: "داشبورد",
+    title: "داشبورد و اطلاعات کاربری",
     type: "text",
   },
 
@@ -55,6 +56,11 @@ export const navItems = [
         ),
       },
     ],
+  },
+
+  {
+    title: "مدیریت امکانات اصلی سایت",
+    type: "text",
   },
 
   {
@@ -192,6 +198,35 @@ export const navItems = [
   },
 
   {
+    title: "نرخ های کمیسیون",
+    type: "subMenu",
+    icon: (size, strokeWidth) => (
+      <Percent size={size || 18} strokeWidth={strokeWidth || 1.5} />
+    ),
+    subMenu: [
+      {
+        title: "همه نرخ ها",
+        href: routes.superadmin["profit-rates"].root,
+        icon: (size, strokeWidth) => (
+          <Percent size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
+        title: "افزودن",
+        href: routes.superadmin["profit-rates"].add,
+        icon: (size, strokeWidth) => (
+          <PlusCircle size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+    ],
+  },
+
+  {
+    title: "مدیریت بخش های صفحه اصلی",
+    type: "text",
+  },
+
+  {
     title: "تور های ویژه",
     type: "subMenu",
     icon: (size, strokeWidth) => (
@@ -240,24 +275,22 @@ export const navItems = [
   },
 
   {
-    title: "نرخ های کمیسیون",
+    title: "مدیریت API های حمل و نقل",
+    type: "text",
+  },
+
+  {
+    title: "مدیریت API پرواز ها",
     type: "subMenu",
     icon: (size, strokeWidth) => (
-      <Percent size={size || 18} strokeWidth={strokeWidth || 1.5} />
+      <Plane size={size || 18} strokeWidth={strokeWidth || 1.5} />
     ),
     subMenu: [
       {
-        title: "همه نرخ ها",
-        href: routes.superadmin["profit-rates"].root,
+        title: "تنظیمات اصلی",
+        href: routes.superadmin["transportation-api"].flights.root,
         icon: (size, strokeWidth) => (
-          <Percent size={size || 18} strokeWidth={strokeWidth || 1.5} />
-        ),
-      },
-      {
-        title: "افزودن",
-        href: routes.superadmin["profit-rates"].add,
-        icon: (size, strokeWidth) => (
-          <PlusCircle size={size || 18} strokeWidth={strokeWidth || 1.5} />
+          <Cog size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
     ],
