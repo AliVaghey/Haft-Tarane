@@ -57,7 +57,7 @@ const TourDetailsPage = ({ params }) => {
         className="absolute -right-10 bottom-0 h-60 w-60"
       /> */}
       <div className="flex gap-2 px-2">
-        <div className="w-full lg:w-3/5">
+        <div className="w-full">
           <Tabs defaultValue="basic-information" className="w-full" dir="rtl">
             <TabsList className="flex h-fit w-fit flex-col gap-2 md:flex-row">
               <TabsTrigger
@@ -132,7 +132,7 @@ const TourDetailsPage = ({ params }) => {
             </TabsContent>
           </Tabs>
         </div>
-        <div className="relative hidden flex-1 items-center justify-center lg:flex">
+        {/* <div className="relative hidden flex-1 items-center justify-center lg:flex">
           <Image
             src={pinkPlain}
             width={480}
@@ -140,14 +140,7 @@ const TourDetailsPage = ({ params }) => {
             alt="effect"
             className="z-10 mx-auto h-80 w-3/4"
           />
-          {/* <Image
-            src={effect3}
-            width={150}
-            height={250}
-            alt="effect"
-            className="absolute -top-10 left-10 h-60 w-60"
-          /> */}
-        </div>
+        </div> */}
       </div>
     </div>
   );

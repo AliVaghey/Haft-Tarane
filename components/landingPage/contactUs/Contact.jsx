@@ -125,17 +125,6 @@ export default function ContactUs() {
                       شبکه های اجتماعی
                     </h2>
                     <div className="flex flex-col gap-4">
-                      {/* <Link className="flex items-center gap-4" href={""}>
-                        <Image
-                          src={twitter}
-                          alt="alt"
-                          width={100}
-                          height={100}
-                          className="h-7 w-7"
-                        />
-                        <p>bibaksafar@gmail.com</p>
-                      </Link> */}
-
                       <Link
                         className="flex items-center gap-4"
                         href="https://instagram.com/bibak_safar"
@@ -193,7 +182,7 @@ export default function ContactUs() {
                   </div>
                 </div>
               </div>
-              <div>
+              <div className="mb-5">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6890.914143557435!2d57.057602458349685!3d30.281047037322043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f021964f15bdfcd%3A0xcf3074f6cfd82da0!2sbibaksafar%20Digital%20Marketing!5e0!3m2!1sen!2s!4v1716012431260!5m2!1sen!2s"
                   //   width="1111"
