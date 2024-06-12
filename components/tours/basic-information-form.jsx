@@ -39,6 +39,34 @@ import ToastSuccess from "@/components/toast/toast-success";
 import { useTour } from "@/hooks/use-tour";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import ChipSelect from "../ui/chip-select";
+
+const tourStyles = [
+  {
+    id: "زیارتی",
+    value: "زیارتی",
+  },
+  {
+    id: "خانوادگی",
+    value: "خانوادگی",
+  },
+  {
+    id: "طبیعت گردی",
+    value: "طبیعت گردی",
+  },
+  {
+    id: "نوروزی",
+    value: "نوروزی",
+  },
+  {
+    id: "عید فطر",
+    value: "عید فطر",
+  },
+  {
+    id: "سیاحتی",
+    value: "سیاحتی",
+  },
+];
 
 const BasicInformationForm = ({ data }) => {
   const tourHook = useTour();
@@ -72,7 +100,7 @@ const BasicInformationForm = ({ data }) => {
           title: "",
           trip_type: "",
           expiration: "",
-          selling_type: "",
+          selling_type: "نقدی",
           tour_styles: [],
           capacity: "",
           evening_support: false,
@@ -270,12 +298,8 @@ const BasicInformationForm = ({ data }) => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="زیارتی">زیارتی</SelectItem>
-                    <SelectItem value="خانوادگی">خانوادگی</SelectItem>
-                    <SelectItem value="طبیعت گردی">طبیعت گردی</SelectItem>
-                    <SelectItem value="نوروزی">نوروزی</SelectItem>
-                    <SelectItem value="عید فطر">عید فطر</SelectItem>
-                    <SelectItem value="سیاحتی">سیاحتی</SelectItem>
+                    <SelectItem value="داخلی">داخلی</SelectItem>
+                    <SelectItem value="خارجی">خارجی</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -290,12 +314,25 @@ const BasicInformationForm = ({ data }) => {
               <FormItem className="col-span-3 lg:col-span-1">
                 <FormLabel>نوع پرداخت</FormLabel>
                 <FormControl>
-                  <Input
+                  {/* <Input
                     className=""
                     autoComplete="off"
                     placeholder="نوع پرداخت"
                     {...field}
-                  />
+                  /> */}
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="انتخاب کنید" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="نقدی">نقدی</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -410,9 +447,9 @@ const BasicInformationForm = ({ data }) => {
               <FormItem className="col-span-3 lg:col-span-1">
                 <FormLabel>مدل های تور</FormLabel>
                 <FormControl>
-                  <ChipInput
+                  <ChipSelect
                     initialData={getValues("tour_styles")}
-                    placeholder="امکانات"
+                    options={tourStyles}
                     onChange={(data) => {
                       console.log("data", data);
                       setValue("tour_styles", data, { shouldValidate: true });

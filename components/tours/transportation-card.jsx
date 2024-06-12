@@ -18,6 +18,7 @@ import { Plane } from "lucide-react";
 import { Bus } from "lucide-react";
 import { Pyramid } from "lucide-react";
 import { MapPin } from "lucide-react";
+import { persianPriceFormat } from "@/lib/persian-price-format";
 
 const TransportationCard = ({ data, number, lenght }) => {
   console.log("lenght", lenght);
@@ -139,10 +140,16 @@ const TransportationCard = ({ data, number, lenght }) => {
                   <span>{data.destination}</span>
                   <span>{farsiNumber(jaliliDateHour(data.end))}</span>
                 </div>
+                <div className="flex items-center gap-3">
+                  <span>قیمت : </span>
+                  <span>
+                    {farsiNumber(persianPriceFormat(+data.price))} تومان
+                  </span>
+                </div>
               </div>
               <div className="flex flex-col gap-2">
                 <div>
-                  <span>نوع وسیله نقلیه : : </span>
+                  <span>نوع وسیله نقلیه : </span>
                   <span>{data.transportation_type}</span>
                 </div>
                 <div>

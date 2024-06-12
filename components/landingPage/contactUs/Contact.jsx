@@ -64,7 +64,7 @@ export default function ContactUs() {
                 <div className="mb-20 flex flex-col gap-9 rounded-2xl bg-yellow-primary px-9 py-12 lg:w-72 xl:w-96">
                   <div>
                     <h2 className="text-center text-3xl text-white">
-                      جستجوی بلیط
+                      راه های ارتباطی
                     </h2>
                   </div>
                   <div className="flex flex-col gap-4">
@@ -96,7 +96,7 @@ export default function ContactUs() {
                         height={100}
                         className="h-7 w-7"
                       />
-                      <p>{farsiNumber("09100940950")} </p>
+                      <p>{farsiNumber("09309314455")} </p>
                     </div>
                     <div className="flex items-center gap-4">
                       <Image
@@ -106,7 +106,7 @@ export default function ContactUs() {
                         height={100}
                         className="h-7 w-7"
                       />
-                      <p>{farsiNumber("09354027352")} </p>
+                      <p>{farsiNumber("09309324455")} </p>
                     </div>
                     {/* <div className="flex items-center gap-4">
                       <Image
@@ -134,36 +134,7 @@ export default function ContactUs() {
                         />
                         <p>bibaksafar@gmail.com</p>
                       </div>
-                      <div className="flex items-center gap-4">
-                        <Image
-                          src={facebook}
-                          alt="alt"
-                          width={100}
-                          height={100}
-                          className="h-7 w-7"
-                        />
-                        <p>bibaksafar@gmail.com</p>
-                      </div>
-                      <div className="flex items-center gap-4">
-                        <Image
-                          src={youtube}
-                          alt="alt"
-                          width={100}
-                          height={100}
-                          className="h-7 w-7"
-                        />
-                        <p>bibaksafar@gmail.com</p>
-                      </div>
-                      <div className="flex items-center gap-4">
-                        <Image
-                          src={v}
-                          alt="alt"
-                          width={100}
-                          height={100}
-                          className="h-7 w-7"
-                        />
-                        <p>bibaksafar@gmail.com</p>
-                      </div>
+
                       <div className="flex items-center gap-4">
                         <Image
                           src={ig}
@@ -178,12 +149,12 @@ export default function ContactUs() {
                   </div>
                   <div>
                     <h2 className="mb-7 text-center text-xl text-white">
-                      ساعت پاسخگویی
+                      پاسخ گویی ۲۴ ساعته
                     </h2>
-                    <p className="pb-3 text-center text-white ">
+                    {/* <p className="pb-3 text-center text-white ">
                       12:00 - 08:00 Uhr
                     </p>
-                    <p className="text-center text-white">17:00 - 13:00 Uhr</p>
+                    <p className="text-center text-white">17:00 - 13:00 Uhr</p> */}
                   </div>
                 </div>
               </div>

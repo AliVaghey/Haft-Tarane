@@ -52,7 +52,7 @@ const DateCard = ({ data, number }) => {
         {farsiNumber(jaliliDate(data.end))}
       </div>
       <SubmitButton
-        className="h-8 bg-red-primary px-2 text-white"
+        className="h-8 bg-red-primary px-2 text-white hover:bg-red-dark"
         onClick={() => {
           handleDeleteDate();
         }}

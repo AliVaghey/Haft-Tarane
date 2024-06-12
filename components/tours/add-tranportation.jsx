@@ -75,6 +75,7 @@ const AddTransportation = ({ tour_id }) => {
       destination: "",
       start: new Date(),
       end: new Date(),
+      price: "",
     },
     mode: "onSubmit",
   });
@@ -99,6 +100,7 @@ const AddTransportation = ({ tour_id }) => {
       destination,
       start,
       end,
+      price,
     } = values;
 
     const encodedFormData = querystring.stringify({
@@ -110,6 +112,7 @@ const AddTransportation = ({ tour_id }) => {
       transportation_type,
       origin,
       destination,
+      price,
     });
 
     console.log("DateForm(start)", DateForm(start));
@@ -343,6 +346,25 @@ const AddTransportation = ({ tour_id }) => {
                               paddingBottom: "19px",
                               borderColor: "rgb(226 232 240)",
                             }}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={control}
+                    name="price"
+                    render={({ field }) => (
+                      <FormItem className="col-span-3 lg:col-span-1">
+                        <FormLabel>قیمت بلیط</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="number"
+                            autoComplete="off"
+                            placeholder="قیمت"
+                            {...field}
                           />
                         </FormControl>
                         <FormMessage />

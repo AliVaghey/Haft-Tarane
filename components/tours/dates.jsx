@@ -4,7 +4,7 @@ import Link from "next/link";
 import AddDate from "./add-date";
 import ConfirmTour from "./cconfirm-tour";
 import DateCard from "./date-card";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import { routes } from "@/routes/routes";
 import { useParams } from "next/navigation";
 
@@ -17,13 +17,19 @@ const Dates = ({ data }) => {
           <DateCard key={index} data={item} number={index + 1} />
         ))}
 
-        <div className="mt-2 flex items-center gap-4">
-          <Link href={routes.agency.tours.edit.hotels(params.id)}>
-            <Button type="button" variant="outline" className="border-primary">
-              قبلی
-            </Button>
-          </Link>
-          <AddDate tour_id={data.tour_id} />
+        <div className="mt-2">
+          <div className="flex items-center gap-4">
+            <Link href={routes.agency.tours.edit.hotels(params.id)}>
+              <Button
+                type="button"
+                variant="outline"
+                className="border-primary"
+              >
+                قبلی
+              </Button>
+            </Link>
+            <AddDate tour_id={data.tour_id} />
+          </div>
           <ConfirmTour tour_id={data.tour_id} />
         </div>
       </div>
