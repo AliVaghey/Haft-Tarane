@@ -46,9 +46,15 @@ export default function Footer() {
             </div>
             <div className="w-1/5 max-lg:w-1/3 max-md:w-full ">
               <h2 className="pb-6 text-xl">ارتباط با ما</h2>
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-4">
                 <a href="tel:02191012850" className="text-[#868383]">
                   {farsiNumber("02191012850")}
+                </a>
+                <a href="tel:09309314455" className="text-[#868383]">
+                  {farsiNumber("09309314455")}
+                </a>
+                <a href="tel:09309324455" className="text-[#868383]">
+                  {farsiNumber("09309324455")}
                 </a>
                 <a
                   href="mailto:bibaksafar2024@gmail.com"
@@ -75,9 +81,9 @@ export default function Footer() {
             <div className="w-1/5 max-lg:w-1/3 max-md:w-full ">
               <h2 className="pb-6 text-xl">شبکه های اجتماعی ما</h2>
               <div>
-                <ul className="flex flex-col gap-4">
+                <ul className="flex gap-4">
                   <li>
-                    <a href="">
+                    <a href="https://wa.me/+989309314455" target="_blank">
                       <Image
                         src={whatsapp}
                         alt="alt"
@@ -88,7 +94,7 @@ export default function Footer() {
                     </a>
                   </li>
                   <li>
-                    <a href="">
+                    <a href="https://instagram.com/bibak_safar" target="_blank">
                       <Image
                         src={insta}
                         alt="alt"
@@ -99,7 +105,7 @@ export default function Footer() {
                     </a>
                   </li>
                   <li>
-                    <a href="">
+                    <a href="https://t.me/bibaksafar2024" target="_blank">
                       <Image
                         src={telegram}
                         alt="alt"

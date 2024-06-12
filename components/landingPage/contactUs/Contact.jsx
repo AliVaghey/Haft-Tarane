@@ -13,6 +13,7 @@ import v from "@/public/img/v.svg";
 import ig from "@/public/img/ig.svg";
 import cg from "@/public/img/cg.svg";
 import { farsiNumber } from "@/lib/farsi-number";
+import { instagram, telegram, whatsapp } from "@/constants/icons";
 
 export default function ContactUs() {
   return (
@@ -124,7 +125,7 @@ export default function ContactUs() {
                       شبکه های اجتماعی
                     </h2>
                     <div className="flex flex-col gap-4">
-                      <div className="flex items-center gap-4">
+                      {/* <Link className="flex items-center gap-4" href={""}>
                         <Image
                           src={twitter}
                           alt="alt"
@@ -133,18 +134,52 @@ export default function ContactUs() {
                           className="h-7 w-7"
                         />
                         <p>bibaksafar@gmail.com</p>
-                      </div>
+                      </Link> */}
 
-                      <div className="flex items-center gap-4">
+                      <Link
+                        className="flex items-center gap-4"
+                        href="https://instagram.com/bibak_safar"
+                        target="_blank"
+                      >
                         <Image
-                          src={ig}
+                          src={instagram}
                           alt="alt"
                           width={100}
                           height={100}
                           className="h-7 w-7"
                         />
-                        <p>bibaksafar@gmail.com</p>
-                      </div>
+                        <p>مشاهده صفحه اینستاگرام</p>
+                      </Link>
+
+                      <Link
+                        className="flex items-center gap-4"
+                        href="https://wa.me/+989309314455"
+                        target="_blank"
+                      >
+                        <Image
+                          src={whatsapp}
+                          alt="alt"
+                          width={100}
+                          height={100}
+                          className="h-7 w-7"
+                        />
+                        <p>ارسال پیام در واتساپ</p>
+                      </Link>
+
+                      <Link
+                        className="flex items-center gap-4"
+                        href="https://t.me/bibaksafar2024"
+                        target="_blank"
+                      >
+                        <Image
+                          src={telegram}
+                          alt="alt"
+                          width={100}
+                          height={100}
+                          className="h-7 w-7"
+                        />
+                        <p>ارسال پیام در تلگرام</p>
+                      </Link>
                     </div>
                   </div>
                   <div>
