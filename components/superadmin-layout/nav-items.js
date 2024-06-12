@@ -3,6 +3,7 @@ import {
   AlertCircle,
   AlertCircleIcon,
   Building,
+  Percent,
   PlusCircle,
   User,
   User2,
@@ -231,6 +232,30 @@ export const navItems = [
       {
         title: "افزودن",
         href: routes.superadmin.banners.add,
+        icon: (size, strokeWidth) => (
+          <PlusCircle size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+    ],
+  },
+
+  {
+    title: "نرخ های کمیسیون",
+    type: "subMenu",
+    icon: (size, strokeWidth) => (
+      <Percent size={size || 18} strokeWidth={strokeWidth || 1.5} />
+    ),
+    subMenu: [
+      {
+        title: "همه نرخ ها",
+        href: routes.superadmin["profit-rates"].root,
+        icon: (size, strokeWidth) => (
+          <Percent size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
+        title: "افزودن",
+        href: routes.superadmin["profit-rates"].add,
         icon: (size, strokeWidth) => (
           <PlusCircle size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),

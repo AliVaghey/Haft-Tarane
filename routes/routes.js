@@ -75,6 +75,11 @@ export const routes = {
       add: "/superadmin/banners/add",
       edit: (id) => `/superadmin/banners/${id}/edit`,
     },
+    "profit-rates": {
+      root: "/superadmin/profit-rates",
+      add: "/superadmin/profit-rates/add",
+      edit: (id) => `/superadmin/profit-rates/${id}/edit`,
+    },
   },
 
   admin: {
