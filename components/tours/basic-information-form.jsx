@@ -477,9 +477,10 @@ const BasicInformationForm = ({ data }) => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="سیستمی">سیستمی</SelectItem>
-                    {/* <SelectItem value="چارتری">چارتری</SelectItem> */}
-                    <SelectItem value="حمل و نقل من">حمل و نقل من</SelectItem>
+                    <SelectItem value="system">سیستمی</SelectItem>
+                    <SelectItem value="my_transportation">
+                      حمل و نقل من
+                    </SelectItem>
                   </SelectContent>
                 </Select>
 

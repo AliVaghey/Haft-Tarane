@@ -48,7 +48,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const AddTransportation = ({ tour_id }) => {
+const AddMyTransportation = ({ tour_id }) => {
   const dictionary = useDictionary();
 
   const tourHook = useTour();
@@ -432,4 +432,4 @@ const AddTransportation = ({ tour_id }) => {
   );
 };
 
-export default AddTransportation;
+export default AddMyTransportation;

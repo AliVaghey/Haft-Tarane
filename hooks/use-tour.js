@@ -2,12 +2,18 @@ import { CSRFToken, axios } from "@/lib/axios";
 import { create } from "zustand";
 
 export const useTour = create((set, get) => ({
+  airports: [],
+  setAirports: (data) => set({ airports: data }),
+
   currentTour: { certificate: {}, dates: [], transportations: [] },
-  isEditPage: false,
-  flag: false,
   setCurrentTour: (data) => set({ currentTour: data }),
+
+  isEditPage: false,
   setIsEditPage: (status) => set({ isEditPage: status }),
+
+  flag: false,
   setFlag: (status) => set({ flag: status }),
+
   getCurrentTour: async (id) => {
     await axios
       .get(`api/agency/tour/${id}`)
@@ -22,5 +28,18 @@ export const useTour = create((set, get) => ({
       .finally(() => {
         set({ flag: false });
       });
+  },
+
+  getAirports: async () => {
+    await axios
+      .get(`api/airports`)
+      .then((response) => {
+        console.log("response-airports", response);
+        get().setAirports(response.data.data);
+      })
+      .catch((error) => {
+        console.log("error-airports", error);
+      })
+      .finally(() => {});
   },
 }));

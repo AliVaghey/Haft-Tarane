@@ -70,7 +70,13 @@ const SearchableSelect = ({
         setCurrentValue(e);
         changeValue(e);
       }}
-      value={keyValue ? +currentValue : currentValue}
+      value={
+        keyValue
+          ? isNaN(+currentValue)
+            ? currentValue
+            : +currentValue
+          : currentValue
+      }
       defaultValue={defaultValue}
     >
       {/* <FormControl> */}
@@ -80,17 +86,20 @@ const SearchableSelect = ({
       {/* </FormControl> */}
 
       <SelectContent dir="rtl">
-        <div>
-          <Input
-            value={searchState}
-            onChange={(e) => {
-              setSearchState(e.target.value);
-            }}
-            type="text"
-            placeholder="جستجو..."
-            className="rounded-none border-0 border-b border-primary outline-0 ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-          />
-        </div>
+        {query && (
+          <div>
+            <Input
+              value={searchState}
+              onChange={(e) => {
+                setSearchState(e.target.value);
+              }}
+              type="text"
+              placeholder="جستجو..."
+              className="rounded-none border-0 border-b border-primary outline-0 ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+            />
+          </div>
+        )}
+
         {data.length === 0 ? (
           <div className="flex items-center justify-center p-3 text-sm">
             داده ای وجود ندارد
