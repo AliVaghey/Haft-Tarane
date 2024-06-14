@@ -9,12 +9,18 @@ import { routes } from "@/routes/routes";
 import { useParams } from "next/navigation";
 
 const Dates = ({ data }) => {
+  console.log("data", data);
   const params = useParams();
   return (
     <div className="mt-5">
       <div className="flex flex-col gap-2 lg:gap-4">
         {data.dates.map((item, index) => (
-          <DateCard key={index} data={item} number={index + 1} />
+          <DateCard
+            key={index}
+            data={item}
+            number={index + 1}
+            transportation_type={data.transportation_type}
+          />
         ))}
 
         <div className="mt-2">
@@ -28,9 +34,11 @@ const Dates = ({ data }) => {
                 قبلی
               </Button>
             </Link>
-            <AddDate tour_id={data.tour_id} />
+            {data.transportation_type === "my_transportation" && (
+              <AddDate tour_id={data.tour_id} />
+            )}
           </div>
-          <ConfirmTour tour_id={data.tour_id} />
+          <ConfirmTour tour_id={data.tour_id} profit_rate={data.profit_rate} />
         </div>
       </div>
     </div>

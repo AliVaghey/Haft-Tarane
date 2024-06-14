@@ -42,7 +42,7 @@ import {
   profitRateSchema,
 } from "@/lib/validation/tour/confirm-tour";
 
-const ConfirmTour = ({ tour_id }) => {
+const ConfirmTour = ({ tour_id, profit_rate }) => {
   const dictionary = useDictionary();
 
   const tourHook = useTour();
@@ -58,7 +58,7 @@ const ConfirmTour = ({ tour_id }) => {
       dictionary["language"] === "fa" ? profitRateSchema : enProfitRateSchema,
     ),
     defaultValues: {
-      profit_rate: "",
+      profit_rate: String(profit_rate),
     },
     mode: "onSubmit",
   });
@@ -116,7 +116,7 @@ const ConfirmTour = ({ tour_id }) => {
                     changeValue={(value) => {
                       field.onChange(value);
                     }}
-                    defaultValue={getValues("origin")}
+                    defaultValue={getValues("profit_rate")}
                     api={"/api/agency/profit-rates"}
                     // query="name"
                     placeholder={"کمیسیون"}

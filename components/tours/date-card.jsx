@@ -11,7 +11,7 @@ import { CSRFToken, axios } from "@/lib/axios";
 import { toast } from "sonner";
 import { useTour } from "@/hooks/use-tour";
 
-const DateCard = ({ data, number }) => {
+const DateCard = ({ data, number, transportation_type }) => {
   const tourHook = useTour();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -43,23 +43,25 @@ const DateCard = ({ data, number }) => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-5 lg:flex-row">
+    <div className="flex w-full flex-col items-center gap-5 lg:flex-row">
       <span className="mt-1 text-xs text-muted-foreground">{number}-</span>
-      <div className="flex-1 rounded-lg border-2 p-1 ">
+      <div className="w-full flex-1 rounded-lg border-2 p-1">
         {farsiNumber(jaliliDate(data.start))}
       </div>
-      <div className="flex-1 rounded-lg border-2 p-1 ">
+      <div className="w-full flex-1 rounded-lg border-2 p-1">
         {farsiNumber(jaliliDate(data.end))}
       </div>
-      <SubmitButton
-        className="h-8 bg-red-primary px-2 text-white hover:bg-red-dark"
-        onClick={() => {
-          handleDeleteDate();
-        }}
-        loading={isLoading}
-      >
-        <Trash2 size={16} strokeWidth={1.5} />
-      </SubmitButton>
+      {transportation_type === "my_transportation" && (
+        <SubmitButton
+          className="h-8 bg-red-primary px-2 text-white hover:bg-red-dark"
+          onClick={() => {
+            handleDeleteDate();
+          }}
+          loading={isLoading}
+        >
+          <Trash2 size={16} strokeWidth={1.5} />
+        </SubmitButton>
+      )}
     </div>
   );
 };
