@@ -103,6 +103,15 @@ const DetailsTourPlan = ({ data }) => {
                     <Plane strokeWidth={1.5} size={18} />
                   </span>
                   <div className="flex flex-col gap-0">
+                    <span className="font-bold">نوع بلیط</span>
+                    <span>{flight.type}</span>
+                  </div>
+                </div>
+                <div className="flex flex-1 items-center gap-3">
+                  <span className="rounded-lg bg-teal-500 p-3 text-white">
+                    <Plane strokeWidth={1.5} size={18} />
+                  </span>
+                  <div className="flex flex-col gap-0">
                     <span className="font-bold">قیمت</span>
                     <span>
                       {farsiNumber(persianPriceFormat(+flight.price_final))}

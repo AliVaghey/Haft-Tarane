@@ -115,7 +115,11 @@ const AddMyTransportation = ({ tour_id }) => {
           </DialogHeader>
           <GetFlights setFlights={setFlights} />
 
-          {flights.length > 0 && (
+          {flights.length === 0 ? (
+            <div className="w-full rounded-lg border border-muted-foreground p-2 text-muted-foreground">
+              در این تاریخ پروازی وجود ندارد
+            </div>
+          ) : (
             <FlightList
               flights={flights}
               addTransportation={addTransportation}

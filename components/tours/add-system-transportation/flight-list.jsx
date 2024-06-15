@@ -59,6 +59,7 @@ import {
   enFlightListSchema,
   flightListSchema,
 } from "@/lib/validation/tour/flight-list";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const FlightList = ({ flights, addTransportation }) => {
   const dictionary = useDictionary();
@@ -105,6 +106,7 @@ const FlightList = ({ flights, addTransportation }) => {
 
     await addTransportation(newValues);
   };
+
   return (
     <div className="w-full rounded-lg border border-muted-foreground p-2 text-muted-foreground">
       <Form {...form}>
@@ -184,6 +186,7 @@ const FlightList = ({ flights, addTransportation }) => {
                 <FormLabel className="mt-5">انتخاب پرواز : </FormLabel>
                 <FormControl>
                   <RadioGroup
+                    dir="rtl"
                     onValueChange={(e) => {
                       console.log("e", e);
 
@@ -198,41 +201,61 @@ const FlightList = ({ flights, addTransportation }) => {
                       field.onChange(currentFlight);
                     }}
                     defaultValue={field.value}
-                    className="flex w-full flex-col items-end gap-6"
+                    className="flex w-full flex-col items-end gap-6 "
                   >
                     {flights.map((item, index) => (
-                      <FormItem key={index} className="flex items-center gap-3">
-                        <FormLabel className="mt-1 font-normal">
-                          <div className="mt-1 flex w-max flex-row-reverse flex-nowrap gap-4 justify-self-end overflow-y-hidden border-b text-sm">
-                            <div className="flex flex-col gap-2">
-                              <span>شماره پرواز</span>
-                              <span>{item.number_flight}</span>
-                            </div>
-                            <div className="flex flex-col gap-2">
-                              <span>قیمت</span>
-                              <span>
-                                {persianPriceFormat(item.price_final)} ریال
-                              </span>
-                            </div>
-                            <div className="flex flex-col gap-2">
-                              <span>ایرلاین</span>
-                              <span>{item.airline}</span>
-                            </div>
-                            <div className="flex flex-col gap-2">
-                              <span>تاریخ حرکت</span>
-                              <span>
-                                {farsiNumber(
-                                  jaliliDateHour(
-                                    `${item.date_flight} ${item.time_flight}`,
-                                  ),
-                                )}
-                              </span>
-                            </div>
+                      <FormItem key={index} className="w-full">
+                        {" "}
+                        <ScrollArea
+                          dir={dictionary["language"] === "en" ? "ltr" : "rtl"}
+                          className="w-full flex-1 overflow-x-auto overflow-y-auto"
+                        >
+                          <div className="flex w-full flex-wrap items-center gap-3">
+                            <FormControl>
+                              <RadioGroupItem value={item.number_flight} />
+                            </FormControl>
+                            <FormLabel className="mt-1 w-full font-normal">
+                              <div className="mt-1 flex min-w-full flex-nowrap gap-4 justify-self-end border-b text-sm">
+                                <div className="flex flex-col gap-2">
+                                  <span>شماره پرواز</span>
+                                  <span>{item.number_flight}</span>
+                                </div>
+                                <div className="flex flex-col gap-2">
+                                  <span>قیمت</span>
+                                  <span>
+                                    {persianPriceFormat(item.price_final)} ریال
+                                  </span>
+                                </div>
+                                <div className="flex flex-col gap-2">
+                                  <span>ایرلاین</span>
+                                  <span>{item.airline}</span>
+                                </div>
+                                <div className="flex flex-col gap-2">
+                                  <span>تاریخ حرکت</span>
+                                  <span>
+                                    {farsiNumber(
+                                      jaliliDateHour(
+                                        `${item.date_flight} ${item.time_flight}`,
+                                      ),
+                                    )}
+                                  </span>
+                                </div>
+                                <div className="flex flex-col gap-2">
+                                  <span>ظرفیت</span>
+                                  <span>{item.capacity}</span>
+                                </div>
+                                <div className="flex flex-col gap-2">
+                                  <span>نوع پرواز</span>
+                                  <span>{item.type_flight}</span>
+                                </div>
+                                <div className="flex flex-col gap-2">
+                                  <span>نوع بلیط</span>
+                                  <span>{item.type}</span>
+                                </div>
+                              </div>
+                            </FormLabel>
                           </div>
-                        </FormLabel>
-                        <FormControl>
-                          <RadioGroupItem value={item.number_flight} />
-                        </FormControl>
+                        </ScrollArea>
                       </FormItem>
                     ))}
                   </RadioGroup>

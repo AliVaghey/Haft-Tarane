@@ -68,6 +68,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  .rmdp-input {
+    @apply !bg-white;
+  }
 }
 
 input::-webkit-outer-spin-button,
