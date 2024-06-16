@@ -39,13 +39,13 @@ const DetailsHotels = ({ data }) => {
                   <CarouselContent>
                     {imagesArray.map((img, index) => (
                       <CarouselItem key={index}>
-                        <div className="" key={index}>
+                        <div className=" h-96" key={index}>
                           <Image
                             src={img.url}
                             width={720}
                             height={480}
                             alt="hotel"
-                            className="w-full rounded-lg"
+                            className="mx-auto h-full rounded-lg object-contain"
                           />
                         </div>
                       </CarouselItem>
@@ -110,7 +110,7 @@ const DetailsHotels = ({ data }) => {
                   </span>
                   <div className="flex flex-col gap-0">
                     <span className="font-bold">قیمت اتاق دو تخته</span>
-                    <span>{persianPriceFormat(item.teo_bed)}</span>
+                    <span>{persianPriceFormat(item.two_bed)}</span>
                   </div>
                 </div>
                 <div className="flex flex-1 items-center gap-3">

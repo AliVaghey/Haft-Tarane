@@ -22,7 +22,7 @@ const SearchableSelect = ({
   keyValue,
 }) => {
   const [currentValue, setCurrentValue] = useState(defaultValue);
-  const [searchState, setSearchState] = useState(defaultValue);
+  const [searchState, setSearchState] = useState("");
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -54,7 +54,7 @@ const SearchableSelect = ({
     try {
       const res = await axios.get(`${url}`);
 
-      console.log("resselect", res.data);
+      console.log("res-select", res.data);
 
       setData(res.data.data ? res.data.data : res.data);
     } catch (error) {

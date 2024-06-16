@@ -42,6 +42,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  persianPriceFormat,
+  removeChar,
+  separatePrice,
+} from "@/lib/persian-price-format";
+import { farsiNumber } from "@/lib/farsi-number";
 
 const AddHotelPackage = ({ tour_id }) => {
   const dictionary = useDictionary();
@@ -79,8 +85,6 @@ const AddHotelPackage = ({ tour_id }) => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("values", values);
-
     const {
       hotel_id,
       room_type,
@@ -95,12 +99,12 @@ const AddHotelPackage = ({ tour_id }) => {
     const encodedFormData = querystring.stringify({
       hotel_id,
       room_type,
-      one_bed,
-      two_bed,
-      plus_one,
-      cld_6,
-      cld_2,
-      baby,
+      one_bed: removeChar(",", one_bed),
+      two_bed: removeChar(",", two_bed),
+      plus_one: removeChar(",", plus_one),
+      cld_6: removeChar(",", cld_6),
+      cld_2: removeChar(",", cld_2),
+      baby: removeChar(",", baby),
     });
 
     await CSRFToken();
@@ -214,11 +218,12 @@ const AddHotelPackage = ({ tour_id }) => {
                         <FormLabel>هزینه اتاق یک تخته</FormLabel>
                         <FormControl>
                           <Input
-                            type="number"
+                            // type="number"
                             className=""
                             autoComplete="off"
                             placeholder="قیمت را وارد نمایید"
                             {...field}
+                            value={separatePrice(getValues("one_bed"))}
                           />
                         </FormControl>
                         <FormMessage />
@@ -233,11 +238,12 @@ const AddHotelPackage = ({ tour_id }) => {
                         <FormLabel>هزینه اتاق دو تخته</FormLabel>
                         <FormControl>
                           <Input
-                            type="number"
+                            // type="number"
                             className=""
                             autoComplete="off"
                             placeholder="قیمت را وارد نمایید"
                             {...field}
+                            value={separatePrice(getValues("two_bed"))}
                           />
                         </FormControl>
                         <FormMessage />
@@ -252,11 +258,12 @@ const AddHotelPackage = ({ tour_id }) => {
                         <FormLabel>هزینه تخت اضافه</FormLabel>
                         <FormControl>
                           <Input
-                            type="number"
+                            // type="number"
                             className=""
                             autoComplete="off"
                             placeholder="قیمت را وارد نمایید"
                             {...field}
+                            value={separatePrice(getValues("plus_one"))}
                           />
                         </FormControl>
                         <FormMessage />
@@ -271,11 +278,12 @@ const AddHotelPackage = ({ tour_id }) => {
                         <FormLabel>هزینه برای کودک ۶ تا ۱۲ سال</FormLabel>
                         <FormControl>
                           <Input
-                            type="number"
+                            // type="number"
                             className=""
                             autoComplete="off"
                             placeholder="قیمت را وارد نمایید"
                             {...field}
+                            value={separatePrice(getValues("cld_6"))}
                           />
                         </FormControl>
                         <FormMessage />
@@ -290,11 +298,12 @@ const AddHotelPackage = ({ tour_id }) => {
                         <FormLabel>هزینه برای کودک ۲ تا ۶ سال</FormLabel>
                         <FormControl>
                           <Input
-                            type="number"
+                            // type="number"
                             className=""
                             autoComplete="off"
                             placeholder="قیمت را وارد نمایید"
                             {...field}
+                            value={separatePrice(getValues("cld_2"))}
                           />
                         </FormControl>
                         <FormMessage />
@@ -309,11 +318,12 @@ const AddHotelPackage = ({ tour_id }) => {
                         <FormLabel>هزینه نوزاد</FormLabel>
                         <FormControl>
                           <Input
-                            type="number"
+                            // type="number"
                             className=""
                             autoComplete="off"
                             placeholder="قیمت را وارد نمایید"
                             {...field}
+                            value={separatePrice(getValues("baby"))}
                           />
                         </FormControl>
                         <FormMessage />

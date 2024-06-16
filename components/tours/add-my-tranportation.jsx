@@ -211,7 +211,7 @@ const AddMyTransportation = ({ tour_id }) => {
                         <FormLabel>مدت زمان سفر</FormLabel>
                         <FormControl>
                           <Input
-                            type="number"
+                            // type="number"
                             className=""
                             autoComplete="off"
                             placeholder="بر اساس ساعت"

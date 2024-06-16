@@ -1,5 +1,5 @@
 import { chita } from "@/constants/images";
-import { Calendar, MapPin } from "lucide-react";
+import { Bus, Calendar, MapPin } from "lucide-react";
 import Image from "next/image";
 import { Separator } from "../ui/separator";
 import { persianPriceFormat } from "@/lib/persian-price-format";
@@ -12,27 +12,36 @@ import { farsiNumber } from "@/lib/farsi-number";
 const TourCard = ({ data }) => {
   return (
     <div className="rounded-lg bg-yellow-light shadow-lg">
-      <div className="flex h-full gap-5">
-        <div>
+      <div className="flex h-full gap-5 p-1 px-2">
+        <div className="my-auto ">
           <Image
             src={data.costs.length > 0 ? data.costs[0].hotel.photo : chita}
             width={360}
             height={360}
-            className="h-full w-52 rounded-r-lg object-cover object-center"
+            className=" my-auto max-h-48 w-60 rounded-lg rounded-r-lg object-cover"
             alt="hotel"
           />
         </div>
 
         <div className="flex flex-col gap-2 p-4 text-sm text-muted-foreground">
-          <h1 className="text-base font-bold">{data.agency_name}</h1>
+          <h1 className="text-base font-bold">مجری تور : {data.agency_name}</h1>
           <h1 className="flex items-center gap-1 text-base font-bold">
-            <span className="font-normal">عنوان تور:</span>
+            <span className="font-normal">عنوان تور :</span>
             <span>{data.title}</span>
           </h1>
 
           <div className="flex gap-2">
             <MapPin size={18} strokeWidth={1.5} />
-            <span>{data.costs.length > 0 && data.costs[0].hotel.address}</span>
+            <span>
+              نام هتل : {data.costs.length > 0 && data.costs[0].hotel.name}
+            </span>
+          </div>
+
+          <div className="flex gap-2">
+            <MapPin size={18} strokeWidth={1.5} />
+            <span>
+              آدرس هتل : {data.costs.length > 0 && data.costs[0].hotel.address}
+            </span>
           </div>
 
           <div className="flex gap-2">
@@ -47,7 +56,7 @@ const TourCard = ({ data }) => {
           </div>
 
           <div className="flex gap-2">
-            <Calendar size={18} strokeWidth={1.5} />
+            <Bus size={18} strokeWidth={1.5} />
 
             <span>
               از {data.origin} به {data.destination}

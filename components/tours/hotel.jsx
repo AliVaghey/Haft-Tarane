@@ -15,6 +15,7 @@ const Hotel = ({ data }) => {
   return (
     <div className="">
       <div className="flex flex-col gap-5">
+        <AddHotelPackage tour_id={data.tour_id} />
         {costs.map((item, index) => (
           <HotelCosts
             key={item.id}
@@ -35,7 +36,7 @@ const Hotel = ({ data }) => {
               بعدی
             </Button>
           </Link>
-          <AddHotelPackage tour_id={data.tour_id} />
+          {/* <AddHotelPackage tour_id={data.tour_id} /> */}
         </div>
       </div>
     </div>

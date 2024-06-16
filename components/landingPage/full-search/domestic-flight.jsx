@@ -152,7 +152,7 @@ const DomesticFlight = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="flex w-full flex-col gap-2 pl-0 lg:flex-row lg:pl-2"
         >
-          <div className="flex h-full w-full flex-col gap-4 px-4 py-6 lg:flex-row lg:gap-3">
+          <div className="flex h-full w-full flex-col-reverse gap-4 px-4 py-6 lg:flex-row lg:gap-3">
             <Popover>
               <PopoverTrigger asChild>
                 <div className="flex flex-1 flex-col gap-1">

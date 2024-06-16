@@ -137,6 +137,18 @@ const DetailsBasicInformation = ({ data }) => {
           </div>
         </div>
       </div>
+
+      <div className="flex w-full items-center">
+        <div className="flex flex-1 items-center gap-3">
+          <span className="rounded-lg bg-blue-400 p-3 text-white">
+            <Plane strokeWidth={1.5} size={18} />
+          </span>
+          <div className="flex flex-col gap-0">
+            <span className="font-bold">نام پشتیبان</span>
+            <span>{data.support}</span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

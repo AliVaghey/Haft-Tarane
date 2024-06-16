@@ -95,6 +95,7 @@ const BasicInformationForm = ({ data }) => {
           destination: data.destination,
           staying_nights: data.staying_nights,
           transportation_type: data.transportation_type,
+          support: data.support ? data.support.id : "",
         }
       : {
           title: "",
@@ -109,6 +110,7 @@ const BasicInformationForm = ({ data }) => {
           destination: "",
           staying_nights: "",
           transportation_type: "",
+          support: "",
         },
     mode: "onSubmit",
   });
@@ -124,7 +126,7 @@ const BasicInformationForm = ({ data }) => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("valuesssssss", `{${values.tour_styles.join(",")}}`);
+    console.log("valuesssssss", values);
     const {
       title,
       trip_type,
@@ -138,6 +140,7 @@ const BasicInformationForm = ({ data }) => {
       destination,
       staying_nights,
       transportation_type,
+      support,
     } = values;
 
     await CSRFToken();
@@ -155,6 +158,7 @@ const BasicInformationForm = ({ data }) => {
       destination,
       staying_nights,
       transportation_type,
+      support,
     });
 
     if (data) {
@@ -256,6 +260,29 @@ const BasicInformationForm = ({ data }) => {
                     api={"/api/cities"}
                     query="name"
                     placeholder={"مقصد"}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={control}
+            name="support"
+            render={({ field }) => (
+              <FormItem className="col-span-3 text-right lg:col-span-1">
+                <FormLabel>نام پشتیبان</FormLabel>
+                <FormControl>
+                  <SearchableSelect
+                    changeValue={(value) => {
+                      field.onChange(value);
+                    }}
+                    defaultValue={getValues("support")}
+                    api={"/api/agency/supports"}
+                    query="name"
+                    keyValue="id"
+                    placeholder={"نام پشتیبان"}
                   />
                 </FormControl>
                 <FormMessage />
