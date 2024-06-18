@@ -90,6 +90,10 @@ export const routes = {
         root: "/superadmin/options/tour-styles",
         add: "/superadmin/options/tour-styles/add",
       },
+      certificates: {
+        root: "/superadmin/options/certificates",
+        add: "/superadmin/options/certificates/add",
+      },
     },
   },
 

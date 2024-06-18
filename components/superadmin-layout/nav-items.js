@@ -315,6 +315,13 @@ export const navItems = [
           <Cog size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
+      {
+        title: "مدارک همراه",
+        href: routes.superadmin.options.certificates.root,
+        icon: (size, strokeWidth) => (
+          <Cog size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
     ],
   },
 ];

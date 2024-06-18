@@ -31,6 +31,7 @@ import {
 import { useTour } from "@/hooks/use-tour";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import ChipSearchableSelect from "../ui/chip-searchable-select";
 
 const Document = ({ data }) => {
   const tourHook = useTour();
@@ -142,7 +143,7 @@ const Document = ({ data }) => {
               <FormItem className="col-span-3 lg:col-span-1">
                 <FormLabel>مدارک همراه</FormLabel>
                 <FormControl>
-                  <ChipInput
+                  {/* <ChipInput
                     initialData={getValues("certificates")}
                     placeholder="تایپ کنید..."
                     onChange={(data) => {
@@ -150,6 +151,18 @@ const Document = ({ data }) => {
                       setValue("certificates", data, {
                         shouldValidate: true,
                       });
+                    }}
+                  /> */}
+                  <ChipSearchableSelect
+                    api={`/api/options?category=certificates`}
+                    initialData={getValues("certificates")}
+                    placeholder="امکانات"
+                    query="name"
+                    keyValue="value"
+                    searchable={false}
+                    onChange={(data) => {
+                      console.log("certificates", data);
+                      setValue("certificates", data, { shouldValidate: true });
                     }}
                   />
                 </FormControl>
