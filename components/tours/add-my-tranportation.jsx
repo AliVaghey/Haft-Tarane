@@ -54,7 +54,8 @@ const AddMyTransportation = ({ tour_id }) => {
   const tourHook = useTour();
 
   const [isOpen, setIsOpen] = useState(false);
-  const [deviceTypes, setDeviceTypes] = useState([]);
+  const [deviceTypes, setDeviceTypes] = useState(["هواپیما مسافربری"]);
+  const [device, setDevice] = useState("airplain");
 
   const mount = useMount();
 
@@ -67,7 +68,7 @@ const AddMyTransportation = ({ tour_id }) => {
         : entransportationSchema,
     ),
     defaultValues: {
-      type: "",
+      type: "هواپیما",
       duration: "",
       company_name: "",
       transportation_type: "",
@@ -176,13 +177,24 @@ const AddMyTransportation = ({ tour_id }) => {
                         <FormLabel>نوع حمل و نقل</FormLabel>
                         <Select
                           onValueChange={(e) => {
-                            e === "اتوبوس" && setDeviceTypes(["معمولی", "vip"]);
-                            e === "هواپیما" &&
+                            if (e === "اتوبوس") {
+                              setDeviceTypes(["معمولی", "vip"]);
+                              setDevice("bus");
+                            }
+                            if (e === "هواپیما") {
                               setDeviceTypes(["هواپیما مسافربری"]);
-                            e === "قطار" &&
+                              setDevice("airplain");
+                            }
+                            if (e === "قطار") {
                               setDeviceTypes(["۴ تخته", "۶ تخته", "اتوبوسی"]);
+                              setDevice("train");
+                            }
+
                             field.onChange(e);
                             setValue("transportation_type", "", {
+                              shouldValidate: true,
+                            });
+                            setValue("company_name", "", {
                               shouldValidate: true,
                             });
                           }}
@@ -194,8 +206,8 @@ const AddMyTransportation = ({ tour_id }) => {
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            <SelectItem value="قطار">قطار</SelectItem>
                             <SelectItem value="هواپیما">هواپیما</SelectItem>
+                            <SelectItem value="قطار">قطار</SelectItem>
                             <SelectItem value="اتوبوس">اتوبوس</SelectItem>
                           </SelectContent>
                         </Select>
@@ -420,14 +432,65 @@ const AddMyTransportation = ({ tour_id }) => {
                     render={({ field }) => (
                       <FormItem className="col-span-3 lg:col-span-1">
                         <FormLabel>نام شرکت مسافربری</FormLabel>
-                        <FormControl>
-                          <Input
-                            className=""
-                            autoComplete="off"
-                            placeholder="حداقل ۲ کاراکتر"
-                            {...field}
+
+                        {device === "airplain" && (
+                          <FormControl>
+                            <SearchableSelect
+                              changeValue={(value) => {
+                                field.onChange(value);
+                              }}
+                              defaultValue={getValues("company_name")}
+                              api={`/api/options?category=airplain`}
+                              // query="name"
+                              keyValue="value"
+                              searchable={false}
+                              placeholder={"نام شرکت مسافربری"}
+                            />
+                          </FormControl>
+                        )}
+                        {device === "train" && (
+                          <FormControl>
+                            <SearchableSelect
+                              changeValue={(value) => {
+                                field.onChange(value);
+                              }}
+                              defaultValue={getValues("company_name")}
+                              api={`/api/options?category=train`}
+                              // query="name"
+                              keyValue="value"
+                              searchable={false}
+                              placeholder={"نام شرکت مسافربری"}
+                            />
+                          </FormControl>
+                        )}
+                        {device === "bus" && (
+                          <FormControl>
+                            <SearchableSelect
+                              changeValue={(value) => {
+                                console.log("value", value);
+                                field.onChange(value);
+                              }}
+                              defaultValue={getValues("company_name")}
+                              api={`/api/options?category=bus`}
+                              // query="name"
+                              keyValue="value"
+                              searchable={false}
+                              placeholder={"نام شرکت مسافربری"}
+                            />
+                          </FormControl>
+                        )}
+                        {/* <FormControl>
+                          <SearchableSelect
+                            changeValue={(value) => {
+                              field.onChange(value);
+                            }}
+                            defaultValue={getValues("company_name")}
+                            api={`/api/options?category=${device === "airplain" ? "airplain" : device === "train" ? "train" : "bus"}`}
+                            // query="name"
+                            searchable={false}
+                            placeholder={"نام شرکت مسافربری"}
                           />
-                        </FormControl>
+                        </FormControl> */}
                         <FormMessage />
                       </FormItem>
                     )}
@@ -457,6 +520,7 @@ const AddMyTransportation = ({ tour_id }) => {
                             ))}
                           </SelectContent>
                         </Select>
+
                         <FormMessage />
                       </FormItem>
                     )}

@@ -29,7 +29,7 @@ const TourPage = ({
 
     const url = () => {
       if (!origin && !destination && !start && !end) {
-        return `/api/tours?all=true&page=${page || 1}`;
+        return `/api/tours/nature?all=true&page=${page || 1}`;
       } else {
         return `/api/tours/nature?page=${page || 1}&origin=${origin}&destination=${destination}&start=${start}&end=${end}`;
       }
