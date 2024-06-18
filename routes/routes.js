@@ -94,6 +94,10 @@ export const routes = {
         root: "/superadmin/options/certificates",
         add: "/superadmin/options/certificates/add",
       },
+      "free-services": {
+        root: "/superadmin/options/free-services",
+        add: "/superadmin/options/free-services/add",
+      },
     },
   },
 

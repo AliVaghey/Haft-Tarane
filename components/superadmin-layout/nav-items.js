@@ -322,6 +322,13 @@ export const navItems = [
           <Cog size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
+      {
+        title: "سرویس های رایگان",
+        href: routes.superadmin.options["free-services"].root,
+        icon: (size, strokeWidth) => (
+          <Cog size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
     ],
   },
 ];

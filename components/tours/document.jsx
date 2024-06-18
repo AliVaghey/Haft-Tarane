@@ -120,7 +120,7 @@ const Document = ({ data }) => {
               <FormItem className="col-span-3 lg:col-span-1">
                 <FormLabel>سرویس های رایگان</FormLabel>
                 <FormControl>
-                  <ChipInput
+                  {/* <ChipInput
                     initialData={getValues("free_services")}
                     placeholder="تایپ کنید..."
                     onChange={(data) => {
@@ -128,6 +128,18 @@ const Document = ({ data }) => {
                       setValue("free_services", data, {
                         shouldValidate: true,
                       });
+                    }}
+                  /> */}
+                  <ChipSearchableSelect
+                    api={`/api/options?category=free_services`}
+                    initialData={getValues("free_services")}
+                    placeholder="امکانات"
+                    query="name"
+                    keyValue="value"
+                    searchable={false}
+                    onChange={(data) => {
+                      console.log("free_services", data);
+                      setValue("free_services", data, { shouldValidate: true });
                     }}
                   />
                 </FormControl>
