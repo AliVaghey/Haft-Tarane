@@ -22,6 +22,7 @@ const Transportation = ({ data }) => {
               data={item}
               number={index + 1}
               lenght={data.transportations.length}
+              staying_nights={data.staying_nights}
             />
           ) : (
             <TransportationCardSystem
@@ -29,6 +30,7 @@ const Transportation = ({ data }) => {
               data={item}
               number={index + 1}
               lenght={data.transportations.length}
+              staying_nights={data.staying_nights}
             />
           ),
         )}

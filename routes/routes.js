@@ -85,6 +85,12 @@ export const routes = {
         root: "/superadmin/transportation-api/flights",
       },
     },
+    options: {
+      "tour-styles": {
+        root: "/superadmin/options/tour-styles",
+        add: "/superadmin/options/tour-styles/add",
+      },
+    },
   },
 
   admin: {

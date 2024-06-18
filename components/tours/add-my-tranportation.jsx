@@ -73,9 +73,9 @@ const AddMyTransportation = ({ tour_id }) => {
       transportation_type: "",
       origin: "",
       destination: "",
-      start: new Date(),
-      end: new Date(),
-      price: "",
+      // start: new Date(),
+      // end: new Date(),
+      // price: "",
     },
     mode: "onSubmit",
   });
@@ -98,24 +98,22 @@ const AddMyTransportation = ({ tour_id }) => {
       transportation_type,
       origin,
       destination,
-      start,
-      end,
-      price,
+      // start,
+      // end,
+      // price,
     } = values;
 
     const encodedFormData = querystring.stringify({
-      start: DateForm(start),
-      end: DateForm(end),
       type,
       duration,
       company_name,
       transportation_type,
       origin,
       destination,
-      price,
+      // start: DateForm(start),
+      // end: DateForm(end),
+      // price,
     });
-
-    console.log("DateForm(start)", DateForm(start));
 
     await CSRFToken();
 
@@ -267,7 +265,7 @@ const AddMyTransportation = ({ tour_id }) => {
                     )}
                   />
 
-                  <FormField
+                  {/* <FormField
                     control={control}
                     name="start"
                     render={({ field }) => (
@@ -370,7 +368,7 @@ const AddMyTransportation = ({ tour_id }) => {
                         <FormMessage />
                       </FormItem>
                     )}
-                  />
+                  /> */}
 
                   <FormField
                     control={control}

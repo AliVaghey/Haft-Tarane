@@ -95,7 +95,7 @@ const BasicInformationForm = ({ data }) => {
           destination: data.destination,
           staying_nights: data.staying_nights,
           transportation_type: data.transportation_type,
-          support: data.support ? data.support.id : "",
+          support: data.support ? String(data.support.id) : "",
         }
       : {
           title: "",
@@ -160,6 +160,8 @@ const BasicInformationForm = ({ data }) => {
       transportation_type,
       support,
     });
+
+    console.log("encodedFormData", encodedFormData);
 
     if (data) {
       await axios

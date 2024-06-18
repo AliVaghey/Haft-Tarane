@@ -19,7 +19,7 @@ const DetailsBasicInformation = ({ data }) => {
             <Plane strokeWidth={1.5} size={18} />
           </span>
           <div className="flex flex-col gap-0">
-            <span className="font-bold">سبک تور</span>
+            <span className="font-bold">نوع تور</span>
             <span>{data.trip_type}</span>
           </div>
         </div>
@@ -51,7 +51,7 @@ const DetailsBasicInformation = ({ data }) => {
           </span>
           <div className="flex flex-col gap-0">
             <span className="font-bold">نام پشتیبان</span>
-            <span>{"علی محمدی"}</span>
+            <span>{data.support?.name}</span>
           </div>
         </div>
         <div className="flex flex-1 items-center gap-3">
@@ -61,9 +61,9 @@ const DetailsBasicInformation = ({ data }) => {
           <div className="flex flex-col gap-0">
             <span className="font-bold">نوع حمل و نقل</span>
             <span>
-              {/* {(data.transportations &&
-                data.transportations[0].transportation_type) ||
-                ""} */}
+              {data.transportation_type === "system"
+                ? "سیستمی"
+                : "حمل و نقل من"}
             </span>
           </div>
         </div>
@@ -134,18 +134,6 @@ const DetailsBasicInformation = ({ data }) => {
           <div className="flex flex-col gap-0">
             <span className="font-bold">نام آژانس</span>
             <span>{data.agency_name}</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="flex w-full items-center">
-        <div className="flex flex-1 items-center gap-3">
-          <span className="rounded-lg bg-blue-400 p-3 text-white">
-            <Plane strokeWidth={1.5} size={18} />
-          </span>
-          <div className="flex flex-col gap-0">
-            <span className="font-bold">نام پشتیبان</span>
-            <span>{data.support}</span>
           </div>
         </div>
       </div>

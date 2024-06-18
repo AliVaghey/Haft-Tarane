@@ -20,8 +20,8 @@ import { Pyramid } from "lucide-react";
 import { MapPin } from "lucide-react";
 import { persianPriceFormat } from "@/lib/persian-price-format";
 
-const TransportationCard = ({ data, number, lenght }) => {
-  console.log("lenght", lenght);
+const TransportationCard = ({ data, number, lenght, staying_nights }) => {
+  console.log("dataqwqwq", data);
   const tourHook = useTour();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -183,7 +183,9 @@ const TransportationCard = ({ data, number, lenght }) => {
                   {data.destination}
                 </span>
               </span>
-              {/* <span className="text-base">۳ روز</span> */}
+              <span className="text-base">
+                {farsiNumber(staying_nights)} شب
+              </span>
             </div>
           </div>
         </div>

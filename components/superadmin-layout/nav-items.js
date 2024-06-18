@@ -295,4 +295,26 @@ export const navItems = [
       },
     ],
   },
+
+  {
+    title: "مدیریت گزینه ها",
+    type: "text",
+  },
+
+  {
+    title: "گزینه ها",
+    type: "subMenu",
+    icon: (size, strokeWidth) => (
+      <Cog size={size || 18} strokeWidth={strokeWidth || 1.5} />
+    ),
+    subMenu: [
+      {
+        title: "مدل های تور",
+        href: routes.superadmin.options["tour-styles"].root,
+        icon: (size, strokeWidth) => (
+          <Cog size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+    ],
+  },
 ];
