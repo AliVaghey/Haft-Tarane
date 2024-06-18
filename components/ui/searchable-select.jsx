@@ -20,6 +20,7 @@ const SearchableSelect = ({
   query,
   defaultValue,
   keyValue,
+  searchable,
 }) => {
   const [currentValue, setCurrentValue] = useState(defaultValue);
   const [searchState, setSearchState] = useState("");
@@ -86,7 +87,7 @@ const SearchableSelect = ({
       {/* </FormControl> */}
 
       <SelectContent dir="rtl">
-        {query && (
+        {query && searchable && (
           <div>
             <Input
               value={searchState}
@@ -115,7 +116,7 @@ const SearchableSelect = ({
                 value={keyValue ? item[keyValue] : item.name}
                 key={item.id}
               >
-                {item.name || item.title}
+                {item.name || item.title || item.value}
               </SelectItem>
             );
           })

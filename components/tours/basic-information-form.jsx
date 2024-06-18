@@ -40,6 +40,7 @@ import { useTour } from "@/hooks/use-tour";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import ChipSelect from "../ui/chip-select";
+import ChipSearchableSelect from "../ui/chip-searchable-select";
 
 const tourStyles = [
   {
@@ -329,6 +330,7 @@ const BasicInformationForm = ({ data }) => {
                   <SelectContent>
                     <SelectItem value="داخلی">داخلی</SelectItem>
                     <SelectItem value="خارجی">خارجی</SelectItem>
+                    <SelectItem value="طبیعت گردی">طبیعت گردی</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -476,11 +478,23 @@ const BasicInformationForm = ({ data }) => {
               <FormItem className="col-span-3 lg:col-span-1">
                 <FormLabel>مدل های تور</FormLabel>
                 <FormControl>
-                  <ChipSelect
+                  {/* <ChipSelect
                     initialData={getValues("tour_styles")}
                     options={tourStyles}
                     onChange={(data) => {
                       console.log("data", data);
+                      setValue("tour_styles", data, { shouldValidate: true });
+                    }}
+                  /> */}
+                  <ChipSearchableSelect
+                    api={`/api/options?category=tour_styles`}
+                    initialData={getValues("tour_styles")}
+                    placeholder="امکانات"
+                    query="name"
+                    keyValue="value"
+                    searchable={false}
+                    onChange={(data) => {
+                      console.log("tour_styles", data);
                       setValue("tour_styles", data, { shouldValidate: true });
                     }}
                   />

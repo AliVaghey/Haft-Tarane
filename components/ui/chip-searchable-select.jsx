@@ -1,17 +1,20 @@
 "use client";
 
+import { Input } from "./input";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import SearchableSelect from "./searchable-select";
 
-const ChipSelect = ({ initialData, onChange, options }) => {
+const ChipSearchableSelect = ({
+  initialData,
+  onChange,
+  placeholder,
+  searchable,
+  api,
+  query,
+  keyValue,
+}) => {
   const [data, setData] = useState(initialData);
 
   return (
@@ -28,7 +31,9 @@ const ChipSelect = ({ initialData, onChange, options }) => {
               key={index}
               className="flex w-fit items-center gap-1 rounded-sm bg-muted px-2 py-1"
             >
-              <span className="text-sm text-muted-foreground">{item}</span>
+              <span className="text-sm text-muted-foreground">
+                {item.name || item.title || item.value || item}
+              </span>
               <X
                 size={13}
                 className="cursor-pointer text-muted-foreground"
@@ -44,8 +49,8 @@ const ChipSelect = ({ initialData, onChange, options }) => {
           ))}
       </div>
       <div className="flex gap-2">
-        <Select
-          onValueChange={(value) => {
+        <SearchableSelect
+          changeValue={(value) => {
             const findIndex = data.findIndex((item) => item === value);
             if (findIndex === -1) {
               const newData = [...data, value];
@@ -53,21 +58,15 @@ const ChipSelect = ({ initialData, onChange, options }) => {
               onChange(newData);
             }
           }}
-        >
-          <SelectTrigger>
-            <SelectValue placeholder="انتخاب کنید" />
-          </SelectTrigger>
-          <SelectContent>
-            {options.map((item) => (
-              <SelectItem key={item.id} value={item.id}>
-                {item.value}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+          api={api}
+          query={query}
+          placeholder={"جستجو"}
+          keyValue={keyValue}
+          searchable={searchable}
+        />
       </div>
     </div>
   );
 };
 
-export default ChipSelect;
+export default ChipSearchableSelect;
