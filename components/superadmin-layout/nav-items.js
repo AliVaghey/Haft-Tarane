@@ -3,9 +3,14 @@ import {
   AlertCircle,
   AlertCircleIcon,
   Building,
+  Bus,
   Cog,
   Percent,
   PlusCircle,
+  RotateCcwIcon,
+  Route,
+  TicketCheck,
+  Train,
   User,
   User2,
 } from "lucide-react";
@@ -312,21 +317,57 @@ export const navItems = [
         title: "مدل های تور",
         href: routes.superadmin.options["tour-styles"].root,
         icon: (size, strokeWidth) => (
-          <Cog size={size || 18} strokeWidth={strokeWidth || 1.5} />
+          <Pyramid size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
       {
         title: "مدارک همراه",
         href: routes.superadmin.options.certificates.root,
         icon: (size, strokeWidth) => (
-          <Cog size={size || 18} strokeWidth={strokeWidth || 1.5} />
+          <TicketCheck size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
       {
         title: "سرویس های رایگان",
         href: routes.superadmin.options["free-services"].root,
         icon: (size, strokeWidth) => (
-          <Cog size={size || 18} strokeWidth={strokeWidth || 1.5} />
+          <RotateCcwIcon size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+    ],
+  },
+
+  {
+    title: "مدیریت شرکت های مسافربری",
+    type: "text",
+  },
+
+  {
+    title: "شرکت های مسافربری",
+    type: "subMenu",
+    icon: (size, strokeWidth) => (
+      <Route size={size || 18} strokeWidth={strokeWidth || 1.5} />
+    ),
+    subMenu: [
+      {
+        title: "شرکت های هواپیمایی",
+        href: routes.superadmin["transportation-options"].airplane.root,
+        icon: (size, strokeWidth) => (
+          <Plane size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
+        title: "شرکت های حمل و نقل ریلی",
+        href: routes.superadmin["transportation-options"].train.root,
+        icon: (size, strokeWidth) => (
+          <Train size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
+        title: "شرکت های حمل و نقل جاده ای",
+        href: routes.superadmin["transportation-options"].bus.root,
+        icon: (size, strokeWidth) => (
+          <Bus size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
     ],

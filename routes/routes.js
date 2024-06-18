@@ -14,6 +14,10 @@ export const routes = {
     root: "/tours",
     details: (id) => `/tours/${id}`,
   },
+  "nature-tours": {
+    root: "/nature-tours",
+    details: (id) => `/nature-tours/${id}`,
+  },
 
   flights: {
     root: "/flights",
@@ -97,6 +101,20 @@ export const routes = {
       "free-services": {
         root: "/superadmin/options/free-services",
         add: "/superadmin/options/free-services/add",
+      },
+    },
+    "transportation-options": {
+      airplane: {
+        root: "/superadmin/transportation-options/airplane",
+        add: "/superadmin/transportation-options/airplane/add",
+      },
+      train: {
+        root: "/superadmin/transportation-options/train",
+        add: "/superadmin/transportation-options/train/add",
+      },
+      bus: {
+        root: "/superadmin/transportation-options/bus",
+        add: "/superadmin/transportation-options/bus/add",
       },
     },
   },

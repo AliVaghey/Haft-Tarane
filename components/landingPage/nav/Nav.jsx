@@ -102,7 +102,7 @@ export default function Nav() {
                 <Link href="/hotels">
                   <p className="text-xl">هتل</p>
                 </Link>
-                <Link href="/nature">
+                <Link href="/nature-tours">
                   <p className="text-xl">طبیعت گردی</p>
                 </Link>
               </>
@@ -183,7 +183,7 @@ export default function Nav() {
           <Link href="/hotels">
             <p className="text-xl">هتل</p>
           </Link>
-          <Link href="/nature">
+          <Link href="/nature-tours">
             <p className="text-xl">طبیعت گردی</p>
           </Link>
           <Link href="/about">

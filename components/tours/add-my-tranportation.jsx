@@ -76,6 +76,8 @@ const AddMyTransportation = ({ tour_id }) => {
       // start: new Date(),
       // end: new Date(),
       // price: "",
+      start: "",
+      end: "",
     },
     mode: "onSubmit",
   });
@@ -98,8 +100,8 @@ const AddMyTransportation = ({ tour_id }) => {
       transportation_type,
       origin,
       destination,
-      // start,
-      // end,
+      start,
+      end,
       // price,
     } = values;
 
@@ -113,6 +115,8 @@ const AddMyTransportation = ({ tour_id }) => {
       // start: DateForm(start),
       // end: DateForm(end),
       // price,
+      start,
+      end,
     });
 
     await CSRFToken();
@@ -265,6 +269,46 @@ const AddMyTransportation = ({ tour_id }) => {
                     )}
                   />
 
+                  <FormField
+                    control={control}
+                    name="start"
+                    render={({ field }) => (
+                      <FormItem className="col-span-3 lg:col-span-1">
+                        <FormLabel>ساعت حرکت</FormLabel>
+                        <FormControl>
+                          <Input
+                            // type="number"
+                            className=""
+                            autoComplete="off"
+                            placeholder="بر اساس ساعت"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={control}
+                    name="end"
+                    render={({ field }) => (
+                      <FormItem className="col-span-3 lg:col-span-1">
+                        <FormLabel>ساعت رسیدن</FormLabel>
+                        <FormControl>
+                          <Input
+                            // type="number"
+                            className=""
+                            autoComplete="off"
+                            placeholder="بر اساس ساعت"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
                   {/* <FormField
                     control={control}
                     name="start"
@@ -349,9 +393,9 @@ const AddMyTransportation = ({ tour_id }) => {
                         <FormMessage />
                       </FormItem>
                     )}
-                  />
+                  /> */}
 
-                  <FormField
+                  {/*  <FormField
                     control={control}
                     name="price"
                     render={({ field }) => (
