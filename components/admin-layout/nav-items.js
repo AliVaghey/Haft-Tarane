@@ -1,5 +1,5 @@
 import { routes } from "@/routes/routes";
-import { Building, User, User2 } from "lucide-react";
+import { Building, Lock, User, User2 } from "lucide-react";
 import {
   Hotel,
   ClipboardList,
@@ -44,6 +44,13 @@ export const navItems = [
         href: routes.admin.profile["user-info"],
         icon: (size, strokeWidth) => (
           <User2 size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
+        title: "ویرایش رمز عبور",
+        href: routes.admin.profile["update-password"],
+        icon: (size, strokeWidth) => (
+          <Lock size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
     ],

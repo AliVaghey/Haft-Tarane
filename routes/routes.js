@@ -27,6 +27,7 @@ export const routes = {
     dashboard: "/superadmin/dashboard",
     profile: {
       "user-info": "/superadmin/profile/user-info",
+      "update-password": "/superadmin/profile/update-password",
     },
     cities: {
       root: "/superadmin/cities",
@@ -131,6 +132,7 @@ export const routes = {
     dashboard: "/admin/dashboard",
     profile: {
       "user-info": "/admin/profile/user-info",
+      "update-password": "/admin/profile/update-password",
     },
     // cities: {
     //   root: "/admin/cities",
@@ -179,6 +181,7 @@ export const routes = {
     profile: {
       "user-info": "/agency/profile/user-info",
       "agency-info": "/agency/profile/agency-info",
+      "update-password": "/agency/profile/update-password",
     },
     dashboard: "/agency/dashboard",
     "support-team": {
@@ -214,6 +217,7 @@ export const routes = {
     dashboard: "/user/dashboard",
     profile: {
       "user-info": "/user/profile/user-info",
+      "update-password": "/user/profile/update-password",
     },
   },
 };

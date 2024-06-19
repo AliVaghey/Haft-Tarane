@@ -13,6 +13,7 @@ import {
   Edit,
   User,
   User2,
+  Lock,
 } from "lucide-react";
 
 export const navItems = [
@@ -38,6 +39,13 @@ export const navItems = [
         href: routes.user.profile["user-info"],
         icon: (size, strokeWidth) => (
           <User2 size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
+        title: "ویرایش رمز عبور",
+        href: routes.user.profile["update-password"],
+        icon: (size, strokeWidth) => (
+          <Lock size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
     ],

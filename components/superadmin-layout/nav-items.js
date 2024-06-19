@@ -2,9 +2,9 @@ import { routes } from "@/routes/routes";
 import {
   AlertCircle,
   AlertCircleIcon,
-  Building,
   Bus,
   Cog,
+  Lock,
   Percent,
   PlusCircle,
   RotateCcwIcon,
@@ -59,6 +59,13 @@ export const navItems = [
         href: routes.superadmin.profile["user-info"],
         icon: (size, strokeWidth) => (
           <User2 size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
+        title: "ویرایش رمز عبور",
+        href: routes.superadmin.profile["update-password"],
+        icon: (size, strokeWidth) => (
+          <Lock size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
     ],
