@@ -68,7 +68,9 @@ const TourCard = ({ data }) => {
           <span>شروع قیمت از :</span>
           <span>{persianPriceFormat(data.min_cost)}</span>
           <Link href={routes["nature-tours"].details(data.id)}>
-            <Button>مشاهده جزئیات</Button>
+            <Button className="h-8 px-5 hover:bg-yellow-primary">
+              رزرو تور
+            </Button>
           </Link>
         </div>
       </div>

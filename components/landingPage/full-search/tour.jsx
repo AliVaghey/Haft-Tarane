@@ -11,16 +11,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-// import {
-//   Select,
-//   SelectContent,
-//   SelectGroup,
-//   SelectItem,
-//   SelectLabel,
-//   SelectTrigger,
-//   SelectValue,
-// } from "@/components/ui/select";
-// import SubmitButton from "@/components/submit-button";
 import SearchableSelect from "@/components/ui/searchable-select";
 import { Button } from "@/components/ui/button";
 import DatePicker from "react-multi-date-picker";
@@ -30,49 +20,12 @@ import persian_fa from "react-date-object/locales/persian_fa";
 import qs from "query-string";
 import { routes } from "@/routes/routes";
 import Image from "next/image";
-import { calendar, mapPin, user } from "@/constants/icons";
-// import {
-//   Popover,
-//   PopoverContent,
-//   PopoverTrigger,
-// } from "@/components/ui/popover";
-// import { useEffect, useState } from "react";
-// import { farsiNumber } from "@/lib/farsi-number";
+import { calendar, mapPin } from "@/constants/icons";
 import { baseDateForm } from "@/lib/date-form";
 
 const Tour = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
-
-  // const [totalPeople, setTotalPeople] = useState(1);
-  // const [peopleCount, setPeopleCount] = useState({
-  //   adult: 1,
-  //   child: 0,
-  //   baby: 0,
-  // });
-
-  // useEffect(() => {
-  //   const { adult, child, baby } = peopleCount;
-  //   setTotalPeople(adult + child + baby);
-  // }, [peopleCount]);
-
-  // const handlePeopleCount = (op, key) => {
-  //   if (key === "adult") {
-  //     if (baby >= adult && op < 0) {
-  //       setPeopleCount({
-  //         ...peopleCount,
-  //         [key]: peopleCount[key] + op,
-  //         baby: peopleCount["baby"] + op,
-  //       });
-  //     } else {
-  //       setPeopleCount({ ...peopleCount, [key]: peopleCount[key] + op });
-  //     }
-  //   } else {
-  //     setPeopleCount({ ...peopleCount, [key]: peopleCount[key] + op });
-  //   }
-  // };
-
-  // const { adult, child, baby } = peopleCount;
 
   const form = useForm({
     defaultValues: {
@@ -80,7 +33,6 @@ const Tour = () => {
       destination: "",
       start: null,
       end: null,
-      // flightClass: "all",
     },
     mode: "onSubmit",
   });
@@ -90,7 +42,6 @@ const Tour = () => {
     control,
     getValues,
     setValue,
-    reset,
     formState: { isSubmitting },
   } = form;
 
@@ -107,7 +58,7 @@ const Tour = () => {
       }
     }
 
-    const { start, end, origin, destination, flightClass } = values;
+    const { start, end, origin, destination } = values;
     const page = +searchParams.get("page") || 1;
 
     const current = qs.parse(searchParams.toString());
@@ -118,10 +69,6 @@ const Tour = () => {
       end: baseDateForm(end),
       origin,
       destination,
-      // flightClass,
-      // adult: adult === 0 ? null : adult,
-      // child: child === 0 ? null : child,
-      // baby: baby === 0 ? null : baby,
     };
 
     console.log("query", query);
@@ -153,169 +100,6 @@ const Tour = () => {
           className="flex w-full flex-col gap-2 pl-0 lg:flex-row lg:pl-2"
         >
           <div className="flex h-full w-full flex-col gap-4 px-4 py-6 lg:flex-row lg:gap-3">
-            {/* <Popover>
-              <PopoverTrigger asChild>
-                <div className="flex flex-1 flex-col gap-1">
-                  <div className="flex items-center justify-end gap-1">
-                    <span>
-                      <Image
-                        src={user}
-                        width={100}
-                        height={100}
-                        alt="icon"
-                        className="h-4 w-4"
-                      />
-                    </span>
-                    <span>تعداد مسافران</span>
-                  </div>
-                  <Button variant="outline" type="button">
-                    تعداد مسافران {farsiNumber(totalPeople)} نفر
-                  </Button>
-                </div>
-              </PopoverTrigger>
-              <PopoverContent asChild>
-                <div className="flex flex-col gap-5 px-5 py-5">
-                  <div className="flex items-center justify-between">
-                    <div className="flex flex-col gap-1">
-                      <span>بزرگسال</span>
-                      <span className="text-xs text-muted-foreground">
-                        بالای ۱۲ سال
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <Button
-                        disabled={adult + child >= 9}
-                        type="button"
-                        className="h-5 w-5 rounded-full p-3"
-                        onClick={() => handlePeopleCount(1, "adult")}
-                      >
-                        +
-                      </Button>
-                      <span>{farsiNumber(adult)}</span>
-                      <Button
-                        disabled={adult === 1}
-                        type="button"
-                        className="h-5 w-5 rounded-full p-3"
-                        onClick={() => handlePeopleCount(-1, "adult")}
-                      >
-                        -
-                      </Button>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <div className="flex flex-col gap-1">
-                      <span>کودک</span>
-                      <span className="text-xs text-muted-foreground">
-                        ۲ تا ۱۲ سال
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <Button
-                        disabled={adult + child >= 9}
-                        type="button"
-                        className="h-5 w-5 rounded-full p-3"
-                        onClick={() => handlePeopleCount(1, "child")}
-                      >
-                        +
-                      </Button>
-                      <span>{farsiNumber(child)}</span>
-                      <Button
-                        disabled={child <= 0}
-                        type="button"
-                        className="h-5 w-5 rounded-full p-3"
-                        onClick={() => handlePeopleCount(-1, "child")}
-                      >
-                        -
-                      </Button>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <div className="flex flex-col gap-1">
-                      <span>نوزاد</span>
-                      <span className="text-xs text-muted-foreground">
-                        زیر ۲ سال
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <Button
-                        disabled={baby >= adult}
-                        type="button"
-                        className="h-5 w-5 rounded-full p-3"
-                        onClick={() => handlePeopleCount(1, "baby")}
-                      >
-                        +
-                      </Button>
-                      <span>{farsiNumber(baby)}</span>
-                      <Button
-                        disabled={baby <= 0}
-                        type="button"
-                        className="h-5 w-5 rounded-full p-3"
-                        onClick={() => handlePeopleCount(-1, "baby")}
-                      >
-                        -
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </PopoverContent>
-            </Popover> */}
-
-            {/* <FormField
-              control={control}
-              name="flightClass"
-              render={({ field }) => (
-                <FormItem className="flex flex-1 flex-col gap-1">
-                  <FormLabel className="flex items-center justify-end gap-1">
-                    <span>
-                      <Image
-                        src={calendar}
-                        width={100}
-                        height={100}
-                        alt="icon"
-                        className="h-4 w-4"
-                      />
-                    </span>
-                    <span>کلاس پرواز</span>
-                  </FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="کلاس پرواز" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectGroup className="flex flex-row-reverse">
-                        <SelectItem
-                          value="all"
-                          className="flex cursor-pointer items-center justify-center gap-2 px-4 py-1 text-center text-sm"
-                        >
-                          همه کلاس ها
-                        </SelectItem>
-                        <SelectItem
-                          value="economy"
-                          className="flex cursor-pointer items-center justify-center gap-2 px-4 py-1 text-center text-sm"
-                        >
-                          اکونومی
-                        </SelectItem>
-                        <SelectItem
-                          value="business"
-                          className="flex cursor-pointer items-center justify-center gap-2 px-4 py-1 text-center text-sm"
-                        >
-                          بیزینس
-                        </SelectItem>
-                      </SelectGroup>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            /> */}
-
             <FormField
               control={control}
               name="end"
@@ -428,6 +212,7 @@ const Tour = () => {
                       api={"/api/cities"}
                       query="name"
                       placeholder={"مقصد"}
+                      searchable={true}
                     />
                   </FormControl>
                   <FormMessage />
@@ -461,6 +246,7 @@ const Tour = () => {
                       api={"/api/cities"}
                       query="name"
                       placeholder={"مبدا"}
+                      searchable={true}
                     />
                   </FormControl>
                   <FormMessage />

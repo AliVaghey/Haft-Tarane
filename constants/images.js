@@ -10,6 +10,9 @@ import defaultHotel from "@/public/defaults/default-hotel.jpg";
 import chita from "@/public/logo/chita.png";
 import airplain from "@/public/img/flightlanding.svg";
 import runningChita from "@/public/gifs/running-chita.gif";
+import defaultAirport from "@/public/defaults/default-airport.png";
+import defaultAirlineLogo from "@/public/defaults/default-airline-logo.png";
+import flightPath from "@/public/defaults/flight-path.png";
 
 export {
   plain,
@@ -24,4 +27,7 @@ export {
   logoGoldBlack,
   airplain,
   runningChita,
+  defaultAirport,
+  defaultAirlineLogo,
+  flightPath,
 };

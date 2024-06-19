@@ -2,18 +2,17 @@
 
 import LoadingChita from "@/components/loading-chita";
 import NoItem from "@/components/no-item";
-import TourCard from "@/components/pages/tour-card";
-import TourSearch from "@/components/pages/tour-search";
-import PaginationComponent from "@/components/pagination";
+import FlightSearch from "@/components/pages/flight-search";
+// import PaginationComponent from "@/components/pagination";
 import { airplain } from "@/constants/images";
 import { axios } from "@/lib/axios";
 import { useDictionary } from "@/providers/dictionary-provider";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import querystring from "querystring";
+import FlightCard from "@/components/pages/flight-card";
 
-const TourPage = ({
-  searchParams: { page, all, origin, destination, start, end },
-}) => {
+const TourPage = ({ searchParams: { from, to, date } }) => {
   const dictionary = useDictionary();
 
   const [data, setData] = useState([]);
@@ -21,24 +20,24 @@ const TourPage = ({
 
   useEffect(() => {
     fetchData();
-  }, [page, all, destination, start, end]);
+  }, [from, to, date]);
 
   const fetchData = async () => {
     setIsLoading(true);
 
     const url = () => {
-      if (!origin && !destination && !start && !end) {
-        return `/api/tours?all=true&page=${page || 1}`;
-      } else {
-        return `/api/tours?page=${page || 1}&origin=${origin}&destination=${destination}&start=${start}&end=${end}`;
-      }
+      return `/api/flights`;
     };
 
-    console.log("url()", url());
+    const encodedFormData = querystring.stringify({
+      from,
+      to,
+      date,
+    });
 
     setTimeout(async () => {
       await axios
-        .get(url())
+        .post(url(), encodedFormData)
         .then((response) => {
           console.log(
             "responsetttttttttttttttttttttttttttttttttttttttttttt",
@@ -47,7 +46,7 @@ const TourPage = ({
           setData(response.data);
         })
         .catch((err) => {
-          console.log("getToursErrrrrrrrrrrrrrrrrrrrr", err);
+          console.log("getFlightsErrrrrrrrrrrrrrrrrrrrr", err);
         })
         .finally(() => {
           setIsLoading(false);
@@ -69,34 +68,31 @@ const TourPage = ({
             />
           </div>
           <div>
-            <TourSearch
+            <FlightSearch
               currentSearchParams={{
-                page,
-                all,
-                origin,
-                destination,
-                start,
-                end,
+                from,
+                to,
+                date,
               }}
             />
           </div>
           <div>
             {!isLoading ? (
-              data.data && data.data.length > 0 ? (
+              data && data.length > 0 ? (
                 <>
-                  <div className="mx-auto flex w-full flex-col gap-3 md:w-3/4 lg:w-2/3">
-                    {data.data.map((item, index) => (
-                      <TourCard data={item} key={index} />
+                  <div className="mx-auto flex w-[95%] flex-col gap-3 pb-5 md:w-5/6 lg:w-4/5 xl:w-2/3">
+                    {data.map((item, index) => (
+                      <FlightCard data={item} key={index} />
                     ))}
                   </div>
 
-                  <div className="pb-8 pt-3">
+                  {/* <div className="pb-8 pt-3">
                     <PaginationComponent
                       total={data?.meta?.total || 0}
                       page={data?.meta?.current_page || 1}
                       perPage={data?.meta?.per_page || 10}
                     />
-                  </div>
+                  </div> */}
                 </>
               ) : (
                 <div>

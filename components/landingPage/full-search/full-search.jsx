@@ -9,18 +9,19 @@ import Tour from "./tour";
 const tabTriggers = [
   {
     value: "domesticFlight",
-    title: "پرواز داخلی",
+    // title: "پرواز داخلی",
+    title: "پرواز",
     icon: airplane1,
     content: <DomesticFlight />,
     disabled: false,
   },
-  {
-    value: "internationalFlights",
-    title: "پرواز خارجی",
-    icon: airplane2,
-    content: <div>aaaaaa</div>,
-    disabled: true,
-  },
+  // {
+  //   value: "internationalFlights",
+  //   title: "پرواز خارجی",
+  //   icon: airplane2,
+  //   content: <div>aaaaaa</div>,
+  //   disabled: true,
+  // },
   {
     value: "tour",
     title: "تور",

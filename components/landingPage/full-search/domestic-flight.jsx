@@ -153,7 +153,7 @@ const DomesticFlight = () => {
           className="flex w-full flex-col gap-2 pl-0 lg:flex-row lg:pl-2"
         >
           <div className="flex h-full w-full flex-col-reverse gap-4 px-4 py-6 lg:flex-row lg:gap-3">
-            <Popover>
+            {/* <Popover>
               <PopoverTrigger asChild>
                 <div className="flex flex-1 flex-col gap-1">
                   <div className="flex items-center justify-end gap-1">
@@ -260,9 +260,9 @@ const DomesticFlight = () => {
                   </div>
                 </div>
               </PopoverContent>
-            </Popover>
+            </Popover> */}
 
-            <FormField
+            {/* <FormField
               control={control}
               name="flightClass"
               render={({ field }) => (
@@ -314,9 +314,9 @@ const DomesticFlight = () => {
                   <FormMessage />
                 </FormItem>
               )}
-            />
+            /> */}
 
-            <FormField
+            {/* <FormField
               control={control}
               name="end"
               render={({ field }) => (
@@ -357,7 +357,7 @@ const DomesticFlight = () => {
                   <FormMessage />
                 </FormItem>
               )}
-            />
+            /> */}
 
             <FormField
               control={control}
@@ -428,6 +428,7 @@ const DomesticFlight = () => {
                       api={"/api/cities"}
                       query="name"
                       placeholder={"مقصد"}
+                      searchable={true}
                     />
                   </FormControl>
                   <FormMessage />
@@ -461,6 +462,7 @@ const DomesticFlight = () => {
                       api={"/api/cities"}
                       query="name"
                       placeholder={"مبدا"}
+                      searchable={true}
                     />
                   </FormControl>
                   <FormMessage />

@@ -22,19 +22,17 @@ import qs from "query-string";
 import { routes } from "@/routes/routes";
 import { baseDateForm } from "@/lib/date-form";
 
-const TourSearch = ({ currentSearchParams }) => {
-  console.log("currentSearchParams", currentSearchParams);
+const FlightSearch = ({ currentSearchParams }) => {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const { page, all, origin, destination, start, end } = currentSearchParams;
+  const { from, to, date } = currentSearchParams;
 
   const form = useForm({
     defaultValues: {
-      origin,
-      destination,
-      start: start ? new Date(start) : null,
-      end: end ? new Date(end) : null,
+      from,
+      to,
+      date: date ? new Date(date) : new Date(),
     },
     mode: "onSubmit",
   });
@@ -61,27 +59,14 @@ const TourSearch = ({ currentSearchParams }) => {
       }
     }
 
-    const page = +searchParams.get("page") || 1;
-
     const current = qs.parse(searchParams.toString());
 
     const query = {
       ...current,
-      start: values.start ? baseDateForm(values.start) : null,
-      end: values.end ? baseDateForm(values.end) : null,
-      origin: values.origin,
-      destination: values.destination,
+      date: values.date ? baseDateForm(values.date) : null,
+      from: values.from,
+      to: values.to,
     };
-
-    console.log("query", query);
-
-    if (current["page"] === page) {
-      query["page"] = null;
-    }
-
-    if (values.origin || values.destination || values.start || values.end) {
-      query["all"] = null;
-    }
 
     const url = qs.stringifyUrl(
       {
@@ -95,7 +80,7 @@ const TourSearch = ({ currentSearchParams }) => {
   };
 
   return (
-    <div className="mx-auto flex w-full -translate-y-20 rounded-lg bg-yellow-light md:w-4/5 lg:w-2/3">
+    <div className="mx-auto flex w-[95%] -translate-y-20 rounded-lg bg-yellow-light md:w-5/6 lg:w-4/5 xl:w-2/3">
       <Form {...form}>
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -104,7 +89,7 @@ const TourSearch = ({ currentSearchParams }) => {
           <div className="flex w-full gap-2 px-8 py-6 text-muted-foreground">
             <FormField
               control={control}
-              name="origin"
+              name="from"
               render={({ field }) => (
                 <FormItem className="col-span-3 flex flex-1 flex-col gap-1 text-right lg:col-span-1">
                   <FormLabel>مبدا</FormLabel>
@@ -114,8 +99,9 @@ const TourSearch = ({ currentSearchParams }) => {
                         field.onChange(value);
                       }}
                       defaultValue={getValues("origin")}
-                      api={"/api/cities"}
+                      api={"/api/airports"}
                       query="name"
+                      keyValue="IATA_code"
                       placeholder={"مبدا"}
                       searchable={true}
                     />
@@ -127,7 +113,7 @@ const TourSearch = ({ currentSearchParams }) => {
 
             <FormField
               control={control}
-              name="destination"
+              name="to"
               render={({ field }) => (
                 <FormItem className="col-span-3 flex flex-1 flex-col gap-1 text-right lg:col-span-1">
                   <FormLabel>مقصد</FormLabel>
@@ -137,8 +123,9 @@ const TourSearch = ({ currentSearchParams }) => {
                         field.onChange(value);
                       }}
                       defaultValue={getValues("destination")}
-                      api={"/api/cities"}
+                      api={"/api/airports"}
                       query="name"
+                      keyValue="IATA_code"
                       placeholder={"مقصد"}
                       searchable={true}
                     />
@@ -150,16 +137,16 @@ const TourSearch = ({ currentSearchParams }) => {
 
             <FormField
               control={control}
-              name="start"
+              name="date"
               render={({ field }) => (
                 <FormItem className="col-span-3 flex flex-1 flex-col gap-1 text-right lg:col-span-1">
-                  <FormLabel>تاریخ شروع</FormLabel>
+                  <FormLabel>تاریخ رفت</FormLabel>
                   <FormControl>
                     <DatePicker
                       className="yellow"
-                      value={getValues("start")}
+                      value={getValues("date")}
                       onChange={(date) => {
-                        date?.isValid ? setValue("start", new Date(date)) : "";
+                        date?.isValid ? setValue("date", new Date(date)) : "";
                       }}
                       format={false ? "MM/DD/YYYY" : "YYYY/MM/DD"}
                       calendar={persian}
@@ -179,7 +166,7 @@ const TourSearch = ({ currentSearchParams }) => {
               )}
             />
 
-            <FormField
+            {/* <FormField
               control={control}
               name="end"
               render={({ field }) => (
@@ -208,7 +195,7 @@ const TourSearch = ({ currentSearchParams }) => {
                   <FormMessage />
                 </FormItem>
               )}
-            />
+            /> */}
           </div>
           <div className="flex items-center justify-end gap-2 p-2">
             <SubmitButton className="w-fit" loading={isSubmitting}>
@@ -232,4 +219,4 @@ const TourSearch = ({ currentSearchParams }) => {
   );
 };
 
-export default TourSearch;
+export default FlightSearch;
