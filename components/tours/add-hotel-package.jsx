@@ -48,6 +48,7 @@ import {
   separatePrice,
 } from "@/lib/persian-price-format";
 import { farsiNumber } from "@/lib/farsi-number";
+import ChipSearchableSelect from "@/components/ui/chip-searchable-select";
 
 const AddHotelPackage = ({ tour_id }) => {
   const dictionary = useDictionary();
@@ -81,6 +82,7 @@ const AddHotelPackage = ({ tour_id }) => {
     handleSubmit,
     control,
     getValues,
+    setValue,
     formState: { isSubmitting },
   } = form;
 
@@ -170,6 +172,7 @@ const AddHotelPackage = ({ tour_id }) => {
                             query="name"
                             placeholder={"نام هتل"}
                             keyValue={"id"}
+                            searchable={true}
                           />
                         </FormControl>
                         <FormMessage />
@@ -183,28 +186,19 @@ const AddHotelPackage = ({ tour_id }) => {
                     render={({ field }) => (
                       <FormItem className="col-span-3 lg:col-span-1">
                         <FormLabel>نوع اتاق</FormLabel>
-                        {/* <FormControl>
-                          <Input
-                            className=""
-                            autoComplete="off"
-                            placeholder="حداقل ۲ کاراکتر"
-                            {...field}
+                        <FormControl>
+                          <SearchableSelect
+                            changeValue={(value) => {
+                              field.onChange(value);
+                            }}
+                            defaultValue={getValues("room_type")}
+                            api={`/api/options?category=room_types`}
+                            // query="name"
+                            keyValue="value"
+                            searchable={false}
+                            placeholder={"انتخاب کنید"}
                           />
-                        </FormControl> */}
-
-                        <Select
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
-                        >
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="انتخاب کنید" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="استاندارد">استاندارد</SelectItem>
-                          </SelectContent>
-                        </Select>
+                        </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}

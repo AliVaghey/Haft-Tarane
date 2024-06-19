@@ -23,7 +23,7 @@ export function DataTable({ columns, data }) {
   });
 
   return (
-    <div className="mx-auto w-[350px] overflow-x-auto rounded-md shadow-lg md:w-[500px] lg:w-[900px] xl:w-[1100px]">
+    <div className="mx-auto w-full overflow-x-auto rounded-md shadow-lg">
       <Table>
         <TableHeader className="bg-gray-background">
           {table.getHeaderGroups().map((headerGroup) => (

@@ -9,6 +9,7 @@ import {
   PlusCircle,
   RotateCcwIcon,
   Route,
+  Text,
   TicketCheck,
   Train,
   User,
@@ -332,6 +333,20 @@ export const navItems = [
         href: routes.superadmin.options["free-services"].root,
         icon: (size, strokeWidth) => (
           <RotateCcwIcon size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
+        title: "توضیحات تور",
+        href: routes.superadmin.options["tour-descriptions"].root,
+        icon: (size, strokeWidth) => (
+          <Text size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
+        title: "نوع اتاق هتل",
+        href: routes.superadmin.options["room-types"].root,
+        icon: (size, strokeWidth) => (
+          <Hotel size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
     ],

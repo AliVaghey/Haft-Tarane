@@ -55,9 +55,9 @@ const SuperadminLayout = ({ children }) => {
       <LoadingPage />
     </div>
   ) : (
-    <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
+    <div className="flex min-h-screen w-full flex-row">
       <SideBar />
-      <div className="flex flex-col">
+      <div className="flex w-full flex-col lg:w-5/6">
         <Header />
         <main className="flex flex-1 flex-col gap-4 p-2 lg:gap-6 lg:p-3">
           <div className="min-h-full rounded-lg p-3 py-5 shadow-lg">

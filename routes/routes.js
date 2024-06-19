@@ -102,6 +102,14 @@ export const routes = {
         root: "/superadmin/options/free-services",
         add: "/superadmin/options/free-services/add",
       },
+      "tour-descriptions": {
+        root: "/superadmin/options/tour-descriptions",
+        add: "/superadmin/options/tour-descriptions/add",
+      },
+      "room-types": {
+        root: "/superadmin/options/room-types",
+        add: "/superadmin/options/room-types/add",
+      },
     },
     "transportation-options": {
       airplane: {

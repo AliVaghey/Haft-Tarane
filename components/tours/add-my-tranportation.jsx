@@ -252,6 +252,7 @@ const AddMyTransportation = ({ tour_id }) => {
                             api={"/api/cities"}
                             query="name"
                             placeholder={"مبدا"}
+                            searchable={true}
                           />
                         </FormControl>
                         <FormMessage />
@@ -274,6 +275,7 @@ const AddMyTransportation = ({ tour_id }) => {
                             api={"/api/cities"}
                             query="name"
                             placeholder={"مقصد"}
+                            searchable={true}
                           />
                         </FormControl>
                         <FormMessage />

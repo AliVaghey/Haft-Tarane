@@ -13,6 +13,8 @@ import { defaultMessages } from "@/lib/default-messages";
 import ToastSuccess from "../toast/toast-success";
 
 const HotelCosts = ({ data, number, tour_id }) => {
+  console.log("datawewrw", data);
+
   const tourHook = useTour();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -63,35 +65,35 @@ const HotelCosts = ({ data, number, tour_id }) => {
         </SubmitButton>
       </div>
       <Separator className="my-1" />
-      <div className="flex rounded-md border bg-gray-background text-muted-foreground">
+      <div className="flex flex-wrap rounded-md border bg-gray-background text-muted-foreground">
         <CostItems
           price={data.one_bed}
-          title="استاندارد یک تخته"
+          title={`${data.room_type} یک تخته`}
           tour_id={tour_id}
         />
         <CostItems
           price={data.two_bed}
-          title="استاندارد دو تخته"
+          title={`${data.room_type} دو تخته`}
           tour_id={tour_id}
         />
         <CostItems
           price={data.plus_one}
-          title="استاندارد نفر اضافه"
+          title={`${data.room_type} تخت اضافه`}
           tour_id={tour_id}
         />
         <CostItems
           price={data.cld_6}
-          title="استاندارد کودک ۶ تا ۱۲ سال"
+          title={`${data.room_type} کودک ۶ تا ۱۲`}
           tour_id={tour_id}
         />
         <CostItems
           price={data.cld_2}
-          title="استاندارد کودک ۲ تا ۶ سال"
+          title={`${data.room_type} کودک ۲ تا  ۶ سال`}
           tour_id={tour_id}
         />
         <CostItems
           price={data.baby}
-          title="استاندارد نوزاد"
+          title={`${data.room_type} نوزاد`}
           tour_id={tour_id}
         />
       </div>

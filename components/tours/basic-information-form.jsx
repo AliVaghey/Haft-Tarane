@@ -241,6 +241,7 @@ const BasicInformationForm = ({ data }) => {
                     api={"/api/cities"}
                     query="name"
                     placeholder={"مبدا"}
+                    searchable={true}
                   />
                 </FormControl>
                 <FormMessage />
@@ -263,6 +264,7 @@ const BasicInformationForm = ({ data }) => {
                     api={"/api/cities"}
                     query="name"
                     placeholder={"مقصد"}
+                    searchable={true}
                   />
                 </FormControl>
                 <FormMessage />

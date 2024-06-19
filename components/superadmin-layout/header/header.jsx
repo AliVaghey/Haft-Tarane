@@ -102,7 +102,7 @@ const Header = () => {
         <SheetTrigger asChild>
           <Button
             size="icon"
-            className="shrink-0 bg-red-primary text-white hover:bg-red-dark md:hidden"
+            className="shrink-0 bg-red-primary text-white hover:bg-red-dark lg:hidden"
           >
             <Menu className="h-5 w-5" />
             <span className="sr-only">Toggle navigation menu</span>

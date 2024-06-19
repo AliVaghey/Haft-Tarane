@@ -34,6 +34,7 @@ import { Button } from "../ui/button";
 import ChipSearchableSelect from "../ui/chip-searchable-select";
 
 const Document = ({ data }) => {
+  console.log("datahjhj", data);
   const tourHook = useTour();
 
   const dictionary = useDictionary();
@@ -49,6 +50,7 @@ const Document = ({ data }) => {
     defaultValues: {
       free_services: data.free_services ? data.free_services : [],
       certificates: data.certificates ? data.certificates : [],
+      tab_descriptions: data.tab_descriptions ? data.tab_descriptions : [],
       descriptions: data.descriptions ? data.descriptions : "",
       cancel_rules: data.cancel_rules ? data.cancel_rules : "",
     },
@@ -66,7 +68,13 @@ const Document = ({ data }) => {
   } = form;
 
   const onSubmit = async (values) => {
-    const { free_services, certificates, descriptions, cancel_rules } = values;
+    const {
+      free_services,
+      certificates,
+      tab_descriptions,
+      descriptions,
+      cancel_rules,
+    } = values;
 
     await CSRFToken();
 
@@ -74,6 +82,7 @@ const Document = ({ data }) => {
       tour_id: data.tour_id,
       free_services: JSON.stringify(free_services),
       certificates: JSON.stringify(certificates),
+      tab_descriptions: JSON.stringify(tab_descriptions),
       descriptions,
       cancel_rules,
     });
@@ -120,16 +129,6 @@ const Document = ({ data }) => {
               <FormItem className="col-span-3 lg:col-span-1">
                 <FormLabel>سرویس های رایگان</FormLabel>
                 <FormControl>
-                  {/* <ChipInput
-                    initialData={getValues("free_services")}
-                    placeholder="تایپ کنید..."
-                    onChange={(data) => {
-                      console.log("data", data);
-                      setValue("free_services", data, {
-                        shouldValidate: true,
-                      });
-                    }}
-                  /> */}
                   <ChipSearchableSelect
                     api={`/api/options?category=free_services`}
                     initialData={getValues("free_services")}
@@ -155,16 +154,6 @@ const Document = ({ data }) => {
               <FormItem className="col-span-3 lg:col-span-1">
                 <FormLabel>مدارک همراه</FormLabel>
                 <FormControl>
-                  {/* <ChipInput
-                    initialData={getValues("certificates")}
-                    placeholder="تایپ کنید..."
-                    onChange={(data) => {
-                      console.log("data", data);
-                      setValue("certificates", data, {
-                        shouldValidate: true,
-                      });
-                    }}
-                  /> */}
                   <ChipSearchableSelect
                     api={`/api/options?category=certificates`}
                     initialData={getValues("certificates")}
@@ -175,6 +164,33 @@ const Document = ({ data }) => {
                     onChange={(data) => {
                       console.log("certificates", data);
                       setValue("certificates", data, { shouldValidate: true });
+                    }}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={control}
+            name="tab_descriptions"
+            render={({ field }) => (
+              <FormItem className="col-span-3 lg:col-span-2">
+                <FormLabel>توضیحات تور</FormLabel>
+                <FormControl>
+                  <ChipSearchableSelect
+                    api={`/api/options?category=tour_descriptions`}
+                    initialData={getValues("tab_descriptions")}
+                    placeholder="توضیحات تور"
+                    query="name"
+                    keyValue="value"
+                    searchable={false}
+                    onChange={(data) => {
+                      console.log("tab_descriptions", data);
+                      setValue("tab_descriptions", data, {
+                        shouldValidate: true,
+                      });
                     }}
                   />
                 </FormControl>
