@@ -73,7 +73,8 @@ const UserPass = () => {
             res.data.data.access_type === "agency" &&
               router.push(routes.agency.dashboard);
             res.data.data.access_type === "user" &&
-              router.push(routes.user.dashboard);
+              // router.push(routes.user.dashboard);
+              router.push("/");
 
             toast.success(
               <ToastSuccess text={defaultMessages.login.default} />,

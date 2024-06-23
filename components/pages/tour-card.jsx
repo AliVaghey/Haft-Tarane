@@ -1,15 +1,43 @@
+"use client";
+
 import { chita } from "@/constants/images";
 import { Bus, Calendar, MapPin } from "lucide-react";
 import Image from "next/image";
-import { Separator } from "../ui/separator";
 import { persianPriceFormat } from "@/lib/persian-price-format";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { routes } from "@/routes/routes";
 import { jaliliDate } from "@/lib/jalali-date";
 import { farsiNumber } from "@/lib/farsi-number";
+import { useRouter, useSearchParams } from "next/navigation";
+import qs from "query-string";
 
 const TourCard = ({ data }) => {
+  const router = useRouter();
+
+  const searchParams = useSearchParams();
+
+  const handleLink = (values) => {
+    const current = qs.parse(searchParams.toString());
+
+    const query = {
+      ...current,
+      ["cid"]: values.costs[0].id,
+      ["start"]: values.dates[0].start,
+      ["end"]: values.dates[0].end,
+    };
+
+    const url = qs.stringifyUrl(
+      {
+        url: `${window.location.href}/${values.id}`,
+        query,
+      },
+      { skipNull: true },
+    );
+
+    router.push(url);
+  };
+
   return (
     <div className="rounded-lg bg-yellow-light shadow-lg">
       <div className="flex h-full gap-5 p-1 px-2">
@@ -67,11 +95,13 @@ const TourCard = ({ data }) => {
         <div className="mr-auto flex min-h-full flex-col items-center justify-center gap-2 border-r border-yellow-dark px-5">
           <span>شروع قیمت از :</span>
           <span>{persianPriceFormat(data.min_cost)}</span>
-          <Link href={routes["nature-tours"].details(data.id)}>
-            <Button className="h-8 px-5 hover:bg-yellow-primary">
-              رزرو تور
-            </Button>
-          </Link>
+
+          <Button
+            onClick={() => handleLink(data)}
+            className="h-8 px-5 hover:bg-yellow-primary"
+          >
+            رزرو تور
+          </Button>
         </div>
       </div>
     </div>

@@ -1,5 +1,3 @@
-import { root } from "postcss";
-
 export const routes = {
   landing: {
     root: "/",
@@ -13,7 +11,9 @@ export const routes = {
   tours: {
     root: "/tours",
     details: (id) => `/tours/${id}`,
+    purchase: "/tours/purchase",
   },
+
   "nature-tours": {
     root: "/nature-tours",
     details: (id) => `/nature-tours/${id}`,
@@ -205,6 +205,9 @@ export const routes = {
         dates: (id) => `/agency/tours/${id}/edit/dates`,
       },
     },
+    "booked-tours": {
+      root: "/agency/booked-tours",
+    },
     sales: {
       all: "/agency/sales/all",
       "pending-pay": "/agency/sales/pending-pay",
@@ -218,6 +221,9 @@ export const routes = {
     profile: {
       "user-info": "/user/profile/user-info",
       "update-password": "/user/profile/update-password",
+    },
+    tours: {
+      root: "/user/tours",
     },
   },
 };

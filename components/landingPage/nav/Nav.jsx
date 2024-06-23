@@ -71,7 +71,7 @@ export default function Nav() {
 
   return (
     <div
-      className={`fixed top-0 z-[999] w-full !bg-yellow-primary bg-transparent transition-all duration-500 ${scrollBackground ? "z-[9999] bg-yellow-primary" : "bg-transparent"}`}
+      className={`fixed top-0 z-10 w-full !bg-yellow-primary bg-transparent transition-all duration-500 ${scrollBackground ? "z-10 bg-yellow-primary" : "bg-transparent"}`}
     >
       <div className="mx-auto shadow-lg">
         <div className="flex h-full items-center justify-between px-5 py-2 md:px-10 lg:px-16">

@@ -264,14 +264,8 @@ const Header = () => {
             <div className="w-full rtl:text-right">پشتیبانی</div>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem
-            onClick={() => {}}
-            className="w-full cursor-pointer"
-          >
-            <div
-              className="flex w-full items-center gap-x-2 rtl:justify-end"
-              onClick={signOut}
-            >
+          <DropdownMenuItem onClick={signOut} className="w-full cursor-pointer">
+            <div className="flex w-full items-center gap-x-2 rtl:justify-end">
               <LogOut size={14} strokeWidth={1.5} className="rtl:rotate-180" />
               <span>خروج</span>
             </div>

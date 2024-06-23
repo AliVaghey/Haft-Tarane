@@ -6,6 +6,7 @@ import { axios } from "@/lib/axios";
 import LoadingPage from "@/components/loading-page";
 import FirstCost from "@/components/booking-tour/first-cost";
 import { toast } from "sonner";
+import SecondDetails from "@/components/booking-tour/second-details";
 
 const TourDetailsPage = ({ searchParams }) => {
   const { cid, start, end } = searchParams;
@@ -45,7 +46,7 @@ const TourDetailsPage = ({ searchParams }) => {
     <div className="relative min-h-[80vh] bg-primary pt-24">
       <div className="px-2 pb-5 md:px-28 lg:px-48 xl:px-60">
         {isLoading && <LoadingPage />}
-        {data !== null && <FirstCost data={data} />}
+        {data !== null && <SecondDetails data={data} />}
       </div>
     </div>
   );

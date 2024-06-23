@@ -114,6 +114,23 @@ export const navItems = [
   },
 
   {
+    title: "تور های رزرو شده",
+    type: "subMenu",
+    icon: (size, strokeWidth) => (
+      <Plane size={size || 18} strokeWidth={strokeWidth || 1.5} />
+    ),
+    subMenu: [
+      {
+        title: "تور های رزرو شده شما",
+        href: routes.agency["booked-tours"].root,
+        icon: (size, strokeWidth) => (
+          <Plane size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+    ],
+  },
+
+  {
     title: "فروش ها",
     type: "subMenu",
     icon: (size, strokeWidth) => (
