@@ -9,41 +9,55 @@ import { jaliliDate } from "@/lib/jalali-date";
 export const columns = [
   {
     id: "شناسه",
-    header: "شناسه",
+    header: "#",
     cell: ({ row }) => {
       return <Number number={row.index + 1} />;
     },
   },
   {
-    id: "tour_id",
+    id: "tourCode",
     header: "عنوان تور",
     cell: ({ row }) => <span>{row.original.tour.title}</span>,
   },
   {
-    id: "tour_id",
+    id: "title",
+    header: "شناسه تور",
+    cell: ({ row }) => <span>{farsiNumber(row.original.tour.id)}</span>,
+  },
+  {
+    id: "origin",
     header: "مبدا",
     cell: ({ row }) => <span>{row.original.tour.origin}</span>,
   },
   {
-    id: "tour_id",
+    id: "destination",
     header: "مقصد",
     cell: ({ row }) => <span>{row.original.tour.destination}</span>,
   },
   {
-    id: "tour_id",
+    id: "totalPrice",
     header: "قیمت کل",
     cell: ({ row }) => (
       <span>{persianPriceFormat(+row.original.total_price)} تومان</span>
     ),
   },
   {
-    id: "tour_id",
+    id: "start",
     header: "تاریخ حرکت",
     cell: ({ row }) => (
       <span>{farsiNumber(jaliliDate(row.original.date.start))}</span>
     ),
   },
-
+  {
+    id: "payStatus",
+    header: "وضعیت پرداخت",
+    cell: ({ row }) =>
+      row.original.status === "pending" ? (
+        <span className="text-yellow-primary">در انتظار پرداخت</span>
+      ) : (
+        <span className="text-green-500">پرداخت شده</span>
+      ),
+  },
   {
     id: "actions",
     header: "اقدامات",

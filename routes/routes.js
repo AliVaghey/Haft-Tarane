@@ -207,6 +207,7 @@ export const routes = {
     },
     "booked-tours": {
       root: "/agency/booked-tours",
+      details: (id) => `/agency/booked-tours/${id}`,
     },
     sales: {
       all: "/agency/sales/all",
