@@ -10,7 +10,6 @@ import Link from "next/link";
 import { farsiNumber } from "@/lib/farsi-number";
 
 const FlightCard = ({ data }) => {
-  console.log("dataccv", data);
   return (
     <div className="overflow-hidden rounded-lg bg-white shadow-lg">
       <div className="flex">

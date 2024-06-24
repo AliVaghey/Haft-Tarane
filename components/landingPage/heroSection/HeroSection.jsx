@@ -25,7 +25,7 @@ function HeroSection() {
             {/* <span className="text-[#2B303D]">بی باک سفر</span> */}
           </h2>
         </div>
-        <div className="mb-9 ml-[777px] flex items-center gap-4 max-lg:ml-0 max-lg:mt-7 max-md:ml-4 max-md:mt-4 lg:-mt-9 ">
+        {/* <div className="mb-9 ml-[777px] flex items-center gap-4 max-lg:ml-0 max-lg:mt-7 max-md:ml-4 max-md:mt-4 lg:-mt-9 ">
           <div className="flex items-center justify-between gap-3 rounded-3xl bg-white px-5 py-3 max-md:gap-1 max-md:px-4 max-md:py-2">
             <p className="max-md:text-sm">ویدئو معرفی</p>
             <Image
@@ -39,7 +39,7 @@ function HeroSection() {
           <div className="flex items-center justify-center rounded-3xl bg-[#2B303D] px-4 pb-3 pt-2 text-white shadow-2xl max-md:px-3 max-md:py-2 ">
             <p className="max-md:text-xs">رزرو بلیط</p>
           </div>
-        </div>
+        </div> */}
       </div>
       {/* <SearchBox className="max-lg:hidden" />
       <ResponsiveBox className="max-lg:visible lg:hidden" /> */}

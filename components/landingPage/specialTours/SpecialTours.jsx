@@ -45,7 +45,7 @@ function SpecialTours() {
           <div className="flex justify-between gap-9 max-lg:flex-col">
             <div className="w-96 max-lg:w-full">
               {" "}
-              <div className="flex items-center justify-center gap-4 max-lg:grid  max-lg:grid-cols-4 max-md:grid-cols-2 lg:flex-col ">
+              {/* <div className="flex items-center justify-center gap-4 max-lg:grid  max-lg:grid-cols-4 max-md:grid-cols-2 lg:flex-col ">
                 <div className="z-10 flex  size-32 items-center justify-center rounded-2xl bg-white">
                   <div className="flex flex-col items-center justify-center gap-2">
                     <p className="text-yellow text-xl font-bold">+ 35</p>
@@ -70,7 +70,7 @@ function SpecialTours() {
                     <p className="">مقصد گردشگری</p>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className="relative w-full">
               <h2 className="text-center text-3xl font-bold max-lg:text-lg max-md:text-sm">
@@ -85,7 +85,7 @@ function SpecialTours() {
                   alt="alt"
                   width={480}
                   height={360}
-                  className="h-[500px] w-[888px] rounded-2xl max-lg:h-80 max-md:h-72 "
+                  className="h-[500px] w-[888px] rounded-2xl max-lg:h-80 max-md:h-72"
                 />
                 <div className="absolute right-9 top-9">
                   <h2 className="pb-7 text-2xl font-bold text-white max-lg:text-lg max-md:text-xs">

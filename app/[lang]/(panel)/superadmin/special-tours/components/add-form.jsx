@@ -164,6 +164,7 @@ const AddForm = () => {
                         query="id"
                         placeholder={"نام تور (جستجو فقط بر اساس شناسه تور)"}
                         keyValue="id"
+                        searchable={true}
                       />
                     </FormControl>
                     <FormMessage />

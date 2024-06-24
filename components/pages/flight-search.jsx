@@ -2,7 +2,7 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { Search } from "lucide-react";
+import { ArrowLeftRight, Search } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -21,8 +21,10 @@ import persian_fa from "react-date-object/locales/persian_fa";
 import qs from "query-string";
 import { routes } from "@/routes/routes";
 import { baseDateForm } from "@/lib/date-form";
+import { useEffect } from "react";
 
 const FlightSearch = ({ currentSearchParams }) => {
+  console.log("currentSearchParams", currentSearchParams);
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -79,6 +81,27 @@ const FlightSearch = ({ currentSearchParams }) => {
     router.push(url);
   };
 
+  const changeCities = () => {
+    const current = qs.parse(searchParams.toString());
+    console.log("getValues", getValues("from"));
+    const query = {
+      ...current,
+      date: current.date ? baseDateForm(new Date(current.date)) : null,
+      from: current.to,
+      to: current.from,
+    };
+
+    const url = qs.stringifyUrl(
+      {
+        url: window.location.href,
+        query,
+      },
+      { skipNull: true },
+    );
+
+    router.push(url);
+  };
+
   return (
     <div className="mx-auto flex w-[95%] -translate-y-20 rounded-lg bg-yellow-light md:w-5/6 lg:w-4/5 xl:w-2/3">
       <Form {...form}>
@@ -98,18 +121,30 @@ const FlightSearch = ({ currentSearchParams }) => {
                       changeValue={(value) => {
                         field.onChange(value);
                       }}
-                      defaultValue={getValues("origin")}
+                      defaultValue={currentSearchParams.from}
                       api={"/api/airports"}
                       query="name"
                       keyValue="IATA_code"
                       placeholder={"مبدا"}
-                      searchable={true}
+                      // searchable={true}
+                      changable={true}
                     />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
+
+            <div
+              onClick={() => {
+                setValue("from", getValues("to"));
+                // setValue("to", getValues("from"));
+                changeCities();
+              }}
+              className="mt-6 flex size-9 cursor-pointer items-center justify-center rounded-full bg-white p-2 transition-all duration-100 hover:bg-primary hover:text-white"
+            >
+              <ArrowLeftRight size={18} />
+            </div>
 
             <FormField
               control={control}
@@ -122,12 +157,13 @@ const FlightSearch = ({ currentSearchParams }) => {
                       changeValue={(value) => {
                         field.onChange(value);
                       }}
-                      defaultValue={getValues("destination")}
+                      defaultValue={currentSearchParams.to}
                       api={"/api/airports"}
                       query="name"
                       keyValue="IATA_code"
                       placeholder={"مقصد"}
-                      searchable={true}
+                      // searchable={true}
+                      changable={true}
                     />
                   </FormControl>
                   <FormMessage />
@@ -165,7 +201,6 @@ const FlightSearch = ({ currentSearchParams }) => {
                 </FormItem>
               )}
             />
-
             {/* <FormField
               control={control}
               name="end"

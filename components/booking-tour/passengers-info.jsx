@@ -13,8 +13,9 @@ const PassengersInfo = ({ defaultData }) => {
   );
 
   console.log("data", data);
+
   return (
-    <div className="der-yellow-primary p-2">
+    <div className="p-2">
       <DataTableHeader
         title="جزئیات مسافران"
         description="مشاهده لیست جزئیات مسافران"

@@ -30,7 +30,7 @@ const UserBookInfo = ({ defaultData }) => {
         title="جزئیات تور"
         description="مشاهده تمام جزئیات تور"
       />
-      <div className="rounded-lg">
+      <div className="rounded-lg bg-yellow-dark">
         <div className="flex flex-col gap-3 rounded-lg p-2 shadow-lg">
           <div className="flex flex-col justify-between rounded-lg border-2 border-yellow-primary p-4 md:flex-row">
             <div className="flex flex-col gap-2">
@@ -45,17 +45,23 @@ const UserBookInfo = ({ defaultData }) => {
                     <Star key={i} />
                   ))}
               </div>
-              <span className="text-muted-foreground">
-                پشتیبان تور : {defaultData.tour.support.name}
-              </span>
-              <span className="text-muted-foreground">
-                شماره تماس پشتیبان :{" "}
-                {farsiNumber(defaultData.tour.support.phone)}
-              </span>
+
+              {defaultData?.tour?.support?.name && (
+                <span className="text-muted-foreground">
+                  پشتیبان تور : {defaultData?.tour?.support?.name}
+                </span>
+              )}
+
+              {defaultData?.tour?.support?.phone && (
+                <span className="text-muted-foreground">
+                  شماره تماس پشتیبان :{" "}
+                  {farsiNumber(defaultData?.tour?.support?.phone)}
+                </span>
+              )}
             </div>
             <div className="flex flex-col gap-2">
               <span className="font-semibold text-muted-foreground">
-                آژانس {defaultData.agency.name}
+                آژانس {defaultData?.agency?.name}
               </span>
               <div className="rounded-lg bg-yellow-400 px-5 py-1.5 text-center">
                 کد تور : {farsiNumber(defaultData.tour.id)}
@@ -295,43 +301,47 @@ const UserBookInfo = ({ defaultData }) => {
             </div>
           </div>
 
-          <span className="w-fit rounded-md bg-yellow-dark p-1.5">
-            مشخصات کاربر
-          </span>
+          {defaultData.user && (
+            <>
+              <span className="w-fit rounded-md bg-yellow-dark p-1.5">
+                مشخصات کاربر
+              </span>
 
-          <div className="flex gap-2">
-            <span className="text-muted-foreground">نام کاربری : </span>
-            <span> {defaultData.user.username} </span>
-          </div>
+              <div className="flex gap-2">
+                <span className="text-muted-foreground">نام کاربری : </span>
+                <span> {defaultData.user.username} </span>
+              </div>
 
-          <div className="flex gap-2">
-            <span className="text-muted-foreground">نام : </span>
-            <span> {defaultData.user.first_name_fa} </span>
-          </div>
+              <div className="flex gap-2">
+                <span className="text-muted-foreground">نام : </span>
+                <span> {defaultData.user.first_name_fa} </span>
+              </div>
 
-          <div className="flex gap-2">
-            <span className="text-muted-foreground">نام خانوادگی : </span>
-            <span> {defaultData.user.last_name_fa} </span>
-          </div>
+              <div className="flex gap-2">
+                <span className="text-muted-foreground">نام خانوادگی : </span>
+                <span> {defaultData.user.last_name_fa} </span>
+              </div>
 
-          <div className="flex gap-2">
-            <span className="text-muted-foreground">کد ملی : </span>
-            <span> {defaultData.user.national_code} </span>
-          </div>
+              <div className="flex gap-2">
+                <span className="text-muted-foreground">کد ملی : </span>
+                <span> {defaultData.user.national_code} </span>
+              </div>
 
-          <div className="flex gap-2">
-            <span className="text-muted-foreground">جنسیت : </span>
-            {defaultData.user.gender === "male" && <span>مرد</span>}
-            {defaultData.user.gender === "female" && <span>زن</span>}
-          </div>
+              <div className="flex gap-2">
+                <span className="text-muted-foreground">جنسیت : </span>
+                {defaultData.user.gender === "male" && <span>مرد</span>}
+                {defaultData.user.gender === "female" && <span>زن</span>}
+              </div>
 
-          <div className="flex gap-2">
-            <span className="text-muted-foreground">تاریخ تولد : </span>
-            <span>
-              {" "}
-              {farsiNumber(jaliliDate(defaultData.user.birth_date))}{" "}
-            </span>
-          </div>
+              <div className="flex gap-2">
+                <span className="text-muted-foreground">تاریخ تولد : </span>
+                <span>
+                  {" "}
+                  {farsiNumber(jaliliDate(defaultData.user.birth_date))}{" "}
+                </span>
+              </div>
+            </>
+          )}
         </div>
         {data.map((item, index) => (
           <div key={index} className="p-2 pt-6">

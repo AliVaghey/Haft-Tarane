@@ -21,9 +21,10 @@ const SearchableSelect = ({
   defaultValue,
   keyValue,
   searchable,
+  changable,
 }) => {
   const [currentValue, setCurrentValue] = useState(defaultValue);
-  const [searchState, setSearchState] = useState("");
+  const [searchState, setSearchState] = useState(defaultValue);
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -72,12 +73,15 @@ const SearchableSelect = ({
         changeValue(e);
       }}
       value={
-        keyValue
-          ? isNaN(+currentValue)
-            ? currentValue
-            : +currentValue
-          : currentValue
+        changable
+          ? defaultValue
+          : keyValue
+            ? isNaN(+currentValue)
+              ? currentValue
+              : +currentValue
+            : currentValue
       }
+      // value={defaultValue}
       defaultValue={defaultValue}
     >
       {/* <FormControl> */}
