@@ -225,6 +225,7 @@ export const routes = {
     },
     tours: {
       root: "/user/tours",
+      details: (id) => `/user/tours/${id}`,
     },
   },
 };

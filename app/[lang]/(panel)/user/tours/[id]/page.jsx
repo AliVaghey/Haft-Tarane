@@ -19,7 +19,7 @@ const EditCityPage = ({ params }) => {
   const fetchDefaultData = async () => {
     setIsLoading(true);
     await axios
-      .get(`/api/agency/reservation/${params.id}`)
+      .get(`/api/user/reservation/${params.id}`)
       .then((response) => {
         console.log("response", response);
         setData(response.data.data);

@@ -78,7 +78,9 @@ const CellAction = ({ data }) => {
           <Trash2 size={16} strokeWidth={2} className="text-red-primary" />
         </div> */}
 
-        <Button className="h-8 text-xs">مشاهده جزئیات</Button>
+        <Link href={routes.user.tours.details(data.id)}>
+          <Button className="h-8 text-xs">مشاهده جزئیات</Button>
+        </Link>
       </div>
     </div>
   );
