@@ -83,40 +83,77 @@ const SecondDetails = ({ data }) => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 rounded-lg border-2 border-yellow-primary p-4">
-          <div className="font-semibold">اطلاعات رفت و برگشت :</div>
-          <Separator className="h-0.5 bg-yellow-primary" />
-          <div className="grid grid-cols-2 lg:grid-cols-4">
-            <div className="flex items-center gap-2">
-              <Plane size={16} />{" "}
-              <span>
-                {data.transportation[0].company_name}{" "}
-                {data.transportation[0].origin}
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Calendar size={16} />{" "}
-              <span>
-                {farsiNumber(jaliliDate(data.date.start))}{" "}
-                {farsiNumber(data.transportation[0].start)}
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Plane size={16} />{" "}
-              <span>
-                {data.transportation[1].company_name}{" "}
-                {data.transportation[1].origin}
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Calendar size={16} />{" "}
-              <span>
-                {farsiNumber(jaliliDate(data.date.end))}{" "}
-                {farsiNumber(data.transportation[1].start)}
-              </span>
+        {data.cost.tour.transportation_type === "system" ? (
+          <div className="flex flex-col gap-4 rounded-lg border-2 border-yellow-primary p-4">
+            <div className="font-semibold">اطلاعات رفت و برگشت :</div>
+            <Separator className="h-0.5 bg-yellow-primary" />
+            <div className="grid grid-cols-2 lg:grid-cols-4">
+              <div className="flex items-center gap-2">
+                <Plane size={16} />{" "}
+                <span>
+                  {data.transportation[0].flight.airline}{" "}
+                  {data.transportation[0].flight.from}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Calendar size={16} />{" "}
+                <span>
+                  {farsiNumber(jaliliDate(data.date.start))}{" "}
+                  {farsiNumber(data.transportation[0].flight.time_flight)}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Plane size={16} />{" "}
+                <span>
+                  {data.transportation[1].flight.airline}{" "}
+                  {data.transportation[1].flight.from}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Calendar size={16} />{" "}
+                <span>
+                  {farsiNumber(jaliliDate(data.date.end))}{" "}
+                  {farsiNumber(data.transportation[1].flight.time_flight)}
+                </span>
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <div className="flex flex-col gap-4 rounded-lg border-2 border-yellow-primary p-4">
+            <div className="font-semibold">اطلاعات رفت و برگشت :</div>
+            <Separator className="h-0.5 bg-yellow-primary" />
+            <div className="grid grid-cols-2 lg:grid-cols-4">
+              <div className="flex items-center gap-2">
+                <Plane size={16} />{" "}
+                <span>
+                  {data.transportation[0].company_name}{" "}
+                  {data.transportation[0].origin}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Calendar size={16} />{" "}
+                <span>
+                  {farsiNumber(jaliliDate(data.date.start))}{" "}
+                  {farsiNumber(data.transportation[0].start)}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Plane size={16} />{" "}
+                <span>
+                  {data.transportation[1].company_name}{" "}
+                  {data.transportation[1].origin}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Calendar size={16} />{" "}
+                <span>
+                  {farsiNumber(jaliliDate(data.date.end))}{" "}
+                  {farsiNumber(data.transportation[1].start)}
+                </span>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="flex flex-col gap-4 rounded-lg border-2 border-yellow-primary p-4">
           <div className="font-semibold">توضیحات تور :</div>

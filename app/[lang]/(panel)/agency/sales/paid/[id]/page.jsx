@@ -5,7 +5,7 @@ import LoadingPage from "@/components/loading-page";
 import { useEffect, useState } from "react";
 import { axios } from "@/lib/axios";
 import { toast } from "sonner";
-import UserBookInfo from "@/components/booking-tour/user-book-info";
+import PassengersInfo from "@/components/booking-tour/passengers-info";
 
 const EditCityPage = ({ params }) => {
   const [data, setData] = useState(null);
@@ -15,16 +15,16 @@ const EditCityPage = ({ params }) => {
   useEffect(() => {
     fetchDefaultData();
   }, []);
-
+  console.log("first");
   const fetchDefaultData = async () => {
     setIsLoading(true);
     await axios
-      .get(`/api/user/reservation/${params.id}`)
+      .get(`/api/agency/reservation/${params.id}`)
       .then((response) => {
-        console.log("responsssae", response);
         setData(response.data.data);
       })
       .catch((error) => {
+        console.log("error", error);
         toast.error(
           <ToastError
             text={
@@ -44,7 +44,7 @@ const EditCityPage = ({ params }) => {
       {isLoading ? (
         <LoadingPage />
       ) : (
-        data !== null && <UserBookInfo defaultData={data} />
+        data !== null && <PassengersInfo defaultData={data} />
       )}
     </div>
   );

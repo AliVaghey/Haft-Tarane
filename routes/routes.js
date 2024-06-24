@@ -211,7 +211,18 @@ export const routes = {
     },
     sales: {
       all: "/agency/sales/all",
-      "pending-pay": "/agency/sales/pending-pay",
+      pending: {
+        root: "/agency/sales/pending",
+        details: (id) => `/agency/sales/pending/${id}`,
+      },
+      paid: {
+        root: "/agency/sales/paid",
+        details: (id) => `/agency/sales/paid/${id}`,
+      },
+      checkout: {
+        root: "/agency/sales/checkout",
+        details: (id) => `/agency/sales/checkout/${id}`,
+      },
       accounting: "/agency/sales/accounting",
       leads: "/agency/sales/leads",
     },

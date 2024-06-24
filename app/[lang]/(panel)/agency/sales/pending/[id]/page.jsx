@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import PassengersInfo from "@/components/booking-tour/passengers-info";
 
 const EditCityPage = ({ params }) => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState(null);
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -41,10 +41,10 @@ const EditCityPage = ({ params }) => {
 
   return (
     <div className="h-full">
-      {isLoading && !data.passengers ? (
+      {isLoading ? (
         <LoadingPage />
       ) : (
-        <PassengersInfo defaultData={data} />
+        data !== null && <PassengersInfo defaultData={data} />
       )}
     </div>
   );

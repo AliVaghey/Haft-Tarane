@@ -23,7 +23,7 @@ const UserToursPage = ({ searchParams: { page } }) => {
   const fetchCities = async () => {
     setIsLoading(true);
     await axios
-      .get(`/api/agency/reservations?page=${page || 1}`)
+      .get(`/api/agency/reservations?page=${page || 1}&pending=true`)
       .then((response) => {
         console.log("response", response.data.data);
         setData(response.data.data);
@@ -38,8 +38,8 @@ const UserToursPage = ({ searchParams: { page } }) => {
   return (
     <div className="px-0 lg:px-10">
       <DataTableHeader
-        title={"تور های رزرو شده"}
-        description={"تور های رزرو شده آژانس شما"}
+        title={"در انتظار پرداخت"}
+        description={"رزرو های در انتظار پرداخت آژانس شما"}
         // btnText="افزودن شهر"
         // href={routes.admin.cities.add}
       />

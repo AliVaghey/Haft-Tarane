@@ -80,7 +80,7 @@ const CellAction = ({ data }) => {
   return (
     <div className="flex items-center justify-center">
       <div className="flex items-center gap-2">
-        <Link href={routes.agency["booked-tours"].details(data.id)}>
+        <Link href={routes.agency.sales.pending.details(data.id)}>
           <Button className="h-8 text-xs">مشاهده جزئیات</Button>
         </Link>
 

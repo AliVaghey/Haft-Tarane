@@ -114,23 +114,6 @@ export const navItems = [
   },
 
   {
-    title: "تور های رزرو شده",
-    type: "subMenu",
-    icon: (size, strokeWidth) => (
-      <Plane size={size || 18} strokeWidth={strokeWidth || 1.5} />
-    ),
-    subMenu: [
-      {
-        title: "تور های رزرو شده شما",
-        href: routes.agency["booked-tours"].root,
-        icon: (size, strokeWidth) => (
-          <Plane size={size || 18} strokeWidth={strokeWidth || 1.5} />
-        ),
-      },
-    ],
-  },
-
-  {
     title: "فروش ها",
     type: "subMenu",
     icon: (size, strokeWidth) => (
@@ -139,14 +122,21 @@ export const navItems = [
     subMenu: [
       {
         title: "همه فروش ها",
-        href: routes.agency.sales.all,
+        href: routes.agency.sales.paid.root,
         icon: (size, strokeWidth) => (
           <Wallet size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
       {
         title: "در انتظار پرداخت",
-        href: routes.agency.sales["pending-pay"],
+        href: routes.agency.sales.pending.root,
+        icon: (size, strokeWidth) => (
+          <ShieldEllipsis size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
+        title: "تسویه شده",
+        href: routes.agency.sales.checkout.root,
         icon: (size, strokeWidth) => (
           <ShieldEllipsis size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
@@ -158,13 +148,13 @@ export const navItems = [
           <SwatchBook size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
-      {
-        title: "لید ها",
-        href: routes.agency.sales.leads,
-        icon: (size, strokeWidth) => (
-          <UserCog size={size || 18} strokeWidth={strokeWidth || 1.5} />
-        ),
-      },
+      // {
+      //   title: "لید ها",
+      //   href: routes.agency.sales.leads,
+      //   icon: (size, strokeWidth) => (
+      //     <UserCog size={size || 18} strokeWidth={strokeWidth || 1.5} />
+      //   ),
+      // },
     ],
   },
 ];

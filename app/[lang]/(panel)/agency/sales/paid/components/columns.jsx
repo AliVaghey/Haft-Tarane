@@ -20,6 +20,22 @@ export const columns = [
     cell: ({ row }) => <span>{row.original.tour.title}</span>,
   },
   {
+    id: "username",
+    header: "نام خریدار",
+    cell: ({ row }) => {
+      console.log("row", row.original);
+      return <span>{row.original.user.username}</span>;
+    },
+  },
+  {
+    id: "phoneNumber",
+    header: "شماره تماس",
+    cell: ({ row }) => {
+      console.log("row", row.original);
+      return <span>{farsiNumber(row.original.user.phone)}</span>;
+    },
+  },
+  {
     id: "tourCode",
     header: "شناسه تور",
     cell: ({ row }) => <span>{farsiNumber(row.original.tour.id)}</span>,
