@@ -20,6 +20,7 @@ import {
 import { cn } from "@/lib/utils";
 import ToastSuccess from "@/components/toast/toast-success";
 import ToastError from "@/components/toast/toast-error";
+import querystring from "querystring";
 
 const accessTypes = [
   {
@@ -51,12 +52,10 @@ const CellAction = ({ data }) => {
     });
 
     await axios
-      .patch(
-        `/api/agency/reservation/${data.id}/change-status`,
-        encodedFormData,
-      )
+      .post(`/api/agency/reservation/${data.id}/change-status`, encodedFormData)
       .then((response) => {
-        if (response.status === 204) {
+        console.log("response", response);
+        if (response.status === 200) {
           toast.success(
             <ToastSuccess text={"وضعیت پرداخت با موفقیت تغییر کرد"} />,
           );
