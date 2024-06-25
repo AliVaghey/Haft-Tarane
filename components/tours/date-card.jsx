@@ -10,6 +10,8 @@ import ToastError from "@/components/toast/toast-error";
 import { CSRFToken, axios } from "@/lib/axios";
 import { toast } from "sonner";
 import { useTour } from "@/hooks/use-tour";
+import DateStatus from "./date-status";
+import DatePrice from "./date-price";
 
 const DateCard = ({ data, number, transportation_type }) => {
   const tourHook = useTour();
@@ -43,7 +45,7 @@ const DateCard = ({ data, number, transportation_type }) => {
   };
 
   return (
-    <div className="flex w-full flex-col items-center gap-5 lg:flex-row">
+    <div className="flex w-full flex-col items-center gap-5 border-b pb-4 lg:flex-row">
       <span className="mt-1 text-xs text-muted-foreground">{number}-</span>
       <div className="w-full flex-1 rounded-lg border-2 p-1">
         {farsiNumber(jaliliDate(data.start))}
@@ -62,6 +64,10 @@ const DateCard = ({ data, number, transportation_type }) => {
           <Trash2 size={16} strokeWidth={1.5} />
         </SubmitButton>
       )}
+      <div className="col-span-2 flex items-center gap-4 md:gap-10">
+        <DateStatus date={data} />
+        <DatePrice date={data} />
+      </div>
     </div>
   );
 };
