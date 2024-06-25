@@ -21,12 +21,15 @@ const SearchableSelect = ({
   defaultValue,
   keyValue,
   searchable,
-  changable,
 }) => {
   const [currentValue, setCurrentValue] = useState(defaultValue);
   const [searchState, setSearchState] = useState(defaultValue);
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setCurrentValue(defaultValue);
+  }, [defaultValue]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -73,13 +76,11 @@ const SearchableSelect = ({
         changeValue(e);
       }}
       value={
-        changable
-          ? defaultValue
-          : keyValue
-            ? isNaN(+currentValue)
-              ? currentValue
-              : +currentValue
-            : currentValue
+        keyValue
+          ? isNaN(+currentValue)
+            ? currentValue
+            : +currentValue
+          : currentValue
       }
       // value={defaultValue}
       defaultValue={defaultValue}

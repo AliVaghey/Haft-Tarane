@@ -84,7 +84,7 @@ const CellAction = ({ data }) => {
           <Button className="h-8 text-xs">مشاهده جزئیات</Button>
         </Link>
 
-        <DropdownMenu>
+        {/* <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
               disabled={loading}
@@ -126,7 +126,7 @@ const CellAction = ({ data }) => {
               </DropdownMenuItem>
             ))}
           </DropdownMenuContent>
-        </DropdownMenu>
+        </DropdownMenu> */}
       </div>
     </div>
   );

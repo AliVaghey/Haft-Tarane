@@ -64,16 +64,16 @@ export const columns = [
       <span>{farsiNumber(jaliliDate(row.original.date.start))}</span>
     ),
   },
-  // {
-  //   id: "payStatus",
-  //   header: "وضعیت پرداخت",
-  //   cell: ({ row }) =>
-  //     row.original.status === "pending" ? (
-  //       <span className="text-yellow-primary">در انتظار پرداخت</span>
-  //     ) : (
-  //       <span className="text-green-500">پرداخت شده</span>
-  //     ),
-  // },
+  {
+    id: "payStatus",
+    header: "وضعیت پرداخت",
+    cell: ({ row }) =>
+      row.original.status === "pending" ? (
+        <span className="text-yellow-primary">در انتظار پرداخت</span>
+      ) : (
+        <span className="text-green-500">پرداخت شده</span>
+      ),
+  },
   {
     id: "actions",
     header: "اقدامات",

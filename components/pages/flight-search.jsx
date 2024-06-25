@@ -83,7 +83,6 @@ const FlightSearch = ({ currentSearchParams }) => {
 
   const changeCities = () => {
     const current = qs.parse(searchParams.toString());
-    console.log("getValues", getValues("from"));
     const query = {
       ...current,
       date: current.date ? baseDateForm(new Date(current.date)) : null,
@@ -98,6 +97,33 @@ const FlightSearch = ({ currentSearchParams }) => {
       },
       { skipNull: true },
     );
+
+    router.push(url);
+  };
+
+  const changeDay = (op) => {
+    var day = new Date(currentSearchParams.date);
+    console.log(day); // Apr 30 2000
+
+    var nextDay = new Date(day);
+    nextDay.setDate(day.getDate() + op);
+    console.log(nextDay); // May 01 2000
+
+    const current = qs.parse(searchParams.toString());
+    const query = {
+      ...current,
+      date: current.date ? baseDateForm(new Date(nextDay)) : null,
+    };
+
+    const url = qs.stringifyUrl(
+      {
+        url: window.location.href,
+        query,
+      },
+      { skipNull: true },
+    );
+
+    setValue("date", nextDay);
 
     router.push(url);
   };
@@ -127,7 +153,6 @@ const FlightSearch = ({ currentSearchParams }) => {
                       keyValue="IATA_code"
                       placeholder={"مبدا"}
                       // searchable={true}
-                      changable={true}
                     />
                   </FormControl>
                   <FormMessage />
@@ -163,7 +188,6 @@ const FlightSearch = ({ currentSearchParams }) => {
                       keyValue="IATA_code"
                       placeholder={"مقصد"}
                       // searchable={true}
-                      changable={true}
                     />
                   </FormControl>
                   <FormMessage />
@@ -231,6 +255,22 @@ const FlightSearch = ({ currentSearchParams }) => {
                 </FormItem>
               )}
             /> */}
+            <div className="flex gap-2">
+              <Button
+                type="button"
+                onClick={() => changeDay(1)}
+                className="mt-7 h-8 px-1 text-xs"
+              >
+                روز بعد
+              </Button>
+              <Button
+                type="button"
+                onClick={() => changeDay(-1)}
+                className="mt-7 h-8 px-1 text-xs"
+              >
+                روز قبل
+              </Button>
+            </div>
           </div>
           <div className="flex items-center justify-end gap-2 p-2">
             <SubmitButton className="w-fit" loading={isSubmitting}>
