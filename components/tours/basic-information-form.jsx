@@ -480,14 +480,6 @@ const BasicInformationForm = ({ data }) => {
               <FormItem className="col-span-3 lg:col-span-1">
                 <FormLabel>مدل های تور</FormLabel>
                 <FormControl>
-                  {/* <ChipSelect
-                    initialData={getValues("tour_styles")}
-                    options={tourStyles}
-                    onChange={(data) => {
-                      console.log("data", data);
-                      setValue("tour_styles", data, { shouldValidate: true });
-                    }}
-                  /> */}
                   <ChipSearchableSelect
                     api={`/api/options?category=tour_styles`}
                     initialData={getValues("tour_styles")}

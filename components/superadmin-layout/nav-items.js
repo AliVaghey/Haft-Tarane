@@ -4,6 +4,7 @@ import {
   AlertCircleIcon,
   Bus,
   Cog,
+  Home,
   Lock,
   Percent,
   PlusCircle,
@@ -32,6 +33,16 @@ import {
 } from "lucide-react";
 
 export const navItems = [
+  {
+    title: "صفحه اصلی",
+    type: "link",
+    href: routes.landing.root,
+    icon: (size, strokeWidth) => (
+      <Home size={size || 18} strokeWidth={strokeWidth || 1.5} />
+    ),
+    subMenu: [],
+  },
+
   {
     title: "داشبورد و اطلاعات کاربری",
     type: "text",

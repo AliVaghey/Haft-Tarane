@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/select";
 import { axios } from "@/lib/axios";
 import { Loader2 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import qs from "query-string";
 
 const SearchableSelect = ({
@@ -27,11 +27,17 @@ const SearchableSelect = ({
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const inputRef = useRef(null);
+
   useEffect(() => {
     setCurrentValue(defaultValue);
   }, [defaultValue]);
 
   useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+
     setIsLoading(true);
     let timeoutId;
     clearTimeout(timeoutId);
@@ -95,6 +101,7 @@ const SearchableSelect = ({
         {query && searchable && (
           <div>
             <Input
+              ref={inputRef}
               value={searchState}
               onChange={(e) => {
                 setSearchState(e.target.value);

@@ -255,14 +255,12 @@ const Header = () => {
         >
           <DropdownMenuLabel>اکانت من</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem className="w-full">
-            <div className="w-full rtl:text-right">
-              <Link href={"#"}>تنظیمات</Link>
-            </div>
+          <DropdownMenuItem className="w-full text-right">
+            <Link className="w-full" href={routes.agency.profile["user-info"]}>
+              مشخصات کاربری
+            </Link>
           </DropdownMenuItem>
-          <DropdownMenuItem className="w-full cursor-pointer">
-            <div className="w-full rtl:text-right">پشتیبانی</div>
-          </DropdownMenuItem>
+
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={signOut} className="w-full cursor-pointer">
             <div className="flex w-full items-center gap-x-2 rtl:justify-end">

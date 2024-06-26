@@ -1,5 +1,5 @@
 import { routes } from "@/routes/routes";
-import { Building, Lock, User, User2 } from "lucide-react";
+import { Building, Home, Lock, User, User2 } from "lucide-react";
 import {
   Hotel,
   ClipboardList,
@@ -18,7 +18,17 @@ import {
 
 export const navItems = [
   {
-    title: "داشبورد",
+    title: "صفحه اصلی",
+    type: "link",
+    href: routes.landing.root,
+    icon: (size, strokeWidth) => (
+      <Home size={size || 18} strokeWidth={strokeWidth || 1.5} />
+    ),
+    subMenu: [],
+  },
+
+  {
+    title: "داشبورد و اطلاعات کاربری",
     type: "text",
   },
 

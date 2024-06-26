@@ -14,9 +14,25 @@ import {
   User,
   User2,
   Lock,
+  Home,
 } from "lucide-react";
 
 export const navItems = [
+  {
+    title: "صفحه اصلی",
+    type: "link",
+    href: routes.landing.root,
+    icon: (size, strokeWidth) => (
+      <Home size={size || 18} strokeWidth={strokeWidth || 1.5} />
+    ),
+    subMenu: [],
+  },
+
+  {
+    title: "داشبورد و اطلاعات کاربری",
+    type: "text",
+  },
+
   {
     title: "داشبورد",
     type: "link",
@@ -63,7 +79,7 @@ export const navItems = [
     type: "link",
     href: routes.agency["support-team"].root,
     icon: (size, strokeWidth) => (
-      <ServerCog size={size || 18} strokeWidth={strokeWidth || 1.5} />
+      <UserCog size={size || 18} strokeWidth={strokeWidth || 1.5} />
     ),
     subMenu: [],
   },
