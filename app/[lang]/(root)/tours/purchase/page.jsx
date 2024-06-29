@@ -134,7 +134,7 @@ const TourPurchase = () => {
         encodedFormData,
       )
       .then((response) => {
-        console.log("response", response);
+        console.log("response-reserve", response);
         if (response.status === 201) {
           toast.success(
             <div className="flex items-center gap-2">
