@@ -2,7 +2,7 @@ import { Calendar } from "lucide-react";
 import { Separator } from "../ui/separator";
 import { farsiNumber } from "@/lib/farsi-number";
 import { jaliliDate } from "@/lib/jalali-date";
-import DatePrice from "@/components/tours/date-price";
+// import DatePrice from "@/components/tours/date-price";
 import DateStatus from "@/components/tours/date-status";
 
 const DetailsDates = ({ data }) => {
@@ -33,7 +33,7 @@ const DetailsDates = ({ data }) => {
 
               <div className="col-span-2 flex items-center gap-4 md:gap-10">
                 <DateStatus date={item} />
-                <DatePrice date={item} />
+                {/* <DatePrice date={item} /> */}
               </div>
             </div>
             <Separator />

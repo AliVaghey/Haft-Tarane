@@ -13,6 +13,7 @@ import DetailsDocuments from "@/components/tour-details/documents";
 import DetailsHotels from "@/components/tour-details/hotel";
 import DetailsDates from "@/components/tour-details/dates";
 import { toast } from "sonner";
+import DetailsPrices from "@/components/tour-details/prices";
 
 const TourDetailsPage = ({ params }) => {
   const [data, setData] = useState({});
@@ -46,7 +47,7 @@ const TourDetailsPage = ({ params }) => {
       });
   };
 
-  console.log("data", data);
+  console.log("dataweqwqweqweqweqweqwe", data);
 
   return (
     <div className="relative min-h-[80vh] bg-primary pt-24">
@@ -85,6 +86,15 @@ const TourDetailsPage = ({ params }) => {
               <TabsTrigger value="dates" className="mx-2 bg-yellow-dark px-6">
                 تاریخ ها
               </TabsTrigger>
+
+              {data.status === "active" && (
+                <TabsTrigger
+                  value="prices"
+                  className="mx-2 bg-yellow-dark px-6"
+                >
+                  تغییر نرخ
+                </TabsTrigger>
+              )}
             </TabsList>
             <TabsContent value="basic-information">
               {isLoading ? (
@@ -131,6 +141,18 @@ const TourDetailsPage = ({ params }) => {
                 <DetailsDates data={data.dates} />
               )}
             </TabsContent>
+
+            {data.status === "active" && (
+              <TabsContent value="prices">
+                {isLoading ? (
+                  <div className="h-96 rounded-lg bg-white">
+                    <LoadingPage />
+                  </div>
+                ) : (
+                  <DetailsPrices data={data} />
+                )}
+              </TabsContent>
+            )}
           </Tabs>
         </div>
         {/* <div className="relative hidden flex-1 items-center justify-center lg:flex">
