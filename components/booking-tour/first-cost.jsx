@@ -7,7 +7,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { defaultAirport } from "@/constants/images";
 import { Moon, Star, Train, User } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -19,9 +18,11 @@ import { jaliliDate } from "@/lib/jalali-date";
 import { useUser } from "@/hooks/use-user";
 import { toast } from "sonner";
 import { routes } from "@/routes/routes";
+import { Separator } from "@/components/ui/separator";
+import SimilarTourCard from "./similar-tour-card";
 
-const FirstCost = ({ data }) => {
-  console.log("dataooooooooooooppppppppppp", data);
+const FirstCost = ({ data, similarData }) => {
+  console.log("similarDataaaaaaaaaaaaaaab", similarData);
   const router = useRouter();
 
   const userHook = useUser();
@@ -177,7 +178,16 @@ const FirstCost = ({ data }) => {
           </div>
         </div>
       </div>
-      <div className="mt-4">تور های مشابه</div>
+
+      <div className="mt-4">
+        <span>تور های مشابه</span>
+        <Separator className="my-2 h-0.5 bg-primary" />
+        <div className="mx-auto flex w-full flex-col gap-3 ">
+          {similarData.map((item, index) => (
+            <SimilarTourCard key={index} data={item} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

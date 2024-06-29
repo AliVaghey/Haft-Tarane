@@ -26,7 +26,6 @@ const CellAction = ({ data }) => {
       console.log("response", response.status);
 
       if (response.status === 201) {
-        console.log("aaaaaaaaaaaaa");
         toast.success(
           <div className="flex items-center gap-2">
             <span>

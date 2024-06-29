@@ -4,7 +4,6 @@ import ToastError from "@/components/toast/toast-error";
 import { useEffect, useState } from "react";
 import { axios } from "@/lib/axios";
 import LoadingPage from "@/components/loading-page";
-import FirstCost from "@/components/booking-tour/first-cost";
 import { toast } from "sonner";
 import SecondDetails from "@/components/booking-tour/second-details";
 

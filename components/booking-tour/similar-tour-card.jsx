@@ -4,7 +4,7 @@ import { chita } from "@/constants/images";
 import { Bus, Calendar, MapPin } from "lucide-react";
 import Image from "next/image";
 import { persianPriceFormat } from "@/lib/persian-price-format";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { routes } from "@/routes/routes";
 import { jaliliDate } from "@/lib/jalali-date";
@@ -12,7 +12,8 @@ import { farsiNumber } from "@/lib/farsi-number";
 import { useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
 
-const TourCard = ({ data }) => {
+const SimilarTourCard = ({ data }) => {
+  console.log("datan", data);
   const router = useRouter();
 
   const searchParams = useSearchParams();
@@ -22,14 +23,14 @@ const TourCard = ({ data }) => {
 
     const query = {
       // ...current,
-      ["cid"]: values.costs[0].id,
+      ["cid"]: values.costs.id,
       ["start"]: values.dates[0].start,
       ["end"]: values.dates[0].end,
     };
 
     const url = qs.stringifyUrl(
       {
-        url: `${window.location.href.split("?")[0]}/${values.id}`,
+        url: `${window.location.href.split("?")[0]}`,
         query,
       },
       { skipNull: true },
@@ -43,7 +44,7 @@ const TourCard = ({ data }) => {
       <div className="flex h-full gap-5 p-1 px-2">
         <div className="my-auto ">
           <Image
-            src={data.costs.length > 0 ? data.costs[0].hotel.photo : chita}
+            src={data.costs.length > 0 ? data.costs.hotel.photo : chita}
             width={360}
             height={360}
             className=" my-auto max-h-48 w-60 rounded-lg rounded-r-lg object-cover"
@@ -60,16 +61,12 @@ const TourCard = ({ data }) => {
 
           <div className="flex gap-2">
             <MapPin size={18} strokeWidth={1.5} />
-            <span>
-              نام هتل : {data.costs.length > 0 && data.costs[0].hotel.name}
-            </span>
+            <span>نام هتل : {data.costs.hotel.name}</span>
           </div>
 
           <div className="flex gap-2">
             <MapPin size={18} strokeWidth={1.5} />
-            <span>
-              آدرس هتل : {data.costs.length > 0 && data.costs[0].hotel.address}
-            </span>
+            <span>آدرس هتل : {data.costs.hotel.address}</span>
           </div>
 
           <div className="flex gap-2">
@@ -108,4 +105,4 @@ const TourCard = ({ data }) => {
   );
 };
 
-export default TourCard;
+export default SimilarTourCard;

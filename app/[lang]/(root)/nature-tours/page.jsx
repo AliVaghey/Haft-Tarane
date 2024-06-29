@@ -35,21 +35,13 @@ const TourPage = ({
       }
     };
 
-    console.log("url()", url());
-
     setTimeout(async () => {
       await axios
         .get(url())
         .then((response) => {
-          console.log(
-            "responsetttttttttttttttttttttttttttttttttttttttttttt",
-            response.data,
-          );
           setData(response.data);
         })
-        .catch((err) => {
-          console.log("getToursErrrrrrrrrrrrrrrrrrrrr", err);
-        })
+        .catch((err) => {})
         .finally(() => {
           setIsLoading(false);
         });

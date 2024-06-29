@@ -11,19 +11,22 @@ const TourDetailsPage = ({ searchParams }) => {
   const { cid, start, end } = searchParams;
 
   const [data, setData] = useState(null);
+  const [similarData, setSimilarData] = useState(null);
 
   const [isLoading, setIsLoading] = useState(false);
+  const [similarIsLoading, setSimilarIsLoading] = useState(false);
 
   useEffect(() => {
     fetchDefaultData();
-  }, []);
+    fetchSimilarData();
+  }, [cid, start]);
 
   const fetchDefaultData = async () => {
     setIsLoading(true);
     await axios
       .get(`/api/cost/${cid || ""}?start=${start || ""}`)
       .then((response) => {
-        console.log("responseqqqqqqqqqqqqq", response);
+        // console.log("responseqqqqqqqqqqqqq", response);
         setData(response.data.data);
       })
       .catch((error) => {
@@ -41,11 +44,36 @@ const TourDetailsPage = ({ searchParams }) => {
       });
   };
 
+  const fetchSimilarData = async () => {
+    setSimilarIsLoading(true);
+    await axios
+      .get(`/api/similar-dates?cost_id=${cid}`)
+      .then((response) => {
+        console.log("response-similar", response);
+        setSimilarData(response.data.data);
+      })
+      .catch((error) => {
+        toast.error(
+          <ToastError
+            text={
+              error?.response?.data?.message ||
+              defaultMessages.errors.internalError
+            }
+          />,
+        );
+      })
+      .finally(() => {
+        setSimilarIsLoading(false);
+      });
+  };
+
   return (
     <div className="relative min-h-[80vh] bg-primary pt-24">
       <div className="px-2 pb-5 md:px-28 lg:px-48 xl:px-60">
-        {isLoading && <LoadingPage />}
-        {data !== null && <FirstCost data={data} />}
+        {(isLoading || similarIsLoading) && <LoadingPage />}
+        {data !== null && similarData !== null && (
+          <FirstCost data={data} similarData={similarData} />
+        )}
       </div>
     </div>
   );
