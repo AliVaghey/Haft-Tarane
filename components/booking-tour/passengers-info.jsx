@@ -4,6 +4,7 @@ import DataTableHeader from "@/components/data-table-header";
 import { farsiNumber } from "@/lib/farsi-number";
 import { jaliliDate } from "@/lib/jalali-date";
 import { useState } from "react";
+import PassengersFiles from "./passengers-files";
 
 const PassengersInfo = ({ defaultData }) => {
   console.log("defaultData", defaultData);
@@ -21,6 +22,9 @@ const PassengersInfo = ({ defaultData }) => {
         description="مشاهده لیست جزئیات مسافران"
       />
       <div className="rounded-lg border border-yellow-primary">
+        <div className="flex flex-col gap-1 rounded-lg p-2 shadow-lg">
+          <PassengersFiles data={defaultData} />
+        </div>
         <div className="flex flex-col gap-1 rounded-lg p-2 shadow-lg">
           <span className="w-fit rounded-md bg-yellow-dark p-1.5">
             مشخصات کاربر

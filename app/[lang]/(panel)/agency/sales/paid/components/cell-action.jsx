@@ -21,6 +21,7 @@ import { cn } from "@/lib/utils";
 import ToastSuccess from "@/components/toast/toast-success";
 import ToastError from "@/components/toast/toast-error";
 import querystring from "querystring";
+import AddPassengerFile from "@/components/helpers/add-passenger-file";
 
 const accessTypes = [
   {
@@ -83,6 +84,8 @@ const CellAction = ({ data }) => {
         <Link href={routes.agency.sales.paid.details(data.id)}>
           <Button className="h-8 text-xs">مشاهده جزئیات</Button>
         </Link>
+
+        <AddPassengerFile data={data} />
 
         {/* <DropdownMenu>
           <DropdownMenuTrigger asChild>

@@ -15,9 +15,10 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { Separator } from "@/components/ui/separator";
+import PassengersFiles from "./passengers-files";
 
 const UserBookInfo = ({ defaultData }) => {
-  console.log("defaultData", defaultData);
+  console.log("defaultDatapppppppppppppppppppppp", defaultData);
 
   const [data, setData] = useState(
     defaultData.passengers ? JSON.parse(defaultData.passengers) : [],
@@ -30,7 +31,10 @@ const UserBookInfo = ({ defaultData }) => {
         title="جزئیات تور"
         description="مشاهده تمام جزئیات تور"
       />
+
       <div className="rounded-lg bg-yellow-dark">
+        <div className="flex flex-col gap-3 rounded-lg p-2 shadow-lg"></div>
+
         <div className="flex flex-col gap-3 rounded-lg p-2 shadow-lg">
           <div className="flex flex-col justify-between rounded-lg border-2 border-yellow-primary p-4 md:flex-row">
             <div className="flex flex-col gap-2">
@@ -402,6 +406,9 @@ const UserBookInfo = ({ defaultData }) => {
             </div>
           </div>
         ))}
+        <div className="flex flex-col justify-between rounded-lg border-2 border-yellow-primary p-4 md:flex-row">
+          <PassengersFiles data={defaultData} />
+        </div>
       </div>
     </div>
   );
