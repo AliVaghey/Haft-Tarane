@@ -4,6 +4,8 @@ import SearchTable from "@/components/search-table";
 import CellAction from "./cell-action";
 import Number from "./number";
 import Image from "next/image";
+import { farsiNumber } from "@/lib/farsi-number";
+import { jaliliDate } from "@/lib/jalali-date";
 
 export const columns = [
   {
@@ -52,6 +54,22 @@ export const columns = [
     id: "destination",
     header: "مقصد",
     cell: ({ row }) => <span>{row.original.tour.destination}</span>,
+  },
+  {
+    id: "dates",
+    header: "تاریخ ها",
+    cell: ({ row }) => (
+      <div className="flex flex-col gap-1">
+        {row.original.dates &&
+          row.original.dates.map((item, index) => (
+            <span key={index}>
+              از {farsiNumber(jaliliDate(item.start))} تا
+              {"  "}
+              {farsiNumber(jaliliDate(item.end))}
+            </span>
+          ))}
+      </div>
+    ),
   },
   {
     id: "actions",

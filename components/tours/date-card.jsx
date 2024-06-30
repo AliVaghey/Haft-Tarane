@@ -66,7 +66,7 @@ const DateCard = ({ data, number, transportation_type }) => {
       )}
       <div className="col-span-2 flex items-center gap-4 md:gap-10">
         <DateStatus date={data} />
-        <DatePrice date={data} />
+        {/* <DatePrice date={data} /> */}
       </div>
     </div>
   );

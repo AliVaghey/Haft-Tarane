@@ -188,13 +188,9 @@ const FlightList = ({ flights, addTransportation }) => {
                   <RadioGroup
                     dir="rtl"
                     onValueChange={(e) => {
-                      console.log("e", e);
-
                       const flightIndex = flights.findIndex(
                         (i) => i.number_flight === e,
                       );
-
-                      console.log("flightIndex", flightIndex);
 
                       const currentFlight = flights[flightIndex];
 

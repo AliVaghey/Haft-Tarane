@@ -77,7 +77,6 @@ const SearchableSelect = ({
   return (
     <Select
       onValueChange={(e) => {
-        console.log("e", e);
         setCurrentValue(e);
         changeValue(e);
       }}

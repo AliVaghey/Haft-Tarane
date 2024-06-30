@@ -32,7 +32,7 @@ function SpecialTours() {
   );
 
   return (
-    <div className="lg:mb-20 ">
+    <div className="lg:mb-20">
       <div className="relative">
         <Image
           src={circle}
@@ -41,38 +41,9 @@ function SpecialTours() {
           alt=""
           className="absolute right-0 w-80 max-lg:hidden"
         />
-        <div className="mx-auto w-4/5 pt-20">
+        <div className="mx-auto w-full pt-20">
           <div className="flex justify-between gap-9 max-lg:flex-col">
-            <div className="w-96 max-lg:w-full">
-              {" "}
-              {/* <div className="flex items-center justify-center gap-4 max-lg:grid  max-lg:grid-cols-4 max-md:grid-cols-2 lg:flex-col ">
-                <div className="z-10 flex  size-32 items-center justify-center rounded-2xl bg-white">
-                  <div className="flex flex-col items-center justify-center gap-2">
-                    <p className="text-yellow text-xl font-bold">+ 35</p>
-                    <p className="">تور مسافرتی</p>
-                  </div>
-                </div>
-                <div className="z-10 flex  size-32 items-center justify-center rounded-2xl bg-white">
-                  <div className="flex flex-col items-center justify-center gap-2">
-                    <p className="text-yellow text-xl font-bold">+ 56</p>
-                    <p className="">هتل 5 ستاره</p>
-                  </div>
-                </div>
-                <div className="z-10 flex  size-32 items-center justify-center rounded-2xl bg-white">
-                  <div className="flex flex-col items-center justify-center gap-2">
-                    <p className="text-yellow text-xl font-bold">+ 100</p>
-                    <p className="">شرکت هواپیمایی</p>
-                  </div>
-                </div>
-                <div className="z-10 flex  size-32 items-center justify-center rounded-2xl bg-white">
-                  <div className="flex flex-col items-center justify-center gap-2">
-                    <p className="text-yellow text-xl font-bold">+ 150</p>
-                    <p className="">مقصد گردشگری</p>
-                  </div>
-                </div>
-              </div> */}
-            </div>
-            <div className="relative w-full">
+            <div className="relative flex w-full flex-col items-center justify-center gap-2">
               <h2 className="text-center text-3xl font-bold max-lg:text-lg max-md:text-sm">
                 تورهای ویژه
               </h2>
