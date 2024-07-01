@@ -4,7 +4,6 @@ import Image from "next/image";
 import circle from "@/public/img/tour-circle.svg";
 import nature from "@/public/img/nature.jpg";
 import { useUser } from "@/hooks/use-user";
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -12,11 +11,14 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { routes } from "@/routes/routes";
 import { Button } from "@/components/ui/button";
+import { farsiNumber } from "@/lib/farsi-number";
+import { jaliliDate } from "@/lib/jalali-date";
+import { DateForm } from "@/lib/date-form";
 
 function SpecialTours() {
   const userHook = useUser();
@@ -28,8 +30,17 @@ function SpecialTours() {
           tour: {},
           advertisement: "",
           photo: nature,
+          dates: [],
         },
   );
+
+  console.log("currentTour", currentTour);
+
+  useEffect(() => {
+    if (userHook.specialTours.length > 0) {
+      setCurrentTour(userHook.specialTours[0]);
+    }
+  }, [userHook.specialTours]);
 
   return (
     <div className="lg:mb-20">
@@ -56,7 +67,7 @@ function SpecialTours() {
                   alt="alt"
                   width={480}
                   height={360}
-                  className="h-[500px] w-[888px] rounded-2xl max-lg:h-80 max-md:h-72"
+                  className="h-[450px] w-[750px] rounded-2xl max-lg:h-80 max-md:h-72"
                 />
                 <div className="absolute right-9 top-9">
                   <h2 className="pb-7 text-2xl font-bold text-white max-lg:text-lg max-md:text-xs">
@@ -66,16 +77,28 @@ function SpecialTours() {
                     از {currentTour?.tour?.origin} به{" "}
                     {currentTour?.tour?.destination}
                   </p>
-                  <p className="mt-2 rounded-lg bg-white bg-opacity-30 p-2 text-white">
+                  {/* <p className="mt-2 rounded-lg bg-white bg-opacity-30 px-2 py-1 text-white">
                     {currentTour?.advertisement}
-                  </p>
-                  <Link href={routes.tours.details(currentTour.tour.id)}>
-                    <Button className="mt-5">مشاهده جزئیات</Button>
-                  </Link>
+                  </p> */}
+                  <div className="mt-3 flex flex-col gap-1">
+                    {currentTour.dates.map((item, index) => (
+                      <Link
+                        key={index}
+                        href={`${window.location.href.split("?")[0]}/special-tours/${currentTour.id}?start=${item.start}`}
+                      >
+                        <Button className="h-8 text-xs">
+                          {" "}
+                          از تاریخ {farsiNumber(jaliliDate(item.start))} تا
+                          {"  "}
+                          {farsiNumber(jaliliDate(item.end))}{" "}
+                        </Button>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
 
-              <div className="absolute bottom-5 flex w-full justify-center px-14">
+              <div className=" bottom-5 flex w-full justify-center px-14 md:w-[900px]">
                 <Carousel
                   dir="ltr"
                   opts={{

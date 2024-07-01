@@ -24,7 +24,6 @@ import { baseDateForm } from "@/lib/date-form";
 import { useEffect } from "react";
 
 const FlightSearch = ({ currentSearchParams }) => {
-  console.log("currentSearchParams", currentSearchParams);
   const searchParams = useSearchParams();
   const router = useRouter();
 

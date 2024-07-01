@@ -23,7 +23,6 @@ import { routes } from "@/routes/routes";
 import { baseDateForm } from "@/lib/date-form";
 
 const TourSearch = ({ currentSearchParams }) => {
-  console.log("currentSearchParams", currentSearchParams);
   const searchParams = useSearchParams();
   const router = useRouter();
 
