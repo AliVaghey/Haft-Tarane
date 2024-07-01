@@ -16,10 +16,10 @@ export default function OurService() {
           className="h-[666px] animate-pulse max-lg:hidden lg:absolute lg:-right-20"
         />
       </div>
-      <div className="relative z-10 mx-auto w-4/5">
+      <div className="relative mx-auto w-4/5">
         <div className="flex flex-wrap items-center justify-between max-lg:flex-col-reverse">
           <div className="w-1/2 rounded-lg p-2 pt-14 text-muted-foreground max-lg:w-full lg:pr-16">
-            <h2 className="z-50 text-xl font-semibold text-[#2D2C2C] max-lg:text-lg max-md:text-sm">
+            <h2 className="text-xl font-semibold text-[#2D2C2C] max-lg:text-lg max-md:text-sm">
               {" "}
               خدمات ما
             </h2>

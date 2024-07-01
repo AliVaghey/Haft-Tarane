@@ -20,15 +20,11 @@ const AuthProvider = ({ children }) => {
     axios
       .get("/api/specials")
       .then((response) => {
-        console.log("getSpecials", response?.data?.data);
-
         if (response.status === 200) {
           userHook.setSpecialTours(response?.data?.data);
         }
       })
-      .catch((err) => {
-        console.log("getSpecialsError", err);
-      })
+      .catch((err) => {})
       .finally(() => {});
   };
 
@@ -36,15 +32,11 @@ const AuthProvider = ({ children }) => {
     axios
       .get("/api/banners")
       .then((response) => {
-        console.log("getBanners", response?.data);
-
         if (response.status === 200) {
           userHook.setBanners(response?.data);
         }
       })
-      .catch((err) => {
-        console.log("getBannersError", err);
-      })
+      .catch((err) => {})
       .finally(() => {});
   };
 
@@ -54,8 +46,6 @@ const AuthProvider = ({ children }) => {
     await axios
       .get("/api/user/info")
       .then((response) => {
-        console.log("getUserInfores", response?.data?.data);
-
         if (response.status === 200) {
           userHook.setUserData(response?.data?.data);
 
@@ -71,7 +61,6 @@ const AuthProvider = ({ children }) => {
         }
       })
       .catch((err) => {
-        console.log("getUserInfoError", err);
         userHook.setUserData(false);
       })
       .finally(() => {
@@ -79,10 +68,34 @@ const AuthProvider = ({ children }) => {
       });
   };
 
+  const getSiteViews = async () => {
+    axios
+      .get("/api/visits")
+      .then((response) => {
+        if (response.status === 200) {
+          userHook.setSiteViews(response?.data);
+        }
+      })
+      .catch((err) => {
+        console.log("getBannersError", err);
+      })
+      .finally(() => {});
+  };
+
+  const increaseSiteViews = async () => {
+    axios
+      .post("/api/visit")
+      .then((response) => {})
+      .catch((err) => {})
+      .finally(() => {});
+  };
+
   useEffect(() => {
     userInfo();
     getBanners();
     getSpecialTours();
+    getSiteViews();
+    increaseSiteViews();
   }, []);
 
   return isLoading ? <LoadingPage /> : <main>{children}</main>;

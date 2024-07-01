@@ -53,8 +53,6 @@ const SecondDetails = ({ data }) => {
       { skipNull: true },
     );
 
-    console.log("url", url);
-
     router.push(url);
   };
 

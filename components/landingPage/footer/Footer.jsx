@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
 import bg from "@/public/img/footerBg.svg";
@@ -7,10 +9,13 @@ import whatsapp from "@/public/img/whatsapp.svg";
 import insta from "@/public/img/instageram.svg";
 import telegram from "@/public/img/telegram.svg";
 import { farsiNumber } from "@/lib/farsi-number";
+import { useUser } from "@/hooks/use-user";
 
 export default function Footer() {
+  const userHook = useUser();
+
   return (
-    <div className="bg-yellow-primary">
+    <div className="bg-white">
       <div
         className=""
         style={{
@@ -116,6 +121,18 @@ export default function Footer() {
                     </a>
                   </li>
                 </ul>
+
+                <ul className="mt-5 flex flex-col gap-4 text-muted-foreground">
+                  <span className="text-lg text-foreground">بازدید ها</span>
+                  <li className="flex gap-2">
+                    <span>تعداد بازدید امروز :</span>
+                    {farsiNumber(userHook.siteViews?.today)}
+                  </li>
+                  <li className="flex gap-2">
+                    <span>تعداد بازدید کل :</span>
+                    {farsiNumber(userHook.siteViews?.all)}
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -123,7 +140,7 @@ export default function Footer() {
       </div>
       <div className="bg-[#130D3A]">
         <p className="py-7 text-center text-lg text-yellow-primary">
-          &copy; کلیه حقوق این سایت متعلق به شرکت بیباک سفر می‌باشد.
+          &copy; کلیه حقوق این سایت متعلق به شرکت بی باک سفر می‌باشد.
         </p>
       </div>
     </div>

@@ -60,8 +60,6 @@ const SearchableSelect = ({
       { skipNull: true },
     );
 
-    console.log("url", url);
-
     try {
       const res = await axios.get(`${url}`);
 

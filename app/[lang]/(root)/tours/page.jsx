@@ -34,16 +34,10 @@ const TourPage = ({
       }
     };
 
-    console.log("url()", url());
-
     setTimeout(async () => {
       await axios
         .get(url())
         .then((response) => {
-          console.log(
-            "responsetttttttttttttttttttttttttttttttttttttttttttt",
-            response.data,
-          );
           setData(response.data);
         })
         .catch((err) => {

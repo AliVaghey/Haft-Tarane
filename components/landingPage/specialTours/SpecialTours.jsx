@@ -34,8 +34,6 @@ function SpecialTours() {
         },
   );
 
-  console.log("currentTour", currentTour);
-
   useEffect(() => {
     if (userHook.specialTours.length > 0) {
       setCurrentTour(userHook.specialTours[0]);

@@ -46,8 +46,6 @@ const FirstCost = ({ data, similarData }) => {
       { skipNull: true },
     );
 
-    console.log("url", url);
-
     router.push(url);
   };
 
