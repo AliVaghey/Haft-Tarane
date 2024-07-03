@@ -9,7 +9,7 @@ import DataTableHeader from "@/components/data-table-header";
 import { useDictionary } from "@/providers/dictionary-provider";
 import PaginationComponent from "@/components/pagination";
 
-const AdminDashboardPage = ({ searchParams: { page } }) => {
+const AdminDashboardPage = ({ searchParams: { page, id } }) => {
   const dictionary = useDictionary();
 
   const [data, setData] = useState([]);
@@ -17,12 +17,12 @@ const AdminDashboardPage = ({ searchParams: { page } }) => {
 
   useEffect(() => {
     fetchData();
-  }, [page]);
+  }, [page, id]);
 
   const fetchData = async () => {
     setIsLoading(true);
     await axios
-      .get(`/api/agency/tours?page=${page || 1}`)
+      .get(`/api/agency/tours?page=${page || 1}&id=${id || ""}`)
       .then((response) => {
         console.log("allAgencies", response);
         setData(response.data);

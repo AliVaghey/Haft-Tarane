@@ -38,8 +38,8 @@ const AdminDashboardPage = () => {
   return (
     <div className="px-0 lg:px-10">
       <DataTableHeader
-        title={dictionary["city"]["title"]}
-        description={dictionary["city"]["description"]}
+        title="نرخ کمیسیون"
+        description="لیست تمامی نرخ های کمیسیون"
         btnText="افزودن نرخ کمیسیون"
         href={routes.superadmin["profit-rates"].add}
       />

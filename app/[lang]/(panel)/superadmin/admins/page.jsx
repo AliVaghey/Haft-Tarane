@@ -37,10 +37,7 @@ const UsersPage = ({ searchParams: { page, phone, username } }) => {
   };
   return (
     <div className="px-0 lg:px-10">
-      <DataTableHeader
-        title={dictionary["user"]["title"]}
-        description={dictionary["user"]["description"]}
-      />
+      <DataTableHeader title={"ادمین ها"} description={"لیست ادمین های سایت"} />
 
       {isLoading ? (
         <LoadingPage />

@@ -54,7 +54,7 @@ function SpecialTours() {
           <div className="flex justify-between gap-9 max-lg:flex-col">
             <div className="relative flex w-full flex-col items-center justify-center gap-2">
               <h2 className="text-center text-3xl font-bold max-lg:text-lg max-md:text-sm">
-                تورهای ویژه
+                تور های ویژه
               </h2>
               <p className="py-9 text-center text-xl max-lg:text-lg max-md:text-xs">
                 ما به شما کمک میکنیم تا لوکیشن دلخواه خود را انتخاب کنید
@@ -67,8 +67,8 @@ function SpecialTours() {
                   height={360}
                   className="h-[450px] w-[750px] rounded-2xl max-lg:h-80 max-md:h-72"
                 />
-                <div className="absolute right-9 top-9">
-                  <h2 className="pb-7 text-2xl font-bold text-white max-lg:text-lg max-md:text-xs">
+                <div className="absolute right-9 top-9 rounded-lg bg-black bg-opacity-40 px-6 py-4 md:px-10">
+                  <h2 className="pb-4 text-2xl font-bold text-white max-lg:text-lg max-md:text-xs">
                     {currentTour?.tour?.title}
                   </h2>
                   <p className="text-lg font-semibold text-white">
@@ -114,10 +114,9 @@ function SpecialTours() {
                         <div
                           key={index}
                           className={cn(
-                            "rounded-2xl",
-
+                            "rounded-lg border-4 border-transparent",
                             currentTour.id === tour.id &&
-                              "border-8 border-white",
+                              "border-4 border-white",
                           )}
                         >
                           <Image
@@ -125,7 +124,7 @@ function SpecialTours() {
                             width={200}
                             height={250}
                             alt="tour"
-                            className="h-40 w-full rounded-2xl object-cover"
+                            className="h-40 w-full rounded-lg object-cover"
                           />
                         </div>
                       </CarouselItem>

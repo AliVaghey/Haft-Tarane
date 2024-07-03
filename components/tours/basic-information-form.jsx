@@ -21,7 +21,6 @@ import { useDictionary } from "@/providers/dictionary-provider";
 import querystring from "querystring";
 import ToastError from "@/components/toast/toast-error";
 import { defaultMessages } from "@/lib/default-messages";
-import ChipInput from "@/components/ui/chip-input";
 import {
   basicInformationSchema,
   enBasicInformationSchema,
@@ -39,35 +38,7 @@ import ToastSuccess from "@/components/toast/toast-success";
 import { useTour } from "@/hooks/use-tour";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import ChipSelect from "../ui/chip-select";
 import ChipSearchableSelect from "../ui/chip-searchable-select";
-
-const tourStyles = [
-  {
-    id: "زیارتی",
-    value: "زیارتی",
-  },
-  {
-    id: "خانوادگی",
-    value: "خانوادگی",
-  },
-  {
-    id: "طبیعت گردی",
-    value: "طبیعت گردی",
-  },
-  {
-    id: "نوروزی",
-    value: "نوروزی",
-  },
-  {
-    id: "عید فطر",
-    value: "عید فطر",
-  },
-  {
-    id: "سیاحتی",
-    value: "سیاحتی",
-  },
-];
 
 const BasicInformationForm = ({ data }) => {
   const tourHook = useTour();

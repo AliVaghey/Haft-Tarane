@@ -25,8 +25,6 @@ const SuperadminLayout = ({ children }) => {
     await axios
       .get("/api/admin/info")
       .then((response) => {
-        console.log("getsuperadminInfores", response?.data?.data);
-
         if (response.status === 200) {
           userHook.setUserData(response?.data?.data);
           if (response?.data?.data?.access_type === "superadmin") {

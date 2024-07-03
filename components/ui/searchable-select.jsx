@@ -22,8 +22,11 @@ const SearchableSelect = ({
   keyValue,
   searchable,
 }) => {
+  console.log("defaultValue", defaultValue, api);
   const [currentValue, setCurrentValue] = useState(defaultValue);
-  const [searchState, setSearchState] = useState(defaultValue);
+  const [searchState, setSearchState] = useState(
+    isNaN(defaultValue) ? defaultValue : "",
+  );
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 

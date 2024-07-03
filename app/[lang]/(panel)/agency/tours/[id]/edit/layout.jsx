@@ -16,9 +16,7 @@ const EditTour = ({ children }) => {
 
   useEffect(() => {
     fetchData();
-    return () => {
-      console.log("cleaned up");
-    };
+    return () => {};
   }, [tourHook.flag]);
 
   const fetchData = async () => {

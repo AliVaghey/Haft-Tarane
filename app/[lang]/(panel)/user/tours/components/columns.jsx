@@ -51,6 +51,13 @@ export const columns = [
     cell: ({ row }) => <span>{row.original.tour.destination}</span>,
   },
   {
+    id: "staying_nights",
+    header: "تعداد شب تور",
+    cell: ({ row }) => (
+      <span>{farsiNumber(row.original.tour.staying_nights)}</span>
+    ),
+  },
+  {
     id: "totalPrice",
     header: "قیمت کل",
     cell: ({ row }) => (

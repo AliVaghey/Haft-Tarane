@@ -39,6 +39,10 @@ export const columns = [
     header: "ظرفیت",
   },
   {
+    accessorKey: "staying_nights",
+    header: "تعداد شب تور",
+  },
+  {
     accessorKey: "min_cost",
     header: "قیمت پایه",
     cell: ({ row }) => {

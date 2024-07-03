@@ -11,7 +11,7 @@ import { routes } from "@/routes/routes";
 import PaginationComponent from "@/components/pagination";
 import { useTour } from "@/hooks/use-tour";
 
-const AdminDashboardPage = ({ searchParams: { page } }) => {
+const AdminDashboardPage = ({ searchParams: { page, id } }) => {
   const dictionary = useDictionary();
   const tourHook = useTour();
 
@@ -20,12 +20,12 @@ const AdminDashboardPage = ({ searchParams: { page } }) => {
 
   useEffect(() => {
     fetchPendingTours();
-  }, [tourHook.flag, page]);
+  }, [tourHook.flag, page, id]);
 
   const fetchPendingTours = async () => {
     setIsLoading(true);
     await axios
-      .get(`/api/admin/my-pending-tours?page=${page || 1}`)
+      .get(`/api/admin/my-pending-tours?page=${page || 1}&id=${id || ""}`)
       .then((response) => {
         console.log("fetchPendingToursres", response.data);
         setData(response.data);
@@ -40,8 +40,8 @@ const AdminDashboardPage = ({ searchParams: { page } }) => {
   return (
     <div className="px-0 lg:px-10">
       <DataTableHeader
-        title={dictionary["city"]["title"]}
-        description={dictionary["city"]["description"]}
+        title="تور های در انتظار تایید"
+        description="لیست تور های در انتظار تایید شما"
       />
 
       {isLoading ? (

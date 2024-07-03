@@ -37,8 +37,8 @@ const AdminDashboardPage = () => {
   return (
     <div className="px-0 lg:px-10">
       <DataTableHeader
-        title={dictionary["city"]["title"]}
-        description={dictionary["city"]["description"]}
+        title="پشتیبان ها"
+        description="لیست تمامی پشتیبان های شما"
         btnText="افزودن پشتیبان"
         href={routes.agency["support-team"].add}
       />

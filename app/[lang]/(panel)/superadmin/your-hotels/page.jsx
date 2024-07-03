@@ -40,8 +40,8 @@ const HotelPage = ({ searchParams: { page, name, country, state, city } }) => {
   return (
     <div className="px-0 lg:px-10">
       <DataTableHeader
-        title={dictionary["user"]["title"]}
-        description={dictionary["user"]["description"]}
+        title="هتل های شما"
+        description="لیست تمامی هتل های شما"
         btnText="افزودن هتل"
         href={routes.superadmin["your-hotels"].add}
       />

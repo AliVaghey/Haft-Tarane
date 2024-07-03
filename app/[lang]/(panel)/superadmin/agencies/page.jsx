@@ -37,10 +37,7 @@ const AgencyPage = ({ searchParams: { page, name } }) => {
   };
   return (
     <div className="px-0 lg:px-10">
-      <DataTableHeader
-        title={dictionary["user"]["title"]}
-        description={dictionary["user"]["description"]}
-      />
+      <DataTableHeader title={"آژانس ها"} description={"لیست تمامی آژانس ها"} />
 
       {isLoading ? (
         <LoadingPage />

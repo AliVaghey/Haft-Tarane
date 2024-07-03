@@ -40,8 +40,8 @@ const AdminDashboardPage = ({ searchParams: { page, id } }) => {
   return (
     <div className="px-0 lg:px-10">
       <DataTableHeader
-        title={dictionary["city"]["title"]}
-        description={dictionary["city"]["description"]}
+        title="تور های فعال شما"
+        description="لیست تمامی تور های فعال شما"
       />
 
       {isLoading ? (

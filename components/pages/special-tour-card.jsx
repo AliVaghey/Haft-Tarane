@@ -67,7 +67,7 @@ const SpecialTourCard = ({ data }) => {
           <h1 className="text-base font-bold">مجری تور : {data.agency_name}</h1>
           <h1 className="flex items-center gap-1 text-base font-bold">
             <span className="font-normal">عنوان تور :</span>
-            <span>{data.title}</span>
+            <span>{data.tour_name}</span>
           </h1>
 
           <div className="flex gap-2">
