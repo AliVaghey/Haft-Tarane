@@ -16,7 +16,8 @@ const Transportation = ({ data }) => {
     <div className="mt-5">
       <div className="flex flex-col">
         {data.transportations.map((item, index) =>
-          data.transportation_type === "my_transportation" ? (
+          data.transportation_type === "my_transportation" ||
+          data.transportation_type === "hotel" ? (
             <TransportationCard
               key={index}
               data={item}
@@ -46,7 +47,8 @@ const Transportation = ({ data }) => {
               بعدی
             </Button>
           </Link>
-          {data.transportation_type === "my_transportation" ? (
+          {data.transportation_type === "my_transportation" ||
+          data.transportation_type === "hotel" ? (
             <AddMyTransportation tour_id={data.tour_id} />
           ) : (
             <AddSystemTransportation tour_id={data.tour_id} />

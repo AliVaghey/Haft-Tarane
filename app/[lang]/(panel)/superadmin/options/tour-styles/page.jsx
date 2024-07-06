@@ -29,7 +29,6 @@ const BannersPage = ({ searchParams: { page } }) => {
     await axios
       .get(`/api/options?category=tour_styles`)
       .then((response) => {
-        console.log("tour_styles", response.data);
         setData(response.data.data);
       })
       .catch((err) => {

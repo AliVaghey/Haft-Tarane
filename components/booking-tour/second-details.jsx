@@ -214,7 +214,8 @@ const SecondDetails = ({ data }) => {
               <span>شروع تور : {data.cost.tour.origin}</span>
             </div>
             <div className="mr-10 h-8 border-r border-dashed border-black" />
-            {data.cost.tour.transportation_type === "my_transportation" &&
+            {(data.cost.tour.transportation_type === "my_transportation" ||
+              data.cost.tour.transportation_type === "hotel") &&
               data.transportation.map((item, index) => (
                 <div key={index} className="flex flex-col gap-2">
                   <div className="flex w-fit flex-col rounded-lg border-2 border-dashed border-yellow-primary p-2 pl-20">

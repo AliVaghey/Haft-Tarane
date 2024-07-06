@@ -134,21 +134,11 @@ export const routes = {
       "user-info": "/admin/profile/user-info",
       "update-password": "/admin/profile/update-password",
     },
-    // cities: {
-    //   root: "/admin/cities",
-    //   add: "/admin/cities/add",
-    //   edit: (id) => `/admin/cities/${id}/edit`,
-    // },
     users: {
       root: "/admin/users",
       edit: (id) => `/admin/users/${id}/edit`,
       details: (id) => `/admin/users/${id}`,
     },
-    // admins: {
-    //   root: "/admin/admins",
-    //   edit: (id) => `/admin/admins/${id}/edit`,
-    //   details: (id) => `/admin/admins/${id}`,
-    // },
     agencies: {
       root: "/admin/agencies",
       details: (id) => `/admin/agencies/${id}`,
@@ -174,6 +164,14 @@ export const routes = {
       pending: "/admin/tours/pending",
       active: "/admin/tours/active",
       details: (id) => `/admin/tours/${id}`,
+    },
+    accounting: {
+      paid: {
+        root: "/admin/accounting/paid",
+      },
+      sales: {
+        root: "/admin/accounting/sales",
+      },
     },
   },
 

@@ -210,7 +210,8 @@ const UserBookInfo = ({ defaultData }) => {
                 <span>شروع تور : {defaultData.tour.origin}</span>
               </div>
               <div className="mr-10 h-8 border-r border-dashed border-black" />
-              {defaultData.tour.transportation_type === "my_transportation" &&
+              {(defaultData.tour.transportation_type === "my_transportation" ||
+                defaultData.tour.transportation_type === "hotel") &&
                 defaultData.transportation.map((item, index) => (
                   <div key={index} className="flex flex-col gap-2">
                     <div className="flex w-fit flex-col rounded-lg border-2 border-dashed border-yellow-primary p-2 pl-20">

@@ -34,7 +34,8 @@ const Dates = ({ data }) => {
                 قبلی
               </Button>
             </Link>
-            {data.transportation_type === "my_transportation" && (
+            {(data.transportation_type === "my_transportation" ||
+              data.transportation_type === "hotel") && (
               <AddDate tour_id={data.tour_id} />
             )}
           </div>

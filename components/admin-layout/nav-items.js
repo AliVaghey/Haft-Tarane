@@ -1,5 +1,14 @@
 import { routes } from "@/routes/routes";
-import { Building, Home, Lock, User, User2 } from "lucide-react";
+import {
+  Building,
+  Home,
+  LayoutList,
+  List,
+  ListStart,
+  Lock,
+  User,
+  User2,
+} from "lucide-react";
 import {
   Hotel,
   ClipboardList,
@@ -66,29 +75,10 @@ export const navItems = [
     ],
   },
 
-  // {
-  //   title: "مدیریت شهرها",
-  //   type: "subMenu",
-  //   icon: (size, strokeWidth) => (
-  //     <Building2 size={size || 18} strokeWidth={strokeWidth || 1.5} />
-  //   ),
-  //   subMenu: [
-  //     {
-  //       title: "همه شهر ها",
-  //       href: routes.admin.cities.root,
-  //       icon: (size, strokeWidth) => (
-  //         <Building2 size={size || 18} strokeWidth={strokeWidth || 1.5} />
-  //       ),
-  //     },
-  //     {
-  //       title: "افزودن شهر",
-  //       href: routes.admin.cities.add,
-  //       icon: (size, strokeWidth) => (
-  //         <Building2 size={size || 18} strokeWidth={strokeWidth || 1.5} />
-  //       ),
-  //     },
-  //   ],
-  // },
+  {
+    title: "مدیریت امکانات اصلی",
+    type: "text",
+  },
 
   {
     title: "مدیریت کاربران",
@@ -104,13 +94,6 @@ export const navItems = [
           <UsersRound size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
-      // {
-      //   title: "ادمین ها",
-      //   href: routes.admin.admins.root,
-      //   icon: (size, strokeWidth) => (
-      //     <UserRoundCog size={size || 18} strokeWidth={strokeWidth || 1.5} />
-      //   ),
-      // },
     ],
   },
 
@@ -195,6 +178,30 @@ export const navItems = [
         href: routes.admin.tours.pending,
         icon: (size, strokeWidth) => (
           <ShieldEllipsis size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+    ],
+  },
+
+  {
+    title: "حسابداری",
+    type: "subMenu",
+    icon: (size, strokeWidth) => (
+      <List size={size || 18} strokeWidth={strokeWidth || 1.5} />
+    ),
+    subMenu: [
+      {
+        title: "فروش ها",
+        href: routes.admin.accounting.sales.root,
+        icon: (size, strokeWidth) => (
+          <ListStart size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
+        title: "پرداخت ها",
+        href: routes.admin.accounting.paid.root,
+        icon: (size, strokeWidth) => (
+          <LayoutList size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
     ],

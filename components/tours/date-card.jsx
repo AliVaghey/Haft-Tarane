@@ -53,7 +53,8 @@ const DateCard = ({ data, number, transportation_type }) => {
       <div className="w-full flex-1 rounded-lg border-2 p-1">
         {farsiNumber(jaliliDate(data.end))}
       </div>
-      {transportation_type === "my_transportation" && (
+      {(transportation_type === "my_transportation" ||
+        transportation_type === "hotel") && (
         <SubmitButton
           className="h-8 bg-red-primary px-2 text-white hover:bg-red-dark"
           onClick={() => {

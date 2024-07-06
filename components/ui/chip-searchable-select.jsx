@@ -52,7 +52,7 @@ const ChipSearchableSelect = ({
         <SearchableSelect
           changeValue={(value) => {
             const findIndex = data.findIndex((item) => item === value);
-            if (findIndex === -1) {
+            if (findIndex === -1 && value) {
               const newData = [...data, value];
               setData(newData);
               onChange(newData);

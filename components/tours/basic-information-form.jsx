@@ -41,6 +41,7 @@ import { Button } from "../ui/button";
 import ChipSearchableSelect from "../ui/chip-searchable-select";
 
 const BasicInformationForm = ({ data }) => {
+  console.log("datsssssgggfga", data);
   const tourHook = useTour();
 
   const dictionary = useDictionary();
@@ -98,7 +99,6 @@ const BasicInformationForm = ({ data }) => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("valuesssssss", values);
     const {
       title,
       trip_type,
@@ -132,8 +132,6 @@ const BasicInformationForm = ({ data }) => {
       transportation_type,
       support,
     });
-
-    console.log("encodedFormData", encodedFormData);
 
     if (data) {
       await axios
@@ -459,7 +457,6 @@ const BasicInformationForm = ({ data }) => {
                     keyValue="value"
                     searchable={false}
                     onChange={(data) => {
-                      console.log("tour_styles", data);
                       setValue("tour_styles", data, { shouldValidate: true });
                     }}
                   />
@@ -489,6 +486,7 @@ const BasicInformationForm = ({ data }) => {
                     <SelectItem value="my_transportation">
                       حمل و نقل من
                     </SelectItem>
+                    <SelectItem value="hotel">هتل</SelectItem>
                   </SelectContent>
                 </Select>
 
