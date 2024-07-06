@@ -23,6 +23,8 @@ import { routes } from "@/routes/routes";
 import { baseDateForm } from "@/lib/date-form";
 
 const TourSearch = ({ currentSearchParams }) => {
+  console.log("serach tours values65", currentSearchParams);
+
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -48,8 +50,6 @@ const TourSearch = ({ currentSearchParams }) => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("values", values);
-
     for (var propName in values) {
       if (
         values[propName] === null ||
@@ -112,7 +112,7 @@ const TourSearch = ({ currentSearchParams }) => {
                       changeValue={(value) => {
                         field.onChange(value);
                       }}
-                      defaultValue={getValues("origin")}
+                      defaultValue={field.value}
                       api={"/api/cities"}
                       query="name"
                       placeholder={"مبدا"}
@@ -135,7 +135,7 @@ const TourSearch = ({ currentSearchParams }) => {
                       changeValue={(value) => {
                         field.onChange(value);
                       }}
-                      defaultValue={getValues("destination")}
+                      defaultValue={field.value}
                       api={"/api/cities"}
                       query="name"
                       placeholder={"مقصد"}

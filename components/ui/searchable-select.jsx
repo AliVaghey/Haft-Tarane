@@ -22,7 +22,6 @@ const SearchableSelect = ({
   keyValue,
   searchable,
 }) => {
-  console.log("defaultValue", defaultValue, api);
   const [currentValue, setCurrentValue] = useState(defaultValue);
   const [searchState, setSearchState] = useState(
     isNaN(defaultValue) ? defaultValue : "",
@@ -33,7 +32,7 @@ const SearchableSelect = ({
   const inputRef = useRef(null);
 
   useEffect(() => {
-    setCurrentValue(defaultValue);
+    setCurrentValue(defaultValue === undefined ? null : defaultValue);
   }, [defaultValue]);
 
   useEffect(() => {
