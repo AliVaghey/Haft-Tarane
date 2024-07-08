@@ -171,6 +171,7 @@ export const routes = {
       },
       sales: {
         root: "/admin/accounting/sales",
+        "agency-sales": (id) => `/admin/accounting/sales/${id}/agency-sales`,
       },
     },
   },
