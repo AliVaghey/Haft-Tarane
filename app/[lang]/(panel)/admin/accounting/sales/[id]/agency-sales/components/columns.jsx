@@ -45,7 +45,7 @@ export const columns = [
   },
   {
     id: "dept",
-    header: "سود آژانس",
+    header: "تاریخ تور",
     cell: ({ row }) => (
       <span>
         {" "}

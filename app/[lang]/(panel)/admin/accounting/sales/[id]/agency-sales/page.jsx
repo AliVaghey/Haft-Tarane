@@ -51,8 +51,8 @@ const AgencyPage = ({ searchParams: { page, name }, params }) => {
         <LoadingPage />
       ) : (
         <>
-          <PayAll agencyId={params.id} />
-          <PayDates className="" data={data.data} />
+          <PayAll agencyId={params.id} data={data.data} />
+          <PayDates className="" agencyId={params.id} data={data.data} />
           <DataTable columns={columns} data={data.data} />
           <PaginationComponent
             total={data?.meta?.total || 0}

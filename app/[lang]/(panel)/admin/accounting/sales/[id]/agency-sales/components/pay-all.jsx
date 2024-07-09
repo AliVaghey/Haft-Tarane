@@ -46,7 +46,7 @@ import { cn } from "@/lib/utils";
 import AdminPayDialog from "@/components/helpers/admin-pay-dialog";
 import FormData from "form-data";
 
-const PayAll = ({ agencyId, className }) => {
+const PayAll = ({ agencyId, className, data }) => {
   const dictionary = useDictionary();
 
   const tourHook = useTour();
@@ -111,8 +111,12 @@ const PayAll = ({ agencyId, className }) => {
       .get(`/api/admin/agency/${agencyId}/checkout`)
       .then((response) => {
         if (response.status === 200) {
-          setPayData(response.data);
-          setOpen(true);
+          if (response.data.total === 0) {
+            toast.info(`برای این آژانس پرداختی وجود ندارد`);
+          } else {
+            setPayData(response.data);
+            setOpen(true);
+          }
         }
       })
       .catch((err) => {
@@ -128,7 +132,7 @@ const PayAll = ({ agencyId, className }) => {
   }
 
   return (
-    <div className={cn("mb-4 mt-2", className)}>
+    <div className={cn("mb-4 mt-2 flex w-full flex-row-reverse", className)}>
       <AdminPayDialog
         isOpen={open}
         loading={loading}

@@ -35,7 +35,7 @@ import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import { dateSchema, enDatelSchema } from "@/lib/validation/tour/date";
-import { DateForm } from "@/lib/date-form";
+import { baseDateForm, DateForm } from "@/lib/date-form";
 import Dropzone from "react-dropzone";
 import Image from "next/image";
 import {
@@ -45,12 +45,16 @@ import {
 import { cn } from "@/lib/utils";
 import AdminPayDialog from "@/components/helpers/admin-pay-dialog";
 
-const PayDates = ({ tour_id, className }) => {
+const PayDates = ({ agencyId, className, data }) => {
+  console.log("datall", data);
+
   const dictionary = useDictionary();
 
   const tourHook = useTour();
 
+  const [payData, setPayData] = useState({});
   const [loading, setLoading] = useState(false);
+  const [loading2, setLoading2] = useState(false);
   const [open, setOpen] = useState(false);
 
   const mount = useMount();
@@ -76,47 +80,79 @@ const PayDates = ({ tour_id, className }) => {
     formState: { isSubmitting },
   } = form;
 
-  const onSubmit = async (values) => {
+  const onPay = async (values) => {
+    setLoading(true);
+
+    const start = baseDateForm(getValues("start"));
+    const end = baseDateForm(getValues("end"));
+
+    const formData = new FormData();
+
+    formData.append("receipt", values.recipt);
+
+    await CSRFToken();
+
+    await axios
+      .post(
+        `/api/admin/agency/${agencyId}/checkout?start=${start}&end=${end}`,
+        formData,
+      )
+      .then((response2) => {
+        if (response2.status === 201) {
+          toast.success(
+            <div className="flex items-center gap-2">
+              <span>
+                <CircleCheckBig className="text-green-600" />
+              </span>
+              <span>{"بدهی با موفقیت پرداخت شد"}</span>
+            </div>,
+          );
+
+          tourHook.setFlag(!tourHook.flag);
+
+          setOpen(false);
+        }
+      })
+      .catch((error) => {
+        console.log("login-error", error);
+        toast.error(
+          <ToastError
+            text={
+              error?.response?.data?.message ||
+              defaultMessages.errors.internalError
+            }
+          />,
+        );
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const getPayInfo = async (values) => {
     console.log("valuesssssss", values);
 
-    // const { start, end } = values;
+    const start = baseDateForm(values.start);
+    const end = baseDateForm(values.end);
 
-    // const encodedFormData = querystring.stringify({
-    //   start: DateForm(start),
-    //   end: DateForm(end),
-    // });
-
-    // console.log("encodedFormData", encodedFormData);
-
-    // await CSRFToken();
-
-    // await axios
-    //   .post(`/api/agency/tour/${tour_id}/date`, encodedFormData)
-    //   .then((response2) => {
-    //     if (response2.status === 201) {
-    //       toast.success(
-    //         <div className="flex items-center gap-2">
-    //           <span>
-    //             <CircleCheckBig className="text-green-600" />
-    //           </span>
-    //           <span>{"تاریخ با موفقیت اضافه شد"}</span>
-    //         </div>,
-    //       );
-
-    //       tourHook.setFlag(!tourHook.flag);
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.log("login-error", error);
-    //     toast.error(
-    //       <ToastError
-    //         text={
-    //           error?.response?.data?.message ||
-    //           defaultMessages.errors.internalError
-    //         }
-    //       />,
-    //     );
-    //   });
+    await axios
+      .get(`/api/admin/agency/${agencyId}/checkout?start=${start}&end=${end}`)
+      .then((response) => {
+        if (response.status === 200) {
+          if (response.data.total === 0) {
+            toast.info(
+              `برای این آژانس در تاریخ های انتخاب شده پرداختی وجود ندارد`,
+            );
+          } else {
+            setPayData(response.data);
+            setOpen(true);
+          }
+        }
+      })
+      .catch((err) => {
+        console.log("setPayDataError", err);
+      })
+      .finally(() => {});
   };
 
   if (!mount) {
@@ -125,14 +161,15 @@ const PayDates = ({ tour_id, className }) => {
 
   return (
     <div className={cn("mb-4 mt-2", className)}>
-      {/* <AdminPayDialog
+      <AdminPayDialog
         isOpen={open}
         loading={loading}
         onClose={() => setOpen(false)}
         onConfirm={onPay}
+        payData={payData}
       />
       <Form {...form}>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(getPayInfo)}>
           <div className="grid grid-cols-7 gap-5">
             <FormField
               control={control}
@@ -150,7 +187,7 @@ const PayDates = ({ tour_id, className }) => {
                       calendar={persian}
                       locale={persian_fa}
                       calendarPosition="bottom-right"
-                      minDate={new Date()}
+                      // minDate={new Date()}
                       style={{
                         width: "100%",
                         paddingTop: "19px",
@@ -180,7 +217,7 @@ const PayDates = ({ tour_id, className }) => {
                       calendar={persian}
                       locale={persian_fa}
                       calendarPosition="bottom-right"
-                      minDate={new Date()}
+                      // minDate={new Date()}
                       style={{
                         width: "100%",
                         paddingTop: "19px",
@@ -195,14 +232,14 @@ const PayDates = ({ tour_id, className }) => {
             />
 
             <SubmitButton
-              className="col-span-1 mt-[23px]"
+              className="col-span-1 px-16 lg:mt-[23px]"
               loading={isSubmitting}
             >
               محاسبه و تسویه
             </SubmitButton>
           </div>
         </form>
-      </Form> */}
+      </Form>
     </div>
   );
 };
