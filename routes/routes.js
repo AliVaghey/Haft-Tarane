@@ -168,6 +168,9 @@ export const routes = {
     accounting: {
       paid: {
         root: "/admin/accounting/paid",
+        "agency-paid": (id) => `/admin/accounting/paid/${id}/agency-paid`,
+        "checkout-details": (agencyId, checkoutId) =>
+          `/admin/accounting/paid/${agencyId}/agency-paid/${checkoutId}`,
       },
       sales: {
         root: "/admin/accounting/sales",
