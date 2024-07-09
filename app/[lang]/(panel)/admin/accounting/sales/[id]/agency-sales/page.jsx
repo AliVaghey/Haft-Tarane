@@ -8,16 +8,21 @@ import { axios } from "@/lib/axios";
 import DataTableHeader from "@/components/data-table-header";
 import { useDictionary } from "@/providers/dictionary-provider";
 import PaginationComponent from "@/components/pagination";
+import PayDates from "./components/pay-dates";
+import PayAll from "./components/pay-all";
+import { useTour } from "@/hooks/use-tour";
 
 const AgencyPage = ({ searchParams: { page, name }, params }) => {
   const dictionary = useDictionary();
+
+  const tourHook = useTour();
 
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchCities();
-  }, [page, name]);
+  }, [page, name, tourHook.flag]);
 
   const fetchCities = async () => {
     setIsLoading(true);
@@ -38,14 +43,16 @@ const AgencyPage = ({ searchParams: { page, name }, params }) => {
   return (
     <div className="px-0 lg:px-10">
       <DataTableHeader
-        title="آژانس های شما"
-        description="لیست تمامی آژانس های شما"
+        title="فروش های آژانس"
+        description="لیست فروش های این آژانس"
       />
 
       {isLoading ? (
         <LoadingPage />
       ) : (
         <>
+          <PayAll agencyId={params.id} />
+          <PayDates className="" data={data.data} />
           <DataTable columns={columns} data={data.data} />
           <PaginationComponent
             total={data?.meta?.total || 0}

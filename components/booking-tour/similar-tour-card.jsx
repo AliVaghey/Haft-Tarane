@@ -44,7 +44,7 @@ const SimilarTourCard = ({ data }) => {
       <div className="flex h-full gap-5 p-1 px-2">
         <div className="my-auto ">
           <Image
-            src={data.costs.length > 0 ? data.costs.hotel.photo : chita}
+            src={data.costs ? data.costs.hotel.photo : chita}
             width={360}
             height={360}
             className=" my-auto max-h-48 w-60 rounded-lg rounded-r-lg object-cover"

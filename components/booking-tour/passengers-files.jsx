@@ -57,37 +57,38 @@ const PassengersFiles = ({ data: defaultData }) => {
     <div>
       <h1 className="font-semibold">مدارک</h1>
       <div className="flex flex-col gap-2 text-muted-foreground">
-        {Object.keys(data).map((keyName, i) => (
-          <div key={i} className="flex items-center gap-2">
-            <span>{keyName} : </span>
-            <Link
-              href={data[keyName]}
-              download
-              target="_blank"
-              className="w-fit border-b border-b-transparent text-blue-500 hover:border-b-blue-500"
-            >
-              دانلود فایل
-            </Link>
-            {userHook.userData.access_type === "agency" && (
-              <Button
-                disabled={isLoading}
-                variant="ghost"
-                className="h-8 w-fit px-1 text-red-primary hover:bg-primary hover:text-red-dark"
-                onClick={() => handleDelete(keyName)}
+        {data &&
+          Object.keys(data).map((keyName, i) => (
+            <div key={i} className="flex items-center gap-2">
+              <span>{keyName} : </span>
+              <Link
+                href={data[keyName]}
+                download
+                target="_blank"
+                className="w-fit border-b border-b-transparent text-blue-500 hover:border-b-blue-500"
               >
-                {isLoading ? (
-                  <Loader
-                    className="animate-spin"
-                    size={18}
-                    strokeWidth={1.5}
-                  />
-                ) : (
-                  <Trash2 size={18} strokeWidth={1.5} />
-                )}
-              </Button>
-            )}
-          </div>
-        ))}
+                دانلود فایل
+              </Link>
+              {userHook.userData.access_type === "agency" && (
+                <Button
+                  disabled={isLoading}
+                  variant="ghost"
+                  className="h-8 w-fit px-1 text-red-primary hover:bg-primary hover:text-red-dark"
+                  onClick={() => handleDelete(keyName)}
+                >
+                  {isLoading ? (
+                    <Loader
+                      className="animate-spin"
+                      size={18}
+                      strokeWidth={1.5}
+                    />
+                  ) : (
+                    <Trash2 size={18} strokeWidth={1.5} />
+                  )}
+                </Button>
+              )}
+            </div>
+          ))}
       </div>
     </div>
   );

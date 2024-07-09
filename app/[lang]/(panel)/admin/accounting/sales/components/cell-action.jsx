@@ -13,7 +13,7 @@ const CellAction = ({ data }) => {
       >
         <Button
           variant="ghost"
-          className="flex gap-3 rounded-3xl border-2 border-red-primary text-xs"
+          className="flex h-8 gap-3 rounded-3xl border-2 border-red-primary text-xs"
         >
           نمایش فروش ها
         </Button>

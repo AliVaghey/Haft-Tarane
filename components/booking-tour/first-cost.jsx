@@ -178,7 +178,7 @@ const FirstCost = ({ data, similarData }) => {
       </div>
 
       <div className="mt-4">
-        <span>تور های مشابه</span>
+        <span>تاریخ های دیگر</span>
         <Separator className="my-2 h-0.5 bg-primary" />
         <div className="mx-auto flex w-full flex-col gap-3 ">
           {similarData.map((item, index) => (

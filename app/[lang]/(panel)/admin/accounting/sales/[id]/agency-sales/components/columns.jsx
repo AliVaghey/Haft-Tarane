@@ -62,9 +62,9 @@ export const columns = [
       <span>{persianPriceFormat(row.original.hotel.name)}</span>
     ),
   },
-  {
-    id: "actions",
-    header: "اقدامات",
-    cell: ({ row }) => <CellAction data={row.original} />,
-  },
+  // {
+  //   id: "actions",
+  //   header: "اقدامات",
+  //   cell: ({ row }) => <CellAction data={row.original} />,
+  // },
 ];

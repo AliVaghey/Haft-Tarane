@@ -77,8 +77,7 @@ const CellAction = ({ data }) => {
       const response = await axios.post(`/api/admin/tour/${data.id}/approve`);
 
       if (response.status === 204) {
-        console.log("first");
-        router.refresh();
+        tourHook.setFlag(!tourHook.flag);
         toast.success(
           <div className="flex items-center gap-2">
             <span>

@@ -8,7 +8,6 @@ import { axios } from "@/lib/axios";
 import DataTableHeader from "@/components/data-table-header";
 import { useDictionary } from "@/providers/dictionary-provider";
 import PaginationComponent from "@/components/pagination";
-import PayDates from "./components/pay-dates";
 
 const AgencyPage = ({ searchParams: { page, name } }) => {
   const dictionary = useDictionary();
@@ -47,7 +46,6 @@ const AgencyPage = ({ searchParams: { page, name } }) => {
         <LoadingPage />
       ) : (
         <>
-          <PayDates data={data.data} />
           <DataTable columns={columns} data={data.data} />
           <PaginationComponent
             total={data?.meta?.total || 0}
