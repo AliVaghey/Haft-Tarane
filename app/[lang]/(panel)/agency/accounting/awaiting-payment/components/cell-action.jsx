@@ -8,7 +8,7 @@ const CellAction = ({ data }) => {
   return (
     <div className="flex items-center justify-center gap-1">
       <Link
-        href={routes.admin.accounting.sales["agency-sales"](data.agency.id)}
+        href={routes.agency.accounting.checkout["agency-sales"](data.agency.id)}
       >
         <Button
           variant="ghost"

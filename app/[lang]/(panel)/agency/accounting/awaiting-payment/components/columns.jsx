@@ -1,9 +1,10 @@
 "use client";
 
 import { farsiNumber } from "@/lib/farsi-number";
-// import CellAction from "./cell-action";
+import CellAction from "./cell-action";
 import Number from "./number";
 import { persianPriceFormat } from "@/lib/persian-price-format";
+import Link from "next/link";
 import { jaliliDate } from "@/lib/jalali-date";
 
 export const columns = [
@@ -15,9 +16,14 @@ export const columns = [
     },
   },
   {
-    id: "agencyName",
-    header: "نام آژانس",
-    cell: ({ row }) => <span>{row.original.agency.name}</span>,
+    id: "username",
+    header: "نام کاربر",
+    cell: ({ row }) => <span>{farsiNumber(row.original.user.username)}</span>,
+  },
+  {
+    id: "phone",
+    header: "شماره تماس کاربر",
+    cell: ({ row }) => <span>{farsiNumber(row.original.user.phone)}</span>,
   },
   {
     id: "id",
@@ -47,10 +53,9 @@ export const columns = [
     id: "total_sales",
     header: "قیمت کل",
     cell: ({ row }) => (
-      <span>{persianPriceFormat(+row.original.total_price)}</span>
+      <span>{persianPriceFormat(+row.original.total_price)} تومان</span>
     ),
   },
-
   {
     id: "dept",
     header: "تاریخ تور",
@@ -70,9 +75,4 @@ export const columns = [
       <span>{persianPriceFormat(row.original.hotel.name)}</span>
     ),
   },
-  // {
-  //   id: "actions",
-  //   header: "اقدامات",
-  //   cell: ({ row }) => <CellAction data={row.original} />,
-  // },
 ];

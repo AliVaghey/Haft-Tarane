@@ -47,10 +47,9 @@ export const columns = [
     id: "total_sales",
     header: "قیمت کل",
     cell: ({ row }) => (
-      <span>{persianPriceFormat(+row.original.total_price)}</span>
+      <span>{persianPriceFormat(+row.original.total_price)} تومان</span>
     ),
   },
-
   {
     id: "dept",
     header: "تاریخ تور",

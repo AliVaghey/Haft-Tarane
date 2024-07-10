@@ -33,8 +33,8 @@ export const columns = [
     ),
   },
   {
-    id: "total_price",
-    header: "تعداد مسافر",
+    id: "passengers_count",
+    header: "تعداد مسافران",
     cell: ({ row }) => (
       <span>{farsiNumber(+row.original.passengers_count)}</span>
     ),

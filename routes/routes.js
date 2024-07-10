@@ -221,12 +221,19 @@ export const routes = {
         root: "/agency/sales/paid",
         details: (id) => `/agency/sales/paid/${id}`,
       },
+    },
+
+    accounting: {
       checkout: {
-        root: "/agency/sales/checkout",
-        details: (id) => `/agency/sales/checkout/${id}`,
+        root: "/agency/accounting/checkout",
+        "agency-sales": (id) =>
+          `/agency/accounting/checkout/${id}/agency-sales`,
       },
-      accounting: "/agency/sales/accounting",
-      leads: "/agency/sales/leads",
+      "awaiting-payment": {
+        root: "/agency/accounting/awaiting-payment",
+        // "agency-sales": (id) =>
+        //   `/agency/accounting/checkout/${id}/agency-sales`,
+      },
     },
   },
 

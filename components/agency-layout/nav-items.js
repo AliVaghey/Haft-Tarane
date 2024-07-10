@@ -15,6 +15,8 @@ import {
   User2,
   Lock,
   Home,
+  SquareCheckBig,
+  RefreshCcwDot,
 } from "lucide-react";
 
 export const navItems = [
@@ -147,30 +149,33 @@ export const navItems = [
         title: "در انتظار پرداخت",
         href: routes.agency.sales.pending.root,
         icon: (size, strokeWidth) => (
-          <ShieldEllipsis size={size || 18} strokeWidth={strokeWidth || 1.5} />
+          <RefreshCcwDot size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+    ],
+  },
+
+  {
+    title: "حسابداری",
+    type: "subMenu",
+    icon: (size, strokeWidth) => (
+      <SwatchBook size={size || 18} strokeWidth={strokeWidth || 1.5} />
+    ),
+    subMenu: [
+      {
+        title: "تسویه ها",
+        href: routes.agency.accounting.checkout.root,
+        icon: (size, strokeWidth) => (
+          <SquareCheckBig size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
       {
-        title: "تسویه شده",
-        href: routes.agency.sales.checkout.root,
+        title: "در انتظار تسویه",
+        href: routes.agency.accounting["awaiting-payment"].root,
         icon: (size, strokeWidth) => (
-          <ShieldEllipsis size={size || 18} strokeWidth={strokeWidth || 1.5} />
+          <RefreshCcwDot size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
-      {
-        title: "حسابداری",
-        href: routes.agency.sales.accounting,
-        icon: (size, strokeWidth) => (
-          <SwatchBook size={size || 18} strokeWidth={strokeWidth || 1.5} />
-        ),
-      },
-      // {
-      //   title: "لید ها",
-      //   href: routes.agency.sales.leads,
-      //   icon: (size, strokeWidth) => (
-      //     <UserCog size={size || 18} strokeWidth={strokeWidth || 1.5} />
-      //   ),
-      // },
     ],
   },
 ];

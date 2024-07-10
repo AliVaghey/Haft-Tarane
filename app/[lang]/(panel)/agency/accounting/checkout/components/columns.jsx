@@ -4,7 +4,6 @@ import { farsiNumber } from "@/lib/farsi-number";
 import CellAction from "./cell-action";
 import Number from "./number";
 import { persianPriceFormat } from "@/lib/persian-price-format";
-import { jaliliDate } from "@/lib/jalali-date";
 import Link from "next/link";
 
 export const columns = [
@@ -16,32 +15,27 @@ export const columns = [
     },
   },
   {
-    id: "agencyName",
-    header: "نام آژانس",
-    cell: ({ row }) => <span>{row.original.agency.name}</span>,
-  },
-  {
     id: "adminName",
     header: "نام ادمین",
-    cell: ({ row }) => <span>{row.original.agency.name}</span>,
+    cell: ({ row }) => <span>{farsiNumber(row.original.admin.name)}</span>,
   },
   {
-    id: "real_price ",
-    header: "فروش کل",
+    id: "total_sales",
+    header: "قیمت کل",
     cell: ({ row }) => (
       <span>{persianPriceFormat(+row.original.real_price)} تومان</span>
     ),
   },
   {
     id: "total_price",
-    header: "پرداخت شده",
+    header: "سود آژانس",
     cell: ({ row }) => (
       <span>{persianPriceFormat(+row.original.total_price)} تومان</span>
     ),
   },
   {
     id: "profit",
-    header: "سود",
+    header: "کارمزد بی باک سفر",
     cell: ({ row }) => (
       <span>{persianPriceFormat(+row.original.profit)} تومان</span>
     ),
