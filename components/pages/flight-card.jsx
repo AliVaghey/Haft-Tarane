@@ -89,7 +89,7 @@ const FlightCard = ({ data }) => {
                 strokeWidth={1}
                 className="text-yellow-primary"
               />
-              <span className="text-yellow-primary">فرودگاه مهر آباد</span>
+              <span className="text-yellow-primary">فرودگاه {data.from}</span>
               <span>{data.from}</span>
             </div>
             <div className="flex flex-1 flex-row items-center justify-center gap-2 rounded-sm bg-[#EFEFEF] px-5 py-1">
@@ -98,9 +98,7 @@ const FlightCard = ({ data }) => {
                 strokeWidth={1}
                 className="text-yellow-primary"
               />
-              <span className="text-yellow-primary">
-                فرودگاه هاشمی نژاد مشهد
-              </span>
+              <span className="text-yellow-primary">فرودگاه {data.to}</span>
               <span>{data.to}</span>
             </div>
           </div>

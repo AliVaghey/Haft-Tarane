@@ -45,7 +45,7 @@ const TourDetailsPage = ({ searchParams, params }) => {
 
   console.log("cccccccccccccccc", data);
   return (
-    <div className="relative min-h-[80vh] bg-primary pt-24">
+    <div className="relative min-h-[80vh] bg-yellow-primary pt-24">
       <div className="px-2 pb-5 md:px-28 lg:px-48 xl:px-60">
         <div className="mx-auto flex w-full flex-col gap-3">
           {isLoading ? (

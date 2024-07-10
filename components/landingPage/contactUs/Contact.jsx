@@ -17,7 +17,7 @@ import { instagram, telegram, whatsapp } from "@/constants/icons";
 
 export default function ContactUs() {
   return (
-    <div>
+    <div className="bg-white">
       <div>
         <Image
           src={flight}

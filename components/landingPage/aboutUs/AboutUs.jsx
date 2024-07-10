@@ -6,7 +6,7 @@ import alc from "@/public/img/alc.svg";
 
 export default function AboutUs() {
   return (
-    <div>
+    <div className="bg-white">
       <div>
         <Image
           src={flight}

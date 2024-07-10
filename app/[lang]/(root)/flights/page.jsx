@@ -56,7 +56,7 @@ const TourPage = ({ searchParams: { from, to, date } }) => {
 
   return (
     <main>
-      <div className="min-h-screen bg-primary pt-16">
+      <div className="min-h-screen bg-yellow-primary pt-16">
         <>
           <div>
             <Image

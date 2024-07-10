@@ -40,6 +40,8 @@ function SpecialTours() {
     }
   }, [userHook.specialTours]);
 
+  console.log("userHook.specialTours", userHook.specialTours);
+
   return (
     <div className="lg:mb-20">
       <div className="relative">
@@ -82,7 +84,7 @@ function SpecialTours() {
                     {currentTour.dates.map((item, index) => (
                       <Link
                         key={index}
-                        href={`${window.location.href.split("?")[0]}/special-tours/${currentTour.id}?start=${item.start}`}
+                        href={`${window.location.href.split("?")[0]}/tours/${currentTour.id}?cid=${21}&start=${item.start}&end=${item.end}`}
                       >
                         <Button className="h-8 text-xs">
                           {" "}

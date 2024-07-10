@@ -27,9 +27,8 @@ export default function OurService() {
               بهترین خدمات مسافرتی برای شما
             </h3>
             <p className="w-2/3 text-justify leading-9 text-[#5B5F62] max-lg:w-full max-lg:text-sm max-md:text-xs">
-              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-              استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
-              در ستون و سطرآنچنان که لازم است
+              از لحظه‌ی رزرو تا رسیدن به مقصد، ما همراه شما خواهیم بود و اطمینان
+              می‌دهیم که هر جزئیات سفر شما به بهترین شکل ممکن انجام شود
             </p>
             <div className="my-9 flex w-44 cursor-pointer items-center justify-center gap-4 rounded-3xl bg-white py-2">
               <Image

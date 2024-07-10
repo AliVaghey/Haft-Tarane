@@ -10,12 +10,22 @@ import insta from "@/public/img/instageram.svg";
 import telegram from "@/public/img/telegram.svg";
 import { farsiNumber } from "@/lib/farsi-number";
 import { useUser } from "@/hooks/use-user";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 export default function Footer() {
   const userHook = useUser();
 
+  const pathname = usePathname();
+
   return (
-    <div className="bg-white">
+    <div
+      className={cn(
+        "bg-yellow-primary",
+        (pathname.endsWith("/about") || pathname.endsWith("/contact")) &&
+          "bg-white",
+      )}
+    >
       <div
         className=""
         style={{

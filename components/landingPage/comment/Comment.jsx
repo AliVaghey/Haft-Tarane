@@ -14,9 +14,8 @@ export default function Comment() {
           <ChevronRightIcon className="size-24 cursor-pointer" />
           <div className="flex flex-col items-center justify-center gap-4 max-md:gap-7">
             <p className="mx-auto w-4/5 text-justify leading-9 text-[#292F36] max-lg:w-full max-lg:pb-9 max-lg:text-lg max-md:text-sm">
-              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-              استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
-              در ستون و سطرآنچنان که لازم است،
+              از لحظه‌ی رزرو تا رسیدن به مقصد، ما همراه شما خواهیم بود و اطمینان
+              می‌دهیم که هر جزئیات سفر شما به بهترین شکل ممکن انجام شود
             </p>
             <Image
               src={a}

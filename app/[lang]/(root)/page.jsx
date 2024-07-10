@@ -19,14 +19,6 @@ const Home = async ({ params }) => {
         <Services />
         <Comment />
         <OurService />
-        {/* <HeroSection />
-        <SearchTabs />
-        <About />
-        <CheapestTour />
-        <SpecialTours />
-        <Services />
-        <Comment />
-        <OurService /> */}
       </div>
     </main>
   );

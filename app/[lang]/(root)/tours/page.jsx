@@ -51,7 +51,7 @@ const TourPage = ({
 
   return (
     <main>
-      <div className="min-h-screen bg-primary pt-16">
+      <div className="min-h-screen bg-yellow-primary pt-16">
         <>
           <div>
             <Image
@@ -78,6 +78,7 @@ const TourPage = ({
             {!isLoading ? (
               data.data && data.data.length > 0 ? (
                 <>
+                  <div>aa</div>
                   <div className="mx-auto flex w-full flex-col gap-3 md:w-3/4 lg:w-2/3">
                     {data.data.map((item, index) => (
                       <TourCard data={item} key={index} />
