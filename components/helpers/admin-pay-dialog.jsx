@@ -46,6 +46,7 @@ const AdminPayDialog = ({
       start: dates ? dates.start : undefined,
       end: dates ? dates.end : undefined,
       recipt: null,
+      description: "",
     },
     mode: "onSubmit",
   });
@@ -110,13 +111,13 @@ const AdminPayDialog = ({
             </div>
 
             <div className="flex gap-2">
-              <span>سود آژانس :</span>
-              <span>{persianPriceFormat(payData?.debt)} تومان</span>
+              <span>سود بی باک سفر :</span>
+              <span>{persianPriceFormat(payData?.profit)} تومان</span>
             </div>
 
             <div className="flex gap-2">
-              <span>سود بی باک سفر :</span>
-              <span>{persianPriceFormat(payData?.profit)} تومان</span>
+              <span>بدهی آژانس :</span>
+              <span>{persianPriceFormat(payData?.debt)} تومان</span>
             </div>
           </div>
           <Form {...form}>
@@ -130,7 +131,7 @@ const AdminPayDialog = ({
                       <Input
                         className="rounded-2xl focus-visible:ring-primary"
                         autoComplete="off"
-                        placeholder="پیام خود را وارد نمایید..."
+                        placeholder=""
                         {...field}
                       />
                     </FormControl>
@@ -148,7 +149,7 @@ const AdminPayDialog = ({
                       <Input
                         className="rounded-2xl focus-visible:ring-primary"
                         autoComplete="off"
-                        placeholder="پیام خود را وارد نمایید..."
+                        placeholder=""
                         {...field}
                       />
                     </FormControl>
@@ -156,6 +157,26 @@ const AdminPayDialog = ({
                   </FormItem>
                 )}
               />
+
+              <FormField
+                control={control}
+                name="description"
+                render={({ field }) => (
+                  <FormItem className="col-span-3 mt-2 lg:col-span-1">
+                    <FormLabel>توضیحات</FormLabel>
+                    <FormControl>
+                      <Input
+                        className="rounded-2xl focus-visible:ring-primary"
+                        autoComplete="off"
+                        placeholder=""
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
               <FormField
                 control={control}
                 name="recipt"

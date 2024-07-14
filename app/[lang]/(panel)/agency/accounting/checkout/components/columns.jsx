@@ -5,6 +5,7 @@ import CellAction from "./cell-action";
 import Number from "./number";
 import { persianPriceFormat } from "@/lib/persian-price-format";
 import Link from "next/link";
+import { jaliliDateHour } from "@/lib/jalali-date";
 
 export const columns = [
   {
@@ -28,7 +29,7 @@ export const columns = [
   },
   {
     id: "total_price",
-    header: "سود آژانس",
+    header: "بدهی آژانس",
     cell: ({ row }) => (
       <span>{persianPriceFormat(+row.original.total_price)} تومان</span>
     ),
@@ -41,6 +42,13 @@ export const columns = [
     ),
   },
   {
+    id: "description",
+    header: "توضیحات",
+    cell: ({ row }) => (
+      <div className="max-w-md">{row.original.description}</div>
+    ),
+  },
+  {
     id: "receipt",
     header: "رسید",
     cell: ({ row }) => (
@@ -50,6 +58,15 @@ export const columns = [
       >
         دانلود رسید
       </Link>
+    ),
+  },
+  {
+    id: "paidAt",
+    header: "تاریخ تسویه",
+    cell: ({ row }) => (
+      <div className="max-w-md">
+        {farsiNumber(jaliliDateHour(row.original.created_at))}
+      </div>
     ),
   },
   {

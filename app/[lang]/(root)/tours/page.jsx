@@ -3,6 +3,7 @@
 import LoadingChita from "@/components/loading-chita";
 import NoItem from "@/components/no-item";
 import TourCard from "@/components/pages/tour-card";
+import TourFilters from "@/components/pages/tour-filters";
 import TourSearch from "@/components/pages/tour-search";
 import PaginationComponent from "@/components/pagination";
 import { airplain } from "@/constants/images";
@@ -49,6 +50,11 @@ const TourPage = ({
     }, 1000);
   };
 
+  const onFilter = (filteredData) => {
+    console.log("filteredData", filteredData);
+    setData({ ...data, data: filteredData });
+  };
+
   return (
     <main>
       <div className="min-h-screen bg-yellow-primary pt-16">
@@ -62,46 +68,55 @@ const TourPage = ({
               className="h-60 w-screen object-cover"
             />
           </div>
-          <div>
-            <TourSearch
-              currentSearchParams={{
-                page,
-                all,
-                origin,
-                destination,
-                start,
-                end,
-              }}
-            />
-          </div>
-          <div>
-            {!isLoading ? (
-              data.data && data.data.length > 0 ? (
-                <>
-                  <div>aa</div>
-                  <div className="mx-auto flex w-full flex-col gap-3 md:w-3/4 lg:w-2/3">
-                    {data.data.map((item, index) => (
-                      <TourCard data={item} key={index} />
-                    ))}
-                  </div>
+          <div className="flex">
+            <div className="hidden h-fit w-[27%] p-2 lg:flex">
+              {/* {!isLoading && <TourFilters data={data} onFilter={onFilter} />} */}
+            </div>
 
-                  <div className="pb-8 pt-3">
-                    <PaginationComponent
-                      total={data?.meta?.total || 0}
-                      page={data?.meta?.current_page || 1}
-                      perPage={data?.meta?.per_page || 10}
-                    />
-                  </div>
-                </>
-              ) : (
-                <div>
-                  <NoItem />
-                </div>
-              )
-            ) : (
-              // <LoadingPage />
-              <LoadingChita />
-            )}
+            <div className="lg:[53%] w-full">
+              <div>
+                <TourSearch
+                  currentSearchParams={{
+                    page,
+                    all,
+                    origin,
+                    destination,
+                    start,
+                    end,
+                  }}
+                />
+              </div>
+              <div>
+                {!isLoading ? (
+                  data.data && data.data.length > 0 ? (
+                    <>
+                      <div className="mx-auto flex w-full flex-col gap-3 ">
+                        {data.data.map((item, index) => (
+                          <TourCard data={item} key={index} />
+                        ))}
+                      </div>
+
+                      <div className="pb-8 pt-3">
+                        <PaginationComponent
+                          total={data?.meta?.total || 0}
+                          page={data?.meta?.current_page || 1}
+                          perPage={data?.meta?.per_page || 10}
+                        />
+                      </div>
+                    </>
+                  ) : (
+                    <div>
+                      <NoItem />
+                    </div>
+                  )
+                ) : (
+                  // <LoadingPage />
+                  <LoadingChita />
+                )}
+              </div>
+            </div>
+
+            <div className="hidden w-[20%] lg:flex"></div>
           </div>
         </>
       </div>

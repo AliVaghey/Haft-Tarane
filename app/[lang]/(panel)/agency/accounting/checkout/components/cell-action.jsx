@@ -7,9 +7,7 @@ import { routes } from "@/routes/routes";
 const CellAction = ({ data }) => {
   return (
     <div className="flex items-center justify-center gap-1">
-      <Link
-        href={routes.agency.accounting.checkout["agency-sales"](data.agency.id)}
-      >
+      <Link href={routes.agency.accounting.checkout["agency-sales"](data.id)}>
         <Button
           variant="ghost"
           className="flex h-8 gap-3 rounded-3xl border-2 border-red-primary text-xs"

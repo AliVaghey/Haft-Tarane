@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import videoBtn from "@/public/img/video-btn.svg";
 import FullSearch from "../full-search/full-search";
 import { chita } from "@/constants/images";
 

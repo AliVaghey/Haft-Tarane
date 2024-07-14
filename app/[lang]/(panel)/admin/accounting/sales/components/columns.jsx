@@ -31,20 +31,19 @@ export const columns = [
     ),
   },
   {
-    id: "dept",
-    header: "سود آژانس",
-    cell: ({ row }) => (
-      <span>{persianPriceFormat(row.original.dept)} تومان</span>
-    ),
-  },
-  {
     id: "profit",
     header: "سود بی باک سفر",
     cell: ({ row }) => (
       <span>{persianPriceFormat(row.original.profit)} تومان</span>
     ),
   },
-
+  {
+    id: "dept",
+    header: "بدهی آژانس",
+    cell: ({ row }) => (
+      <span>{persianPriceFormat(row.original.dept)} تومان</span>
+    ),
+  },
   {
     id: "actions",
     header: "اقدامات",

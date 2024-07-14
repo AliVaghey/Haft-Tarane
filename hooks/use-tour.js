@@ -18,7 +18,6 @@ export const useTour = create((set, get) => ({
     await axios
       .get(`api/agency/tour/${id}`)
       .then((response) => {
-        console.log("responsehookkkkkk", response);
         get().setCurrentTour(response.data.data);
         get().setIsEditPage(true);
       })
@@ -34,7 +33,6 @@ export const useTour = create((set, get) => ({
     await axios
       .get(`api/airports`)
       .then((response) => {
-        console.log("response-airports", response);
         get().setAirports(response.data.data);
       })
       .catch((error) => {

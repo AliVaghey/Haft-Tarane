@@ -23,8 +23,6 @@ import { routes } from "@/routes/routes";
 import { baseDateForm } from "@/lib/date-form";
 
 const TourSearch = ({ currentSearchParams }) => {
-  console.log("serach tours values65", currentSearchParams);
-
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -94,7 +92,7 @@ const TourSearch = ({ currentSearchParams }) => {
   };
 
   return (
-    <div className="mx-auto flex w-full -translate-y-20 rounded-lg bg-yellow-light md:w-4/5 lg:w-2/3">
+    <div className="mx-auto flex w-full -translate-y-20 rounded-lg bg-yellow-light">
       <Form {...form}>
         <form
           onSubmit={handleSubmit(onSubmit)}

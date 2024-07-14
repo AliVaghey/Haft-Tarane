@@ -66,7 +66,8 @@ const PayAll = ({ agencyId, className, data }) => {
 
     const formData = new FormData();
 
-    formData.append("receipt", values.recipt);
+    values.description && formData.append("description", values.description);
+    formData.append("receipt", values.recipt.file);
 
     await CSRFToken();
 

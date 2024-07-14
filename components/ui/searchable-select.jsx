@@ -65,8 +65,6 @@ const SearchableSelect = ({
     try {
       const res = await axios.get(`${url}`);
 
-      console.log("res-select", res.data);
-
       setData(res.data.data ? res.data.data : res.data);
     } catch (error) {
     } finally {

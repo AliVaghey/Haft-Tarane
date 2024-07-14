@@ -100,7 +100,7 @@ const SpecialTourCard = ({ data }) => {
 
         <div className="mr-auto flex min-h-full flex-col items-center justify-center gap-2 border-r border-yellow-dark px-5">
           <span>شروع قیمت از :</span>
-          <span>{persianPriceFormat(data.min_cost)}</span>
+          <span>{persianPriceFormat(data.min_cost)} تومان</span>
 
           <Button
             onClick={() => handleLink(data)}
