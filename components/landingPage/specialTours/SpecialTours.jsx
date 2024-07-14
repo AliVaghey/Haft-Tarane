@@ -40,8 +40,6 @@ function SpecialTours() {
     }
   }, [userHook.specialTours]);
 
-  console.log("userHook.specialTours", userHook.specialTours);
-
   return (
     <div className="lg:mb-20">
       <div className="relative">

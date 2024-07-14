@@ -16,8 +16,6 @@ const PassengersFiles = ({ data: defaultData }) => {
   const userHook = useUser();
   const tourHook = useTour();
 
-  console.log("userHook.userData", userHook.userData);
-
   const [data, setData] = useState(defaultData.files);
   const [isLoading, setIsLoading] = useState(false);
 

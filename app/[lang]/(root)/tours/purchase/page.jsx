@@ -2,11 +2,9 @@
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
 import { useTourPassengers } from "@/hooks/tour-passengers";
 import { farsiNumber } from "@/lib/farsi-number";
 import { useCallback, useState } from "react";
-import { useForm } from "react-hook-form";
 import { useImmer } from "use-immer";
 import {
   Select,
@@ -29,11 +27,11 @@ import { routes } from "@/routes/routes";
 import { defaultMessages } from "@/lib/default-messages";
 import UserBookInfo from "@/components/booking-tour/user-book-info";
 import { Modal } from "@/components/ui/modal";
+import qs from "query-string";
+import { redirectZP } from "@/actions/redirect-zp";
 
 const TourPurchase = () => {
   const tourPassengersHook = useTourPassengers();
-
-  console.log("tourPassengersHook.tour", tourPassengersHook.tour);
 
   const [step, setStep] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
@@ -112,19 +110,25 @@ const TourPurchase = () => {
     });
   }, []);
 
+  // const handleRedirect = (newUrl) => {
+  //   const url = qs.stringifyUrl(
+  //     {
+  //       url: newUrl,
+  //     },
+  //     { skipNull: true },
+  //   );
+
+  //   router.push(url);
+  // };
+
   const onSubmit = async () => {
     setLoading(true);
-    console.log("data", data);
 
     const encodedFormData = querystring.stringify({
       rooms: JSON.stringify(data),
     });
 
-    console.log("encodedFormData", encodedFormData);
-
     await CSRFToken();
-
-    console.log("first", tourPassengersHook.tour);
 
     const { tour_id, cost, date } = tourPassengersHook.tour;
 
@@ -134,8 +138,11 @@ const TourPurchase = () => {
         encodedFormData,
       )
       .then((response) => {
-        console.log("response-reserve", response);
+        console.log("response-reserveqqqqqqq", response.data.id);
         if (response.status === 201) {
+          // handleRedirect(newUrl);
+          redirectZP(response.data.id);
+
           toast.success(
             <div className="flex items-center gap-2">
               <span>
@@ -144,11 +151,10 @@ const TourPurchase = () => {
               <span>{"تور با موفقیت برای شما رزرو شد"}</span>
             </div>,
           );
-
-          router.push(routes.user.tours.root);
         }
       })
       .catch((error) => {
+        console.log("error", error);
         console.log("reserve-error", error?.response?.data?.message);
         toast.error(
           <ToastError
