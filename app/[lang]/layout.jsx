@@ -9,8 +9,8 @@ import AuthProvider from "@/providers/auth-provider";
 const vazir = Vazirmatn({ subsets: ["latin"] });
 
 export const metadata = {
-  // title: "بی باک سفر",
-  title: "8887908",
+  title: "بی باک سفر",
+  // title: "8887908",
   description: "بی باک سفر",
 };
 

@@ -1,7 +1,7 @@
 "use client";
 
 import SubmitButton from "@/components/submit-button";
-import { Trash2 } from "lucide-react";
+import { Edit, Edit2, Trash2 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import CostItems from "./cost-items";
 import { useState } from "react";
@@ -11,6 +11,7 @@ import { CSRFToken, axios } from "@/lib/axios";
 import ToastError from "@/components/toast/toast-error";
 import { defaultMessages } from "@/lib/default-messages";
 import ToastSuccess from "../toast/toast-success";
+import EditHotelPackage from "./edit-hotel-package";
 
 const HotelCosts = ({ data, number, tour_id }) => {
   console.log("datawewrw", data);
@@ -51,18 +52,21 @@ const HotelCosts = ({ data, number, tour_id }) => {
         <span className="font-semibold text-muted-foreground">
           {number}- {data.hotel.name}
         </span>
-        <SubmitButton
-          className="h-8 bg-red-primary px-2 text-xs text-white hover:bg-red-dark"
-          onClick={() => {
-            handleDeleteHotel();
-          }}
-          loading={isLoading}
-        >
-          <div className="flex items-center gap-1">
-            <Trash2 size={16} strokeWidth={2} />
-            <span>حذف پکیج</span>
-          </div>
-        </SubmitButton>
+        <div className="flex gap-2">
+          <SubmitButton
+            className="h-7 bg-red-primary px-2 text-xs text-white hover:bg-red-dark"
+            onClick={() => {
+              handleDeleteHotel();
+            }}
+            loading={isLoading}
+          >
+            <div className="flex items-center gap-1">
+              <Trash2 size={16} strokeWidth={2} />
+              <span>حذف</span>
+            </div>
+          </SubmitButton>
+          <EditHotelPackage data={data} />
+        </div>
       </div>
       <Separator className="my-1" />
       <div className="flex flex-wrap rounded-md border bg-gray-background text-muted-foreground">

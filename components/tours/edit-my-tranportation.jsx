@@ -10,7 +10,7 @@ import useMount from "@/hooks/use-mount";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CircleCheckBig } from "lucide-react";
+import { CircleCheckBig, Edit } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -42,8 +42,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { ScrollArea } from "../ui/scroll-area";
 
-const AddMyTransportation = ({ tour_id }) => {
+const EditMyTransportation = ({ data }) => {
+  console.log("datatransportation", data);
   const dictionary = useDictionary();
 
   const tourHook = useTour();
@@ -63,17 +65,17 @@ const AddMyTransportation = ({ tour_id }) => {
         : entransportationSchema,
     ),
     defaultValues: {
-      type: "هواپیما",
-      duration: "",
-      company_name: "",
-      transportation_type: "",
-      origin: "",
-      destination: "",
+      type: data.type,
+      duration: data.duration,
+      company_name: data.company_name,
+      transportation_type: data.transportation_type,
+      origin: data.origin,
+      destination: data.destination,
       // start: new Date(),
       // end: new Date(),
       // price: "",
-      start: "",
-      end: "",
+      start: data.start,
+      end: data.end,
     },
     mode: "onSubmit",
   });
@@ -118,9 +120,9 @@ const AddMyTransportation = ({ tour_id }) => {
     await CSRFToken();
 
     await axios
-      .post(`/api/agency/tour/${tour_id}/transportation`, encodedFormData)
+      .put(`/api/agency/tour/transportation/${data.id}`, encodedFormData)
       .then((response2) => {
-        if (response2.status === 201) {
+        if (response2.status === 200) {
           toast.success(
             <div className="flex items-center gap-2">
               <span>
@@ -152,12 +154,18 @@ const AddMyTransportation = ({ tour_id }) => {
 
   return (
     <div className="">
-      <Button onClick={() => setIsOpen(true)}>افزودن حمل و نقل</Button>
+      <Button
+        onClick={() => setIsOpen(true)}
+        className="flex h-7 items-center gap-1 bg-blue-500 px-2 text-xs text-white hover:bg-blue-700"
+      >
+        <Edit size={16} strokeWidth={1.5} />
+        <span>ویرایش</span>
+      </Button>
       <Dialog open={isOpen} onOpenChange={() => setIsOpen(false)}>
         <DialogContent className="sm:max-w-[825px]">
           <DialogHeader>
             <DialogTitle className="mr-4 text-right">
-              افزودن حمل و نقل
+              ویرایش حمل و نقل
             </DialogTitle>
           </DialogHeader>
           <div className="w-full">
@@ -318,111 +326,6 @@ const AddMyTransportation = ({ tour_id }) => {
                     )}
                   />
 
-                  {/* <FormField
-                    control={control}
-                    name="start"
-                    render={({ field }) => (
-                      <FormItem className="col-span-3 flex flex-col gap-1 text-right lg:col-span-1">
-                        <FormLabel>تاریخ شروع</FormLabel>
-                        <FormControl>
-                          <DatePicker
-                            value={getValues("start")}
-                            onChange={(date) => {
-                              date?.isValid
-                                ? setValue("start", new Date(date))
-                                : "";
-                            }}
-                            format={
-                              false ? "MM/DD/YYYY HH:mm" : "YYYY/MM/DD HH:mm"
-                            }
-                            calendar={persian}
-                            locale={persian_fa}
-                            calendarPosition="bottom-right"
-                            minDate={new Date()}
-                            plugins={[
-                              <TimePicker
-                                key={1}
-                                position="bottom"
-                                hStep={1}
-                                mStep={1}
-                                hideSeconds
-                              />,
-                            ]}
-                            style={{
-                              width: "100%",
-                              paddingTop: "19px",
-                              paddingBottom: "19px",
-                              borderColor: "rgb(226 232 240)",
-                            }}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={control}
-                    name="end"
-                    render={({ field }) => (
-                      <FormItem className="col-span-3 flex flex-col gap-1 text-right lg:col-span-1">
-                        <FormLabel>تاریخ پایان</FormLabel>
-                        <FormControl>
-                          <DatePicker
-                            value={getValues("end")}
-                            onChange={(date) => {
-                              date?.isValid
-                                ? setValue("end", new Date(date))
-                                : "";
-                            }}
-                            format={
-                              false ? "MM/DD/YYYY HH:mm" : "YYYY/MM/DD HH:mm"
-                            }
-                            calendar={persian}
-                            locale={persian_fa}
-                            calendarPosition="bottom-right"
-                            minDate={new Date()}
-                            plugins={[
-                              <TimePicker
-                                key={1}
-                                position="bottom"
-                                hStep={1}
-                                mStep={1}
-                                hideSeconds
-                              />,
-                            ]}
-                            style={{
-                              width: "100%",
-                              paddingTop: "19px",
-                              paddingBottom: "19px",
-                              borderColor: "rgb(226 232 240)",
-                            }}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  /> */}
-
-                  {/*  <FormField
-                    control={control}
-                    name="price"
-                    render={({ field }) => (
-                      <FormItem className="col-span-3 lg:col-span-1">
-                        <FormLabel>قیمت بلیط</FormLabel>
-                        <FormControl>
-                          <Input
-                            type="number"
-                            autoComplete="off"
-                            placeholder="قیمت"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  /> */}
-
                   <FormField
                     control={control}
                     name="company_name"
@@ -476,18 +379,6 @@ const AddMyTransportation = ({ tour_id }) => {
                             />
                           </FormControl>
                         )}
-                        {/* <FormControl>
-                          <SearchableSelect
-                            changeValue={(value) => {
-                              field.onChange(value);
-                            }}
-                            defaultValue={getValues("company_name")}
-                            api={`/api/options?category=${device === "airplain" ? "airplain" : device === "train" ? "train" : "bus"}`}
-                            // query="name"
-                            searchable={false}
-                            placeholder={"نام شرکت مسافربری"}
-                          />
-                        </FormControl> */}
                         <FormMessage />
                       </FormItem>
                     )}
@@ -524,7 +415,7 @@ const AddMyTransportation = ({ tour_id }) => {
                   />
                 </div>
                 <SubmitButton className="mt-3" loading={isSubmitting}>
-                  ارسال
+                  ویرایش
                 </SubmitButton>
               </form>
             </Form>
@@ -535,4 +426,4 @@ const AddMyTransportation = ({ tour_id }) => {
   );
 };
 
-export default AddMyTransportation;
+export default EditMyTransportation;

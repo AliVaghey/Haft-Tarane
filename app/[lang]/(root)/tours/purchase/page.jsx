@@ -19,7 +19,7 @@ import persian_fa from "react-date-object/locales/persian_fa";
 import SubmitButton from "@/components/submit-button";
 import ToastError from "@/components/toast/toast-error";
 import { toast } from "sonner";
-import { CircleCheckBig } from "lucide-react";
+import { CircleCheckBig, LoaderCircle } from "lucide-react";
 import { CSRFToken, axios } from "@/lib/axios";
 import querystring from "querystring";
 import { useRouter } from "next/navigation";
@@ -142,13 +142,19 @@ const TourPurchase = () => {
         if (response.status === 201) {
           // handleRedirect(newUrl);
           redirectZP(response.data.id);
-
           toast.success(
             <div className="flex items-center gap-2">
               <span>
                 <CircleCheckBig className="text-green-600" />
               </span>
               <span>{"تور با موفقیت برای شما رزرو شد"}</span>
+            </div>,
+          );
+
+          toast.info(
+            <div className="flex items-center gap-2">
+              <LoaderCircle className="animate-spin text-blue-500" size={16} />
+              <span> در حال انتقال به درگاه پرداخت</span>
             </div>,
           );
         }

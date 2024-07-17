@@ -145,6 +145,21 @@ export default function Footer() {
                 </ul>
               </div>
             </div>
+            <div className="w-1/5 max-lg:w-1/3 max-md:w-full ">
+              <a
+                referrerpolicy="origin"
+                target="_blank"
+                href="https://trustseal.enamad.ir/?id=507456&Code=qgdiKelLh1qmYliiZUKgheSmYfSOwAN1"
+              >
+                <img
+                  referrerpolicy="origin"
+                  src="https://trustseal.enamad.ir/logo.aspx?id=507456&Code=qgdiKelLh1qmYliiZUKgheSmYfSOwAN1"
+                  alt=""
+                  style={{ cursor: "pointer" }}
+                  code="qgdiKelLh1qmYliiZUKgheSmYfSOwAN1"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </div>

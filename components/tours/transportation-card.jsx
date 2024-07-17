@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import SubmitButton from "../submit-button";
-import { Trash2 } from "lucide-react";
-import { jaliliDate, jaliliDateHour } from "@/lib/jalali-date";
+import { jaliliDateHour } from "@/lib/jalali-date";
 import { farsiNumber } from "@/lib/farsi-number";
 import ToastSuccess from "@/components/toast/toast-success";
 import ToastError from "@/components/toast/toast-error";
@@ -11,14 +10,9 @@ import { CSRFToken, axios } from "@/lib/axios";
 import { toast } from "sonner";
 import { useTour } from "@/hooks/use-tour";
 import { Separator } from "@/components/ui/separator";
-import { Train } from "lucide-react";
-import { Bed } from "lucide-react";
-import { LocateIcon } from "lucide-react";
-import { Plane } from "lucide-react";
-import { Bus } from "lucide-react";
-import { Pyramid } from "lucide-react";
-import { MapPin } from "lucide-react";
+import { Pyramid, MapPin, Bus, Plane, Bed, Train, Trash2 } from "lucide-react";
 import { persianPriceFormat } from "@/lib/persian-price-format";
+import EditMyTransportation from "./edit-my-tranportation";
 
 const TransportationCard = ({ data, number, lenght, staying_nights }) => {
   console.log("dataqwqwq", data);
@@ -120,13 +114,21 @@ const TransportationCard = ({ data, number, lenght, staying_nights }) => {
                   {data.type}
                 </span>
               </span>
-              <SubmitButton
-                loading={isLoading}
-                onClick={handleDeleteTranspotation}
-                className="h-8 bg-red-primary px-2 text-white hover:bg-red-dark"
-              >
-                <Trash2 size={18} strokeWidth={1.5} />
-              </SubmitButton>
+
+              <div className="flex flex-col gap-2">
+                <SubmitButton
+                  loading={isLoading}
+                  onClick={handleDeleteTranspotation}
+                  className="h-7 bg-red-primary px-2 text-xs text-white hover:bg-red-dark"
+                >
+                  <div className="flex items-center gap-1">
+                    <Trash2 size={16} strokeWidth={1.5} />
+                    <span>حذف</span>
+                  </div>
+                </SubmitButton>
+
+                <EditMyTransportation data={data} />
+              </div>
             </div>
             <div className="grid w-full grid-cols-1 text-sm lg:grid-cols-2">
               <div className="flex flex-col gap-2">

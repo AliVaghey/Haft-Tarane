@@ -7,10 +7,9 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import useMount from "@/hooks/use-mount";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CircleCheckBig } from "lucide-react";
+import { CircleCheckBig, Edit } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -37,7 +36,7 @@ import { useTour } from "@/hooks/use-tour";
 import { Input } from "@/components/ui/input";
 import { removeChar, separatePrice } from "@/lib/persian-price-format";
 
-const AddHotelPackage = ({ tour_id }) => {
+const EditHotelPackage = ({ data }) => {
   const dictionary = useDictionary();
 
   const tourHook = useTour();
@@ -46,21 +45,19 @@ const AddHotelPackage = ({ tour_id }) => {
 
   const mount = useMount();
 
-  const router = useRouter();
-
   const form = useForm({
     resolver: zodResolver(
       dictionary["language"] === "fa" ? assignHotelSchema : enAssignHotelSchema,
     ),
     defaultValues: {
-      hotel_id: "",
-      room_type: "",
-      one_bed: "",
-      two_bed: "",
-      plus_one: "",
-      cld_6: "",
-      cld_2: "",
-      baby: "",
+      hotel_id: String(data.hotel.id),
+      room_type: data.room_type,
+      one_bed: String(data.one_bed),
+      two_bed: String(data.two_bed),
+      plus_one: String(data.plus_one),
+      cld_6: String(data.cld_6),
+      cld_2: String(data.cld_2),
+      baby: String(data.baby),
     },
     mode: "onSubmit",
   });
@@ -75,7 +72,7 @@ const AddHotelPackage = ({ tour_id }) => {
 
   const onSubmit = async (values) => {
     const {
-      hotel_id,
+      // hotel_id,
       room_type,
       one_bed,
       two_bed,
@@ -86,7 +83,7 @@ const AddHotelPackage = ({ tour_id }) => {
     } = values;
 
     const encodedFormData = querystring.stringify({
-      hotel_id,
+      // hotel_id,
       room_type,
       one_bed: removeChar(",", one_bed),
       two_bed: removeChar(",", two_bed),
@@ -99,9 +96,9 @@ const AddHotelPackage = ({ tour_id }) => {
     await CSRFToken();
 
     await axios
-      .post(`/api/agency/tour/${tour_id}/cost/${hotel_id}`, encodedFormData)
+      .put(`/api/agency/tour/cost/${data.id}`, encodedFormData)
       .then((response2) => {
-        if (response2.status === 201) {
+        if (response2.status === 200) {
           toast.success(
             <div className="flex items-center gap-2">
               <span>
@@ -133,11 +130,17 @@ const AddHotelPackage = ({ tour_id }) => {
 
   return (
     <div>
-      <Button onClick={() => setIsOpen(true)}>افزودن پکیج</Button>
+      <Button
+        onClick={() => setIsOpen(true)}
+        className="flex h-7 items-center gap-1 bg-blue-500 px-2 text-xs text-white hover:bg-blue-700"
+      >
+        <Edit size={16} strokeWidth={1.5} />
+        <span>ویرایش</span>
+      </Button>
       <Dialog open={isOpen} onOpenChange={() => setIsOpen(false)}>
         <DialogContent className="sm:max-w-[825px]">
           <DialogHeader>
-            <DialogTitle className="mr-4 text-right">افزودن هتل</DialogTitle>
+            <DialogTitle className="mr-4 text-right">ویرایش هتل</DialogTitle>
           </DialogHeader>
           <div className="w-full">
             <Form {...form}>
@@ -147,7 +150,7 @@ const AddHotelPackage = ({ tour_id }) => {
                     control={control}
                     name="hotel_id"
                     render={({ field }) => (
-                      <FormItem className="col-span-3 text-right lg:col-span-1">
+                      <FormItem className="col-span-3 hidden text-right lg:col-span-1">
                         <FormLabel>نام هتل</FormLabel>
                         <FormControl>
                           <SearchableSelect
@@ -313,7 +316,7 @@ const AddHotelPackage = ({ tour_id }) => {
                   />
                 </div>
                 <SubmitButton className="mt-3" loading={isSubmitting}>
-                  ارسال
+                  ویرایش
                 </SubmitButton>
               </form>
             </Form>
@@ -324,4 +327,4 @@ const AddHotelPackage = ({ tour_id }) => {
   );
 };
 
-export default AddHotelPackage;
+export default EditHotelPackage;
