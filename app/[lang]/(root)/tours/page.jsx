@@ -6,6 +6,7 @@ import TourCard from "@/components/pages/tour-card";
 import TourFilters from "@/components/pages/tour-filters";
 import TourSearch from "@/components/pages/tour-search";
 import PaginationComponent from "@/components/pagination";
+import { Separator } from "@/components/ui/separator";
 import { airplain } from "@/constants/images";
 import { axios } from "@/lib/axios";
 import { useDictionary } from "@/providers/dictionary-provider";
@@ -18,7 +19,10 @@ const TourPage = ({
   const dictionary = useDictionary();
 
   const [data, setData] = useState([]);
+  const [similarData, setSimilarData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const checkSearchParams = !origin && !destination && !start && !end;
 
   useEffect(() => {
     fetchData();
@@ -28,7 +32,7 @@ const TourPage = ({
     setIsLoading(true);
 
     const url = () => {
-      if (!origin && !destination && !start && !end) {
+      if (checkSearchParams) {
         return `/api/tours?all=true&page=${page || 1}`;
       } else {
         return `/api/tours?page=${page || 1}&origin=${origin}&destination=${destination}&start=${start}&end=${end}`;
@@ -47,6 +51,29 @@ const TourPage = ({
         .finally(() => {
           setIsLoading(false);
         });
+    }, 1000);
+
+    if (!checkSearchParams) {
+      await fetchSimilarData();
+    }
+  };
+
+  const fetchSimilarData = async () => {
+    const url = () => {
+      return `/api/close-dates?origin=${origin}&destination=${destination}&start=${start}`;
+    };
+
+    setTimeout(async () => {
+      console.log("first");
+      await axios
+        .get(url())
+        .then((response) => {
+          setSimilarData(response.data);
+        })
+        .catch((err) => {
+          console.log("getToursErrrrrrrrrrrrrrrrrrrrr", err);
+        })
+        .finally(() => {});
     }, 1000);
   };
 
@@ -96,13 +123,15 @@ const TourPage = ({
                         ))}
                       </div>
 
-                      <div className="pb-8 pt-3">
-                        <PaginationComponent
-                          total={data?.meta?.total || 0}
-                          page={data?.meta?.current_page || 1}
-                          perPage={data?.meta?.per_page || 10}
-                        />
-                      </div>
+                      {checkSearchParams && (
+                        <div className="pb-8 pt-3">
+                          <PaginationComponent
+                            total={data?.meta?.total || 0}
+                            page={data?.meta?.current_page || 1}
+                            perPage={data?.meta?.per_page || 10}
+                          />
+                        </div>
+                      )}
                     </>
                   ) : (
                     <div>
@@ -119,6 +148,39 @@ const TourPage = ({
             <div className="hidden w-[20%] lg:flex"></div>
           </div>
         </>
+      </div>
+
+      <div className="mt-3 bg-yellow-primary">
+        <div className="flex">
+          <div className="hidden h-fit w-[27%] p-2 lg:flex"></div>
+
+          {!checkSearchParams && (
+            <div className="lg:[53%] w-full">
+              <span className="mt-5 font-semibold">تاریخ های نزدیک</span>
+              <Separator className=" mb-5 mt-2 bg-yellow-light" />
+              <div>
+                {!isLoading ? (
+                  similarData.data && similarData.data.length > 0 ? (
+                    <div className="mx-auto mb-5 flex w-full flex-col gap-3">
+                      {similarData.data.map((item, index) => (
+                        <TourCard data={item} key={index} />
+                      ))}
+                    </div>
+                  ) : (
+                    <div>
+                      <NoItem />
+                    </div>
+                  )
+                ) : (
+                  // <LoadingPage />
+                  <LoadingChita />
+                )}
+              </div>
+            </div>
+          )}
+
+          <div className="hidden w-[20%] lg:flex"></div>
+        </div>
       </div>
     </main>
   );
