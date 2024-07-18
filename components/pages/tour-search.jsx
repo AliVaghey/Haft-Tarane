@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { Search } from "lucide-react";
 import {
@@ -25,6 +25,8 @@ import { baseDateForm } from "@/lib/date-form";
 const TourSearch = ({ currentSearchParams }) => {
   const searchParams = useSearchParams();
   const router = useRouter();
+
+  const pathname = usePathname();
 
   const { page, all, origin, destination, start, end } = currentSearchParams;
 
@@ -92,7 +94,7 @@ const TourSearch = ({ currentSearchParams }) => {
   };
 
   return (
-    <div className="mx-auto flex w-full -translate-y-20 rounded-lg bg-yellow-light">
+    <div className="mx-auto -mt-20 flex w-full rounded-lg bg-yellow-light">
       <Form {...form}>
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -111,7 +113,11 @@ const TourSearch = ({ currentSearchParams }) => {
                         field.onChange(value);
                       }}
                       defaultValue={field.value}
-                      api={"/api/cities"}
+                      api={
+                        pathname.startsWith("/fa/tours")
+                          ? "/api/tour-origin"
+                          : "/api/cities"
+                      }
                       query="name"
                       placeholder={"مبدا"}
                       searchable={true}
@@ -134,7 +140,11 @@ const TourSearch = ({ currentSearchParams }) => {
                         field.onChange(value);
                       }}
                       defaultValue={field.value}
-                      api={"/api/cities"}
+                      api={
+                        pathname.startsWith("/fa/tours")
+                          ? "/api/tour-destination"
+                          : "/api/cities"
+                      }
                       query="name"
                       placeholder={"مقصد"}
                       searchable={true}

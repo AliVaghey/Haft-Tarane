@@ -47,8 +47,6 @@ import { farsiNumber } from "@/lib/farsi-number";
 import { jaliliDate } from "@/lib/jalali-date";
 
 const DetailsPrice = ({ data }) => {
-  console.log("datagggggggggg", data);
-
   const dictionary = useDictionary();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -67,10 +65,21 @@ const DetailsPrice = ({ data }) => {
       dictionary["language"] === "fa" ? datePriceSchema : enDatePriceSchema,
     ),
     defaultValues: {
-      price_change: "",
-      type: "plus",
       costId: "",
       dateId: "",
+
+      one_bed: "",
+      one_bed_type: "plus",
+      two_bed: "",
+      two_bed_type: "plus",
+      plus_one: "",
+      plus_one_type: "plus",
+      cld_6: "",
+      cld_6_type: "plus",
+      cld_2: "",
+      cld_2_type: "plus",
+      baby: "",
+      baby_type: "plus",
     },
     mode: "onSubmit",
   });
@@ -86,21 +95,50 @@ const DetailsPrice = ({ data }) => {
   const onSubmit = async (values) => {
     console.log("valuesssssss", values);
 
-    const { price_change, type, costId, dateId } = values;
+    const {
+      one_bed,
+      one_bed_type,
+      two_bed,
+      two_bed_type,
+      plus_one,
+      plus_one_type,
+      cld_6,
+      cld_6_type,
+      cld_2,
+      cld_2_type,
+      baby,
+      baby_type,
+      costId,
+      dateId,
+    } = values;
 
-    const newPrice = removeChar(",", price_change);
+    const one_bedPrice = removeChar(",", one_bed);
+    const two_bedPrice = removeChar(",", two_bed);
+    const plus_onePrice = removeChar(",", plus_one);
+    const cld_6Price = removeChar(",", cld_6);
+    const cld_2Price = removeChar(",", cld_2);
+    const babyPrice = removeChar(",", baby);
 
     const encodedFormData = querystring.stringify({
-      price_change: type === "plus" ? +newPrice : +newPrice * -1,
+      one_bed: one_bed_type === "plus" ? +one_bedPrice : +one_bedPrice * -1,
+      two_bed: two_bed_type === "plus" ? +two_bedPrice : +two_bedPrice * -1,
+      plus_one: plus_one_type === "plus" ? +plus_onePrice : +plus_onePrice * -1,
+      cld_6: cld_6_type === "plus" ? +cld_6Price : +cld_6Price * -1,
+      cld_2: cld_2_type === "plus" ? +cld_2Price : +cld_2Price * -1,
+      baby: baby_type === "plus" ? +babyPrice : +babyPrice * -1,
     });
 
     console.log("encodedFormData", encodedFormData);
 
     await CSRFToken();
-    ("");
+
+    console.log("dateId", dateId);
+
     await axios
       .post(
-        `/api/agency/date/${dateId}/cost/${costId}/price-change`,
+        getValues("costId") === "0"
+          ? `/api/agency/date/${dateId}/price-change`
+          : `/api/agency/date/${dateId}/cost/${costId}/price-change`,
         encodedFormData,
       )
       .then((response) => {
@@ -219,7 +257,7 @@ const DetailsPrice = ({ data }) => {
           <div className="w-full">
             <Form {...form}>
               <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+                <div className="grid max-h-[500px] grid-cols-1 gap-2 overflow-y-auto md:grid-cols-2">
                   <FormField
                     control={form.control}
                     name="costId"
@@ -236,6 +274,9 @@ const DetailsPrice = ({ data }) => {
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
+                            <SelectItem value={String(0)}>
+                              همه هتل ها
+                            </SelectItem>
                             {data.costs.map((item, index) => (
                               <SelectItem key={index} value={String(item.id)}>
                                 {item.hotel.name}
@@ -254,7 +295,7 @@ const DetailsPrice = ({ data }) => {
                     name="dateId"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>انتخاب انتخاب تاریخ</FormLabel>
+                        <FormLabel>انتخاب تاریخ</FormLabel>
                         <Select
                           onValueChange={field.onChange}
                           defaultValue={field.value}
@@ -280,12 +321,13 @@ const DetailsPrice = ({ data }) => {
                     )}
                   />
 
+                  {/* one_bed_type */}
                   <FormField
                     control={control}
-                    name="price_change"
+                    name="one_bed"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>قیمت</FormLabel>
+                        <FormLabel>یک تخته</FormLabel>
                         <FormControl>
                           <Input
                             disabled={
@@ -295,7 +337,7 @@ const DetailsPrice = ({ data }) => {
                             autoComplete="off"
                             placeholder="حداقل ۱"
                             {...field}
-                            value={separatePrice(getValues("price_change"))}
+                            value={separatePrice(getValues("one_bed"))}
                           />
                         </FormControl>
                         <FormMessage />
@@ -305,7 +347,257 @@ const DetailsPrice = ({ data }) => {
 
                   <FormField
                     control={control}
-                    name="type"
+                    name="one_bed_type"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>نوع</FormLabel>
+                        <Select
+                          disabled={userHook.userData.access_type !== "agency"}
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="انتخاب کنید" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="plus">افزایش</SelectItem>
+                            <SelectItem value="mines">کاهش</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  {/* two_bed_type */}
+                  <FormField
+                    control={control}
+                    name="two_bed"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>دو تخته</FormLabel>
+                        <FormControl>
+                          <Input
+                            disabled={
+                              userHook.userData.access_type !== "agency"
+                            }
+                            className=""
+                            autoComplete="off"
+                            placeholder="حداقل ۱"
+                            {...field}
+                            value={separatePrice(getValues("two_bed"))}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={control}
+                    name="two_bed_type"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>نوع</FormLabel>
+                        <Select
+                          disabled={userHook.userData.access_type !== "agency"}
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="انتخاب کنید" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="plus">افزایش</SelectItem>
+                            <SelectItem value="mines">کاهش</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  {/* plus_one_type */}
+                  <FormField
+                    control={control}
+                    name="plus_one"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>تخت اضافه</FormLabel>
+                        <FormControl>
+                          <Input
+                            disabled={
+                              userHook.userData.access_type !== "agency"
+                            }
+                            className=""
+                            autoComplete="off"
+                            placeholder="حداقل ۱"
+                            {...field}
+                            value={separatePrice(getValues("plus_one"))}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={control}
+                    name="plus_one_type"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>نوع</FormLabel>
+                        <Select
+                          disabled={userHook.userData.access_type !== "agency"}
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="انتخاب کنید" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="plus">افزایش</SelectItem>
+                            <SelectItem value="mines">کاهش</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  {/* cld_6_type */}
+                  <FormField
+                    control={control}
+                    name="cld_6"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>کودک ۶ تا ۱۲ سال</FormLabel>
+                        <FormControl>
+                          <Input
+                            disabled={
+                              userHook.userData.access_type !== "agency"
+                            }
+                            className=""
+                            autoComplete="off"
+                            placeholder="حداقل ۱"
+                            {...field}
+                            value={separatePrice(getValues("cld_6"))}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={control}
+                    name="cld_6_type"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>نوع</FormLabel>
+                        <Select
+                          disabled={userHook.userData.access_type !== "agency"}
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="انتخاب کنید" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="plus">افزایش</SelectItem>
+                            <SelectItem value="mines">کاهش</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  {/* cld_2_type */}
+                  <FormField
+                    control={control}
+                    name="cld_2"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>کودک ۲ تا ۶ سال</FormLabel>
+                        <FormControl>
+                          <Input
+                            disabled={
+                              userHook.userData.access_type !== "agency"
+                            }
+                            className=""
+                            autoComplete="off"
+                            placeholder="حداقل ۱"
+                            {...field}
+                            value={separatePrice(getValues("cld_2"))}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={control}
+                    name="cld_2_type"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>نوع</FormLabel>
+                        <Select
+                          disabled={userHook.userData.access_type !== "agency"}
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="انتخاب کنید" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="plus">افزایش</SelectItem>
+                            <SelectItem value="mines">کاهش</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  {/* baby_type */}
+                  <FormField
+                    control={control}
+                    name="baby"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>کودک ۲ تا ۶ سال</FormLabel>
+                        <FormControl>
+                          <Input
+                            disabled={
+                              userHook.userData.access_type !== "agency"
+                            }
+                            className=""
+                            autoComplete="off"
+                            placeholder="حداقل ۱"
+                            {...field}
+                            value={separatePrice(getValues("baby"))}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={control}
+                    name="baby_type"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>نوع</FormLabel>

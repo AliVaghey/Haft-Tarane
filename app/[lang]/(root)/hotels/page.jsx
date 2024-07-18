@@ -24,6 +24,8 @@ const TourPage = ({
 
   const checkSearchParams = !origin && !destination && !start && !end;
 
+  console.log("similarData", similarData);
+
   useEffect(() => {
     fetchData();
   }, [page, all, destination, start, end]);
@@ -33,9 +35,9 @@ const TourPage = ({
 
     const url = () => {
       if (checkSearchParams) {
-        return `/api/tours?all=true&page=${page || 1}`;
+        return `/api/tours/hotel?all=true&page=${page || 1}`;
       } else {
-        return `/api/tours?page=${page || 1}&origin=${origin}&destination=${destination}&start=${start}&end=${end}`;
+        return `/api/tours/hotel?page=${page || 1}&origin=${origin}&destination=${destination}&start=${start}&end=${end}`;
       }
     };
 
@@ -68,6 +70,7 @@ const TourPage = ({
       await axios
         .get(url())
         .then((response) => {
+          console.log("hotelsimilar", response.data);
           setSimilarData(response.data);
         })
         .catch((err) => {
@@ -83,7 +86,7 @@ const TourPage = ({
 
   return (
     <main>
-      <div className="min-h-80 bg-yellow-primary pt-16">
+      <div className="min-h-screen bg-yellow-primary pt-16">
         <>
           <div>
             <Image
@@ -96,7 +99,7 @@ const TourPage = ({
           </div>
           <div className="flex">
             <div className="hidden h-fit w-[27%] p-2 lg:flex">
-              {!isLoading && <TourFilters data={data} onFilter={onFilter} />}
+              {/* {!isLoading && <TourFilters data={data} onFilter={onFilter} />} */}
             </div>
 
             <div className="lg:[53%] w-full">
@@ -116,7 +119,7 @@ const TourPage = ({
                 {!isLoading ? (
                   data.data && data.data.length > 0 ? (
                     <>
-                      <div className="mx-auto flex w-full flex-col gap-3">
+                      <div className="mx-auto flex w-full flex-col gap-3 ">
                         {data.data.map((item, index) => (
                           <TourCard data={item} key={index} />
                         ))}
@@ -174,7 +177,6 @@ const TourPage = ({
                     </div>
                   )
                 ) : (
-                  // <LoadingPage />
                   <LoadingChita />
                 )}
               </div>

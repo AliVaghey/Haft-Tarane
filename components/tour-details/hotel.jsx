@@ -147,7 +147,7 @@ const DetailsHotels = ({ data }) => {
                     <Plane strokeWidth={1.5} size={18} />
                   </span>
                   <div className="flex flex-col gap-0">
-                    <span className="font-bold">قیمت برای کودک</span>
+                    <span className="font-bold">قیمت برای نوزاد</span>
                     <span>{persianPriceFormat(item.baby)}</span>
                   </div>
                 </div>

@@ -14,15 +14,18 @@ import DetailsHotels from "@/components/tour-details/hotel";
 import DetailsDates from "@/components/tour-details/dates";
 import { toast } from "sonner";
 import DetailsPrices from "@/components/tour-details/prices";
+import { useTour } from "@/hooks/use-tour";
 
 const TourDetailsPage = ({ params }) => {
+  const tourHook = useTour();
+
   const [data, setData] = useState({});
 
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetchDefaultData();
-  }, []);
+  }, [tourHook.flag]);
 
   const fetchDefaultData = async () => {
     setIsLoading(true);

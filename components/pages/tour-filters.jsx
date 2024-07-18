@@ -9,44 +9,74 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
 import { Label } from "../ui/label";
 
+const tourTypes = ["داخلی", "خارجی", "طبیعت گردی"];
+
 const TourFilters = ({ data, onFilter }) => {
-  console.log("data.data", data.data);
+  console.log("data", data);
 
-  const tourTypes = ["داخلی", "خارجی", "طبیعت گردی"];
-  const initialData = data.data;
+  const dNights = data.data.map((item) => item.costs[0]);
 
-  const [filteredData, setFilteredData] = useState([]);
+  const [initialData, setInitialData] = useState(data.data);
+  const [filteredData, setFilteredData] = useState(data.data);
 
-  const [tourType, setTourType] = useState(["داخلی", "خارجی", "طبیعت گردی"]);
+  const [hotelName, setHotelName] = useState("");
+
+  const [filterTourType, setFilterTourType] = useState([
+    "داخلی",
+    "خارجی",
+    "طبیعت گردی",
+  ]);
 
   const handleFilter = async (newData) => {
     onFilter(newData);
   };
 
-  const searchHotelName = (value) => {
-    let newArray = initialData;
-    newArray = newArray.filter((item) =>
-      item.costs[0].hotel.name.includes(value),
-    );
-    setFilteredData(newArray);
-    handleFilter(newArray);
-  };
-
-  const filterTourType = (tourTypeData) => {
-    let tourTypes = initialData;
-
+  const handleHotelName = (value) => {
+    console.log("value", value.length);
+    console.log("hotelName", hotelName.length);
     let newArray = [];
 
-    // tourTypeData.map((item1)=>{
-    //   .trip_type.includes(value)
-    // })
+    if (hotelName.length < value.length) {
+      newArray = filteredData;
+      console.log("newArray1", newArray);
+      newArray = newArray.filter((item) =>
+        item.costs[0].hotel.name.includes(value),
+      );
+    } else {
+      newArray = initialData;
+      console.log("newArray2", newArray);
+      newArray = newArray.filter((item) =>
+        item.costs[0].hotel.name.includes(value),
+      );
+    }
 
+    setHotelName(value);
     setFilteredData(newArray);
     handleFilter(newArray);
-
-    // setFilteredData(newArray);
-    // handleFilter(newArray);
   };
+
+  const handleTourType = (values) => {
+    let result = [];
+    if (values.length < filterTourType.length) {
+      let newArray = filteredData;
+      result = newArray.filter((item1) =>
+        values.some((item2) => item1.trip_type === item2),
+      );
+    } else {
+      let newArray = initialData;
+      newArray = newArray.filter((item1) =>
+        values.some((item2) => item1.trip_type === item2),
+      );
+      result = initialData.filter((item1) =>
+        newArray.some((item2) => item1.costs[0].id === item2.costs[0].id),
+      );
+    }
+    setFilteredData(result);
+    handleFilter(result);
+    setFilterTourType(values);
+  };
+
+  const handleNight = (values) => {};
 
   return (
     <div className="w-full rounded-lg bg-yellow-light p-2.5 text-muted-foreground">
@@ -63,7 +93,8 @@ const TourFilters = ({ data, onFilter }) => {
         <div>
           <Input
             placeholder="جستجو در نام هتل"
-            onChange={(e) => searchHotelName(e.target.value)}
+            value={hotelName}
+            onChange={(e) => handleHotelName(e.target.value)}
           />
         </div>
         <Separator className="my-2 h-0.5 bg-primary" />
@@ -74,15 +105,15 @@ const TourFilters = ({ data, onFilter }) => {
             <div key={item} className="flex gap-2">
               <Checkbox
                 id={item}
-                checked={tourType.includes(item)}
+                checked={filterTourType.includes(item)}
                 onCheckedChange={(e) => {
-                  let tourItems = tourType;
+                  let tourItems = filterTourType;
                   e
                     ? (tourItems = [...tourItems, item])
                     : (tourItems = tourItems.filter((i) => i !== item));
 
-                  setTourType(tourItems);
-                  filterTourType(tourItems);
+                  // setFilterTourType(tourItems);
+                  handleTourType(tourItems);
                 }}
               />
               <Label htmlFor={item} className="cursor-pointer text-sm">

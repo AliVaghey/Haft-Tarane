@@ -78,13 +78,12 @@ const TourPage = ({
   };
 
   const onFilter = (filteredData) => {
-    console.log("filteredData", filteredData);
     setData({ ...data, data: filteredData });
   };
 
   return (
     <main>
-      <div className="min-h-screen bg-yellow-primary pt-16">
+      <div className="min-h-80 bg-yellow-primary pt-16">
         <>
           <div>
             <Image
@@ -97,7 +96,7 @@ const TourPage = ({
           </div>
           <div className="flex">
             <div className="hidden h-fit w-[27%] p-2 lg:flex">
-              {/* {!isLoading && <TourFilters data={data} onFilter={onFilter} />} */}
+              {!isLoading && <TourFilters data={data} onFilter={onFilter} />}
             </div>
 
             <div className="lg:[53%] w-full">
@@ -113,7 +112,7 @@ const TourPage = ({
                   }}
                 />
               </div>
-              <div>
+              <div className="mt-10">
                 {!isLoading ? (
                   data.data && data.data.length > 0 ? (
                     <>
@@ -135,7 +134,10 @@ const TourPage = ({
                     </>
                   ) : (
                     <div>
-                      <NoItem />
+                      {/* <NoItem /> */}
+                      <p className="mx-auto text-center">
+                        در تاریخی که شما جستوجو کردید توری یافت نشد
+                      </p>
                     </div>
                   )
                 ) : (
@@ -156,7 +158,7 @@ const TourPage = ({
 
           {!checkSearchParams && (
             <div className="lg:[53%] w-full">
-              <span className="mt-5 font-semibold">تاریخ های نزدیک</span>
+              <span className="mt-5 font-semibold">تاریخ های مشابه</span>
               <Separator className=" mb-5 mt-2 bg-yellow-light" />
               <div>
                 {!isLoading ? (

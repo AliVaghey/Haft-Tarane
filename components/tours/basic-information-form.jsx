@@ -486,7 +486,7 @@ const BasicInformationForm = ({ data }) => {
                     <SelectItem value="my_transportation">
                       حمل و نقل من
                     </SelectItem>
-                    {/* <SelectItem value="hotel">هتل</SelectItem> */}
+                    <SelectItem value="hotel">هتل</SelectItem>
                   </SelectContent>
                 </Select>
 

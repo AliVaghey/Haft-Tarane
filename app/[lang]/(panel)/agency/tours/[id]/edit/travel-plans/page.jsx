@@ -5,17 +5,20 @@ import { useTour } from "@/hooks/use-tour";
 
 const TransportationPage = () => {
   const tourHook = useTour();
+  console.log("tourHook.currentTour", tourHook.currentTour);
 
   return (
     <div className="w-full">
-      <Transportation
-        data={{
-          transportations: tourHook.currentTour.transportations,
-          tour_id: tourHook.currentTour.id,
-          transportation_type: tourHook.currentTour?.transportation_type,
-          staying_nights: tourHook.currentTour?.staying_nights,
-        }}
-      />
+      {tourHook.currentTour.transportation_type !== "hotel" && (
+        <Transportation
+          data={{
+            transportations: tourHook.currentTour.transportations,
+            tour_id: tourHook.currentTour.id,
+            transportation_type: tourHook.currentTour?.transportation_type,
+            staying_nights: tourHook.currentTour?.staying_nights,
+          }}
+        />
+      )}
     </div>
   );
 };

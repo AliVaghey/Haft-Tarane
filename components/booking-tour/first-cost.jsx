@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { persianPriceFormat } from "@/lib/persian-price-format";
 import { farsiNumber } from "@/lib/farsi-number";
 import qs from "query-string";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { jaliliDate } from "@/lib/jalali-date";
 import { useUser } from "@/hooks/use-user";
 import { toast } from "sonner";
@@ -22,16 +22,13 @@ import { Separator } from "@/components/ui/separator";
 import SimilarTourCard from "./similar-tour-card";
 
 const FirstCost = ({ data, similarData }) => {
-  console.log("similarDataaaaaaaaaaaaaaab", similarData);
+  console.log("similarData", similarData);
+
   const router = useRouter();
 
   const userHook = useUser();
 
-  const searchParams = useSearchParams();
-
   const handleLink = (values) => {
-    const current = qs.parse(searchParams.toString());
-
     const query = {
       ["cid"]: values.cost.id,
       ["start"]: values.date.start,
@@ -87,50 +84,54 @@ const FirstCost = ({ data, similarData }) => {
           <div className="flex flex-col gap-2">
             <span className="font-semibold">مجری تور : {data.agency_name}</span>
 
-            {data.cost.tour.transportation_type === "system" ? (
-              <>
-                <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                  <span>
-                    <Train size={18} />
-                  </span>
-                  <span>{data.transportation[0].flight.airline},</span>
-                  <span> {farsiNumber(jaliliDate(data.date.start))}</span>
-                  <span>
-                    ({farsiNumber(data.transportation[0].flight.time_flight)})
-                  </span>
-                </div>
+            {data.cost.tour.transportation_type !== "hotel" ? (
+              data.cost.tour.transportation_type === "system" ? (
+                <>
+                  <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                    <span>
+                      <Train size={18} />
+                    </span>
+                    <span>{data.transportation[0].flight.airline},</span>
+                    <span> {farsiNumber(jaliliDate(data.date.start))}</span>
+                    <span>
+                      ({farsiNumber(data.transportation[0].flight.time_flight)})
+                    </span>
+                  </div>
 
-                <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                  <span>
-                    <Train size={18} />
-                  </span>
-                  <span>{data.transportation[1].flight.airline},</span>
-                  <span> {farsiNumber(jaliliDate(data.date.end))}</span>
-                  <span>
-                    ({farsiNumber(data.transportation[1].flight.time_flight)})
-                  </span>
-                </div>
-              </>
+                  <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                    <span>
+                      <Train size={18} />
+                    </span>
+                    <span>{data.transportation[1].flight.airline},</span>
+                    <span> {farsiNumber(jaliliDate(data.date.end))}</span>
+                    <span>
+                      ({farsiNumber(data.transportation[1].flight.time_flight)})
+                    </span>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                    <span>
+                      <Train size={18} />
+                    </span>
+                    <span>{data.transportation[0].company_name},</span>
+                    <span> {farsiNumber(jaliliDate(data.date.start))}</span>
+                    <span>({farsiNumber(data.transportation[0].start)})</span>
+                  </div>
+
+                  <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                    <span>
+                      <Train size={18} />
+                    </span>
+                    <span>{data.transportation[1].company_name},</span>
+                    <span> {farsiNumber(jaliliDate(data.date.end))}</span>
+                    <span>({farsiNumber(data.transportation[1].start)})</span>
+                  </div>
+                </>
+              )
             ) : (
-              <>
-                <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                  <span>
-                    <Train size={18} />
-                  </span>
-                  <span>{data.transportation[0].company_name},</span>
-                  <span> {farsiNumber(jaliliDate(data.date.start))}</span>
-                  <span>({farsiNumber(data.transportation[0].start)})</span>
-                </div>
-
-                <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                  <span>
-                    <Train size={18} />
-                  </span>
-                  <span>{data.transportation[1].company_name},</span>
-                  <span> {farsiNumber(jaliliDate(data.date.end))}</span>
-                  <span>({farsiNumber(data.transportation[1].start)})</span>
-                </div>
-              </>
+              <></>
             )}
 
             <div className="flex items-center gap-2 text-muted-foreground">
