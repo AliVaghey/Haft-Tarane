@@ -1,7 +1,5 @@
 "use client";
 
-import Lottie from "lottie-react";
-import groovyWalkAnimation from "@/animations/dashboard-animation.json";
 import { useUser } from "@/hooks/use-user";
 import { List } from "lucide-react";
 import { farsiNumber } from "@/lib/farsi-number";
@@ -18,7 +16,7 @@ const AdminDashboardPage = () => {
             <span className="text-muted-foreground">تعداد بازدید امروز</span>
           </div>
           <span className="text-2xl">
-            {farsiNumber(userHook.siteViews.today)}
+            {farsiNumber(userHook?.siteViews?.today)}
           </span>
         </div>
 
@@ -28,15 +26,10 @@ const AdminDashboardPage = () => {
             <span className="text-muted-foreground">تعداد بازدید کل</span>
           </div>
           <span className="text-2xl">
-            {farsiNumber(userHook.siteViews.all)}
+            {farsiNumber(userHook?.siteViews?.all)}
           </span>
         </div>
       </div>
-      {/* <Lottie
-        animationData={groovyWalkAnimation}
-        loop={true}
-        className="h-[570px] w-full"
-      /> */}
     </div>
   );
 };

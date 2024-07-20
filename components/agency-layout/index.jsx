@@ -12,14 +12,17 @@ import { routes } from "@/routes/routes";
 const AgencyLayout = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isAgency, setIsAgency] = useState(false);
+
   const userHook = useUser();
+
   const router = useRouter();
 
   useEffect(() => {
-    fetchAdmin();
+    fetchAgency();
+    getDashboardInfo();
   }, []);
 
-  const fetchAdmin = async () => {
+  const fetchAgency = async () => {
     setIsLoading(true);
 
     await axios
@@ -38,6 +41,21 @@ const AgencyLayout = ({ children }) => {
       .finally(() => {
         setIsLoading(false);
       });
+  };
+
+  const getDashboardInfo = async () => {
+    axios
+      .get("/api/agency/dashboard/info")
+      .then((response) => {
+        console.log("agency-dashboard", response?.data);
+        if (response.status === 200) {
+          userHook.setAgencyDashboard(response?.data);
+        }
+      })
+      .catch((err) => {
+        console.log("Error", err);
+      })
+      .finally(() => {});
   };
 
   if (!isAgency && !isLoading) {
