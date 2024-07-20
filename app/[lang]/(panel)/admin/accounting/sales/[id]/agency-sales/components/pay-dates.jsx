@@ -1,16 +1,9 @@
 "use client";
 
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import useMount from "@/hooks/use-mount";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CircleCheckBig, Upload, X } from "lucide-react";
+import { CircleCheckBig } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -23,21 +16,14 @@ import SubmitButton from "@/components/submit-button";
 import { toast } from "sonner";
 import { CSRFToken, axios } from "@/lib/axios";
 import { useDictionary } from "@/providers/dictionary-provider";
-import querystring from "querystring";
 import ToastError from "@/components/toast/toast-error";
 import { defaultMessages } from "@/lib/default-messages";
-import { useCallback, useState } from "react";
-import SearchableSelect from "@/components/ui/searchable-select";
-import { Button } from "@/components/ui/button";
+import { useState } from "react";
 import { useTour } from "@/hooks/use-tour";
-import { Input } from "@/components/ui/input";
 import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
-import { dateSchema, enDatelSchema } from "@/lib/validation/tour/date";
-import { baseDateForm, DateForm } from "@/lib/date-form";
-import Dropzone from "react-dropzone";
-import Image from "next/image";
+import { baseDateForm } from "@/lib/date-form";
 import {
   enPayDatesSchema,
   payDatesSchema,
@@ -45,21 +31,16 @@ import {
 import { cn } from "@/lib/utils";
 import AdminPayDialog from "@/components/helpers/admin-pay-dialog";
 
-const PayDates = ({ agencyId, className, data }) => {
-  console.log("datall", data);
-
+const PayDates = ({ agencyId, className }) => {
   const dictionary = useDictionary();
 
   const tourHook = useTour();
 
   const [payData, setPayData] = useState({});
   const [loading, setLoading] = useState(false);
-  const [loading2, setLoading2] = useState(false);
   const [open, setOpen] = useState(false);
 
   const mount = useMount();
-
-  const router = useRouter();
 
   const form = useForm({
     resolver: zodResolver(

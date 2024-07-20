@@ -1,8 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { routes } from "@/routes/routes";
 import SubmitButton from "@/components/submit-button";
 import { useState } from "react";
 
@@ -11,7 +8,6 @@ const CellAction = ({ data }) => {
 
   return (
     <div className="flex items-center justify-center gap-1">
-      {/* <Link href={routes.admin.accounting.sales["agency-sales"](data.id)}> */}
       <SubmitButton
         loading={loading}
         variant="ghost"
@@ -19,7 +15,6 @@ const CellAction = ({ data }) => {
       >
         تسویه
       </SubmitButton>
-      {/* </Link> */}
     </div>
   );
 };
