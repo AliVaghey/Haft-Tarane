@@ -1,7 +1,7 @@
 "use client";
 
 import { chita } from "@/constants/images";
-import { Bus, Calendar, MapPin } from "lucide-react";
+import { Bus, Calendar, MapPin, Star } from "lucide-react";
 import Image from "next/image";
 import { persianPriceFormat } from "@/lib/persian-price-format";
 import { Button } from "../ui/button";
@@ -11,6 +11,8 @@ import { useRouter } from "next/navigation";
 import qs from "query-string";
 
 const TourCard = ({ data }) => {
+  console.log("datalkllklkl", data);
+
   const router = useRouter();
 
   const handleLink = (values) => {
@@ -56,6 +58,13 @@ const TourCard = ({ data }) => {
             <MapPin size={18} strokeWidth={1.5} />
             <span>
               نام هتل : {data.costs.length > 0 && data.costs[0].hotel.name}
+            </span>
+          </div>
+          <div className="flex gap-2">
+            <Star size={18} strokeWidth={1.5} className="text-yellow-primary" />
+            <span>
+              {data.costs.length > 0 && farsiNumber(data.costs[0].hotel.stars)}{" "}
+              ستاره
             </span>
           </div>
 

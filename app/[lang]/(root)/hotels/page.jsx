@@ -2,12 +2,11 @@
 
 import LoadingChita from "@/components/loading-chita";
 import NoItem from "@/components/no-item";
+import HotelSearch from "@/components/pages/hotel-search";
 import TourCard from "@/components/pages/tour-card";
-import TourFilters from "@/components/pages/tour-filters";
-import TourSearch from "@/components/pages/tour-search";
 import PaginationComponent from "@/components/pagination";
 import { Separator } from "@/components/ui/separator";
-import { airplain, hotel } from "@/constants/images";
+import { hotel } from "@/constants/images";
 import { axios } from "@/lib/axios";
 import { useDictionary } from "@/providers/dictionary-provider";
 import Image from "next/image";
@@ -104,7 +103,7 @@ const TourPage = ({
 
             <div className="lg:[53%] w-full">
               <div>
-                <TourSearch
+                <HotelSearch
                   currentSearchParams={{
                     page,
                     all,
