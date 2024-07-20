@@ -23,7 +23,6 @@ export const columns = [
     id: "username",
     header: "نام خریدار",
     cell: ({ row }) => {
-      console.log("row", row.original);
       return <span>{row.original.user.username}</span>;
     },
   },
@@ -31,7 +30,6 @@ export const columns = [
     id: "phoneNumber",
     header: "شماره تماس",
     cell: ({ row }) => {
-      console.log("row", row.original);
       return <span>{farsiNumber(row.original.user.phone)}</span>;
     },
   },

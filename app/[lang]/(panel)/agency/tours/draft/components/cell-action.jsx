@@ -5,16 +5,13 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import DeleteModal from "@/components/helpers/delete-dialog";
 import { CircleCheckBig } from "lucide-react";
-import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 import { CSRFToken, axios } from "@/lib/axios";
+import { useTour } from "@/hooks/use-tour";
 
 const CellAction = ({ data }) => {
-  const searchParams = useSearchParams();
-
-  const { page } = searchParams;
-  const router = useRouter();
+  const tourHook = useTour();
 
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
@@ -28,7 +25,6 @@ const CellAction = ({ data }) => {
       const response = await axios.delete(`/api/agency/tour/${data.id}`);
 
       if (response.status === 204) {
-        router.refresh();
         toast.success(
           <div className="flex items-center gap-2">
             <span>
@@ -37,6 +33,7 @@ const CellAction = ({ data }) => {
             <span>{"تور انتخاب شده حذف شد"}</span>
           </div>,
         );
+        tourHook.setFlag(!tourHook.flag);
       }
     } catch (error) {
       console.log("error", error);

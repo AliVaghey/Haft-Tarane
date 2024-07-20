@@ -25,8 +25,8 @@ const UserToursPage = ({ searchParams: { page } }) => {
     await axios
       .get(`/api/agency/reservations?page=${page || 1}&pending=true`)
       .then((response) => {
-        console.log("response", response.data.data);
-        setData(response.data.data);
+        console.log("responsepending", response.data);
+        setData(response.data);
       })
       .catch((err) => {
         console.log("getCitiesError", err);
@@ -48,7 +48,7 @@ const UserToursPage = ({ searchParams: { page } }) => {
         <LoadingPage />
       ) : (
         <>
-          <DataTable columns={columns} data={data} />
+          <DataTable columns={columns} data={data.data} />
           <PaginationComponent
             total={data?.meta?.total || 0}
             page={data?.meta?.current_page || 1}
