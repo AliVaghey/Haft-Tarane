@@ -13,6 +13,10 @@ import runningChita from "@/public/gifs/running-chita.gif";
 import defaultAirport from "@/public/defaults/default-airport.png";
 import defaultAirlineLogo from "@/public/defaults/default-airline-logo.png";
 import flightPath from "@/public/defaults/flight-path.png";
+import tour from "@/public/other/tour.png";
+import train from "@/public/other/train.jpg";
+import nature from "@/public/other/nature.jpg";
+import hotel from "@/public/other/hotel.jpg";
 
 export {
   plain,
@@ -30,4 +34,8 @@ export {
   defaultAirport,
   defaultAirlineLogo,
   flightPath,
+  tour,
+  train,
+  nature,
+  hotel,
 };

@@ -11,7 +11,7 @@ import { CSRFToken, axios } from "@/lib/axios";
 import { toast } from "sonner";
 import { useTour } from "@/hooks/use-tour";
 import DateStatus from "./date-status";
-import DatePrice from "./date-price";
+import EditDate from "./edit-date";
 
 const DateCard = ({ data, number, transportation_type }) => {
   const tourHook = useTour();
@@ -55,15 +55,18 @@ const DateCard = ({ data, number, transportation_type }) => {
       </div>
       {(transportation_type === "my_transportation" ||
         transportation_type === "hotel") && (
-        <SubmitButton
-          className="h-8 bg-red-primary px-2 text-white hover:bg-red-dark"
-          onClick={() => {
-            handleDeleteDate();
-          }}
-          loading={isLoading}
-        >
-          <Trash2 size={16} strokeWidth={1.5} />
-        </SubmitButton>
+        <>
+          <SubmitButton
+            className="h-8 bg-red-primary px-2 text-white hover:bg-red-dark"
+            onClick={() => {
+              handleDeleteDate();
+            }}
+            loading={isLoading}
+          >
+            <Trash2 size={16} strokeWidth={1.5} />
+          </SubmitButton>
+          <EditDate data={data} />
+        </>
       )}
       <div className="col-span-2 flex items-center gap-4 md:gap-10">
         <DateStatus date={data} />

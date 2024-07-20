@@ -9,7 +9,7 @@ import {
 import useMount from "@/hooks/use-mount";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CircleCheckBig } from "lucide-react";
+import { CircleCheckBig, Edit } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -34,7 +34,9 @@ import persian_fa from "react-date-object/locales/persian_fa";
 import { dateSchema, enDatelSchema } from "@/lib/validation/tour/date";
 import { DateForm } from "@/lib/date-form";
 
-const AddDate = ({ tour_id }) => {
+const EditDate = ({ data }) => {
+  console.log("datauuuuu", data);
+
   const dictionary = useDictionary();
 
   const tourHook = useTour();
@@ -48,8 +50,8 @@ const AddDate = ({ tour_id }) => {
       dictionary["language"] === "fa" ? dateSchema : enDatelSchema,
     ),
     defaultValues: {
-      start: new Date(),
-      end: new Date(),
+      start: new Date(data.start),
+      end: new Date(data.end),
     },
     mode: "onSubmit",
   });
@@ -77,15 +79,15 @@ const AddDate = ({ tour_id }) => {
     await CSRFToken();
 
     await axios
-      .post(`/api/agency/tour/${tour_id}/date`, encodedFormData)
+      .put(`/api/agency/tour/date/${data.id}`, encodedFormData)
       .then((response2) => {
-        if (response2.status === 201) {
+        if (response2.status === 200) {
           toast.success(
             <div className="flex items-center gap-2">
               <span>
                 <CircleCheckBig className="text-green-600" />
               </span>
-              <span>{"تاریخ با موفقیت اضافه شد"}</span>
+              <span>{"تاریخ با موفقیت ویرایش شد"}</span>
             </div>,
           );
 
@@ -111,11 +113,17 @@ const AddDate = ({ tour_id }) => {
 
   return (
     <div className="">
-      <Button onClick={() => setIsOpen(true)}>افزودن تاریخ</Button>
+      <Button
+        onClick={() => setIsOpen(true)}
+        className="flex h-7 items-center gap-1 bg-blue-500 px-2 text-xs text-white hover:bg-blue-700"
+      >
+        <Edit size={16} strokeWidth={1.5} />
+        <span>ویرایش</span>
+      </Button>
       <Dialog open={isOpen} onOpenChange={() => setIsOpen(false)}>
         <DialogContent className="sm:max-w-[825px]">
           <DialogHeader>
-            <DialogTitle className="mr-4 text-right">افزودن تاریخ</DialogTitle>
+            <DialogTitle className="mr-4 text-right">ویرایش تاریخ</DialogTitle>
           </DialogHeader>
           <div className="w-full">
             <Form {...form}>
@@ -186,7 +194,7 @@ const AddDate = ({ tour_id }) => {
                   />
                 </div>
                 <SubmitButton className="mt-3" loading={isSubmitting}>
-                  ارسال
+                  ویرایش
                 </SubmitButton>
               </form>
             </Form>
@@ -197,4 +205,4 @@ const AddDate = ({ tour_id }) => {
   );
 };
 
-export default AddDate;
+export default EditDate;

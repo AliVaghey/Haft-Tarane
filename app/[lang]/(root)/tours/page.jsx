@@ -7,7 +7,7 @@ import TourFilters from "@/components/pages/tour-filters";
 import TourSearch from "@/components/pages/tour-search";
 import PaginationComponent from "@/components/pagination";
 import { Separator } from "@/components/ui/separator";
-import { airplain } from "@/constants/images";
+import { airplain, tour } from "@/constants/images";
 import { axios } from "@/lib/axios";
 import { useDictionary } from "@/providers/dictionary-provider";
 import Image from "next/image";
@@ -85,13 +85,13 @@ const TourPage = ({
     <main>
       <div className="min-h-80 bg-yellow-primary pt-16">
         <>
-          <div>
+          <div className="w-full">
             <Image
-              src={airplain}
+              src={tour}
               alt="airolane"
-              width={200}
-              height={100}
-              className="h-60 w-screen object-cover"
+              width={500}
+              height={150}
+              className="mx-auto h-80 w-screen object-fill"
             />
           </div>
           <div className="flex">

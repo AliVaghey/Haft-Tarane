@@ -89,7 +89,7 @@ const DateStatus = ({ date }) => {
           <Button
             disabled={loading}
             variant="ghost"
-            className="flex gap-1 rounded-3xl border-2 border-primary"
+            className="flex h-8 gap-1 rounded-3xl border-2 border-primary"
           >
             {loading ? (
               <LoaderIcon

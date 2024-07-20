@@ -94,7 +94,7 @@ const TourSearch = ({ currentSearchParams }) => {
   };
 
   return (
-    <div className="mx-auto -mt-20 flex w-full rounded-lg bg-yellow-light">
+    <div className="mx-auto -mt-5 flex w-full rounded-lg bg-yellow-light">
       <Form {...form}>
         <form
           onSubmit={handleSubmit(onSubmit)}

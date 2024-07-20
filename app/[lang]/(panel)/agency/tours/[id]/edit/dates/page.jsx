@@ -6,8 +6,6 @@ import { useTour } from "@/hooks/use-tour";
 const DatePage = () => {
   const tourHook = useTour();
 
-  console.log("tourHook.currentTour", tourHook.currentTour);
-
   return (
     <div className="w-full">
       <Dates

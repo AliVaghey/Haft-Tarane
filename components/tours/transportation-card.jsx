@@ -15,7 +15,6 @@ import { persianPriceFormat } from "@/lib/persian-price-format";
 import EditMyTransportation from "./edit-my-tranportation";
 
 const TransportationCard = ({ data, number, lenght, staying_nights }) => {
-  console.log("dataqwqwq", data);
   const tourHook = useTour();
 
   const [isLoading, setIsLoading] = useState(false);
