@@ -11,9 +11,12 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Eye } from "lucide-react";
+import { useTour } from "@/hooks/use-tour";
 
 const CellAction = ({ data }) => {
   const router = useRouter();
+
+  const tourHook = useTour();
 
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
@@ -27,8 +30,6 @@ const CellAction = ({ data }) => {
       const response = await axios.delete(`/api/admin/hotel/${data.id}`);
 
       if (response.status === 204) {
-        console.log("first");
-        router.refresh();
         toast.success(
           <div className="flex items-center gap-2">
             <span>
@@ -37,6 +38,7 @@ const CellAction = ({ data }) => {
             <span>{"هتل مورد نظر حذف شد"}</span>
           </div>,
         );
+        tourHook.setFlag(!tourHook.flag);
       }
       if (response.status === 200) {
         toast.error(

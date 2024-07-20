@@ -577,7 +577,7 @@ const DetailsPrice = ({ data }) => {
                     name="baby"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>کودک ۲ تا ۶ سال</FormLabel>
+                        <FormLabel>نوزاد</FormLabel>
                         <FormControl>
                           <Input
                             disabled={

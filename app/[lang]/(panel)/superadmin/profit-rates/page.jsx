@@ -8,17 +8,19 @@ import { axios } from "@/lib/axios";
 import DataTableHeader from "@/components/data-table-header";
 import { useDictionary } from "@/providers/dictionary-provider";
 import { routes } from "@/routes/routes";
-// import PaginationComponent from "@/components/pagination";
+import { useTour } from "@/hooks/use-tour";
 
 const AdminDashboardPage = () => {
   const dictionary = useDictionary();
+
+  const tourHook = useTour();
 
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchCities();
-  }, []);
+  }, [tourHook.flag]);
 
   const fetchCities = async () => {
     setIsLoading(true);

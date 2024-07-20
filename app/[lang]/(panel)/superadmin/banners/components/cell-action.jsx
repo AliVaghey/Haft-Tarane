@@ -10,9 +10,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
+import { useTour } from "@/hooks/use-tour";
 
 const CellAction = ({ data }) => {
   const router = useRouter();
+
+  const tourHook = useTour();
 
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
@@ -36,6 +39,7 @@ const CellAction = ({ data }) => {
             <span>{"بنر مورد نظر حذف شد"}</span>
           </div>,
         );
+        tourHook.setFlag(!tourHook.flag);
       }
       if (response.status === 200) {
         toast.error(
