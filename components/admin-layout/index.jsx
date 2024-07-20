@@ -17,6 +17,7 @@ const AdminLayout = ({ children }) => {
 
   useEffect(() => {
     fetchAdmin();
+    getDashboardInfo();
   }, []);
 
   const fetchAdmin = async () => {
@@ -40,6 +41,21 @@ const AdminLayout = ({ children }) => {
       .finally(() => {
         setIsLoading(false);
       });
+  };
+
+  const getDashboardInfo = async () => {
+    axios
+      .get("/api/admin/dashboard/info")
+      .then((response) => {
+        console.log("agency-dashboard", response?.data);
+        if (response.status === 200) {
+          userHook.setAdminDashboard(response?.data);
+        }
+      })
+      .catch((err) => {
+        console.log("Error", err);
+      })
+      .finally(() => {});
   };
 
   if (!isAdmin && !isLoading) {
