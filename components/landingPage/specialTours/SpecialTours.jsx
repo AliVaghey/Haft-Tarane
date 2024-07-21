@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import circle from "@/public/img/tour-circle.svg";
-import nature from "@/public/img/nature.jpg";
 import { useUser } from "@/hooks/use-user";
 import {
   Carousel,

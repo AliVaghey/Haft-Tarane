@@ -1,7 +1,7 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { X } from "lucide-react";
+import { Star, X } from "lucide-react";
 import "react-multi-date-picker/styles/colors/yellow.css";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
@@ -10,9 +10,10 @@ import { Separator } from "@/components/ui/separator";
 import { Label } from "../ui/label";
 
 const tourTypes = ["داخلی", "خارجی", "طبیعت گردی"];
+const hotelStars = [5, 4, 3, 2, 1];
 
 const TourFilters = ({ data, onFilter }) => {
-  console.log("data", data);
+  console.log("datafilterpage", data);
 
   const dNights = data.data.map((item) => item.costs[0]);
 
@@ -26,6 +27,8 @@ const TourFilters = ({ data, onFilter }) => {
     "خارجی",
     "طبیعت گردی",
   ]);
+
+  const [filterHotelStars, setFilterHotelStars] = useState([5, 4, 3, 2, 1]);
 
   const handleFilter = async (newData) => {
     onFilter(newData);
@@ -76,6 +79,29 @@ const TourFilters = ({ data, onFilter }) => {
     setFilterTourType(values);
   };
 
+  const handleHotelStars = (values) => {
+    console.log("values", values);
+    let result = [];
+    if (values.length < filterHotelStars.length) {
+      let newArray = filteredData;
+      result = newArray.filter((item1) =>
+        values.some((item2) => item1.costs[0].hotel.stars === item2),
+      );
+    } else {
+      let newArray = initialData;
+      newArray = newArray.filter((item1) =>
+        values.some((item2) => item1.costs[0].hotel.stars === item2),
+      );
+      result = initialData.filter((item1) =>
+        newArray.some((item2) => item1.costs[0].id === item2.costs[0].id),
+      );
+    }
+
+    setFilteredData(result);
+    handleFilter(result);
+    setFilterHotelStars(values);
+  };
+
   const handleNight = (values) => {};
 
   return (
@@ -97,6 +123,7 @@ const TourFilters = ({ data, onFilter }) => {
             onChange={(e) => handleHotelName(e.target.value)}
           />
         </div>
+
         <Separator className="my-2 h-0.5 bg-primary" />
 
         <div className="flex flex-col gap-2">
@@ -111,13 +138,44 @@ const TourFilters = ({ data, onFilter }) => {
                   e
                     ? (tourItems = [...tourItems, item])
                     : (tourItems = tourItems.filter((i) => i !== item));
-
-                  // setFilterTourType(tourItems);
                   handleTourType(tourItems);
                 }}
               />
               <Label htmlFor={item} className="cursor-pointer text-sm">
                 {item}
+              </Label>
+            </div>
+          ))}
+        </div>
+
+        <Separator className="my-2 h-0.5 bg-primary" />
+
+        <div className="flex flex-col gap-2">
+          <span className="font-semibold text-foreground">ستاره هتل</span>
+          {hotelStars.map((item) => (
+            <div key={item} className="flex gap-2">
+              <Checkbox
+                id={item}
+                checked={filterHotelStars.includes(item)}
+                onCheckedChange={(e) => {
+                  let tourItems = filterHotelStars;
+                  e
+                    ? (tourItems = [...tourItems, item])
+                    : (tourItems = tourItems.filter((i) => i !== item));
+                  handleHotelStars(tourItems);
+                }}
+              />
+              <Label htmlFor={item} className="cursor-pointer text-sm">
+                <div className="flex gap-2">
+                  {new Array(+item).fill("").map((item, index) => (
+                    <Star
+                      key={index}
+                      className="text-yellow-primary"
+                      size={16}
+                      strokeWidth={2.5}
+                    />
+                  ))}
+                </div>
               </Label>
             </div>
           ))}
