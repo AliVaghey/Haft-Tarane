@@ -7,14 +7,13 @@ import logo from "@/public/logo/logo-red.png";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@/hooks/use-user";
 import { routes } from "@/routes/routes";
-import { usePathname, useRouter } from "next/navigation";
-import { X } from "lucide-react";
-// import { Bars3Icon, BeakerIcon, XMarkIcon } from "@heroicons/react/24/solid";
+// import { usePathname, useRouter } from "next/navigation";
+// import { X } from "lucide-react";
 
 export default function Nav() {
-  const pathname = usePathname();
+  // const pathname = usePathname();
 
-  const router = useRouter();
+  // const router = useRouter();
 
   const userHook = useUser();
 
@@ -205,7 +204,8 @@ export default function Nav() {
           </Link>
         </div>
       )}
-      {(pathname === "/fa" ||
+
+      {/* {(pathname === "/fa" ||
         pathname === "/en" ||
         pathname === "/fa-ir" ||
         pathname === "/en-us") && (
@@ -264,7 +264,7 @@ export default function Nav() {
             ),
           )}
         </div>
-      )}
+      )} */}
     </div>
   );
 }

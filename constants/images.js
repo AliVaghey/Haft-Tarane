@@ -6,13 +6,14 @@ import pinkPlain from "@/public/other/pink-plain.png";
 import effect1 from "@/public/effects/effect-1.png";
 import effect2 from "@/public/effects/effect-2.png";
 import effect3 from "@/public/effects/effect-3.png";
-import defaultHotel from "@/public/defaults/default-hotel.jpg";
 import chita from "@/public/logo/chita.png";
 import airplain from "@/public/img/flightlanding.svg";
 import runningChita from "@/public/gifs/running-chita.gif";
+import defaultHotel from "@/public/defaults/default-hotel.jpg";
 import defaultAirport from "@/public/defaults/default-airport.png";
 import defaultAirlineLogo from "@/public/defaults/default-airline-logo.png";
 import flightPath from "@/public/defaults/flight-path.png";
+import specialTour from "@/public/defaults/special-tour.png";
 import tour from "@/public/other/tour.png";
 import train from "@/public/other/train.jpg";
 import nature from "@/public/other/nature.jpg";
@@ -38,4 +39,5 @@ export {
   train,
   nature,
   hotel,
+  specialTour,
 };

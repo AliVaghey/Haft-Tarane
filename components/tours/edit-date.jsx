@@ -112,7 +112,7 @@ const EditDate = ({ data }) => {
   }
 
   return (
-    <div className="">
+    <div>
       <Button
         onClick={() => setIsOpen(true)}
         className="flex h-7 items-center gap-1 bg-blue-500 px-2 text-xs text-white hover:bg-blue-700"

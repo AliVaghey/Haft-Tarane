@@ -14,11 +14,10 @@ import {
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { routes } from "@/routes/routes";
 import { Button } from "@/components/ui/button";
 import { farsiNumber } from "@/lib/farsi-number";
 import { jaliliDate } from "@/lib/jalali-date";
-import { DateForm } from "@/lib/date-form";
+import { specialTour } from "@/constants/images";
 
 function SpecialTours() {
   const userHook = useUser();
@@ -29,7 +28,7 @@ function SpecialTours() {
       : {
           tour: {},
           advertisement: "",
-          photo: nature,
+          photo: specialTour,
           dates: [],
         },
   );
@@ -67,73 +66,78 @@ function SpecialTours() {
                   height={360}
                   className="h-[450px] w-[750px] rounded-2xl max-lg:h-80 max-md:h-72"
                 />
-                <div className="absolute right-9 top-9 rounded-lg bg-black bg-opacity-40 px-6 py-4 md:px-10">
-                  <h2 className="pb-4 text-2xl font-bold text-white max-lg:text-lg max-md:text-xs">
-                    {currentTour?.tour?.title}
-                  </h2>
-                  <p className="text-lg font-semibold text-white">
-                    از {currentTour?.tour?.origin} به{" "}
-                    {currentTour?.tour?.destination}
-                  </p>
-                  {/* <p className="mt-2 rounded-lg bg-white bg-opacity-30 px-2 py-1 text-white">
+
+                {userHook.specialTours.length > 0 && (
+                  <div className="absolute right-9 top-9 rounded-lg bg-black bg-opacity-40 px-6 py-4 md:px-10">
+                    <h2 className="pb-4 text-2xl font-bold text-white max-lg:text-lg max-md:text-xs">
+                      {currentTour?.tour?.title}
+                    </h2>
+                    <p className="text-lg font-semibold text-white">
+                      از {currentTour?.tour?.origin} به{" "}
+                      {currentTour?.tour?.destination}
+                    </p>
+                    {/* <p className="mt-2 rounded-lg bg-white bg-opacity-30 px-2 py-1 text-white">
                     {currentTour?.advertisement}
                   </p> */}
-                  <div className="mt-3 flex flex-col gap-1">
-                    {currentTour.dates.map((item, index) => (
-                      <Link
-                        key={index}
-                        href={`${window.location.href.split("?")[0]}/tours/${currentTour.id}?cid=${21}&start=${item.start}&end=${item.end}`}
-                      >
-                        <Button className="h-8 text-xs">
-                          {" "}
-                          از تاریخ {farsiNumber(jaliliDate(item.start))} تا
-                          {"  "}
-                          {farsiNumber(jaliliDate(item.end))}{" "}
-                        </Button>
-                      </Link>
-                    ))}
+                    <div className="mt-3 flex flex-col gap-1">
+                      {currentTour.dates.map((item, index) => (
+                        <Link
+                          key={index}
+                          href={`${window.location.href.split("?")[0]}/tours/${currentTour.id}?cid=${21}&start=${item.start}&end=${item.end}`}
+                        >
+                          <Button className="h-8 text-xs">
+                            {" "}
+                            از تاریخ {farsiNumber(jaliliDate(item.start))} تا
+                            {"  "}
+                            {farsiNumber(jaliliDate(item.end))}{" "}
+                          </Button>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
 
-              <div className=" bottom-5 flex w-full justify-center px-14 md:w-[900px]">
-                <Carousel
-                  dir="ltr"
-                  opts={{
-                    align: "start",
-                  }}
-                  className="w-full"
-                >
-                  <CarouselContent>
-                    {userHook.specialTours.map((tour, index) => (
-                      <CarouselItem
-                        key={index}
-                        className="cursor-pointer md:basis-1/3 lg:basis-1/5"
-                        onClick={() => setCurrentTour(tour)}
-                      >
-                        <div
+              {userHook.specialTours.length > 0 && (
+                <div className=" bottom-5 flex w-full justify-center px-14 md:w-[900px]">
+                  <Carousel
+                    dir="ltr"
+                    opts={{
+                      align: "start",
+                    }}
+                    className="w-full"
+                  >
+                    <CarouselContent>
+                      {userHook.specialTours.map((tour, index) => (
+                        <CarouselItem
                           key={index}
-                          className={cn(
-                            "rounded-lg border-4 border-transparent",
-                            currentTour.id === tour.id &&
-                              "border-4 border-white",
-                          )}
+                          className="cursor-pointer md:basis-1/3 lg:basis-1/5"
+                          onClick={() => setCurrentTour(tour)}
                         >
-                          <Image
-                            src={tour.photo}
-                            width={200}
-                            height={250}
-                            alt="tour"
-                            className="h-40 w-full rounded-lg object-cover"
-                          />
-                        </div>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  <CarouselPrevious />
-                  <CarouselNext />
-                </Carousel>
-              </div>
+                          <div
+                            key={index}
+                            className={cn(
+                              "rounded-lg border-4 border-transparent",
+                              currentTour.id === tour.id &&
+                                "border-4 border-white",
+                            )}
+                          >
+                            <Image
+                              src={tour.photo}
+                              width={200}
+                              height={250}
+                              alt="tour"
+                              className="h-40 w-full rounded-lg object-cover"
+                            />
+                          </div>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                  </Carousel>
+                </div>
+              )}
             </div>
           </div>
         </div>

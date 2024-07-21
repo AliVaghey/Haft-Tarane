@@ -105,7 +105,7 @@ const HotelSearch = ({ currentSearchParams }) => {
               control={control}
               name="origin"
               render={({ field }) => (
-                <FormItem className="col-span-3 flex hidden flex-1 flex-col gap-1 text-right lg:col-span-1">
+                <FormItem className="col-span-3 hidden flex-1 flex-col gap-1 text-right lg:col-span-1">
                   <FormLabel>مبدا</FormLabel>
                   <FormControl>
                     <SearchableSelect
