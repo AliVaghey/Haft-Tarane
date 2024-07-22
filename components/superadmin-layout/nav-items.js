@@ -15,8 +15,6 @@ import {
   Train,
   User,
   User2,
-} from "lucide-react";
-import {
   Hotel,
   ClipboardList,
   Pyramid,
@@ -30,6 +28,7 @@ import {
   LibraryBig,
   SwatchBook,
   UsersRound,
+  Tags,
 } from "lucide-react";
 
 export const navItems = [
@@ -365,6 +364,13 @@ export const navItems = [
         href: routes.superadmin.options["room-types"].root,
         icon: (size, strokeWidth) => (
           <Hotel size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
+        title: "برچسب ها",
+        href: routes.superadmin.options.labels.root,
+        icon: (size, strokeWidth) => (
+          <Tags size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
     ],

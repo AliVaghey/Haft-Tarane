@@ -111,6 +111,10 @@ export const routes = {
         root: "/superadmin/options/room-types",
         add: "/superadmin/options/room-types/add",
       },
+      labels: {
+        root: "/superadmin/options/labels",
+        add: "/superadmin/options/labels/add",
+      },
     },
     "transportation-options": {
       airplane: {

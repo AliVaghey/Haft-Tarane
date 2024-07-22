@@ -116,7 +116,7 @@ const DetailsBasicInformation = ({ data }) => {
             <Plane strokeWidth={1.5} size={18} />
           </span>
           <div className="flex flex-col gap-0">
-            <span className="font-bold">سبک های تور</span>
+            <span className="font-bold">مدل های تور</span>
             <span className="flex flex-wrap items-center gap-1">
               {data.tour_styles &&
                 data.tour_styles.map((item, index) => (
@@ -134,6 +134,26 @@ const DetailsBasicInformation = ({ data }) => {
           <div className="flex flex-col gap-0">
             <span className="font-bold">نام آژانس</span>
             <span>{data.agency_name}</span>
+          </div>
+        </div>
+      </div>
+
+      {/* basic-information-4 */}
+      <div className="flex w-full items-center">
+        <div className="flex flex-1 items-center gap-3">
+          <span className="rounded-lg bg-blue-400 p-3 text-white">
+            <Plane strokeWidth={1.5} size={18} />
+          </span>
+          <div className="flex flex-col gap-0">
+            <span className="font-bold">برچسب ها</span>
+            <span className="flex flex-wrap items-center gap-1">
+              {data.labels &&
+                data.labels.map((item, index) => (
+                  <p className="mr-2" key={index}>
+                    {item}
+                  </p>
+                ))}
+            </span>
           </div>
         </div>
       </div>

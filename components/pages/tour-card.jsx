@@ -11,6 +11,8 @@ import { useRouter } from "next/navigation";
 import qs from "query-string";
 
 const TourCard = ({ data }) => {
+  console.log("datapppppppppppppppp", data);
+
   const router = useRouter();
 
   const handleLink = (values) => {
@@ -40,7 +42,7 @@ const TourCard = ({ data }) => {
             src={data.costs.length > 0 ? data.costs[0].hotel.photo : chita}
             width={360}
             height={360}
-            className=" my-auto max-h-48 w-60 rounded-lg rounded-r-lg object-cover"
+            className=" my-auto max-h-52 w-60 rounded-lg rounded-r-lg object-cover"
             alt="hotel"
           />
         </div>
@@ -90,6 +92,18 @@ const TourCard = ({ data }) => {
             <span>
               از {data.origin} به {data.destination}
             </span>
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            {data.tour.labels &&
+              data.tour.labels.map((item, index) => (
+                <span
+                  key={index}
+                  className="rounded-md bg-red-primary px-3 py-1 font-semibold text-white"
+                >
+                  {item}
+                </span>
+              ))}
           </div>
         </div>
 

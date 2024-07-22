@@ -52,7 +52,7 @@ const DetailsTourPlan = ({ data }) => {
                     <Plane strokeWidth={1.5} size={18} />
                   </span>
                   <div className="flex flex-col gap-0">
-                    <span className="font-bold">شروع</span>
+                    <span className="font-bold">زمان حرکت</span>
                     <span>
                       {farsiNumber(
                         jaliliDateHour(
@@ -67,7 +67,7 @@ const DetailsTourPlan = ({ data }) => {
                     <Plane strokeWidth={1.5} size={18} />
                   </span>
                   <div className="flex flex-col gap-0">
-                    <span className="font-bold">پایان</span>
+                    <span className="font-bold">زمان رسیدن</span>
                     <span>{farsiNumber(jaliliDateHour(flight.end))}</span>
                   </div>
                 </div>
@@ -165,7 +165,7 @@ const DetailsTourPlan = ({ data }) => {
                   <Plane strokeWidth={1.5} size={18} />
                 </span>
                 <div className="flex flex-col gap-0">
-                  <span className="font-bold">شروع</span>
+                  <span className="font-bold">زمان حرکت</span>
                   <span>{farsiNumber(jaliliDateHour(item.start))}</span>
                 </div>
               </div>
@@ -174,7 +174,7 @@ const DetailsTourPlan = ({ data }) => {
                   <Plane strokeWidth={1.5} size={18} />
                 </span>
                 <div className="flex flex-col gap-0">
-                  <span className="font-bold">شروع</span>
+                  <span className="font-bold">زمان رسیدن</span>
                   <span>{farsiNumber(jaliliDateHour(item.end))}</span>
                 </div>
               </div>

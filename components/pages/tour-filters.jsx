@@ -10,9 +10,6 @@ import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { persianPriceFormat } from "@/lib/persian-price-format";
 
-const tourTypes = ["داخلی", "خارجی", "طبیعت گردی"];
-const hotelStars = [5, 4, 3, 2, 1];
-
 const TourFilters = ({ data, onFilter }) => {
   console.log("datakj", data);
 
@@ -32,10 +29,12 @@ const TourFilters = ({ data, onFilter }) => {
     removeSimilardata(data.data.map((item) => item.trip_type)),
   );
   const [hotelStars, setHotelStars] = useState(
-    removeSimilardata(data.data.map((item) => item.costs[0].hotel.stars)),
+    removeSimilardata(
+      data.data.map((item) => item.costs[0].hotel.stars),
+    ).sort(),
   );
   const [stayNight, setStayNight] = useState(
-    removeSimilardata(data.data.map((item) => item.tour.staying_nights)),
+    removeSimilardata(data.data.map((item) => item.tour.staying_nights)).sort(),
   );
   const [newPriceArray, setNewPriceArray] = useState(
     data.data.map((item) => item.min_cost),
@@ -246,6 +245,8 @@ const TourFilters = ({ data, onFilter }) => {
             </div>
           ))}
         </div>
+
+        <Separator className="my-2 h-0.5 bg-primary" />
 
         <div className="flex flex-col gap-2">
           <span className="font-semibold text-foreground">تعداد شب اقامت</span>

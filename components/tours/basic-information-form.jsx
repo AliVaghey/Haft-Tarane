@@ -41,7 +41,6 @@ import { Button } from "../ui/button";
 import ChipSearchableSelect from "../ui/chip-searchable-select";
 
 const BasicInformationForm = ({ data }) => {
-  console.log("datsssssgggfga", data);
   const tourHook = useTour();
 
   const dictionary = useDictionary();
@@ -69,6 +68,7 @@ const BasicInformationForm = ({ data }) => {
           staying_nights: data.staying_nights,
           transportation_type: data.transportation_type,
           support: data.support ? String(data.support.id) : "",
+          labels: data.labels ? data.labels : [],
         }
       : {
           title: "",
@@ -84,6 +84,7 @@ const BasicInformationForm = ({ data }) => {
           staying_nights: "",
           transportation_type: "",
           support: "",
+          labels: [],
         },
     mode: "onSubmit",
   });
@@ -113,6 +114,7 @@ const BasicInformationForm = ({ data }) => {
       staying_nights,
       transportation_type,
       support,
+      labels,
     } = values;
 
     await CSRFToken();
@@ -131,6 +133,7 @@ const BasicInformationForm = ({ data }) => {
       staying_nights,
       transportation_type,
       support,
+      labels: JSON.stringify(labels),
     });
 
     if (data) {
@@ -458,6 +461,30 @@ const BasicInformationForm = ({ data }) => {
                     searchable={false}
                     onChange={(data) => {
                       setValue("tour_styles", data, { shouldValidate: true });
+                    }}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={control}
+            name="labels"
+            render={({ field }) => (
+              <FormItem className="col-span-3 lg:col-span-1">
+                <FormLabel>برچسب ها</FormLabel>
+                <FormControl>
+                  <ChipSearchableSelect
+                    api={`/api/options?category=labels`}
+                    initialData={getValues("labels")}
+                    placeholder="برچسب ها"
+                    query="name"
+                    keyValue="value"
+                    searchable={false}
+                    onChange={(data) => {
+                      setValue("labels", data, { shouldValidate: true });
                     }}
                   />
                 </FormControl>

@@ -13,8 +13,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
 
 const SpecialTourCard = ({ data }) => {
-  console.log("data,,,,,,,,,,,,,,,,,", data);
-
   const router = useRouter();
 
   const searchParams = useSearchParams();
