@@ -3,7 +3,7 @@
 import { Star, X } from "lucide-react";
 import "react-multi-date-picker/styles/colors/yellow.css";
 import { Input } from "@/components/ui/input";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
 import { Label } from "@/components/ui/label";
@@ -12,16 +12,23 @@ import { persianPriceFormat } from "@/lib/persian-price-format";
 import { Button } from "../ui/button";
 
 const TourFilters = ({ data, onFilter }) => {
+  console.log("data", data);
+
   const [initialData, setInitialData] = useState(
     data.data.map((item) => {
-      return item.transportation[0].flight
-        ? {
-            ...item,
-            transportationType: "هواپیما",
-          }
+      return item.transportation.length > 0
+        ? item.transportation[0].flight
+          ? {
+              ...item,
+              transportationType: "هواپیما",
+            }
+          : {
+              ...item,
+              transportationType: item.transportation[0].type,
+            }
         : {
             ...item,
-            transportationType: item.transportation[0].type,
+            transportationType: "",
           };
     }),
   );
@@ -244,7 +251,7 @@ const TourFilters = ({ data, onFilter }) => {
         <Separator className="my-2 h-0.5 bg-primary" />
 
         <div className="flex flex-col gap-2">
-          <span className="font-semibold text-foreground">مدل های تور</span>
+          <span className="font-semibold text-foreground">نوع تور</span>
           {tourTypes.map((item) => (
             <div key={item} className="flex gap-2">
               <Checkbox
