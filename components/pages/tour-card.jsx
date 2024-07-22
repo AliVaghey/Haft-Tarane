@@ -11,8 +11,6 @@ import { useRouter } from "next/navigation";
 import qs from "query-string";
 
 const TourCard = ({ data }) => {
-  console.log("datapppppppppppppppp", data);
-
   const router = useRouter();
 
   const handleLink = (values) => {

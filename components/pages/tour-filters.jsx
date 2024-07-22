@@ -11,7 +11,35 @@ import { Slider } from "@/components/ui/slider";
 import { persianPriceFormat } from "@/lib/persian-price-format";
 
 const TourFilters = ({ data, onFilter }) => {
-  console.log("datakj", data);
+  const [initialData, setInitialData] = useState(
+    data.data.map((item) => {
+      return item.transportation[0].flight
+        ? {
+            ...item,
+            transportationType: "هواپیما",
+          }
+        : {
+            ...item,
+            transportationType: item.transportation[0].type,
+          };
+    }),
+  );
+
+  const [filteredData, setFilteredData] = useState(
+    data.data.map((item) => {
+      return item.transportation[0].flight
+        ? {
+            ...item,
+            transportationType: "هواپیما",
+          }
+        : {
+            ...item,
+            transportationType: item.transportation[0].type,
+          };
+    }),
+  );
+
+  // console.log("initialData", initialData);
 
   const removeSimilardata = (array) => {
     const result = [];
@@ -25,30 +53,36 @@ const TourFilters = ({ data, onFilter }) => {
     return result;
   };
 
+  const [transportationTypes, setTransportationTypes] = useState(
+    removeSimilardata(initialData.map((item) => item.transportationType)),
+  );
+
   const [tourTypes, setTourTypes] = useState(
-    removeSimilardata(data.data.map((item) => item.trip_type)),
+    removeSimilardata(initialData.map((item) => item.trip_type)),
   );
   const [hotelStars, setHotelStars] = useState(
     removeSimilardata(
-      data.data.map((item) => item.costs[0].hotel.stars),
+      initialData.map((item) => item.costs[0].hotel.stars),
     ).sort(),
   );
   const [stayNight, setStayNight] = useState(
-    removeSimilardata(data.data.map((item) => item.tour.staying_nights)).sort(),
+    removeSimilardata(
+      initialData.map((item) => item.tour.staying_nights),
+    ).sort(),
   );
+
   const [newPriceArray, setNewPriceArray] = useState(
-    data.data.map((item) => item.min_cost),
+    initialData.map((item) => item.min_cost),
   );
   const minPrice = Math.min(...newPriceArray);
   const maxPrice = Math.max(...newPriceArray);
-
-  const [initialData, setInitialData] = useState(data.data);
-  const [filteredData, setFilteredData] = useState(data.data);
 
   const [hotelName, setHotelName] = useState("");
   const [filterTourType, setFilterTourType] = useState(tourTypes);
   const [filterHotelStars, setFilterHotelStars] = useState(hotelStars);
   const [filterStayNight, setFilterStayNight] = useState(stayNight);
+  const [filterTransportationType, setFilterTransportationType] =
+    useState(transportationTypes);
   const [priceRange, setPriceRange] = useState([+minPrice, +maxPrice]);
   const [priceRangeState, setPriceRangeState] = useState([
     +minPrice,
@@ -146,6 +180,28 @@ const TourFilters = ({ data, onFilter }) => {
     setFilteredData(result);
     handleFilter(result);
     setFilterStayNight(values);
+  };
+
+  const handleTransportationType = (values) => {
+    let result = [];
+    if (values.length < filterTransportationType.length) {
+      let newArray = filteredData;
+      result = newArray.filter((item1) =>
+        values.some((item2) => item1.transportationType === item2),
+      );
+    } else {
+      let newArray = initialData;
+      newArray = newArray.filter((item1) =>
+        values.some((item2) => item1.transportationType === item2),
+      );
+      result = initialData.filter((item1) =>
+        newArray.some((item2) => item1.costs[0].id === item2.costs[0].id),
+      );
+    }
+
+    setFilteredData(result);
+    handleFilter(result);
+    setFilterTransportationType(values);
   };
 
   const handlePriceRange = (values) => {
@@ -287,6 +343,30 @@ const TourFilters = ({ data, onFilter }) => {
             <span>{persianPriceFormat(priceRange[1])} تومان</span>
             <span>{persianPriceFormat(priceRange[0])} تومان</span>
           </div>
+        </div>
+
+        <Separator className="my-2 h-0.5 bg-primary" />
+
+        <div className="flex flex-col gap-2">
+          <span className="font-semibold text-foreground">نوع حمل و نقل</span>
+          {transportationTypes.map((item) => (
+            <div key={item} className="flex gap-2">
+              <Checkbox
+                id={item}
+                checked={filterTransportationType.includes(item)}
+                onCheckedChange={(e) => {
+                  let tourItems = filterTransportationType;
+                  e
+                    ? (tourItems = [...tourItems, item])
+                    : (tourItems = tourItems.filter((i) => i !== item));
+                  handleTransportationType(tourItems);
+                }}
+              />
+              <Label htmlFor={item} className="cursor-pointer text-sm">
+                <div className="flex gap-2">{item}</div>
+              </Label>
+            </div>
+          ))}
         </div>
       </div>
     </div>
