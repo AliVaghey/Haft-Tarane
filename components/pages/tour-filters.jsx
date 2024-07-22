@@ -3,12 +3,13 @@
 import { Star, X } from "lucide-react";
 import "react-multi-date-picker/styles/colors/yellow.css";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { persianPriceFormat } from "@/lib/persian-price-format";
+import { Button } from "../ui/button";
 
 const TourFilters = ({ data, onFilter }) => {
   const [initialData, setInitialData] = useState(
@@ -25,21 +26,7 @@ const TourFilters = ({ data, onFilter }) => {
     }),
   );
 
-  const [filteredData, setFilteredData] = useState(
-    data.data.map((item) => {
-      return item.transportation[0].flight
-        ? {
-            ...item,
-            transportationType: "هواپیما",
-          }
-        : {
-            ...item,
-            transportationType: item.transportation[0].type,
-          };
-    }),
-  );
-
-  // console.log("initialData", initialData);
+  const [filteredData, setFilteredData] = useState(initialData);
 
   const removeSimilardata = (array) => {
     const result = [];
@@ -60,6 +47,7 @@ const TourFilters = ({ data, onFilter }) => {
   const [tourTypes, setTourTypes] = useState(
     removeSimilardata(initialData.map((item) => item.trip_type)),
   );
+
   const [hotelStars, setHotelStars] = useState(
     removeSimilardata(
       initialData.map((item) => item.costs[0].hotel.stars),
@@ -74,6 +62,7 @@ const TourFilters = ({ data, onFilter }) => {
   const [newPriceArray, setNewPriceArray] = useState(
     initialData.map((item) => item.min_cost),
   );
+
   const minPrice = Math.min(...newPriceArray);
   const maxPrice = Math.max(...newPriceArray);
 
@@ -229,12 +218,19 @@ const TourFilters = ({ data, onFilter }) => {
     <div className="w-full rounded-lg bg-yellow-light p-2.5 text-muted-foreground">
       <div className="flex items-center justify-between">
         <span className="font-semibold text-foreground">فیلتر ها</span>
-        <div className="flex items-center gap-2 text-sm">
+        <Button
+          onClick={() => {
+            setFilteredData(initialData);
+            handleFilter(initialData);
+          }}
+          variant="ghost"
+          className="flex h-7 items-center gap-2 px-1 text-sm"
+        >
           <span>حذف فیلتر ها</span>
           <span>
             <X size={16} strokeWidth={1.5} />
           </span>
-        </div>
+        </Button>
       </div>
       <div className="mt-2 flex flex-col gap-2">
         <div>
