@@ -67,7 +67,7 @@ const EditMyTransportation = ({ data }) => {
     defaultValues: {
       type: data.type,
       duration: data.duration,
-      company_name: data.company_name,
+      company_name: data?.company_name,
       transportation_type: data.transportation_type,
       origin: data.origin,
       destination: data.destination,

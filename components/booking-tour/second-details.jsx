@@ -87,34 +87,23 @@ const SecondDetails = ({ data }) => {
               <div className="font-semibold">اطلاعات رفت و برگشت :</div>
               <Separator className="h-0.5 bg-yellow-primary" />
               <div className="grid grid-cols-2 lg:grid-cols-4">
-                <div className="flex items-center gap-2">
-                  <Plane size={16} />{" "}
-                  <span>
-                    {data.transportation[0].flight.airline}{" "}
-                    {data.transportation[0].flight.from}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Calendar size={16} />{" "}
-                  <span>
-                    {farsiNumber(jaliliDate(data.date.start))}{" "}
-                    {farsiNumber(data.transportation[0].flight.time_flight)}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Plane size={16} />{" "}
-                  <span>
-                    {data.transportation[1].flight.airline}{" "}
-                    {data.transportation[1].flight.from}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Calendar size={16} />{" "}
-                  <span>
-                    {farsiNumber(jaliliDate(data.date.end))}{" "}
-                    {farsiNumber(data.transportation[1].flight.time_flight)}
-                  </span>
-                </div>
+                {data.transportation.map((item, index) => (
+                  <>
+                    <div className="flex items-center gap-2">
+                      <Plane size={16} />{" "}
+                      <span>
+                        {item.flight.airline} {item.flight.from}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Calendar size={16} />{" "}
+                      <span>
+                        {farsiNumber(jaliliDate(item.flight.date_flight))}{" "}
+                        {farsiNumber(item.flight.time_flight)}
+                      </span>
+                    </div>
+                  </>
+                ))}
               </div>
             </div>
           ) : (
@@ -122,34 +111,26 @@ const SecondDetails = ({ data }) => {
               <div className="font-semibold">اطلاعات رفت و برگشت :</div>
               <Separator className="h-0.5 bg-yellow-primary" />
               <div className="grid grid-cols-2 lg:grid-cols-4">
-                <div className="flex items-center gap-2">
-                  <Plane size={16} />{" "}
-                  <span>
-                    {data.transportation[0].company_name}{" "}
-                    {data.transportation[0].origin}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Calendar size={16} />{" "}
-                  <span>
-                    {farsiNumber(jaliliDate(data.date.start))}{" "}
-                    {farsiNumber(data.transportation[0].start)}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Plane size={16} />{" "}
-                  <span>
-                    {data.transportation[1].company_name}{" "}
-                    {data.transportation[1].origin}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Calendar size={16} />{" "}
-                  <span>
-                    {farsiNumber(jaliliDate(data.date.end))}{" "}
-                    {farsiNumber(data.transportation[1].start)}
-                  </span>
-                </div>
+                {data.transportation.map((item, index) => (
+                  <>
+                    <div className="flex items-center gap-2">
+                      <Plane size={16} />{" "}
+                      <span>
+                        {item?.company_name} {item.origin}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Calendar size={16} />{" "}
+                      <span>
+                        {index === 0 &&
+                          farsiNumber(jaliliDate(data.date.start))}{" "}
+                        {index === data.transportation.length - 1 &&
+                          farsiNumber(jaliliDate(data.date.start))}{" "}
+                        {farsiNumber(item.start)}
+                      </span>
+                    </div>
+                  </>
+                ))}
               </div>
             </div>
           )
@@ -245,7 +226,7 @@ const SecondDetails = ({ data }) => {
                       </div>
                       <div className="flex items-center gap-2">
                         <Plane size={20} className="text-yellow-600" />
-                        <span>{item.company_name}</span>
+                        <span>{item?.company_name}</span>
                         <span>رفت: {farsiNumber(item.start)}</span>
                       </div>
                     </div>

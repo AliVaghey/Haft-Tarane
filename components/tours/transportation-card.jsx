@@ -155,7 +155,7 @@ const TransportationCard = ({ data, number, lenght, staying_nights }) => {
                 </div>
                 <div>
                   <span>شرکت مسافربری : </span>
-                  <span>{data.company_name}</span>
+                  <span>{data?.company_name}</span>
                 </div>
                 <div>
                   <span>مدت زمان سفر : </span>

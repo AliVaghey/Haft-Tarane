@@ -202,7 +202,7 @@ const DetailsTourPlan = ({ data }) => {
                 </span>
                 <div className="flex flex-col gap-0">
                   <span className="font-bold">نام شرکت مسافربری</span>
-                  <span>{item.company_name}</span>
+                  <span>{item?.company_name}</span>
                 </div>
               </div>
               <div className="flex flex-1 items-center gap-3">

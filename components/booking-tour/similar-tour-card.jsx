@@ -5,24 +5,16 @@ import { Bus, Calendar, MapPin } from "lucide-react";
 import Image from "next/image";
 import { persianPriceFormat } from "@/lib/persian-price-format";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { routes } from "@/routes/routes";
 import { jaliliDate } from "@/lib/jalali-date";
 import { farsiNumber } from "@/lib/farsi-number";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import qs from "query-string";
 
 const SimilarTourCard = ({ data }) => {
-  console.log("datanqqqq", data);
   const router = useRouter();
 
-  const searchParams = useSearchParams();
-
   const handleLink = (values) => {
-    const current = qs.parse(searchParams.toString());
-
     const query = {
-      // ...current,
       ["cid"]: values.costs.id,
       ["start"]: values.dates[0].start,
       ["end"]: values.dates[0].end,

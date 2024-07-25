@@ -4,7 +4,6 @@ const nextConfig = {
   },
   env: {
     // BACKEND_URL: "http://localhost:8000",
-    // BACKEND_URL: "https://bibak-safar-laravel.chbk.run",
     BACKEND_URL: "https://back.bibaksafar.com",
   },
 };

@@ -7,7 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Moon, Star, Train, User } from "lucide-react";
+import { Moon, Plane, Star, Train, User } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { persianPriceFormat } from "@/lib/persian-price-format";
@@ -22,7 +22,7 @@ import { Separator } from "@/components/ui/separator";
 import SimilarTourCard from "./similar-tour-card";
 
 const FirstCost = ({ data, similarData }) => {
-  console.log("similarData", similarData);
+  console.log("datare", data);
 
   const router = useRouter();
 
@@ -86,49 +86,41 @@ const FirstCost = ({ data, similarData }) => {
 
             {data.cost.tour.transportation_type !== "hotel" ? (
               data.cost.tour.transportation_type === "system" ? (
-                <>
-                  <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                data.transportation.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center gap-1 text-sm text-muted-foreground"
+                  >
                     <span>
-                      <Train size={18} />
+                      <Plane size={18} />
                     </span>
-                    <span>{data.transportation[0].flight.airline},</span>
-                    <span> {farsiNumber(jaliliDate(data.date.start))}</span>
+                    <span>{item.flight.airline},</span>
                     <span>
-                      ({farsiNumber(data.transportation[0].flight.time_flight)})
+                      {" "}
+                      {farsiNumber(jaliliDate(item.flight.date_flight))}
                     </span>
+                    <span>({farsiNumber(item.flight.time_flight)})</span>
                   </div>
-
-                  <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                    <span>
-                      <Train size={18} />
-                    </span>
-                    <span>{data.transportation[1].flight.airline},</span>
-                    <span> {farsiNumber(jaliliDate(data.date.end))}</span>
-                    <span>
-                      ({farsiNumber(data.transportation[1].flight.time_flight)})
-                    </span>
-                  </div>
-                </>
+                ))
               ) : (
-                <>
-                  <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                data.transportation.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center gap-1 text-sm text-muted-foreground"
+                  >
                     <span>
                       <Train size={18} />
                     </span>
-                    <span>{data.transportation[0].company_name},</span>
-                    <span> {farsiNumber(jaliliDate(data.date.start))}</span>
-                    <span>({farsiNumber(data.transportation[0].start)})</span>
+                    <span>{item?.company_name},</span>
+                    {index === 0 && (
+                      <span> {farsiNumber(jaliliDate(data.date.start))}</span>
+                    )}
+                    {index === data.transportation.length - 1 && (
+                      <span> {farsiNumber(jaliliDate(data.date.end))}</span>
+                    )}
+                    <span>({farsiNumber(item.start)})</span>
                   </div>
-
-                  <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                    <span>
-                      <Train size={18} />
-                    </span>
-                    <span>{data.transportation[1].company_name},</span>
-                    <span> {farsiNumber(jaliliDate(data.date.end))}</span>
-                    <span>({farsiNumber(data.transportation[1].start)})</span>
-                  </div>
-                </>
+                ))
               )
             ) : (
               <></>

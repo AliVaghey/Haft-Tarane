@@ -12,6 +12,7 @@ import { axios } from "@/lib/axios";
 import { Loader2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import qs from "query-string";
+import { farsiNumber } from "@/lib/farsi-number";
 
 const SearchableSelect = ({
   changeValue,
@@ -21,6 +22,7 @@ const SearchableSelect = ({
   defaultValue,
   keyValue,
   searchable,
+  showId,
 }) => {
   const [currentValue, setCurrentValue] = useState(defaultValue);
   const [searchState, setSearchState] = useState(
@@ -120,11 +122,13 @@ const SearchableSelect = ({
           </div>
         ) : (
           data.map((item) => {
+            console.log("item", item);
             return (
               <SelectItem
                 value={keyValue ? item[keyValue] : item.name}
                 key={item.id}
               >
+                {showId && `${farsiNumber(item.id)}-`}
                 {item.name || item.title || item.value}
               </SelectItem>
             );

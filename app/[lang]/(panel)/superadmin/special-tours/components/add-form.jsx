@@ -204,11 +204,13 @@ const AddForm = () => {
                             setCurrentTourId(value);
                           }}
                           defaultValue={getValues("tour_id")}
-                          api={"/api/admin/active-tours"}
+                          api={"/api/admin/active-tours/not-paginated"}
+                          // api={"/api/admin/active-tours"}
                           query="id"
                           placeholder={"نام تور (جستجو فقط بر اساس شناسه تور)"}
                           keyValue="id"
-                          searchable={true}
+                          showId={true}
+                          searchable={false}
                         />
                       </FormControl>
                       <FormMessage />
