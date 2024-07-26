@@ -7,7 +7,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import useMount from "@/hooks/use-mount";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CircleCheckBig } from "lucide-react";
@@ -49,12 +48,9 @@ const AddMyTransportation = ({ tour_id }) => {
   const tourHook = useTour();
 
   const [isOpen, setIsOpen] = useState(false);
-  const [deviceTypes, setDeviceTypes] = useState(["هواپیما مسافربری"]);
   const [device, setDevice] = useState("airplain");
 
   const mount = useMount();
-
-  const router = useRouter();
 
   const form = useForm({
     resolver: zodResolver(
@@ -69,9 +65,6 @@ const AddMyTransportation = ({ tour_id }) => {
       transportation_type: "",
       origin: "",
       destination: "",
-      // start: new Date(),
-      // end: new Date(),
-      // price: "",
       start: "",
       end: "",
     },
@@ -98,7 +91,6 @@ const AddMyTransportation = ({ tour_id }) => {
       destination,
       start,
       end,
-      // price,
     } = values;
 
     const encodedFormData = querystring.stringify({
@@ -108,9 +100,6 @@ const AddMyTransportation = ({ tour_id }) => {
       transportation_type,
       origin,
       destination,
-      // start: DateForm(start),
-      // end: DateForm(end),
-      // price,
       start,
       end,
     });
@@ -173,15 +162,12 @@ const AddMyTransportation = ({ tour_id }) => {
                         <Select
                           onValueChange={(e) => {
                             if (e === "اتوبوس") {
-                              setDeviceTypes(["معمولی", "vip"]);
                               setDevice("bus");
                             }
                             if (e === "هواپیما") {
-                              setDeviceTypes(["هواپیما مسافربری"]);
                               setDevice("airplain");
                             }
                             if (e === "قطار") {
-                              setDeviceTypes(["۴ تخته", "۶ تخته", "اتوبوسی"]);
                               setDevice("train");
                             }
 
@@ -318,111 +304,6 @@ const AddMyTransportation = ({ tour_id }) => {
                     )}
                   />
 
-                  {/* <FormField
-                    control={control}
-                    name="start"
-                    render={({ field }) => (
-                      <FormItem className="col-span-3 flex flex-col gap-1 text-right lg:col-span-1">
-                        <FormLabel>تاریخ شروع</FormLabel>
-                        <FormControl>
-                          <DatePicker
-                            value={getValues("start")}
-                            onChange={(date) => {
-                              date?.isValid
-                                ? setValue("start", new Date(date))
-                                : "";
-                            }}
-                            format={
-                              false ? "MM/DD/YYYY HH:mm" : "YYYY/MM/DD HH:mm"
-                            }
-                            calendar={persian}
-                            locale={persian_fa}
-                            calendarPosition="bottom-right"
-                            minDate={new Date()}
-                            plugins={[
-                              <TimePicker
-                                key={1}
-                                position="bottom"
-                                hStep={1}
-                                mStep={1}
-                                hideSeconds
-                              />,
-                            ]}
-                            style={{
-                              width: "100%",
-                              paddingTop: "19px",
-                              paddingBottom: "19px",
-                              borderColor: "rgb(226 232 240)",
-                            }}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={control}
-                    name="end"
-                    render={({ field }) => (
-                      <FormItem className="col-span-3 flex flex-col gap-1 text-right lg:col-span-1">
-                        <FormLabel>تاریخ پایان</FormLabel>
-                        <FormControl>
-                          <DatePicker
-                            value={getValues("end")}
-                            onChange={(date) => {
-                              date?.isValid
-                                ? setValue("end", new Date(date))
-                                : "";
-                            }}
-                            format={
-                              false ? "MM/DD/YYYY HH:mm" : "YYYY/MM/DD HH:mm"
-                            }
-                            calendar={persian}
-                            locale={persian_fa}
-                            calendarPosition="bottom-right"
-                            minDate={new Date()}
-                            plugins={[
-                              <TimePicker
-                                key={1}
-                                position="bottom"
-                                hStep={1}
-                                mStep={1}
-                                hideSeconds
-                              />,
-                            ]}
-                            style={{
-                              width: "100%",
-                              paddingTop: "19px",
-                              paddingBottom: "19px",
-                              borderColor: "rgb(226 232 240)",
-                            }}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  /> */}
-
-                  {/*  <FormField
-                    control={control}
-                    name="price"
-                    render={({ field }) => (
-                      <FormItem className="col-span-3 lg:col-span-1">
-                        <FormLabel>قیمت بلیط</FormLabel>
-                        <FormControl>
-                          <Input
-                            type="number"
-                            autoComplete="off"
-                            placeholder="قیمت"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  /> */}
-
                   <FormField
                     control={control}
                     name="company_name"
@@ -476,18 +357,7 @@ const AddMyTransportation = ({ tour_id }) => {
                             />
                           </FormControl>
                         )}
-                        {/* <FormControl>
-                          <SearchableSelect
-                            changeValue={(value) => {
-                              field.onChange(value);
-                            }}
-                            defaultValue={getValues("company_name")}
-                            api={`/api/options?category=${device === "airplain" ? "airplain" : device === "train" ? "train" : "bus"}`}
-                            // query="name"
-                            searchable={false}
-                            placeholder={"نام شرکت مسافربری"}
-                          />
-                        </FormControl> */}
+
                         <FormMessage />
                       </FormItem>
                     )}
@@ -499,24 +369,53 @@ const AddMyTransportation = ({ tour_id }) => {
                     render={({ field }) => (
                       <FormItem className="col-span-3 lg:col-span-1">
                         <FormLabel>نوع وسیله نقلیه</FormLabel>
-                        <Select
-                          disabled={deviceTypes.length === 0}
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
-                        >
+
+                        {device === "airplain" && (
                           <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="نوع حمل و نقل" />
-                            </SelectTrigger>
+                            <SearchableSelect
+                              changeValue={(value) => {
+                                field.onChange(value);
+                              }}
+                              defaultValue={getValues("transportation_type")}
+                              api={`/api/options?category=airplain_type`}
+                              // query="name"
+                              keyValue="value"
+                              searchable={false}
+                              placeholder={"نوع هواپیما"}
+                            />
                           </FormControl>
-                          <SelectContent>
-                            {deviceTypes.map((item) => (
-                              <SelectItem key={item} value={item}>
-                                {item}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
+                        )}
+                        {device === "train" && (
+                          <FormControl>
+                            <SearchableSelect
+                              changeValue={(value) => {
+                                field.onChange(value);
+                              }}
+                              defaultValue={getValues("transportation_type")}
+                              api={`/api/options?category=train_type`}
+                              // query="name"
+                              keyValue="value"
+                              searchable={false}
+                              placeholder={"نوع قطار"}
+                            />
+                          </FormControl>
+                        )}
+                        {device === "bus" && (
+                          <FormControl>
+                            <SearchableSelect
+                              changeValue={(value) => {
+                                console.log("value", value);
+                                field.onChange(value);
+                              }}
+                              defaultValue={getValues("transportation_type")}
+                              api={`/api/options?category=bus_type`}
+                              // query="name"
+                              keyValue="value"
+                              searchable={false}
+                              placeholder={"نوع اتوبوس"}
+                            />
+                          </FormControl>
+                        )}
 
                         <FormMessage />
                       </FormItem>

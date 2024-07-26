@@ -122,7 +122,6 @@ const SearchableSelect = ({
           </div>
         ) : (
           data.map((item) => {
-            console.log("item", item);
             return (
               <SelectItem
                 value={keyValue ? item[keyValue] : item.name}

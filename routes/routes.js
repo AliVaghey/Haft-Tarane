@@ -129,6 +129,18 @@ export const routes = {
         root: "/superadmin/transportation-options/bus",
         add: "/superadmin/transportation-options/bus/add",
       },
+      "airplane-type": {
+        root: "/superadmin/transportation-options/airplane-type",
+        add: "/superadmin/transportation-options/airplane-type/add",
+      },
+      "train-type": {
+        root: "/superadmin/transportation-options/train-type",
+        add: "/superadmin/transportation-options/train-type/add",
+      },
+      "bus-type": {
+        root: "/superadmin/transportation-options/bus-type",
+        add: "/superadmin/transportation-options/bus-type/add",
+      },
     },
   },
 

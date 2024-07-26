@@ -7,7 +7,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import useMount from "@/hooks/use-mount";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CircleCheckBig, Edit } from "lucide-react";
@@ -42,7 +41,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ScrollArea } from "../ui/scroll-area";
 
 const EditMyTransportation = ({ data }) => {
   console.log("datatransportation", data);
@@ -51,12 +49,15 @@ const EditMyTransportation = ({ data }) => {
   const tourHook = useTour();
 
   const [isOpen, setIsOpen] = useState(false);
-  const [deviceTypes, setDeviceTypes] = useState(["هواپیما مسافربری"]);
-  const [device, setDevice] = useState("airplain");
+  const [device, setDevice] = useState(
+    data.type === "قطار"
+      ? "train"
+      : data.type === "هواپیما"
+        ? "airplain"
+        : "bus",
+  );
 
   const mount = useMount();
-
-  const router = useRouter();
 
   const form = useForm({
     resolver: zodResolver(
@@ -71,9 +72,6 @@ const EditMyTransportation = ({ data }) => {
       transportation_type: data.transportation_type,
       origin: data.origin,
       destination: data.destination,
-      // start: new Date(),
-      // end: new Date(),
-      // price: "",
       start: data.start,
       end: data.end,
     },
@@ -100,7 +98,6 @@ const EditMyTransportation = ({ data }) => {
       destination,
       start,
       end,
-      // price,
     } = values;
 
     const encodedFormData = querystring.stringify({
@@ -110,9 +107,6 @@ const EditMyTransportation = ({ data }) => {
       transportation_type,
       origin,
       destination,
-      // start: DateForm(start),
-      // end: DateForm(end),
-      // price,
       start,
       end,
     });
@@ -181,15 +175,12 @@ const EditMyTransportation = ({ data }) => {
                         <Select
                           onValueChange={(e) => {
                             if (e === "اتوبوس") {
-                              setDeviceTypes(["معمولی", "vip"]);
                               setDevice("bus");
                             }
                             if (e === "هواپیما") {
-                              setDeviceTypes(["هواپیما مسافربری"]);
                               setDevice("airplain");
                             }
                             if (e === "قطار") {
-                              setDeviceTypes(["۴ تخته", "۶ تخته", "اتوبوسی"]);
                               setDevice("train");
                             }
 
@@ -390,24 +381,53 @@ const EditMyTransportation = ({ data }) => {
                     render={({ field }) => (
                       <FormItem className="col-span-3 lg:col-span-1">
                         <FormLabel>نوع وسیله نقلیه</FormLabel>
-                        <Select
-                          disabled={deviceTypes.length === 0}
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
-                        >
+
+                        {device === "airplain" && (
                           <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="نوع حمل و نقل" />
-                            </SelectTrigger>
+                            <SearchableSelect
+                              changeValue={(value) => {
+                                field.onChange(value);
+                              }}
+                              defaultValue={getValues("transportation_type")}
+                              api={`/api/options?category=airplain_type`}
+                              // query="name"
+                              keyValue="value"
+                              searchable={false}
+                              placeholder={"نوع هواپیما"}
+                            />
                           </FormControl>
-                          <SelectContent>
-                            {deviceTypes.map((item) => (
-                              <SelectItem key={item} value={item}>
-                                {item}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
+                        )}
+                        {device === "train" && (
+                          <FormControl>
+                            <SearchableSelect
+                              changeValue={(value) => {
+                                field.onChange(value);
+                              }}
+                              defaultValue={getValues("transportation_type")}
+                              api={`/api/options?category=train_type`}
+                              // query="name"
+                              keyValue="value"
+                              searchable={false}
+                              placeholder={"نوع قطار"}
+                            />
+                          </FormControl>
+                        )}
+                        {device === "bus" && (
+                          <FormControl>
+                            <SearchableSelect
+                              changeValue={(value) => {
+                                console.log("value", value);
+                                field.onChange(value);
+                              }}
+                              defaultValue={getValues("transportation_type")}
+                              api={`/api/options?category=bus_type`}
+                              // query="name"
+                              keyValue="value"
+                              searchable={false}
+                              placeholder={"نوع اتوبوس"}
+                            />
+                          </FormControl>
+                        )}
 
                         <FormMessage />
                       </FormItem>

@@ -382,7 +382,7 @@ export const navItems = [
   },
 
   {
-    title: "شرکت های مسافربری",
+    title: "گزینه های حمل و نقل",
     type: "subMenu",
     icon: (size, strokeWidth) => (
       <Route size={size || 18} strokeWidth={strokeWidth || 1.5} />
@@ -405,6 +405,27 @@ export const navItems = [
       {
         title: "شرکت های حمل و نقل جاده ای",
         href: routes.superadmin["transportation-options"].bus.root,
+        icon: (size, strokeWidth) => (
+          <Bus size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
+        title: "انواع هواپیما",
+        href: routes.superadmin["transportation-options"]["airplane-type"].root,
+        icon: (size, strokeWidth) => (
+          <Plane size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
+        title: "انواع قطار",
+        href: routes.superadmin["transportation-options"]["train-type"].root,
+        icon: (size, strokeWidth) => (
+          <Train size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
+        title: "انواع اتوبوس",
+        href: routes.superadmin["transportation-options"]["bus-type"].root,
         icon: (size, strokeWidth) => (
           <Bus size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),

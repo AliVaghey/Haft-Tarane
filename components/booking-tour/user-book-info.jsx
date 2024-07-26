@@ -209,7 +209,15 @@ const UserBookInfo = ({ defaultData }) => {
                         </span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Plane size={20} className="text-yellow-600" />
+                        {item.type === "هواپیما" && (
+                          <Plane size={20} className="text-yellow-600" />
+                        )}
+                        {item.type === "قطار" && (
+                          <Train size={20} className="text-yellow-600" />
+                        )}
+                        {item.type === "اتوبوس" && (
+                          <Bus size={20} className="text-yellow-600" />
+                        )}
                         <span>{item?.company_name}</span>
                         <span>رفت: {farsiNumber(item.start)}</span>
                       </div>

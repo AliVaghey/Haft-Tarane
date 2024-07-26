@@ -31,6 +31,7 @@ function SpecialTours() {
           dates: [],
         },
   );
+  console.log("currentTour", currentTour);
 
   useEffect(() => {
     if (userHook.specialTours.length > 0) {
@@ -67,17 +68,17 @@ function SpecialTours() {
                 />
 
                 {userHook.specialTours.length > 0 && (
-                  <div className="absolute right-9 top-9 rounded-lg bg-black bg-opacity-40 px-6 py-4 md:px-10">
+                  <div className="absolute right-0 top-0 h-full w-full rounded-2xl bg-black bg-opacity-30 px-6 py-4 md:px-10">
                     <h2 className="pb-4 text-2xl font-bold text-white max-lg:text-lg max-md:text-xs">
                       {currentTour?.tour?.title}
                     </h2>
-                    <p className="text-lg font-semibold text-white">
+                    {/* <p className="text-lg font-semibold text-white">
                       از {currentTour?.tour?.origin} به{" "}
                       {currentTour?.tour?.destination}
+                    </p> */}
+                    <p className="text-xs font-semibold text-white">
+                      {currentTour?.advertisement}
                     </p>
-                    {/* <p className="mt-2 rounded-lg bg-white bg-opacity-30 px-2 py-1 text-white">
-                    {currentTour?.advertisement}
-                  </p> */}
                     <div className="mt-3 flex flex-col gap-1">
                       {currentTour.dates.map((item, index) => (
                         <Link
