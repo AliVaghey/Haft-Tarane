@@ -5,13 +5,14 @@ import { CSRFToken } from "@/lib/axios";
 import { routes } from "@/routes/routes";
 import { axios } from "@/lib/axios";
 import { Trash2 } from "lucide-react";
-import { Edit, CircleCheckBig, CircleAlert } from "lucide-react";
+import { CircleCheckBig, CircleAlert } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useTour } from "@/hooks/use-tour";
+import { Button } from "../ui/button";
 
-const CellAction = ({ data }) => {
+const DeletePrices = ({ data }) => {
   const tourHook = useTour();
 
   const [loading, setLoading] = useState(false);
@@ -23,7 +24,9 @@ const CellAction = ({ data }) => {
 
       await CSRFToken();
 
-      const response = await axios.delete(`/api/admin/city/${data.id}`);
+      const response = await axios.delete(
+        `api/agency/tour/${data.id}/price-change/all`,
+      );
 
       if (response.status === 204) {
         toast.success(
@@ -31,7 +34,7 @@ const CellAction = ({ data }) => {
             <span>
               <CircleCheckBig className="text-green-600" />
             </span>
-            <span>{"شهر مورد نظر حذف شد"}</span>
+            <span>{"تمامی تغییر نرخ ها با موفقیت حذف شدند"}</span>
           </div>,
         );
         tourHook.setFlag(!tourHook.flag);
@@ -63,21 +66,19 @@ const CellAction = ({ data }) => {
         onConfirm={onDelete}
       />
       <div className="flex items-center">
-        <Link href={routes.superadmin.cities.edit(data.id)}>
-          <div className="w-12 rounded-2xl border-2 border-l-0 py-2 pr-2">
-            <Edit size={14} strokeWidth={1.5} className="text-black" />
-          </div>
-        </Link>
-
-        <div
-          className="flex translate-x-5 cursor-pointer items-center justify-center rounded-full bg-primary p-2.5"
+        <Button
           onClick={() => setOpen(true)}
+          className="h-7 bg-red-primary px-2 text-xs text-white hover:bg-red-dark"
+          disabled={data.price_changes && data.price_changes.length === 0}
         >
-          <Trash2 size={16} strokeWidth={2} className="text-red-primary" />
-        </div>
+          <div className="flex items-center gap-1">
+            <Trash2 size={16} strokeWidth={1.5} />
+            <span>حذف تمامی تغییر نرخ ها</span>
+          </div>
+        </Button>
       </div>
     </div>
   );
 };
 
-export default CellAction;
+export default DeletePrices;

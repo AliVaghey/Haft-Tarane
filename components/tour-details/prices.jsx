@@ -14,6 +14,7 @@ import { farsiNumber } from "@/lib/farsi-number";
 import { jaliliDate } from "@/lib/jalali-date";
 import AddPrice from "./add-price";
 import EditPrice from "./edit-price";
+import DeletePrices from "./delete-prices";
 
 const DetailsPrice = ({ data }) => {
   const dictionary = useDictionary();
@@ -106,7 +107,10 @@ const DetailsPrice = ({ data }) => {
         ))}
       </div>
 
-      <AddPrice data={data} />
+      <div className="flex items-center gap-2">
+        <AddPrice data={data} />
+        <DeletePrices data={data} />
+      </div>
     </div>
   );
 };

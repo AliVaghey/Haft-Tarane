@@ -50,8 +50,6 @@ const TourDetailsPage = ({ params }) => {
       });
   };
 
-  console.log("dataweqwqweqweqweqweqwe", data);
-
   return (
     <div className="relative min-h-[80vh] bg-primary pt-24">
       {/* <Image

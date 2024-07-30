@@ -173,7 +173,7 @@ const AddPrice = ({ data }) => {
 
   return (
     <div>
-      <Button onClick={() => setIsOpen(true)} className="w-fit">
+      <Button onClick={() => setIsOpen(true)} className="h-8 w-fit">
         افزودن
       </Button>
       <Dialog open={isOpen} onOpenChange={() => setIsOpen(false)}>
