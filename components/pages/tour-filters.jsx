@@ -12,8 +12,6 @@ import { persianPriceFormat } from "@/lib/persian-price-format";
 import { Button } from "../ui/button";
 
 const TourFilters = ({ data, onFilter }) => {
-  console.log("data", data);
-
   const [initialData, setInitialData] = useState(
     data.data.map((item) => {
       return item.transportation.length > 0
@@ -90,19 +88,15 @@ const TourFilters = ({ data, onFilter }) => {
   };
 
   const handleHotelName = (value) => {
-    console.log("value", value.length);
-    console.log("hotelName", hotelName.length);
     let newArray = [];
 
     if (hotelName.length < value.length) {
       newArray = filteredData;
-      console.log("newArray1", newArray);
       newArray = newArray.filter((item) =>
         item.costs[0].hotel.name.includes(value),
       );
     } else {
       newArray = initialData;
-      console.log("newArray2", newArray);
       newArray = newArray.filter((item) =>
         item.costs[0].hotel.name.includes(value),
       );

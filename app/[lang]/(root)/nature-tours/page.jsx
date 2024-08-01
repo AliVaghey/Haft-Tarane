@@ -5,6 +5,7 @@ import NoItem from "@/components/no-item";
 import TourCard from "@/components/pages/tour-card";
 import TourFilters from "@/components/pages/tour-filters";
 import TourSearch from "@/components/pages/tour-search";
+import TourSort from "@/components/pages/tour-sort";
 import PaginationComponent from "@/components/pagination";
 import { Separator } from "@/components/ui/separator";
 import { airplain, nature } from "@/constants/images";
@@ -113,6 +114,9 @@ const TourPage = ({
                 />
               </div>
               <div className="mt-10">
+                <div className="mb-3 w-full">
+                  {!isLoading && <TourSort data={data} onFilter={onFilter} />}
+                </div>
                 {!isLoading ? (
                   data.data && data.data.length > 0 ? (
                     <>
