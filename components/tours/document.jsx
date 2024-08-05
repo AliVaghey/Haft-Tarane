@@ -203,7 +203,7 @@ const Document = ({ data }) => {
             control={control}
             name="descriptions"
             render={({ field }) => (
-              <FormItem className="">
+              <FormItem className="col-span-2 lg:col-span-1">
                 <FormLabel>توضیحات</FormLabel>
                 <FormControl>
                   <Textarea
@@ -221,7 +221,7 @@ const Document = ({ data }) => {
             control={control}
             name="cancel_rules"
             render={({ field }) => (
-              <FormItem className="">
+              <FormItem className="col-span-2 lg:col-span-1">
                 <FormLabel>قوانین کنسلی</FormLabel>
                 <FormControl>
                   <Textarea

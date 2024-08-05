@@ -91,12 +91,12 @@ const SearchableSelect = ({
       defaultValue={defaultValue}
     >
       {/* <FormControl> */}
-      <SelectTrigger>
+      <SelectTrigger className="flex-1">
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       {/* </FormControl> */}
 
-      <SelectContent dir="rtl">
+      <SelectContent dir="rtl" className="flex-1">
         {query && searchable && (
           <div>
             <Input
