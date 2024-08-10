@@ -10,6 +10,9 @@ import Image from "next/image";
 import a from "@/public/img/kish.svg";
 import b from "@/public/img/shiraz.svg";
 import c from "@/public/img/mashhad.svg";
+import d from "@/public/img/swiss.jpg";
+import e from "@/public/img/japan.jpg";
+import f from "@/public/img/Dubai.jpg";
 
 function CheapTour() {
   return (
@@ -37,7 +40,7 @@ function CheapTour() {
                 width={480}
                 height={360}
                 alt="alt"
-                className="h-56 w-40 basis-1/3 rounded-[99px] object-cover object-center"
+                className="h-44 w-44 basis-1/3 rounded-[99px] object-cover object-center"
               />{" "}
               <p className="text-center ">کیش</p>
             </CarouselItem>
@@ -48,7 +51,7 @@ function CheapTour() {
                 width={480}
                 height={360}
                 alt="alt"
-                className="h-56 w-40 basis-1/3 rounded-[99px] object-cover object-center"
+                className="h-44 w-44 basis-1/3 rounded-[99px] object-cover object-center"
               />{" "}
               <p className="text-center ">شیراز</p>
             </CarouselItem>
@@ -59,42 +62,42 @@ function CheapTour() {
                 width={480}
                 height={360}
                 alt="alt"
-                className="h-56 w-40 basis-1/3 rounded-[99px] object-cover object-center"
+                className="h-44 w-44 basis-1/3 rounded-[99px] object-cover object-center"
               />{" "}
               <p className="text-center ">مشهد</p>
             </CarouselItem>
-            <CarouselItem className="flex flex-col items-center justify-center gap-9 sm:basis-1/2 md:basis-1/4 lg:basis-1/6">
+            <CarouselItem className="flex flex-col items-center justify-center gap-9 sm:basis-1/2 md:basis-1/4 lg:basis-1/6 ">
               {" "}
               <Image
-                src={a}
+                src={d}
                 width={480}
                 height={360}
                 alt="alt"
-                className="h-56 w-40 basis-1/3 rounded-[99px] object-cover object-center"
+                className="h-44 w-44  rounded-[99px] object-cover object-center"
               />{" "}
-              <p className="text-center ">کیش</p>
+              <p className="text-center ">سوییس</p>
             </CarouselItem>
             <CarouselItem className="flex flex-col items-center justify-center gap-9 sm:basis-1/2 md:basis-1/4 lg:basis-1/6">
               {" "}
               <Image
-                src={b}
+                src={e}
                 width={480}
                 height={360}
                 alt="alt"
-                className="h-56 w-40 basis-1/3 rounded-[99px] object-cover object-center"
+                className="h-44 w-44 rounded-full object-cover object-center"
               />{" "}
-              <p className="text-center ">شیراز</p>
+              <p className="text-center ">ژاپن</p>
             </CarouselItem>
             <CarouselItem className="flex flex-col items-center justify-center gap-9 sm:basis-1/2 md:basis-1/4 lg:basis-1/6">
               {" "}
               <Image
-                src={c}
+                src={f}
                 width={480}
                 height={360}
                 alt="alt"
-                className="h-56 w-40 basis-1/3 rounded-[99px] object-cover object-center"
+                className=" h-44 w-44  rounded-[99px] object-cover object-center"
               />{" "}
-              <p className="text-center ">مشهد</p>
+              <p className="text-center ">دبی</p>
             </CarouselItem>
           </CarouselContent>
         </Carousel>{" "}
@@ -107,6 +110,8 @@ function CheapTour() {
           <ChevronLeft className="size-7" stroke="#2B303D" />
         </div>
       </div>
+
+      
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import Comment from "@/components/landingPage/comment/Comment";
+// import Comment from "@/components/landingPage/comment/Comment";
 import HeroSection from "@/components/landingPage/heroSection/HeroSection";
 import Feature from "@/components/landingPage/features/Feature";
 import OurService from "@/components/landingPage/ourServices/OurServices";
@@ -17,7 +17,7 @@ const Home = async ({ params }) => {
         <Feature />
         <CheapTour />
         <Services />
-        <Comment />
+        {/* <Comment /> */}
         <OurService />
       </div>
     </main>

@@ -46,8 +46,8 @@ export default function OurService() {
               src={c}
               alt="alt"
               className="h-[666px] w-[666px] max-lg:h-[299px] max-lg:w-full max-md:h-[222px]"
-              width={480}
-              height={360}
+              width={1080}
+              height={720}
             />
           </div>
         </div>
