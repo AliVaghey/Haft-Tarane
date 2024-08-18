@@ -41,6 +41,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { removeChar, separatePrice } from "@/lib/persian-price-format";
 
 const AddMyTransportation = ({ tour_id }) => {
   const dictionary = useDictionary();
@@ -67,6 +68,7 @@ const AddMyTransportation = ({ tour_id }) => {
       destination: "",
       start: "",
       end: "",
+      price: "",
     },
     mode: "onSubmit",
   });
@@ -91,6 +93,7 @@ const AddMyTransportation = ({ tour_id }) => {
       destination,
       start,
       end,
+      price,
     } = values;
 
     const encodedFormData = querystring.stringify({
@@ -102,6 +105,7 @@ const AddMyTransportation = ({ tour_id }) => {
       destination,
       start,
       end,
+      price: price ? removeChar(",", price) : null,
     });
 
     await CSRFToken();
@@ -297,6 +301,27 @@ const AddMyTransportation = ({ tour_id }) => {
                             autoComplete="off"
                             placeholder="بر اساس ساعت"
                             {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={control}
+                    name="price"
+                    render={({ field }) => (
+                      <FormItem className="col-span-3 lg:col-span-1">
+                        <FormLabel>قیمت (تومان)</FormLabel>
+                        <FormControl>
+                          <Input
+                            // type="number"
+                            className=""
+                            autoComplete="off"
+                            placeholder="قیمت را وارد نمایید"
+                            {...field}
+                            value={separatePrice(getValues("price"))}
                           />
                         </FormControl>
                         <FormMessage />

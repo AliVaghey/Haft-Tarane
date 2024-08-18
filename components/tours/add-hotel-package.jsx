@@ -7,7 +7,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import useMount from "@/hooks/use-mount";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CircleCheckBig } from "lucide-react";
@@ -46,8 +45,6 @@ const AddHotelPackage = ({ tour_id }) => {
 
   const mount = useMount();
 
-  const router = useRouter();
-
   const form = useForm({
     resolver: zodResolver(
       dictionary["language"] === "fa" ? assignHotelSchema : enAssignHotelSchema,
@@ -69,7 +66,6 @@ const AddHotelPackage = ({ tour_id }) => {
     handleSubmit,
     control,
     getValues,
-    setValue,
     formState: { isSubmitting },
   } = form;
 
