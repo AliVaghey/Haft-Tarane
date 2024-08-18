@@ -12,7 +12,7 @@ import b from "@/public/img/shiraz.svg";
 import c from "@/public/img/mashhad.svg";
 import d from "@/public/img/swiss.jpg";
 import e from "@/public/img/japan.jpg";
-import f from "@/public/img/Dubai.jpg";
+import f from "@/public/img/dubai.jpg";
 
 function CheapTour() {
   return (
@@ -110,8 +110,6 @@ function CheapTour() {
           <ChevronLeft className="size-7" stroke="#2B303D" />
         </div>
       </div>
-
-      
     </div>
   );
 }
