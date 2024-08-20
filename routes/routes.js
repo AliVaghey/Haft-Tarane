@@ -70,6 +70,15 @@ export const routes = {
       active: "/superadmin/tours/active",
       details: (id) => `/superadmin/tours/${id}`,
     },
+    "all-tours": {
+      all: "/superadmin/all-tours/all",
+      active: "/superadmin/all-tours/active",
+      pending: "/superadmin/all-tours/pending",
+      rejected: "/superadmin/all-tours/rejected",
+      expired: "/superadmin/all-tours/expired",
+      drafts: "/superadmin/all-tours/drafts",
+      details: (id) => `/superadmin/all-tours/${id}`,
+    },
     "special-tours": {
       root: "/superadmin/special-tours",
       add: "/superadmin/special-tours/add",

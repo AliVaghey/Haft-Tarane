@@ -24,7 +24,7 @@ const UserBookInfo = ({ defaultData }) => {
     defaultData.passengers ? JSON.parse(defaultData.passengers) : [],
   );
 
-  console.log("data", data);
+  console.log("datauserrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr", data);
   return (
     <div className="p-2">
       <DataTableHeader

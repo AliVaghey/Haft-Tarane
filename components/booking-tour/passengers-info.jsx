@@ -7,13 +7,13 @@ import { useState } from "react";
 import PassengersFiles from "./passengers-files";
 
 const PassengersInfo = ({ defaultData }) => {
-  console.log("defaultData", defaultData);
+  console.log("defaultDataagency", defaultData);
 
   const [data, setData] = useState(
     defaultData.passengers ? JSON.parse(defaultData.passengers) : [],
   );
 
-  console.log("data", data);
+  console.log("dataagencyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy", data);
 
   return (
     <div className="p-2">

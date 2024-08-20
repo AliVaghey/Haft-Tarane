@@ -5,7 +5,8 @@ import LoadingPage from "@/components/loading-page";
 import { useEffect, useState } from "react";
 import { axios } from "@/lib/axios";
 import { toast } from "sonner";
-import PassengersInfo from "@/components/booking-tour/passengers-info";
+// import PassengersInfo from "@/components/booking-tour/passengers-info";
+import UserBookInfo from "@/components/booking-tour/user-book-info";
 
 const EditCityPage = ({ params }) => {
   const [data, setData] = useState(null);
@@ -44,7 +45,8 @@ const EditCityPage = ({ params }) => {
       {isLoading ? (
         <LoadingPage />
       ) : (
-        data !== null && <PassengersInfo defaultData={data} />
+        // data !== null && <PassengersInfo defaultData={data} />
+        data !== null && <UserBookInfo defaultData={data} />
       )}
     </div>
   );

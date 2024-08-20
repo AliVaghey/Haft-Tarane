@@ -221,6 +221,58 @@ export const navItems = [
   },
 
   {
+    title: "همه تور های سایت",
+    type: "subMenu",
+    icon: (size, strokeWidth) => (
+      <Plane size={size || 18} strokeWidth={strokeWidth || 1.5} />
+    ),
+    subMenu: [
+      {
+        title: "همه تور ها",
+        href: routes.superadmin["all-tours"].all,
+        icon: (size, strokeWidth) => (
+          <ClipboardList size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
+        title: "تور های فعال",
+        href: routes.superadmin["all-tours"].active,
+        icon: (size, strokeWidth) => (
+          <ClipboardList size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
+        title: "تور های در انتظار تایید",
+        href: routes.superadmin["all-tours"].pending,
+        icon: (size, strokeWidth) => (
+          <ClipboardList size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
+        title: "تور های رد شده",
+        href: routes.superadmin["all-tours"].rejected,
+        icon: (size, strokeWidth) => (
+          <ClipboardList size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
+        title: "تور های منقضی شده",
+        href: routes.superadmin["all-tours"].expired,
+        icon: (size, strokeWidth) => (
+          <ClipboardList size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
+        title: "تور های پیشنویس",
+        href: routes.superadmin["all-tours"].drafts,
+        icon: (size, strokeWidth) => (
+          <ClipboardList size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+    ],
+  },
+
+  {
     title: "نرخ های کمیسیون",
     type: "subMenu",
     icon: (size, strokeWidth) => (
