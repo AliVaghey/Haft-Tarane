@@ -35,6 +35,7 @@ import { CircleCheckBig } from "lucide-react";
 import { CircleAlert } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Loader2Icon } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
 
 const AddForm = ({ data }) => {
   const dictionary = useDictionary();
@@ -242,10 +243,15 @@ const AddForm = ({ data }) => {
                     نام هتل
                   </FormLabel>
                   <FormControl>
-                    <Input
+                    {/* <Input
                       className="rounded-lg shadow-lg"
                       autoComplete="off"
                       placeholder="حداقل ۲ کاراکتر"
+                      {...field}
+                    /> */}
+                    <Textarea
+                      placeholder="حداقل ۲ کاراکتر"
+                      className="h-16 resize-y focus-visible:ring-primary"
                       {...field}
                     />
                   </FormControl>

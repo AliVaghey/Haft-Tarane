@@ -234,12 +234,12 @@ const Header = () => {
           </ScrollArea>
         </SheetContent>
       </Sheet>
-      <div className="w-full flex-1">
+      {/* <div className="w-full flex-1">
         <BreadcrumbComponent />
-      </div>
+      </div> */}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button className="flex items-center justify-center gap-2 bg-red-primary text-white hover:bg-red-dark">
+          <Button className="mr-auto flex items-center justify-center gap-2 bg-red-primary text-white hover:bg-red-dark">
             <CircleUserRound size={24} />
             <div className="flex items-center gap-1">
               {/* <span>{userHook?.userData?.first_name_fa}</span>

@@ -29,6 +29,20 @@ const AdminDashboardPage = () => {
           </span>
         </div>
 
+        <div className="flex items-center justify-between rounded-lg border-b-[3px] border-b-yellow-500 bg-white px-4 py-6">
+          <div className="flex items-center gap-2">
+            <CreditCard
+              className="text-yellow-500"
+              strokeWidth={1.5}
+              size={36}
+            />
+            <span className="text-muted-foreground">کل فروش ها</span>
+          </div>
+          <span className="text-2xl">
+            {farsiNumber(userHook.adminDashboard?.all_sales)}
+          </span>
+        </div>
+
         <div className="flex items-center justify-between rounded-lg border-b-[3px] border-b-green-500 bg-white px-4 py-6">
           <div className="flex items-center gap-2">
             <CreditCard

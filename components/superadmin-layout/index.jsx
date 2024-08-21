@@ -16,10 +16,11 @@ const SuperadminLayout = ({ children }) => {
   const router = useRouter();
 
   useEffect(() => {
-    fetchAdmin();
+    fetchSuperadmin();
+    getDashboardInfo();
   }, []);
 
-  const fetchAdmin = async () => {
+  const fetchSuperadmin = async () => {
     setIsLoading(true);
 
     await axios
@@ -38,6 +39,21 @@ const SuperadminLayout = ({ children }) => {
       .finally(() => {
         setIsLoading(false);
       });
+  };
+
+  const getDashboardInfo = async () => {
+    axios
+      .get("/api/admin/super-admin/statistics")
+      .then((response) => {
+        console.log("agency-dashboard", response?.data);
+        if (response.status === 200) {
+          userHook.setSuperadminDashboard(response?.data);
+        }
+      })
+      .catch((err) => {
+        console.log("Error", err);
+      })
+      .finally(() => {});
   };
 
   if (!isAdmin && !isLoading) {

@@ -31,6 +31,7 @@ import Image from "next/image";
 import { X } from "lucide-react";
 import Dropzone from "react-dropzone";
 import { useCallback } from "react";
+import { Textarea } from "@/components/ui/textarea";
 
 const AddForm = () => {
   const dictionary = useDictionary();
@@ -185,10 +186,15 @@ const AddForm = () => {
                     نام هتل
                   </FormLabel>
                   <FormControl>
-                    <Input
+                    {/* <Input
                       className="rounded-lg shadow-lg"
                       autoComplete="off"
                       placeholder="حداقل ۲ کاراکتر"
+                      {...field}
+                    /> */}
+                    <Textarea
+                      placeholder="حداقل ۲ کاراکتر"
+                      className="h-16 resize-y focus-visible:ring-primary"
                       {...field}
                     />
                   </FormControl>
