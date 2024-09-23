@@ -40,6 +40,19 @@ const AuthProvider = ({ children }) => {
       .finally(() => {});
   };
 
+  const getSliderCards = async () => {
+    axios
+      .get("/api/slider-cards")
+      .then((response) => {
+        if (response.status === 200) {
+          console.log("response.data", response.data);
+          userHook.setSliderCards(response?.data?.data);
+        }
+      })
+      .catch((err) => {})
+      .finally(() => {});
+  };
+
   const userInfo = async () => {
     setIsLoading(true);
 
@@ -92,6 +105,7 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     userInfo();
+    getSliderCards();
     getBanners();
     getSpecialTours();
     getSiteViews();

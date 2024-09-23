@@ -8,6 +8,15 @@ import { useUser } from "@/hooks/use-user";
 import { X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import { cn } from "@/lib/utils";
 
 function HeroSection() {
   const userHook = useUser();
@@ -78,15 +87,65 @@ function HeroSection() {
       )}
 
       <div className="flex flex-col items-center justify-center">
-        <Image
-          src={chita}
-          alt="alt"
-          width={720}
-          height={480}
-          className="aspect-video w-4/5 md:w-3/5 lg:w-[28%]"
-        />
+        <div
+          className={cn(
+            "my-4 grid grid-cols-1 ",
+            userHook?.sliderCards &&
+              userHook?.sliderCards.length > 0 &&
+              "lg:grid-cols-2",
+          )}
+        >
+          <div className="flex w-full items-center justify-center">
+            <Image
+              src={chita}
+              alt="alt"
+              width={720}
+              height={480}
+              className="aspect-video w-3/4"
+              // className="aspect-video w-4/5 md:w-3/5 lg:w-[28%]"
+            />
+          </div>
+          {userHook?.sliderCards && userHook?.sliderCards.length > 0 && (
+            <div className="mt-8 flex w-full items-center justify-center lg:mt-0">
+              <Carousel
+                opts={{ loop: true }}
+                plugins={[
+                  Autoplay({
+                    delay: 4000,
+                  }),
+                ]}
+                className="mx-auto aspect-video w-[90%] lg:w-3/4"
+                dir="ltr"
+              >
+                <CarouselContent className="w-full">
+                  {userHook.sliderCards.map((item, index) => (
+                    <CarouselItem key={index}>
+                      <Link
+                        href={item?.link || "#"}
+                        className="relative aspect-video w-full"
+                      >
+                        <Image
+                          src={item?.photo}
+                          width={720}
+                          height={480}
+                          alt="hotel"
+                          className="mx-auto aspect-video rounded-lg object-cover"
+                        />
+                        <div className="absolute bottom-5 left-10 right-5 block w-[80%] rounded-lg bg-white/20 py-2 text-center text-lg font-semibold text-yellow-500 md:left-14">
+                          {item?.description}
+                        </div>
+                      </Link>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="translate-x-14" />
+                <CarouselNext className="-translate-x-[70px]" />
+              </Carousel>
+            </div>
+          )}
+        </div>
         <div className="">
-          <h2 className="animate-pulse text-4xl font-bold max-lg:text-xl max-md:text-sm">
+          <h2 className="mb-2 animate-pulse text-4xl font-bold max-lg:text-xl max-md:text-xl">
             سفر ضرورتی برای زندگی
           </h2>
         </div>

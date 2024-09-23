@@ -14,6 +14,8 @@ export const useUser = create((set) => ({
   setBanners: (data) => set({ banners: data }),
   specialTours: [],
   setSpecialTours: (data) => set({ specialTours: data }),
+  sliderCards: [],
+  setSliderCards: (data) => set({ sliderCards: data }),
 
   userData: false,
   isLogin: false,

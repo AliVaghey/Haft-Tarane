@@ -36,11 +36,11 @@ const EditForm = ({ data }) => {
   const router = useRouter();
 
   const form = useForm({
-    // resolver: zodResolver(
-    //   dictionary["language"] === "fa"
-    //     ? editSliderCardSchema
-    //     : enEditSliderCardSchema,
-    // ),
+    resolver: zodResolver(
+      dictionary["language"] === "fa"
+        ? editSliderCardSchema
+        : enEditSliderCardSchema,
+    ),
     defaultValues: {
       link: !data?.link ? "" : data?.link,
       description: !data?.description ? "" : data?.description,
