@@ -29,6 +29,7 @@ import {
   SwatchBook,
   UsersRound,
   Tags,
+  Images,
 } from "lucide-react";
 
 export const navItems = [
@@ -342,6 +343,30 @@ export const navItems = [
       {
         title: "افزودن",
         href: routes.superadmin.banners.add,
+        icon: (size, strokeWidth) => (
+          <PlusCircle size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+    ],
+  },
+
+  {
+    title: "اسلایدر ها",
+    type: "subMenu",
+    icon: (size, strokeWidth) => (
+      <Images size={size || 18} strokeWidth={strokeWidth || 1.5} />
+    ),
+    subMenu: [
+      {
+        title: "همه اسلایدر ها",
+        href: routes.superadmin["slider-cards"].root,
+        icon: (size, strokeWidth) => (
+          <Images size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+      {
+        title: "افزودن",
+        href: routes.superadmin["slider-cards"].add,
         icon: (size, strokeWidth) => (
           <PlusCircle size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),

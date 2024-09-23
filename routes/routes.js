@@ -99,6 +99,11 @@ export const routes = {
         root: "/superadmin/transportation-api/flights",
       },
     },
+    "slider-cards": {
+      root: "/superadmin/slider-cards",
+      add: "/superadmin/slider-cards/add",
+      edit: (id) => `/superadmin/slider-cards/${id}/edit`,
+    },
     options: {
       "tour-styles": {
         root: "/superadmin/options/tour-styles",
