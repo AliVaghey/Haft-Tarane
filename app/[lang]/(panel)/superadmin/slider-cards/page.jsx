@@ -7,7 +7,6 @@ import LoadingPage from "@/components/loading-page";
 import { axios } from "@/lib/axios";
 import DataTableHeader from "@/components/data-table-header";
 import { useDictionary } from "@/providers/dictionary-provider";
-import PaginationComponent from "@/components/pagination";
 import { routes } from "@/routes/routes";
 import { useTour } from "@/hooks/use-tour";
 

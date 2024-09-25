@@ -44,6 +44,7 @@ const EditForm = ({ data }) => {
     defaultValues: {
       link: !data?.link ? "" : data?.link,
       description: !data?.description ? "" : data?.description,
+      description_color: data?.description_color,
       photo: null,
     },
     mode: "onSubmit",
@@ -62,11 +63,16 @@ const EditForm = ({ data }) => {
 
     const formData = new FormData();
 
-    formData.append("link", values.link);
-    formData.append("description", values.description);
+    if (values.link) {
+      formData.append("link", values.link);
+    }
+    if (values.description) {
+      formData.append("description", values.description);
+    }
     if (values.photo) {
       formData.append(`photo`, values.photo.file);
     }
+    formData.append("description_color", values.description_color);
 
     await CSRFToken();
 
@@ -140,7 +146,7 @@ const EditForm = ({ data }) => {
                     {...field}
                   />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-red-500" />
               </FormItem>
             )}
           />
@@ -158,7 +164,21 @@ const EditForm = ({ data }) => {
                     {...field}
                   />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-red-500" />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={control}
+            name="description_color"
+            render={({ field }) => (
+              <FormItem className="col-span-3 lg:col-span-1">
+                <FormLabel>رنگ متن</FormLabel>
+                <FormControl>
+                  <Input type="color" autoComplete="off" {...field} />
+                </FormControl>
+                <FormMessage className="text-red-500" />
               </FormItem>
             )}
           />
@@ -237,7 +257,7 @@ const EditForm = ({ data }) => {
                     )}
                   </Dropzone>
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-red-500" />
               </FormItem>
             )}
           />

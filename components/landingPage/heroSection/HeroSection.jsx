@@ -101,7 +101,12 @@ function HeroSection() {
               alt="alt"
               width={720}
               height={480}
-              className="aspect-video w-3/4"
+              className={cn(
+                "aspect-video w-2/3",
+                userHook?.sliderCards &&
+                  userHook?.sliderCards.length > 0 &&
+                  "w-1/2",
+              )}
               // className="aspect-video w-4/5 md:w-3/5 lg:w-[28%]"
             />
           </div>
@@ -131,15 +136,19 @@ function HeroSection() {
                           alt="hotel"
                           className="mx-auto aspect-video rounded-lg object-cover"
                         />
-                        <div className="absolute bottom-5 left-10 right-5 block w-[80%] rounded-lg bg-white/20 py-2 text-center text-lg font-semibold text-yellow-500 md:left-14">
-                          {item?.description}
+                        <div
+                          style={{ color: item?.description_color || "yellow" }}
+                          // className="absolute bottom-5 left-10 right-5 block w-[80%] rounded-lg py-2 text-center text-lg font-semibold md:left-14"
+                          className="absolute left-1/2 top-1/2 w-[80%] -translate-x-1/2 -translate-y-1/2 text-center text-lg font-semibold"
+                        >
+                          <span>{item?.description}</span>
                         </div>
                       </Link>
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious className="translate-x-14" />
-                <CarouselNext className="-translate-x-[70px]" />
+                <CarouselPrevious className="translate-x-14 border-0 bg-white bg-opacity-50" />
+                <CarouselNext className="-translate-x-[70px] border-0 bg-white bg-opacity-50" />
               </Carousel>
             </div>
           )}

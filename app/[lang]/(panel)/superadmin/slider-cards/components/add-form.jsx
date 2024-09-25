@@ -42,6 +42,7 @@ const AddForm = () => {
     defaultValues: {
       link: "",
       description: "",
+      description_color: "#F1C107",
       photo: null,
     },
     mode: "onSubmit",
@@ -60,11 +61,16 @@ const AddForm = () => {
 
     const formData = new FormData();
 
-    formData.append("link", values.link);
-    formData.append("description", values.description);
+    if (values.link) {
+      formData.append("link", values.link);
+    }
+    if (values.description) {
+      formData.append("description", values.description);
+    }
     if (values.photo) {
       formData.append(`photo`, values.photo.file);
     }
+    formData.append("description_color", values.description_color);
 
     await CSRFToken();
 
@@ -138,7 +144,7 @@ const AddForm = () => {
                     {...field}
                   />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-red-500" />
               </FormItem>
             )}
           />
@@ -156,7 +162,21 @@ const AddForm = () => {
                     {...field}
                   />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-red-500" />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={control}
+            name="description_color"
+            render={({ field }) => (
+              <FormItem className="col-span-3 lg:col-span-1">
+                <FormLabel>رنگ متن</FormLabel>
+                <FormControl>
+                  <Input type="color" autoComplete="off" {...field} />
+                </FormControl>
+                <FormMessage className="text-red-500" />
               </FormItem>
             )}
           />
@@ -204,7 +224,7 @@ const AddForm = () => {
                     )}
                   </Dropzone>
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="text-red-500" />
               </FormItem>
             )}
           />

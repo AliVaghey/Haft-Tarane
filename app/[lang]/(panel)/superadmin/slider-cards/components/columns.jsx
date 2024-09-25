@@ -34,19 +34,33 @@ export const columns = [
     header: "لینک",
     cell: ({ row }) => (
       <div className="flex items-center justify-center">
-        <Link
-          href={row?.original?.link || "#"}
-          target="_blank"
-          className="border-b border-blue-500 text-blue-500"
-        >
-          {row?.original?.link}
-        </Link>
+        {row?.original?.link &&
+          row?.original?.link !== "undefined" &&
+          row?.original?.link !== "" && (
+            <Link
+              href={row?.original?.link || "#"}
+              target="_blank"
+              className="border-b border-blue-500 text-blue-500"
+            >
+              {row?.original?.link}
+            </Link>
+          )}
       </div>
     ),
   },
   {
     accessorKey: "description",
     header: "توضیحات",
+  },
+  {
+    accessorKey: "description_color",
+    header: "رنگ متن",
+    cell: ({ row }) => (
+      <div
+        className="mx-auto size-6 rounded-full"
+        style={{ backgroundColor: row.original?.description_color }}
+      />
+    ),
   },
   {
     id: "actions",
