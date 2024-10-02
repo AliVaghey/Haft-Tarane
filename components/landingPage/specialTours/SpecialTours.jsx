@@ -80,7 +80,7 @@ function SpecialTours() {
                       {currentTour?.advertisement}
                     </p>
                     <div className="mt-3 flex flex-col gap-1">
-                      {currentTour.dates.map((item, index) => (
+                      {currentTour?.dates?.map((item, index) => (
                         <Link
                           key={index}
                           href={`${window.location.href.split("?")[0]}/tours/${currentTour.id}?cid=${21}&start=${item.start}&end=${item.end}`}
