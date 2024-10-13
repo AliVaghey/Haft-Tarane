@@ -146,19 +146,35 @@ export default function Footer() {
               </div>
             </div>
             <div className="w-1/5 max-lg:w-1/3 max-md:w-full ">
-              <a
-                referrerpolicy="origin"
-                target="_blank"
-                href="https://trustseal.enamad.ir/?id=507456&Code=qgdiKelLh1qmYliiZUKgheSmYfSOwAN1"
-              >
-                <img
-                  referrerpolicy="origin"
-                  src="https://trustseal.enamad.ir/logo.aspx?id=507456&Code=qgdiKelLh1qmYliiZUKgheSmYfSOwAN1"
-                  alt=""
-                  style={{ cursor: "pointer" }}
-                  code="qgdiKelLh1qmYliiZUKgheSmYfSOwAN1"
-                />
-              </a>
+              <div className="flex items-center justify-center gap-4">
+                <a
+                  referrerPolicy="origin"
+                  target="_blank"
+                  href="https://trustseal.enamad.ir/?id=535288&Code=M1PvViochxaT1K3yHkIR9vPdNEeLevHo"
+                >
+                  <img
+                    referrerPolicy="origin"
+                    src="https://trustseal.enamad.ir/logo.aspx?id=535288&Code=M1PvViochxaT1K3yHkIR9vPdNEeLevHo"
+                    alt="e-namad"
+                    code="M1PvViochxaT1K3yHkIR9vPdNEeLevHo"
+                    className="h-20 w-20 rounded-md"
+                  />
+                </a>
+                <a
+                  referrerPolicy="origin"
+                  target="_blank"
+                  href="https://trustseal.enamad.ir/?id=507456&Code=qgdiKelLh1qmYliiZUKgheSmYfSOwAN1"
+                >
+                  <img
+                    referrerPolicy="origin"
+                    src="https://trustseal.enamad.ir/logo.aspx?id=507456&Code=qgdiKelLh1qmYliiZUKgheSmYfSOwAN1"
+                    alt=""
+                    style={{ cursor: "pointer" }}
+                    code="qgdiKelLh1qmYliiZUKgheSmYfSOwAN1"
+                    className="h-20 w-20 rounded-md"
+                  />
+                </a>{" "}
+              </div>
             </div>
           </div>
         </div>
