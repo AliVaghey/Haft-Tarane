@@ -4,8 +4,10 @@ import LoadingPage from "@/components/loading-page";
 import { useUser } from "@/hooks/use-user";
 import { axios } from "@/lib/axios";
 import { routes } from "@/routes/routes";
+import Lottie from "lottie-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import groovyWalkAnimation from "@/animations/loading.json";
 
 const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -107,7 +109,17 @@ const AuthProvider = ({ children }) => {
     userInfo();
   }, []);
 
-  return isLoading ? <LoadingPage /> : <main>{children}</main>;
+  return isLoading ? (
+    <div className="h-screen flex items-center justify-center">
+      <Lottie
+        animationData={groovyWalkAnimation}
+        loop={true}
+        className="h-[80px] w-full"
+      />
+    </div>
+  ) : (
+    <main>{children}</main>
+  );
 };
 
 export default AuthProvider;
