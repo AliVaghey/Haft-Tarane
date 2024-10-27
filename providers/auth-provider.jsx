@@ -8,7 +8,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const AuthProvider = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const userHook = useUser();
 
@@ -53,8 +53,6 @@ const AuthProvider = ({ children }) => {
   };
 
   const userInfo = async () => {
-    setIsLoading(true);
-
     await axios
       .get("/api/user/info")
       .then((response) => {
@@ -88,8 +86,7 @@ const AuthProvider = ({ children }) => {
           userHook.setSiteViews(response?.data);
         }
       })
-      .catch((err) => {
-      })
+      .catch((err) => {})
       .finally(() => {});
   };
 
@@ -102,12 +99,12 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    userInfo();
     getSliderCards();
     getBanners();
     getSpecialTours();
     getSiteViews();
     increaseSiteViews();
+    userInfo();
   }, []);
 
   return isLoading ? <LoadingPage /> : <main>{children}</main>;
