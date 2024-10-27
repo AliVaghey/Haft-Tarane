@@ -1,7 +1,7 @@
 "use client";
 
 import DeleteModal from "@/components/helpers/delete-dialog";
-import { CSRFToken } from "@/lib/axios";
+
 import { routes } from "@/routes/routes";
 import { axios } from "@/lib/axios";
 import { Trash2 } from "lucide-react";
@@ -22,7 +22,7 @@ const DeletePrices = ({ data }) => {
     try {
       setLoading(true);
 
-      await CSRFToken();
+      
 
       const response = await axios.delete(
         `api/agency/tour/${data.id}/price-change/all`,

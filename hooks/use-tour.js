@@ -1,4 +1,4 @@
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import { create } from "zustand";
 
 export const useTour = create((set, get) => ({

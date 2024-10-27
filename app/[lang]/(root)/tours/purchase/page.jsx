@@ -20,7 +20,7 @@ import SubmitButton from "@/components/submit-button";
 import ToastError from "@/components/toast/toast-error";
 import { toast } from "sonner";
 import { CircleCheckBig, LoaderCircle } from "lucide-react";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import querystring from "querystring";
 import { useRouter } from "next/navigation";
 import { routes } from "@/routes/routes";
@@ -128,7 +128,7 @@ const TourPurchase = () => {
       rooms: JSON.stringify(data),
     });
 
-    await CSRFToken();
+    
 
     const { tour_id, cost, date } = tourPassengersHook.tour;
 

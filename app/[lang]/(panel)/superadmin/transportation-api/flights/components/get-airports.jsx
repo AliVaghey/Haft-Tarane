@@ -2,7 +2,7 @@
 
 import SubmitButton from "@/components/submit-button";
 import ToastError from "@/components/toast/toast-error";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import { defaultMessages } from "@/lib/default-messages";
 import { CircleCheckBig } from "lucide-react";
 import { useState } from "react";
@@ -13,7 +13,7 @@ const GetAirports = () => {
 
   const getData = async () => {
     setIsLoading(true);
-    await CSRFToken();
+    
 
     await axios
       .get("api/admin/save-airports")

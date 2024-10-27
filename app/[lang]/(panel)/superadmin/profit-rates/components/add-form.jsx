@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/form";
 import SubmitButton from "@/components/submit-button";
 import { toast } from "sonner";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import { useDictionary } from "@/providers/dictionary-provider";
 import querystring from "querystring";
 import ToastError from "@/components/toast/toast-error";
@@ -68,7 +68,7 @@ const AddForm = () => {
       rate: values.rate,
     });
 
-    await CSRFToken();
+    
 
     await axios
       .post("/api/admin/profit-rate", encodedFormData)

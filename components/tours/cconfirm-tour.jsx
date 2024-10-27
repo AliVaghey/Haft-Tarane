@@ -4,7 +4,7 @@ import SubmitButton from "@/components/submit-button";
 import { useState } from "react";
 import ToastSuccess from "@/components/toast/toast-success";
 import ToastError from "@/components/toast/toast-error";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import { toast } from "sonner";
 import { defaultMessages } from "@/lib/default-messages";
 import { useRouter } from "next/navigation";
@@ -78,7 +78,7 @@ const ConfirmTour = ({ tour_id, profit_rate }) => {
       profit_rate,
     });
 
-    await CSRFToken();
+    
 
     await axios
       .put(`/api/agency/tour/${tour_id}/pending`, encodedFormData)

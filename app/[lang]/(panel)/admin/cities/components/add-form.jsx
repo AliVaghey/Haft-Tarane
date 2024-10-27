@@ -24,7 +24,7 @@ import {
 import SubmitButton from "@/components/submit-button";
 import { toast } from "sonner";
 import { citySchema, enCitySchema } from "@/lib/validation/auth/city";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import { useDictionary } from "@/providers/dictionary-provider";
 import querystring from "querystring";
 import ToastError from "@/components/toast/toast-error";
@@ -61,7 +61,6 @@ const AddForm = () => {
       name: values.name,
     });
 
-    await CSRFToken();
 
     await axios
       .post("/api/admin/city", encodedFormData)

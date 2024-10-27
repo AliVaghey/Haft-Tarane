@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/form";
 import SubmitButton from "@/components/submit-button";
 import { toast } from "sonner";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import { useDictionary } from "@/providers/dictionary-provider";
 import querystring from "querystring";
 import ToastError from "@/components/toast/toast-error";
@@ -94,7 +94,7 @@ const AddForm = ({ data }) => {
       stars: values.stars,
     });
 
-    await CSRFToken();
+    
 
     await axios
       .put(`/api/admin/hotel/${data.id}`, encodedFormData)
@@ -122,7 +122,7 @@ const AddForm = ({ data }) => {
       formData.append(`photo_${index}`, img.file);
     });
 
-    await CSRFToken();
+    
 
     const doUpload = async () => {
       return new Promise(async (resolve) => {
@@ -175,7 +175,7 @@ const AddForm = ({ data }) => {
     try {
       setDeleteLoading(true);
 
-      await CSRFToken();
+      
 
       const response = await axios.delete(
         `/api/admin/hotel/${data.id}/photo/${imageId}`,

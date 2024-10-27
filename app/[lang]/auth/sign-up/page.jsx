@@ -17,7 +17,7 @@ import SubmitButton from "@/components/submit-button";
 import { useRouter } from "next/navigation";
 import { logoGold } from "@/constants/images";
 import { useDictionary } from "@/providers/dictionary-provider";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import querystring from "querystring";
 import ToastSuccess from "@/components/toast/toast-success";
 import { defaultMessages } from "@/lib/default-messages";
@@ -60,7 +60,7 @@ const LoginPage = () => {
       return toast.error(<ToastError text="تکرار رمز ورود صحیح نمیباشد" />);
     }
 
-    await CSRFToken();
+    
 
     const encodedFormData = querystring.stringify({
       username,
