@@ -96,7 +96,6 @@ const PayDates = ({ agencyId, className }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={
@@ -112,7 +111,6 @@ const PayDates = ({ agencyId, className }) => {
   };
 
   const getPayInfo = async (values) => {
-    console.log("valuesssssss", values);
 
     const start = baseDateForm(values.start);
     const end = baseDateForm(values.end);
@@ -132,7 +130,6 @@ const PayDates = ({ agencyId, className }) => {
         }
       })
       .catch((err) => {
-        console.log("setPayDataError", err);
       })
       .finally(() => {});
   };

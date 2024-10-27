@@ -29,7 +29,6 @@ const UsersPage = ({ searchParams: { page, phone, username } }) => {
         setData(response.data);
       })
       .catch((err) => {
-        console.log("getCitiesError", err);
       })
       .finally(() => {
         setIsLoading(false);

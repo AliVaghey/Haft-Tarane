@@ -39,14 +39,10 @@ const TourPage = ({ searchParams: { from, to, date } }) => {
       await axios
         .post(url(), encodedFormData)
         .then((response) => {
-          console.log(
-            "responsetttttttttttttttttttttttttttttttttttttttttttt",
-            response.data,
-          );
+          
           setData(response.data);
         })
         .catch((err) => {
-          console.log("getFlightsErrrrrrrrrrrrrrrrrrrrr", err);
         })
         .finally(() => {
           setIsLoading(false);

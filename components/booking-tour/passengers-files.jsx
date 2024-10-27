@@ -31,9 +31,7 @@ const PassengersFiles = ({ data: defaultData }) => {
         tourHook.setFlag(!tourHook.flag);
 
         let newData = data;
-        console.log("newData", newData);
         delete newData[key];
-        console.log("newData2", newData);
         setData(newData);
       })
       .catch((error) => {

@@ -59,7 +59,6 @@ const EditForm = ({ data }) => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("values", values);
 
     const formData = new FormData();
 
@@ -94,7 +93,6 @@ const EditForm = ({ data }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={

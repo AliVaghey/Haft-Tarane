@@ -56,7 +56,6 @@ const DateStatus = ({ date }) => {
         // encodedFormData,
       )
       .then((response) => {
-        console.log("responsewwwwwwwwwwwwww", response);
         if (response.status === 200) {
           toast.success(
             <ToastSuccess text={"وضعیت تور با موفقیت تغییر کرد"} />,

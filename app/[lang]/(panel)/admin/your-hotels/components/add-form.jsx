@@ -66,7 +66,6 @@ const AddForm = () => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("values", values);
     const { images } = values;
 
     const encodedFormData = querystring.stringify({
@@ -88,7 +87,6 @@ const AddForm = () => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={
@@ -114,11 +112,9 @@ const AddForm = () => {
         await axios
           .post(`/api/admin/hotel/${id}/photos`, formData)
           .then((uploadResponse) => {
-            console.log("uploadResponse", uploadResponse);
             resolve("آپلود تصاویر با موفقیت انجام شد");
           })
           .catch((uploadError) => {
-            console.log("uploadError", uploadError);
             resolve("آپلود تصاویر انجام نشد");
           })
           .finally(() => {});
@@ -128,7 +124,6 @@ const AddForm = () => {
     toast.promise(doUpload, {
       loading: "هتل با موفقیت ایجاد شد. در حال آپلود تصاویر...",
       success: () => {
-        console.log("afterUploading");
         router.push(routes.admin["your-hotels"].root);
         router.refresh();
         return "تصاویر با موفقیت آپلود شدند";

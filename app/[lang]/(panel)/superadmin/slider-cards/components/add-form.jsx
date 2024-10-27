@@ -57,7 +57,6 @@ const AddForm = () => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("values", values);
 
     const formData = new FormData();
 
@@ -92,7 +91,6 @@ const AddForm = () => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={

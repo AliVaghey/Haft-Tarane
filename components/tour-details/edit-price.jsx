@@ -46,7 +46,6 @@ import { farsiNumber } from "@/lib/farsi-number";
 import { jaliliDate } from "@/lib/jalali-date";
 
 const EditPrice = ({ data }) => {
-  console.log("datapopop", data);
 
   const dictionary = useDictionary();
 
@@ -123,14 +122,12 @@ const EditPrice = ({ data }) => {
       baby: baby_type === "plus" ? +babyPrice : +babyPrice * -1,
     });
 
-    console.log("encodedFormData", encodedFormData);
 
     await CSRFToken();
 
     await axios
       .put(`/api/agency/price-change/${data.id}`, encodedFormData)
       .then((response) => {
-        console.log("response", response);
         if (response.status === 200) {
           toast.success(
             <div className="flex items-center gap-2">
@@ -146,7 +143,6 @@ const EditPrice = ({ data }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={

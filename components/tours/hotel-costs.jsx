@@ -14,7 +14,6 @@ import ToastSuccess from "../toast/toast-success";
 import EditHotelPackage from "./edit-hotel-package";
 
 const HotelCosts = ({ data, number, tour_id }) => {
-  console.log("datawewrw", data);
 
   const tourHook = useTour();
 

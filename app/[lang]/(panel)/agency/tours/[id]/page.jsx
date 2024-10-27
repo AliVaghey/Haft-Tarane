@@ -32,7 +32,6 @@ const TourDetailsPage = ({ params }) => {
     await axios
       .get(`/api/agency/tour/${params.id}`)
       .then((response) => {
-        console.log("response", response);
         setData(response.data.data);
       })
       .catch((error) => {

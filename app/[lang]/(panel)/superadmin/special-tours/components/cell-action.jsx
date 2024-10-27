@@ -29,7 +29,6 @@ const CellAction = ({ data }) => {
       const response = await axios.delete(`/api/admin/special-tour/${data.id}`);
 
       if (response.status === 204) {
-        console.log("first");
         router.refresh();
         toast.success(
           <div className="flex items-center gap-2">

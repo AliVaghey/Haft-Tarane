@@ -53,7 +53,6 @@ const EditForm = ({ data }) => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("values", values);
 
     const { current_password, password, password_confirmation } = values;
 
@@ -68,7 +67,6 @@ const EditForm = ({ data }) => {
     await axios
       .post("/update-password", encodedFormData)
       .then((response) => {
-        console.log("response", response);
         if (response.status === 200) {
           reset();
           toast.success(
@@ -82,7 +80,6 @@ const EditForm = ({ data }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={

@@ -26,11 +26,9 @@ const AdminDashboardPage = ({ searchParams: { page, id } }) => {
         `/api/admin/super-admin/tours/active?page=${page || 1}&id=${id || ""}`,
       )
       .then((response) => {
-        console.log("fetchPendingToursres", response);
         setData(response.data);
       })
       .catch((err) => {
-        console.log("fetchPendingTourserror", err);
       })
       .finally(() => {
         setIsLoading(false);

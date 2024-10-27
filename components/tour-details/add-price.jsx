@@ -90,7 +90,6 @@ const AddPrice = ({ data }) => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("valuesssssss", values);
 
     const {
       one_bed,
@@ -125,11 +124,9 @@ const AddPrice = ({ data }) => {
       baby: baby_type === "plus" ? +babyPrice : +babyPrice * -1,
     });
 
-    console.log("encodedFormData", encodedFormData);
 
     await CSRFToken();
 
-    console.log("dateId", dateId);
 
     await axios
       .post(
@@ -139,7 +136,6 @@ const AddPrice = ({ data }) => {
         encodedFormData,
       )
       .then((response) => {
-        console.log("response", response);
         if (response.status === 201) {
           toast.success(
             <div className="flex items-center gap-2">
@@ -155,7 +151,6 @@ const AddPrice = ({ data }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={

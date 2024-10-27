@@ -87,7 +87,6 @@ const EditForm = ({ data }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={

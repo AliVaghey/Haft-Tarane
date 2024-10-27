@@ -74,7 +74,6 @@ const ConfirmTour = ({ tour_id, profit_rate }) => {
   const onSubmit = async (values) => {
     const { profit_rate } = values;
 
-    console.log("values", values);
     const encodedFormData = querystring.stringify({
       profit_rate,
     });

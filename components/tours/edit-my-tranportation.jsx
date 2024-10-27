@@ -44,7 +44,6 @@ import {
 import { removeChar, separatePrice } from "@/lib/persian-price-format";
 
 const EditMyTransportation = ({ data }) => {
-  console.log("datatransportation", data);
   const dictionary = useDictionary();
 
   const tourHook = useTour();
@@ -89,7 +88,6 @@ const EditMyTransportation = ({ data }) => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("valuesssssss", values);
 
     const {
       type,
@@ -134,7 +132,6 @@ const EditMyTransportation = ({ data }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={
@@ -383,7 +380,6 @@ const EditMyTransportation = ({ data }) => {
                           <FormControl>
                             <SearchableSelect
                               changeValue={(value) => {
-                                console.log("value", value);
                                 field.onChange(value);
                               }}
                               defaultValue={getValues("company_name")}
@@ -441,7 +437,6 @@ const EditMyTransportation = ({ data }) => {
                           <FormControl>
                             <SearchableSelect
                               changeValue={(value) => {
-                                console.log("value", value);
                                 field.onChange(value);
                               }}
                               defaultValue={getValues("transportation_type")}

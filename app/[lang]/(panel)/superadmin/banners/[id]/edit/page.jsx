@@ -22,7 +22,6 @@ const EditSpecialTourPage = ({ params }) => {
     await axios
       .get(`/api/admin/banner/${params.id}`)
       .then((response) => {
-        console.log("responsesssssssssssss", response);
         setData(response.data);
       })
       .catch((error) => {

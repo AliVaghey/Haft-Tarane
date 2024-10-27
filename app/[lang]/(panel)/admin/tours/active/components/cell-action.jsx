@@ -24,7 +24,6 @@ const CellAction = ({ data }) => {
   const [open2, setOpen2] = useState(false);
 
   const onReject = async (message) => {
-    console.log("message", message);
     try {
       setLoading(true);
 

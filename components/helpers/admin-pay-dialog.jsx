@@ -65,7 +65,6 @@ const AdminPayDialog = ({
   }, []);
 
   const onSubmit = async (values) => {
-    console.log("values", values);
     onConfirm(values);
   };
 

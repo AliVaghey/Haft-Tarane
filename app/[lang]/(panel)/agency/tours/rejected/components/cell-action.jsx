@@ -36,7 +36,6 @@ const CellAction = ({ data }) => {
         tourHook.setFlag(!tourHook.flag);
       }
     } catch (error) {
-      console.log("error", error);
       toast.error("مشکلی پیش آمده است. لطفا مجددا تلاش فرمایید");
     } finally {
       setLoading(false);

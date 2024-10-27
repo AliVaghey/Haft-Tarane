@@ -22,7 +22,6 @@ import { Separator } from "@/components/ui/separator";
 import SimilarTourCard from "./similar-tour-card";
 
 const FirstCost = ({ data, similarData }) => {
-  console.log("datare", data);
 
   const router = useRouter();
 

@@ -33,7 +33,6 @@ const UserLayout = ({ children }) => {
         }
       })
       .catch((err) => {
-        console.log("getUserInfoError", err);
       })
       .finally(() => {
         setIsLoading(false);

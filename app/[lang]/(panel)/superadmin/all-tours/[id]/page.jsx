@@ -28,7 +28,6 @@ const TourDetailsPage = ({ params }) => {
     await axios
       .get(`/api/admin/tour/${params.id}`)
       .then((response) => {
-        console.log("response", response);
         setData(response.data.data);
       })
       .catch((error) => {
@@ -46,7 +45,6 @@ const TourDetailsPage = ({ params }) => {
       });
   };
 
-  console.log("data", data);
 
   return (
     <div className="relative min-h-[80vh] bg-primary pt-24">

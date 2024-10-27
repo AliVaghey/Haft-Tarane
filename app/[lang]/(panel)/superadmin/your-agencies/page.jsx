@@ -25,11 +25,9 @@ const AgencyPage = ({ searchParams: { page, name } }) => {
     await axios
       .get(`/api/admin/my-agencies?page=${page || 1}&name=${name || ""}`)
       .then((response) => {
-        console.log("agenciesresponse", response.data);
         setData(response.data);
       })
       .catch((err) => {
-        console.log("getCitiesError", err);
       })
       .finally(() => {
         setIsLoading(false);

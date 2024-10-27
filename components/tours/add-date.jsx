@@ -63,7 +63,6 @@ const AddDate = ({ tour_id }) => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("valuesssssss", values);
 
     const { start, end } = values;
 
@@ -72,7 +71,6 @@ const AddDate = ({ tour_id }) => {
       end: DateForm(end),
     });
 
-    console.log("encodedFormData", encodedFormData);
 
     await CSRFToken();
 
@@ -93,7 +91,6 @@ const AddDate = ({ tour_id }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={

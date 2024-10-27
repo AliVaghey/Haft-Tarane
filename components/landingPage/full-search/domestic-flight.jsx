@@ -93,7 +93,6 @@ const DomesticFlight = () => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("values", values);
 
     for (var propName in values) {
       if (
@@ -122,7 +121,6 @@ const DomesticFlight = () => {
       baby: baby === 0 ? null : baby,
     };
 
-    console.log("query", query);
 
     if (current["page"] === page) {
       query["page"] = null;

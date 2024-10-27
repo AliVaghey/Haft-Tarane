@@ -32,7 +32,6 @@ const BannersPage = ({ searchParams: { page } }) => {
         setData(response.data.data);
       })
       .catch((err) => {
-        console.log("tour_stylesError", err);
       })
       .finally(() => {
         setIsLoading(false);

@@ -28,7 +28,6 @@ const EditTour = ({ children }) => {
         tourHook.setIsEditPage(true);
       })
       .catch((error) => {
-        console.log("error", error);
       })
       .finally(() => {
         setLoading(false);

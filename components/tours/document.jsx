@@ -34,7 +34,6 @@ import { Button } from "../ui/button";
 import ChipSearchableSelect from "../ui/chip-searchable-select";
 
 const Document = ({ data }) => {
-  console.log("datahjhj", data);
   const tourHook = useTour();
 
   const dictionary = useDictionary();
@@ -87,12 +86,10 @@ const Document = ({ data }) => {
       cancel_rules,
     });
 
-    console.log("values", values);
 
     await axios
       .post("/api/agency/tour/certificates", encodedFormData)
       .then(async (response) => {
-        console.log("certificates-response", response.data);
 
         if (response.status === 204) {
           await tourHook.setFlag(!tourHook.flag);
@@ -102,7 +99,6 @@ const Document = ({ data }) => {
         }
       })
       .catch((error) => {
-        console.log("certificates-error", error);
         toast.error(
           <ToastError
             text={
@@ -137,7 +133,6 @@ const Document = ({ data }) => {
                     keyValue="value"
                     searchable={false}
                     onChange={(data) => {
-                      console.log("free_services", data);
                       setValue("free_services", data, { shouldValidate: true });
                     }}
                   />
@@ -162,7 +157,6 @@ const Document = ({ data }) => {
                     keyValue="value"
                     searchable={false}
                     onChange={(data) => {
-                      console.log("certificates", data);
                       setValue("certificates", data, { shouldValidate: true });
                     }}
                   />
@@ -187,7 +181,6 @@ const Document = ({ data }) => {
                     keyValue="value"
                     searchable={false}
                     onChange={(data) => {
-                      console.log("tab_descriptions", data);
                       setValue("tab_descriptions", data, {
                         shouldValidate: true,
                       });

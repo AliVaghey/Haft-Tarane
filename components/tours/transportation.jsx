@@ -10,7 +10,6 @@ import AddSystemTransportation from "./add-system-tranportation";
 import TransportationCardSystem from "./transportation-card-system";
 
 const Transportation = ({ data }) => {
-  console.log("dataTransportation", data);
   const params = useParams();
   return (
     <div className="mt-5">

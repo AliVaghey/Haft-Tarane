@@ -37,10 +37,8 @@ const DetailsPrice = ({ data }) => {
 
       const response = await axios.delete(`/api/agency/price-change/${id}`);
 
-      console.log("responsewwwwwwwww", response);
 
       if (response.status === 204) {
-        console.log("first");
         router.refresh();
         toast.success(
           <div className="flex items-center gap-2">
@@ -63,7 +61,6 @@ const DetailsPrice = ({ data }) => {
         );
       }
     } catch (error) {
-      console.log("error", error);
       toast.error("مشکلی پیش آمده است. لطفا مجددا تلاش فرمایید");
     } finally {
       setLoading(false);

@@ -25,11 +25,9 @@ const UserToursPage = ({ searchParams: { page } }) => {
     await axios
       .get(`/api/agency/reservations?page=${page || 1}&pending=true`)
       .then((response) => {
-        console.log("responsepending", response.data);
         setData(response.data);
       })
       .catch((err) => {
-        console.log("getCitiesError", err);
       })
       .finally(() => {
         setIsLoading(false);

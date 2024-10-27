@@ -18,13 +18,11 @@ import { Separator } from "@/components/ui/separator";
 import PassengersFiles from "./passengers-files";
 
 const UserBookInfo = ({ defaultData }) => {
-  console.log("defaultDatapppppppppppppppppppppp", defaultData);
 
   const [data, setData] = useState(
     defaultData.passengers ? JSON.parse(defaultData.passengers) : [],
   );
 
-  console.log("datauserrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr", data);
   return (
     <div className="p-2">
       <DataTableHeader

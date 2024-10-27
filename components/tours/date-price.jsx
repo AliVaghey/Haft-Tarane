@@ -70,7 +70,6 @@ const DatePrice = ({ date }) => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("valuesssssss", values);
 
     const { price_change, type } = values;
 
@@ -80,14 +79,12 @@ const DatePrice = ({ date }) => {
       price_change: type === "plus" ? +newPrice : +newPrice * -1,
     });
 
-    console.log("encodedFormData", encodedFormData);
 
     await CSRFToken();
 
     await axios
       .post(`/api/agency/date/${date.id}/price-change`, encodedFormData)
       .then((response) => {
-        console.log("response", response);
         if (response.status === 200) {
           toast.success(
             <div className="flex items-center gap-2">
@@ -102,7 +99,6 @@ const DatePrice = ({ date }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={

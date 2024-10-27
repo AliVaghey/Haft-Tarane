@@ -55,7 +55,6 @@ const AddPassengerFile = ({ data }) => {
   }, []);
 
   const onSubmit = async (values) => {
-    console.log("values", values);
 
     const formData = new FormData();
 
@@ -70,7 +69,6 @@ const AddPassengerFile = ({ data }) => {
     await axios
       .post(`/api/agency/reservation/${data.id}/files`, formData)
       .then((uploadResponse) => {
-        console.log("uploadResponse", uploadResponse);
         toast.success("آپلود فایل با موفقیت انجام شد");
         setIsOpen(false);
         reset();

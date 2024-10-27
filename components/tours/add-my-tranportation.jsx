@@ -82,7 +82,6 @@ const AddMyTransportation = ({ tour_id }) => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("valuesssssss", values);
 
     const {
       type,
@@ -127,7 +126,6 @@ const AddMyTransportation = ({ tour_id }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={
@@ -370,7 +368,6 @@ const AddMyTransportation = ({ tour_id }) => {
                           <FormControl>
                             <SearchableSelect
                               changeValue={(value) => {
-                                console.log("value", value);
                                 field.onChange(value);
                               }}
                               defaultValue={getValues("company_name")}
@@ -429,7 +426,6 @@ const AddMyTransportation = ({ tour_id }) => {
                           <FormControl>
                             <SearchableSelect
                               changeValue={(value) => {
-                                console.log("value", value);
                                 field.onChange(value);
                               }}
                               defaultValue={getValues("transportation_type")}

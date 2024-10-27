@@ -54,7 +54,6 @@ const OTPCode = ({ changeStep }) => {
   const onSubmit = async (values) => {
     const { code } = values;
 
-    console.log("code", code);
 
     await CSRFToken();
 
@@ -65,10 +64,8 @@ const OTPCode = ({ changeStep }) => {
     await axios
       .post("/otp-login/verify-otp", encodedFormData)
       .then(async (response) => {
-        console.log("response", response);
         if (response.status === 204 || response.status === 200) {
           await axios.get("/api/user/info").then((res) => {
-            console.log("res", res.data);
 
             userHook.setUserData(res?.data?.data);
 
@@ -89,7 +86,6 @@ const OTPCode = ({ changeStep }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={

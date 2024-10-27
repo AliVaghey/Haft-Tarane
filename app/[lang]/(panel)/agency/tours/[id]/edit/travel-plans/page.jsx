@@ -5,7 +5,6 @@ import { useTour } from "@/hooks/use-tour";
 
 const TransportationPage = () => {
   const tourHook = useTour();
-  console.log("tourHook.currentTour", tourHook.currentTour);
 
   return (
     <div className="w-full">

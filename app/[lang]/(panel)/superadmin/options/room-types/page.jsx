@@ -29,11 +29,9 @@ const BannersPage = ({ searchParams: { page } }) => {
     await axios
       .get(`/api/options?category=room_types`)
       .then((response) => {
-        console.log("room_types", response.data);
         setData(response.data.data);
       })
       .catch((err) => {
-        console.log("room_typesError", err);
       })
       .finally(() => {
         setIsLoading(false);

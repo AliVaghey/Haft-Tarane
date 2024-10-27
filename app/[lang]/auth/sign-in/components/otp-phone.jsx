@@ -54,14 +54,12 @@ const OTPPhone = ({ changeStep }) => {
     await axios
       .post("/otp-login/send-otp", encodedFormData)
       .then(async (response) => {
-        console.log("response", response);
         if (response.status === 204 || response.status === 200) {
           changeStep(true);
           toast.success(<ToastSuccess text="کد تایید برای شما ارسال شد" />);
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={

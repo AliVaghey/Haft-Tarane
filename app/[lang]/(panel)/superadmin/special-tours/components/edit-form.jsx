@@ -42,7 +42,6 @@ import { jaliliDate } from "@/lib/jalali-date";
 import { cn } from "@/lib/utils";
 
 const AddForm = ({ data }) => {
-  console.log("dataqllkmlk", data);
   const dictionary = useDictionary();
 
   const [currentTourId, setCurrentTourId] = useState(data.tour.id);
@@ -81,10 +80,8 @@ const AddForm = ({ data }) => {
     formState: { isSubmitting },
   } = form;
 
-  console.log("ge", getValues("dates"));
 
   const onSubmit = async (values) => {
-    console.log("values", values);
 
     const formData = new FormData();
 
@@ -113,7 +110,6 @@ const AddForm = ({ data }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={
@@ -136,7 +132,6 @@ const AddForm = ({ data }) => {
     await axios
       .get(`/api/agency/tour/${currentTourId}`)
       .then((response) => {
-        console.log("responsessadsaddas", response.data.data.dates);
         setDatesData(response.data.data.dates);
       })
       .catch((error) => {

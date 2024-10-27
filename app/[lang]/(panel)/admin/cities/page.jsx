@@ -27,7 +27,6 @@ const AdminDashboardPage = () => {
         setData(response.data.data);
       })
       .catch((err) => {
-        console.log("getCitiesError", err);
       })
       .finally(() => {
         setIsLoading(false);

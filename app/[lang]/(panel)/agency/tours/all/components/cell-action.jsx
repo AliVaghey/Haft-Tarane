@@ -24,7 +24,6 @@ const CellAction = ({ data }) => {
 
       const response = await axios.post(`/api/agency/tour/${data.id}/copy`);
 
-      console.log("response", response.status);
 
       if (response.status === 201) {
         toast.success(
@@ -37,7 +36,6 @@ const CellAction = ({ data }) => {
         );
       }
     } catch (error) {
-      console.log("error", error);
       toast.error("مشکلی پیش آمده است. لطفا مجددا تلاش فرمایید");
     } finally {
       setLoading(false);
@@ -52,7 +50,6 @@ const CellAction = ({ data }) => {
 
       const response = await axios.put(`/api/agency/tour/${data.id}/draft`);
 
-      console.log("response", response.status);
 
       if (response.status === 204) {
         toast.success(
@@ -67,7 +64,6 @@ const CellAction = ({ data }) => {
         tourHook.setFlag(!tourHook.flag);
       }
     } catch (error) {
-      console.log("error", error);
       toast.error("مشکلی پیش آمده است. لطفا مجددا تلاش فرمایید");
     } finally {
       setLoading2(false);

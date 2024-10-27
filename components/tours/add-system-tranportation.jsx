@@ -64,7 +64,6 @@ const AddMyTransportation = ({ tour_id }) => {
   const router = useRouter();
 
   const addTransportation = async (values) => {
-    console.log("valuesssssss", values);
 
     const encodedFormData = querystring.stringify(values);
 
@@ -87,7 +86,6 @@ const AddMyTransportation = ({ tour_id }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={

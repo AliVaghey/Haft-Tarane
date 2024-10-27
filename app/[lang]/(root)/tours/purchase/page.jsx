@@ -138,7 +138,6 @@ const TourPurchase = () => {
         encodedFormData,
       )
       .then((response) => {
-        console.log("response-reserveqqqqqqq", response.data.id);
         if (response.status === 201) {
           // handleRedirect(newUrl);
           redirectZP(response.data.id);
@@ -160,8 +159,7 @@ const TourPurchase = () => {
         }
       })
       .catch((error) => {
-        console.log("error", error);
-        console.log("reserve-error", error?.response?.data?.message);
+        
         toast.error(
           <ToastError
             text={

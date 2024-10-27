@@ -140,7 +140,6 @@ const BasicInformationForm = ({ data }) => {
       await axios
         .put(`/api/agency/tour/${data.id}`, encodedFormData)
         .then(async (response) => {
-          console.log("edit-draft-response", response.data);
 
           if (response.status === 204) {
             tourHook.setFlag(!tourHook.flag);
@@ -151,7 +150,6 @@ const BasicInformationForm = ({ data }) => {
           }
         })
         .catch((error) => {
-          console.log("edit-draft-error", error);
           toast.error(
             <ToastError
               text={
@@ -165,7 +163,6 @@ const BasicInformationForm = ({ data }) => {
       await axios
         .post("/api/agency/tour", encodedFormData)
         .then((response) => {
-          console.log("draft-response", response.data);
 
           if (response.status === 201) {
             toast.success(
@@ -177,7 +174,6 @@ const BasicInformationForm = ({ data }) => {
           }
         })
         .catch((error) => {
-          console.log("draft-error", error);
           toast.error(
             <ToastError
               text={

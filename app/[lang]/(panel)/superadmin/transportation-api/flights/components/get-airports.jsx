@@ -18,9 +18,7 @@ const GetAirports = () => {
     await axios
       .get("api/admin/save-airports")
       .then((response) => {
-        console.log("response", response.data);
         if (response.status === 200) {
-          console.log("response", response.status);
           toast.success(
             <div className="flex items-center gap-2">
               <span>
@@ -32,7 +30,6 @@ const GetAirports = () => {
         }
       })
       .catch((error) => {
-        console.log("get-airports-error", error);
         toast.error(
           <ToastError
             text={

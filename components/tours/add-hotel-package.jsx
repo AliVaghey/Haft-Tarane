@@ -111,7 +111,6 @@ const AddHotelPackage = ({ tour_id }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={

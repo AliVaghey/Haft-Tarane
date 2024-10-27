@@ -35,7 +35,6 @@ import { dateSchema, enDatelSchema } from "@/lib/validation/tour/date";
 import { DateForm } from "@/lib/date-form";
 
 const EditDate = ({ data }) => {
-  console.log("datauuuuu", data);
 
   const dictionary = useDictionary();
 
@@ -65,7 +64,6 @@ const EditDate = ({ data }) => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("valuesssssss", values);
 
     const { start, end } = values;
 
@@ -74,7 +72,6 @@ const EditDate = ({ data }) => {
       end: DateForm(end),
     });
 
-    console.log("encodedFormData", encodedFormData);
 
     await CSRFToken();
 
@@ -95,7 +92,6 @@ const EditDate = ({ data }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={

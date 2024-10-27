@@ -62,7 +62,6 @@ const UserPass = () => {
       .then(async (response) => {
         if (response.status === 204 || response.status === 200) {
           await axios.get("/api/user/info").then((res) => {
-            console.log("res", res.data);
 
             userHook.setUserData(res?.data?.data);
 
@@ -83,7 +82,6 @@ const UserPass = () => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={

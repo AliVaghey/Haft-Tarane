@@ -5,14 +5,12 @@ import { jaliliDateHour } from "@/lib/jalali-date";
 import { persianPriceFormat } from "@/lib/persian-price-format";
 
 const DetailsTourPlan = ({ data }) => {
-  console.log("data.flight", data[0].flight);
   return data.length > 0 && data[0].flight ? (
     <div className="mb-5 flex min-h-96 flex-col gap-5 rounded-lg bg-white p-5 lg:gap-10">
       {data &&
         data.map((item, index) => {
           const { flight } = item;
 
-          console.log("flight", flight);
           return (
             <>
               <div

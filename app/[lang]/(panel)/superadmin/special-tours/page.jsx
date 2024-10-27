@@ -29,11 +29,9 @@ const HotelPage = ({ searchParams: { page } }) => {
     await axios
       .get(`/api/admin/special-tours?page=${page || 1}}`)
       .then((response) => {
-        console.log("special", response.data);
         setData(response.data);
       })
       .catch((err) => {
-        console.log("getHotelsError", err);
       })
       .finally(() => {
         setIsLoading(false);

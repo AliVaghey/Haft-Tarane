@@ -23,7 +23,6 @@ const TourDetailsPage = ({ searchParams }) => {
     await axios
       .get(`/api/cost/${cid || ""}?start=${start || ""}`)
       .then((response) => {
-        console.log("responseqqqqqqqqqqqqq", response);
         setData(response.data.data);
       })
       .catch((error) => {

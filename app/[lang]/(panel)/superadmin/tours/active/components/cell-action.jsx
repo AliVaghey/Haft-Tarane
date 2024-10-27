@@ -24,7 +24,6 @@ const CellAction = ({ data }) => {
   const [open2, setOpen2] = useState(false);
 
   const onReject = async (message) => {
-    console.log("message", message);
     try {
       setLoading(true);
 
@@ -77,7 +76,6 @@ const CellAction = ({ data }) => {
       const response = await axios.post(`/api/admin/tour/${data.id}/approve`);
 
       if (response.status === 204) {
-        console.log("first");
         router.refresh();
         toast.success(
           <div className="flex items-center gap-2">

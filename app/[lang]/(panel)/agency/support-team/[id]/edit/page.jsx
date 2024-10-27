@@ -25,7 +25,6 @@ const EditPage = ({ params }) => {
     await axios
       .get(`/api/agency/support/${params.id}`)
       .then((response) => {
-        console.log("response", response);
         setData(response.data);
       })
       .catch((error) => {

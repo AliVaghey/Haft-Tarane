@@ -31,7 +31,6 @@ function SpecialTours() {
           dates: [],
         },
   );
-  console.log("currentTour", currentTour);
 
   useEffect(() => {
     if (userHook.specialTours.length > 0) {

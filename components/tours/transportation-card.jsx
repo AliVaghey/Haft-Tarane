@@ -47,7 +47,6 @@ const TransportationCard = ({ data, number, lenght, staying_nights }) => {
       });
   };
 
-  console.log("data", data);
 
   return (
     <div className="flex flex-col text-muted-foreground">

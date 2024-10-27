@@ -78,7 +78,6 @@ const AddForm = () => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("values", values);
 
     const formData = new FormData();
 
@@ -108,7 +107,6 @@ const AddForm = () => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={
@@ -121,7 +119,6 @@ const AddForm = () => {
   };
 
   useEffect(() => {
-    console.log("firstd", getValues("tour_id"));
     if (currentTourId !== null) {
       fetchDates();
       setValue("dates", [], { shouldValidate: true });
@@ -133,7 +130,6 @@ const AddForm = () => {
     await axios
       .get(`/api/agency/tour/${currentTourId}`)
       .then((response) => {
-        console.log("responsessadsaddas", response.data.data.dates);
         setDatesData(response.data.data.dates);
       })
       .catch((error) => {

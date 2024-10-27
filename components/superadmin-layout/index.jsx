@@ -34,7 +34,6 @@ const SuperadminLayout = ({ children }) => {
         }
       })
       .catch((err) => {
-        console.log("getAdminInfoError", err);
       })
       .finally(() => {
         setIsLoading(false);
@@ -45,13 +44,11 @@ const SuperadminLayout = ({ children }) => {
     axios
       .get("/api/admin/super-admin/statistics")
       .then((response) => {
-        console.log("agency-dashboard", response?.data);
         if (response.status === 200) {
           userHook.setSuperadminDashboard(response?.data);
         }
       })
       .catch((err) => {
-        console.log("Error", err);
       })
       .finally(() => {});
   };

@@ -28,11 +28,9 @@ const AdminDashboardPage = ({
         `/api/admin/active-tours?page=${page || 1}&title=${title || ""}&trip_type=${trip_type || ""}&id=${id || ""}`,
       )
       .then((response) => {
-        console.log("fetchPendingToursres", response.data);
         setData(response.data);
       })
       .catch((err) => {
-        console.log("fetchPendingTourserror", err);
       })
       .finally(() => {
         setIsLoading(false);

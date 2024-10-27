@@ -55,7 +55,6 @@ const PayAll = ({ agencyId, className }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={
@@ -86,7 +85,6 @@ const PayAll = ({ agencyId, className }) => {
         }
       })
       .catch((err) => {
-        console.log("setPayDataError", err);
       })
       .finally(() => {
         setLoading2(false);

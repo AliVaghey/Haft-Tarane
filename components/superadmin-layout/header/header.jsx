@@ -149,7 +149,6 @@ const Header = () => {
                         pathname.endsWith(item.href) && "bg-white",
                       )}
                       onClick={() => {
-                        console.log("first");
                       }}
                     >
                       {item?.icon(18, 1.5)}

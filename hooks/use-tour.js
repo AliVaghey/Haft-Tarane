@@ -22,7 +22,6 @@ export const useTour = create((set, get) => ({
         get().setIsEditPage(true);
       })
       .catch((error) => {
-        console.log("error", error);
       })
       .finally(() => {
         set({ flag: false });
@@ -36,7 +35,6 @@ export const useTour = create((set, get) => ({
         get().setAirports(response.data.data);
       })
       .catch((error) => {
-        console.log("error-airports", error);
       })
       .finally(() => {});
   },

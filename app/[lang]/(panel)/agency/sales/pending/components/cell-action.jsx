@@ -54,7 +54,6 @@ const CellAction = ({ data }) => {
     await axios
       .post(`/api/agency/reservation/${data.id}/change-status`, encodedFormData)
       .then((response) => {
-        console.log("response", response);
         if (response.status === 200) {
           toast.success(
             <ToastSuccess text={"وضعیت پرداخت با موفقیت تغییر کرد"} />,

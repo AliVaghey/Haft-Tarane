@@ -45,7 +45,6 @@ const AuthProvider = ({ children }) => {
       .get("/api/slider-cards")
       .then((response) => {
         if (response.status === 200) {
-          console.log("response.data", response.data);
           userHook.setSliderCards(response?.data?.data);
         }
       })
@@ -90,7 +89,6 @@ const AuthProvider = ({ children }) => {
         }
       })
       .catch((err) => {
-        console.log("getBannersError", err);
       })
       .finally(() => {});
   };

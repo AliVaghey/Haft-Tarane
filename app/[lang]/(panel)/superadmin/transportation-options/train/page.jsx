@@ -29,11 +29,9 @@ const BannersPage = ({ searchParams: { page } }) => {
     await axios
       .get(`/api/options?category=train`)
       .then((response) => {
-        console.log("train", response.data);
         setData(response.data.data);
       })
       .catch((err) => {
-        console.log("trainError", err);
       })
       .finally(() => {
         setIsLoading(false);

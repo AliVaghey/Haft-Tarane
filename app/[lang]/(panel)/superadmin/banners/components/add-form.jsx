@@ -62,7 +62,6 @@ const AddForm = () => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("values", values);
     const { sort, link, description, text_color, background_color } = values;
 
     const encodedFormData = querystring.stringify({
@@ -93,7 +92,6 @@ const AddForm = () => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={

@@ -21,11 +21,9 @@ import { MapPin } from "lucide-react";
 import { persianPriceFormat } from "@/lib/persian-price-format";
 
 const TransportationCardSystem = ({ data, number, lenght }) => {
-  console.log("data", data);
   const tourHook = useTour();
 
   const { flight } = data;
-  console.log("flight", flight);
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -57,7 +55,6 @@ const TransportationCardSystem = ({ data, number, lenght }) => {
       });
   };
 
-  console.log("data", data);
 
   return (
     <div className="flex flex-col text-muted-foreground">
