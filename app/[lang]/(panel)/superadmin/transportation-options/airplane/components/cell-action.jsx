@@ -2,7 +2,7 @@
 
 import DeleteModal from "@/components/helpers/delete-dialog";
 import { useTour } from "@/hooks/use-tour";
-import { CSRFToken } from "@/lib/axios";
+
 import { axios } from "@/lib/axios";
 import { Trash2 } from "lucide-react";
 import { CircleCheckBig, CircleAlert } from "lucide-react";
@@ -22,7 +22,7 @@ const CellAction = ({ data }) => {
     try {
       setLoading(true);
 
-      await CSRFToken();
+      
 
       const response = await axios.delete(`/api/admin/option/${data.id}`);
 

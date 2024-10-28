@@ -34,7 +34,6 @@ const HotelPage = ({ searchParams: { page, name, country, state, city } }) => {
         setData(response.data);
       })
       .catch((err) => {
-        console.log("getHotelsError", err);
       })
       .finally(() => {
         setIsLoading(false);

@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/form";
 import SubmitButton from "@/components/submit-button";
 import { toast } from "sonner";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import { useDictionary } from "@/providers/dictionary-provider";
 import ToastError from "@/components/toast/toast-error";
 import { defaultMessages } from "@/lib/default-messages";
@@ -78,7 +78,6 @@ const AddForm = () => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("values", values);
 
     const formData = new FormData();
 
@@ -88,7 +87,7 @@ const AddForm = () => {
     formData.append(`photo`, values.photo.file);
     formData.append(`dates`, JSON.stringify(values.dates));
 
-    await CSRFToken();
+    
 
     await axios
       .post(`api/admin/tour/${values.tour_id}/special`, formData)
@@ -108,7 +107,6 @@ const AddForm = () => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={
@@ -121,7 +119,6 @@ const AddForm = () => {
   };
 
   useEffect(() => {
-    console.log("firstd", getValues("tour_id"));
     if (currentTourId !== null) {
       fetchDates();
       setValue("dates", [], { shouldValidate: true });
@@ -133,7 +130,6 @@ const AddForm = () => {
     await axios
       .get(`/api/agency/tour/${currentTourId}`)
       .then((response) => {
-        console.log("responsessadsaddas", response.data.data.dates);
         setDatesData(response.data.data.dates);
       })
       .catch((error) => {

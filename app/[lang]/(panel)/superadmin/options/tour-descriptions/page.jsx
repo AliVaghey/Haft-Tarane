@@ -29,11 +29,9 @@ const BannersPage = ({ searchParams: { page } }) => {
     await axios
       .get(`/api/options?category=tour_descriptions`)
       .then((response) => {
-        console.log("tour_descriptions", response.data);
         setData(response.data.data);
       })
       .catch((err) => {
-        console.log("tour_descriptionsError", err);
       })
       .finally(() => {
         setIsLoading(false);

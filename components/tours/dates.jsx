@@ -9,7 +9,6 @@ import { routes } from "@/routes/routes";
 import { useParams } from "next/navigation";
 
 const Dates = ({ data }) => {
-  console.log("data", data);
   const params = useParams();
   return (
     <div className="mt-5">

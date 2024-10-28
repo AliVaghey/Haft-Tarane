@@ -24,11 +24,9 @@ const AdminDashboardPage = ({ searchParams: { page, id } }) => {
     await axios
       .get(`/api/admin/super-admin/tours/all?page=${page || 1}&id=${id || ""}`)
       .then((response) => {
-        console.log("fetchPendingToursres", response);
         setData(response.data);
       })
       .catch((err) => {
-        console.log("fetchPendingTourserror", err);
       })
       .finally(() => {
         setIsLoading(false);

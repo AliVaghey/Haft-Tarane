@@ -30,6 +30,10 @@ import {
   UsersRound,
   Tags,
   Images,
+  DollarSign,
+  DollarSignIcon,
+  Wallet,
+  BarChart,
 } from "lucide-react";
 
 export const navItems = [
@@ -292,6 +296,22 @@ export const navItems = [
         href: routes.superadmin["profit-rates"].add,
         icon: (size, strokeWidth) => (
           <PlusCircle size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+    ],
+  },
+  {
+    title: "نرخ  ارز ها",
+    type: "subMenu",
+    icon: (size, strokeWidth) => (
+      <DollarSignIcon size={size || 18} strokeWidth={strokeWidth || 1.5} />
+    ),
+    subMenu: [
+      {
+        title: "مدیریت ارز ها",
+        href: routes.superadmin.currency.root,
+        icon: (size, strokeWidth) => (
+          <BarChart  size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
     ],

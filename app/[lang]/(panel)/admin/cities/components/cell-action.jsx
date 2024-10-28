@@ -1,7 +1,6 @@
 "use client";
 
 import DeleteModal from "@/components/helpers/delete-dialog";
-import { CSRFToken } from "@/lib/axios";
 import { routes } from "@/routes/routes";
 import { axios } from "@/lib/axios";
 import { Trash2 } from "lucide-react";
@@ -21,12 +20,10 @@ const CellAction = ({ data }) => {
     try {
       setLoading(true);
 
-      await CSRFToken();
 
       const response = await axios.delete(`/api/admin/city/${data.id}`);
 
       if (response.status === 204) {
-        console.log("first");
         router.refresh();
         toast.success(
           <div className="flex items-center gap-2">

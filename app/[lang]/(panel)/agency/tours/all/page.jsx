@@ -27,11 +27,9 @@ const AdminDashboardPage = ({ searchParams: { page, id } }) => {
     await axios
       .get(`/api/agency/tours?page=${page || 1}&id=${id || ""}`)
       .then((response) => {
-        console.log("allAgencies", response);
         setData(response.data);
       })
       .catch((err) => {
-        console.log("getAllAgenciesError", err);
       })
       .finally(() => {
         setIsLoading(false);

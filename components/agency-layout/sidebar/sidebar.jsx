@@ -59,9 +59,6 @@ const SideBar = () => {
                       "flex items-center gap-3 rounded-lg bg-yellow-light p-2 hover:bg-white",
                       pathname.endsWith(item.href) && "bg-white",
                     )}
-                    onClick={() => {
-                      console.log("first");
-                    }}
                   >
                     {item?.icon(18, 1.5)}
                     {item.title}

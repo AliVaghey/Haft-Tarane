@@ -1,6 +1,6 @@
 "use client";
 
-import { CSRFToken } from "@/lib/axios";
+
 import { axios } from "@/lib/axios";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -44,7 +44,7 @@ const DateStatus = ({ date }) => {
 
     const newStatus = s === "منقضی" ? true : false;
 
-    await CSRFToken();
+    
 
     // const encodedFormData = querystring.stringify({
     //   expire: newStatus,
@@ -56,7 +56,6 @@ const DateStatus = ({ date }) => {
         // encodedFormData,
       )
       .then((response) => {
-        console.log("responsewwwwwwwwwwwwww", response);
         if (response.status === 200) {
           toast.success(
             <ToastSuccess text={"وضعیت تور با موفقیت تغییر کرد"} />,

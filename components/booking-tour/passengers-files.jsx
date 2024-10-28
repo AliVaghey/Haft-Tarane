@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { useTour } from "@/hooks/use-tour";
 import { defaultMessages } from "@/lib/default-messages";
 import { Loader, Trash2 } from "lucide-react";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import { Button } from "../ui/button";
 import { useUser } from "@/hooks/use-user";
 
@@ -22,7 +22,7 @@ const PassengersFiles = ({ data: defaultData }) => {
   const handleDelete = async (key) => {
     setIsLoading(true);
 
-    await CSRFToken();
+    
 
     await axios
       .delete(`api/agency/reservation/${defaultData.id}/files?name=${key}`)
@@ -31,9 +31,7 @@ const PassengersFiles = ({ data: defaultData }) => {
         tourHook.setFlag(!tourHook.flag);
 
         let newData = data;
-        console.log("newData", newData);
         delete newData[key];
-        console.log("newData2", newData);
         setData(newData);
       })
       .catch((error) => {

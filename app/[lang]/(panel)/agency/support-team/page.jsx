@@ -27,11 +27,9 @@ const AdminDashboardPage = () => {
     await axios
       .get("/api/agency/supports")
       .then((response) => {
-        console.log("agency", response);
         setData(response.data);
       })
       .catch((err) => {
-        console.log("getCitiesError", err);
       })
       .finally(() => {
         setIsLoading(false);

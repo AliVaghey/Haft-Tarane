@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/form";
 import SubmitButton from "@/components/submit-button";
 import { toast } from "sonner";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import { useDictionary } from "@/providers/dictionary-provider";
 import querystring from "querystring";
 import ToastError from "@/components/toast/toast-error";
@@ -62,7 +62,6 @@ const AddForm = () => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("values", values);
     const { sort, link, description, text_color, background_color } = values;
 
     const encodedFormData = querystring.stringify({
@@ -73,7 +72,7 @@ const AddForm = () => {
       background_color,
     });
 
-    await CSRFToken();
+    
 
     await axios
       .post("api/admin/banner", encodedFormData)
@@ -93,7 +92,6 @@ const AddForm = () => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={

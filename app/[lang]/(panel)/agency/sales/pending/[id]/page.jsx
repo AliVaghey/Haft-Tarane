@@ -22,7 +22,6 @@ const EditCityPage = ({ params }) => {
     await axios
       .get(`/api/agency/reservation/${params.id}`)
       .then((response) => {
-        console.log("response", response);
         setData(response.data.data);
       })
       .catch((error) => {

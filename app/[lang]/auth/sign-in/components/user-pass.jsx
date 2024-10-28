@@ -16,7 +16,7 @@ import { enSignInSchema, signInSchema } from "@/lib/validation/auth/sign-in";
 import SubmitButton from "@/components/submit-button";
 import { useRouter } from "next/navigation";
 import { useDictionary } from "@/providers/dictionary-provider";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import querystring from "querystring";
 import ToastSuccess from "@/components/toast/toast-success";
 import { defaultMessages } from "@/lib/default-messages";
@@ -50,7 +50,7 @@ const UserPass = () => {
   const onSubmit = async (values) => {
     const { password, phoneNumber } = values;
 
-    await CSRFToken();
+    
 
     const encodedFormData = querystring.stringify({
       phone: phoneNumber,
@@ -62,7 +62,6 @@ const UserPass = () => {
       .then(async (response) => {
         if (response.status === 204 || response.status === 200) {
           await axios.get("/api/user/info").then((res) => {
-            console.log("res", res.data);
 
             userHook.setUserData(res?.data?.data);
 
@@ -83,7 +82,6 @@ const UserPass = () => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={

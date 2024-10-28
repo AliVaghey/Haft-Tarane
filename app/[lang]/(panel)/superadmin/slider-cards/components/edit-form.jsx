@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/form";
 import SubmitButton from "@/components/submit-button";
 import { toast } from "sonner";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import { useDictionary } from "@/providers/dictionary-provider";
 import ToastError from "@/components/toast/toast-error";
 import { defaultMessages } from "@/lib/default-messages";
@@ -59,7 +59,6 @@ const EditForm = ({ data }) => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("values", values);
 
     const formData = new FormData();
 
@@ -74,7 +73,7 @@ const EditForm = ({ data }) => {
     }
     formData.append("description_color", values.description_color);
 
-    await CSRFToken();
+    
 
     await axios
       .post(`api/admin/slider-cards/${data.id}`, formData)
@@ -94,7 +93,6 @@ const EditForm = ({ data }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={

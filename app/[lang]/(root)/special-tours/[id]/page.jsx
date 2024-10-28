@@ -25,7 +25,6 @@ const TourDetailsPage = ({ searchParams, params }) => {
     await axios
       .get(`/api/special/${params.id}?start=${start || ""}`)
       .then((response) => {
-        console.log("responseqqfffffffffffffff", response);
         setData(response.data.data);
       })
       .catch((error) => {
@@ -43,7 +42,6 @@ const TourDetailsPage = ({ searchParams, params }) => {
       });
   };
 
-  console.log("cccccccccccccccc", data);
   return (
     <div className="relative min-h-[80vh] bg-yellow-primary pt-24">
       <div className="px-2 pb-5 md:px-28 lg:px-48 xl:px-60">

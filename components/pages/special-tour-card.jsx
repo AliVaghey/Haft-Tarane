@@ -31,7 +31,6 @@ const SpecialTourCard = ({ data }) => {
     baseUrl = baseUrl.slice(0, baseUrl.lastIndexOf("/"));
     baseUrl = baseUrl.slice(0, baseUrl.lastIndexOf("/"));
 
-    console.log("baseUrl", baseUrl);
 
     const url = qs.stringifyUrl(
       {

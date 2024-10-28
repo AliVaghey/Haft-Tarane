@@ -46,7 +46,6 @@ const Tour = () => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("values", values);
 
     for (var propName in values) {
       if (
@@ -71,7 +70,6 @@ const Tour = () => {
       destination,
     };
 
-    console.log("query", query);
 
     if (current["page"] === page) {
       query["page"] = null;

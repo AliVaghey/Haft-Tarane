@@ -25,11 +25,9 @@ const AgencyPage = ({ searchParams: { page, name } }) => {
     await axios
       .get(`/api/agency/not-checkouts`)
       .then((response) => {
-        console.log("agencycheckoutsResponse", response.data);
         setData(response.data);
       })
       .catch((err) => {
-        console.log("agencycheckoutsError", err);
       })
       .finally(() => {
         setIsLoading(false);

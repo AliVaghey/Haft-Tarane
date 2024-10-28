@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import SubmitButton from "@/components/submit-button";
 import { useDictionary } from "@/providers/dictionary-provider";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import querystring from "querystring";
 import ToastSuccess from "@/components/toast/toast-success";
 import { defaultMessages } from "@/lib/default-messages";
@@ -45,7 +45,7 @@ const OTPPhone = ({ changeStep }) => {
   const onSubmit = async (values) => {
     const { phone } = values;
 
-    await CSRFToken();
+    
 
     const encodedFormData = querystring.stringify({
       phone,
@@ -54,14 +54,12 @@ const OTPPhone = ({ changeStep }) => {
     await axios
       .post("/otp-login/send-otp", encodedFormData)
       .then(async (response) => {
-        console.log("response", response);
         if (response.status === 204 || response.status === 200) {
           changeStep(true);
           toast.success(<ToastSuccess text="کد تایید برای شما ارسال شد" />);
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={

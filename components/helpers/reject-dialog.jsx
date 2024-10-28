@@ -49,7 +49,6 @@ const RejectModal = ({ isOpen, onClose, onConfirm, loading, title }) => {
   }, []);
 
   const onSubmit = async (values) => {
-    console.log("values", values);
     onConfirm(values.message);
   };
 

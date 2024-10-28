@@ -28,11 +28,9 @@ const AgencyPage = ({ searchParams: { page, name }, params }) => {
     await axios
       .get(`/api/admin/agency/${params.id}/checkouts`)
       .then((response) => {
-        console.log("agencyPaidResponse", response.data);
         setData(response.data);
       })
       .catch((err) => {
-        console.log("agencyPaidError", err);
       })
       .finally(() => {
         setIsLoading(false);

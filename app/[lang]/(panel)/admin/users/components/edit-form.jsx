@@ -24,7 +24,7 @@ import {
 import SubmitButton from "@/components/submit-button";
 import { toast } from "sonner";
 import { citySchema, enCitySchema } from "@/lib/validation/auth/city";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import { useDictionary } from "@/providers/dictionary-provider";
 import querystring from "querystring";
 import ToastError from "@/components/toast/toast-error";
@@ -64,8 +64,6 @@ const EditForm = ({ data }) => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("values", values);
-
     const encodedFormData = querystring.stringify({
       username: values.username,
       national_code: values.national_code,
@@ -73,8 +71,6 @@ const EditForm = ({ data }) => {
       phone: values.phone,
       access_type: values.access_type,
     });
-
-    await CSRFToken();
 
     await axios
       .put(`/api/admin/user/${data.id}`, encodedFormData)
@@ -94,7 +90,6 @@ const EditForm = ({ data }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={

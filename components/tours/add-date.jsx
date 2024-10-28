@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/form";
 import SubmitButton from "@/components/submit-button";
 import { toast } from "sonner";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import { useDictionary } from "@/providers/dictionary-provider";
 import querystring from "querystring";
 import ToastError from "@/components/toast/toast-error";
@@ -63,7 +63,6 @@ const AddDate = ({ tour_id }) => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("valuesssssss", values);
 
     const { start, end } = values;
 
@@ -72,9 +71,8 @@ const AddDate = ({ tour_id }) => {
       end: DateForm(end),
     });
 
-    console.log("encodedFormData", encodedFormData);
 
-    await CSRFToken();
+    
 
     await axios
       .post(`/api/agency/tour/${tour_id}/date`, encodedFormData)
@@ -93,7 +91,6 @@ const AddDate = ({ tour_id }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={

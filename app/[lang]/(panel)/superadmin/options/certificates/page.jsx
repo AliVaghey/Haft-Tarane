@@ -29,11 +29,9 @@ const BannersPage = ({ searchParams: { page } }) => {
     await axios
       .get(`/api/options?category=certificates`)
       .then((response) => {
-        console.log("certificates", response.data);
         setData(response.data.data);
       })
       .catch((err) => {
-        console.log("certificatesError", err);
       })
       .finally(() => {
         setIsLoading(false);

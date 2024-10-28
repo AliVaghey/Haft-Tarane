@@ -21,7 +21,6 @@ const EditCityPage = ({ params }) => {
     await axios
       .get(`/api/user/reservation/${params.id}`)
       .then((response) => {
-        console.log("responsssae", response);
         setData(response.data.data);
       })
       .catch((error) => {

@@ -24,7 +24,6 @@ const EditProfitPage = ({ params }) => {
     await axios
       .get(`/api/admin/profit-rate/${params.id}`)
       .then((response) => {
-        console.log("response", response);
         setData(response.data);
       })
       .catch((error) => {

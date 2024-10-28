@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { CircleAlert, CircleCheckBig, Trash2 } from "lucide-react";
 import SubmitButton from "@/components/submit-button";
 import { toast } from "sonner";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import { useDictionary } from "@/providers/dictionary-provider";
 import { useTour } from "@/hooks/use-tour";
 import { useUser } from "@/hooks/use-user";
@@ -33,14 +33,12 @@ const DetailsPrice = ({ data }) => {
     try {
       setLoading(true);
 
-      await CSRFToken();
+      
 
       const response = await axios.delete(`/api/agency/price-change/${id}`);
 
-      console.log("responsewwwwwwwww", response);
 
       if (response.status === 204) {
-        console.log("first");
         router.refresh();
         toast.success(
           <div className="flex items-center gap-2">
@@ -63,7 +61,6 @@ const DetailsPrice = ({ data }) => {
         );
       }
     } catch (error) {
-      console.log("error", error);
       toast.error("مشکلی پیش آمده است. لطفا مجددا تلاش فرمایید");
     } finally {
       setLoading(false);

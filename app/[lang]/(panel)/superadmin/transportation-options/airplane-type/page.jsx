@@ -29,11 +29,9 @@ const BannersPage = ({ searchParams: { page } }) => {
     await axios
       .get(`/api/options?category=airplain_type`)
       .then((response) => {
-        console.log("airplain", response.data);
         setData(response.data.data);
       })
       .catch((err) => {
-        console.log("airplainError", err);
       })
       .finally(() => {
         setIsLoading(false);

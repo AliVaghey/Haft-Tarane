@@ -6,7 +6,7 @@ import { jaliliDateHour } from "@/lib/jalali-date";
 import { farsiNumber } from "@/lib/farsi-number";
 import ToastSuccess from "@/components/toast/toast-success";
 import ToastError from "@/components/toast/toast-error";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import { toast } from "sonner";
 import { useTour } from "@/hooks/use-tour";
 import { Separator } from "@/components/ui/separator";
@@ -22,7 +22,7 @@ const TransportationCard = ({ data, number, lenght, staying_nights }) => {
   const handleDeleteTranspotation = async () => {
     setIsLoading(true);
 
-    await CSRFToken();
+    
 
     await axios
       .delete(`/api/agency/tour/transportation/${data.id}`)
@@ -47,7 +47,6 @@ const TransportationCard = ({ data, number, lenght, staying_nights }) => {
       });
   };
 
-  console.log("data", data);
 
   return (
     <div className="flex flex-col text-muted-foreground">

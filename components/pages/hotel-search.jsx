@@ -72,7 +72,6 @@ const HotelSearch = ({ currentSearchParams }) => {
       destination: values.destination,
     };
 
-    console.log("query", query);
 
     if (current["page"] === page) {
       query["page"] = null;

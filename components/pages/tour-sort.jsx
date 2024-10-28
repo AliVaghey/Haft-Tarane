@@ -6,7 +6,6 @@ import { useState } from "react";
 import { Button } from "../ui/button";
 
 const TourSort = ({ data, onFilter }) => {
-  console.log("datawwwwwwwwwwww", data);
 
   let initialData = data.data;
 
@@ -31,7 +30,6 @@ const TourSort = ({ data, onFilter }) => {
   const handleDateStatus = () => {
     var newArray = initialData;
 
-    console.log("newArray", new Date(newArray[0].dates[0].start).getTime());
     newArray.sort(function (a, b) {
       if (dateStatus) {
         return (

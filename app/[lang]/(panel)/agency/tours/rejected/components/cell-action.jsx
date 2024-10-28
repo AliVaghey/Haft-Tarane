@@ -7,7 +7,7 @@ import DeleteModal from "@/components/helpers/delete-dialog";
 import { CircleCheckBig } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import { useTour } from "@/hooks/use-tour";
 
 const CellAction = ({ data }) => {
@@ -20,7 +20,7 @@ const CellAction = ({ data }) => {
     try {
       setLoading(true);
 
-      await CSRFToken();
+      
 
       const response = await axios.delete(`/api/agency/tour/${data.id}`);
 
@@ -36,7 +36,6 @@ const CellAction = ({ data }) => {
         tourHook.setFlag(!tourHook.flag);
       }
     } catch (error) {
-      console.log("error", error);
       toast.error("مشکلی پیش آمده است. لطفا مجددا تلاش فرمایید");
     } finally {
       setLoading(false);

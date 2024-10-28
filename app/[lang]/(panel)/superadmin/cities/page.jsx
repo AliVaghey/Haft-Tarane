@@ -31,7 +31,6 @@ const AdminDashboardPage = ({ searchParams: { page, name } }) => {
         setData(response.data);
       })
       .catch((err) => {
-        console.log("getCitiesError", err);
       })
       .finally(() => {
         setIsLoading(false);

@@ -28,7 +28,6 @@ const EditCityPage = ({ params }) => {
     await axios
       .get("/api/admin/info")
       .then((response) => {
-        console.log("response", response);
         setData(response.data.data);
       })
       .catch((error) => {

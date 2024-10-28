@@ -20,7 +20,7 @@ import SubmitButton from "@/components/submit-button";
 
 import { addFileSchema, enAddFileSchema } from "@/lib/validation/tour/add-file";
 import Dropzone from "react-dropzone";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import ToastError from "../toast/toast-error";
 import { toast } from "sonner";
 
@@ -55,7 +55,6 @@ const AddPassengerFile = ({ data }) => {
   }, []);
 
   const onSubmit = async (values) => {
-    console.log("values", values);
 
     const formData = new FormData();
 
@@ -65,12 +64,11 @@ const AddPassengerFile = ({ data }) => {
 
     formData.append(`${values.title}`, values.file);
 
-    await CSRFToken();
+    
 
     await axios
       .post(`/api/agency/reservation/${data.id}/files`, formData)
       .then((uploadResponse) => {
-        console.log("uploadResponse", uploadResponse);
         toast.success("آپلود فایل با موفقیت انجام شد");
         setIsOpen(false);
         reset();

@@ -14,7 +14,6 @@ import {
 } from "@/components/ui/carousel";
 
 const DetailsHotels = ({ data }) => {
-  console.log("data", data);
 
   return (
     <div className="mb-5 flex min-h-96 flex-col gap-5 rounded-lg bg-white p-5 lg:gap-10">
@@ -30,7 +29,6 @@ const DetailsHotels = ({ data }) => {
             });
           }
 
-          console.log("imagesArray", imagesArray);
 
           return (
             <>

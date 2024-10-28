@@ -94,6 +94,9 @@ export const routes = {
       add: "/superadmin/profit-rates/add",
       edit: (id) => `/superadmin/profit-rates/${id}/edit`,
     },
+    currency: {
+      root: "/superadmin/currency",
+    },
     "transportation-api": {
       flights: {
         root: "/superadmin/transportation-api/flights",

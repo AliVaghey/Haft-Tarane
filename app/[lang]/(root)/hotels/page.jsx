@@ -23,7 +23,6 @@ const TourPage = ({
 
   const checkSearchParams = !origin && !destination && !start && !end;
 
-  console.log("similarData", similarData);
 
   useEffect(() => {
     fetchData();
@@ -47,7 +46,6 @@ const TourPage = ({
           setData(response.data);
         })
         .catch((err) => {
-          console.log("getToursErrrrrrrrrrrrrrrrrrrrr", err);
         })
         .finally(() => {
           setIsLoading(false);
@@ -65,15 +63,12 @@ const TourPage = ({
     };
 
     setTimeout(async () => {
-      console.log("first");
       await axios
         .get(url())
         .then((response) => {
-          console.log("hotelsimilar", response.data);
           setSimilarData(response.data);
         })
         .catch((err) => {
-          console.log("getToursErrrrrrrrrrrrrrrrrrrrr", err);
         })
         .finally(() => {});
     }, 1000);

@@ -27,11 +27,9 @@ const AdminDashboardPage = () => {
     await axios
       .get(`/api/admin/profit-rates`)
       .then((response) => {
-        console.log("response", response);
         setData(response.data);
       })
       .catch((err) => {
-        console.log("getDataError", err);
       })
       .finally(() => {
         setIsLoading(false);

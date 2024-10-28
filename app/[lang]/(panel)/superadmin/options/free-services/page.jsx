@@ -29,11 +29,9 @@ const BannersPage = ({ searchParams: { page } }) => {
     await axios
       .get(`/api/options?category=free_services`)
       .then((response) => {
-        console.log("free_services", response.data);
         setData(response.data.data);
       })
       .catch((err) => {
-        console.log("free_servicesError", err);
       })
       .finally(() => {
         setIsLoading(false);

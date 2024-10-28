@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/form";
 import SubmitButton from "@/components/submit-button";
 import { toast } from "sonner";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import { useDictionary } from "@/providers/dictionary-provider";
 import querystring from "querystring";
 import ToastError from "@/components/toast/toast-error";
@@ -57,7 +57,6 @@ const EditForm = ({ data }) => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("values", values);
 
     const { first_name_fa, last_name_fa, gender, email, phone, national_code } =
       values;
@@ -71,7 +70,7 @@ const EditForm = ({ data }) => {
       national_code,
     });
 
-    await CSRFToken();
+    
 
     await axios
       .put("/api/user/info", encodedFormData)
@@ -88,7 +87,6 @@ const EditForm = ({ data }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={

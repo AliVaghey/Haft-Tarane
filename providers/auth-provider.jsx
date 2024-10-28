@@ -4,11 +4,13 @@ import LoadingPage from "@/components/loading-page";
 import { useUser } from "@/hooks/use-user";
 import { axios } from "@/lib/axios";
 import { routes } from "@/routes/routes";
+import Lottie from "lottie-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import groovyWalkAnimation from "@/animations/loading.json";
 
 const AuthProvider = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const userHook = useUser();
 
@@ -45,7 +47,6 @@ const AuthProvider = ({ children }) => {
       .get("/api/slider-cards")
       .then((response) => {
         if (response.status === 200) {
-          console.log("response.data", response.data);
           userHook.setSliderCards(response?.data?.data);
         }
       })
@@ -54,8 +55,6 @@ const AuthProvider = ({ children }) => {
   };
 
   const userInfo = async () => {
-    setIsLoading(true);
-
     await axios
       .get("/api/user/info")
       .then((response) => {
@@ -89,9 +88,7 @@ const AuthProvider = ({ children }) => {
           userHook.setSiteViews(response?.data);
         }
       })
-      .catch((err) => {
-        console.log("getBannersError", err);
-      })
+      .catch((err) => {})
       .finally(() => {});
   };
 
@@ -104,15 +101,25 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    userInfo();
     getSliderCards();
     getBanners();
     getSpecialTours();
     getSiteViews();
     increaseSiteViews();
+    userInfo();
   }, []);
 
-  return isLoading ? <LoadingPage /> : <main>{children}</main>;
+  return isLoading ? (
+    <div className="h-screen flex items-center justify-center">
+      <Lottie
+        animationData={groovyWalkAnimation}
+        loop={true}
+        className="h-[80px] w-full"
+      />
+    </div>
+  ) : (
+    <main>{children}</main>
+  );
 };
 
 export default AuthProvider;

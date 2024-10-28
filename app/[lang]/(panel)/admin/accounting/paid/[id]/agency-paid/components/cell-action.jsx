@@ -5,7 +5,6 @@ import Link from "next/link";
 import { routes } from "@/routes/routes";
 
 const CellAction = ({ data }) => {
-  console.log("dataeqw", data);
   return (
     <div className="flex items-center justify-center gap-1">
       <Link

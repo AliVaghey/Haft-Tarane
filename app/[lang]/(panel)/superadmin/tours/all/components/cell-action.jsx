@@ -1,6 +1,6 @@
 "use client";
 
-import { CSRFToken } from "@/lib/axios";
+
 import { routes } from "@/routes/routes";
 import { axios } from "@/lib/axios";
 import { CircleCheckBig, CircleAlert } from "lucide-react";
@@ -21,7 +21,6 @@ const CellAction = ({ data }) => {
   const [open2, setOpen2] = useState(false);
 
   const onReject = async (message) => {
-    console.log("message", message);
     try {
       setLoading(true);
 
@@ -29,7 +28,7 @@ const CellAction = ({ data }) => {
         message,
       });
 
-      await CSRFToken();
+      
 
       const response = await axios.post(
         `/api/admin/tour/${data.id}/reject`,
@@ -37,7 +36,6 @@ const CellAction = ({ data }) => {
       );
 
       if (response.status === 204) {
-        console.log("first");
         router.refresh();
         toast.success(
           <div className="flex items-center gap-2">
@@ -70,12 +68,11 @@ const CellAction = ({ data }) => {
     try {
       setLoading(true);
 
-      await CSRFToken();
+      
 
       const response = await axios.post(`/api/admin/tour/${data.id}/approve`);
 
       if (response.status === 204) {
-        console.log("first");
         router.refresh();
         toast.success(
           <div className="flex items-center gap-2">

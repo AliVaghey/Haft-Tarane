@@ -2,7 +2,7 @@
 
 import SubmitButton from "@/components/submit-button";
 import ToastError from "@/components/toast/toast-error";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import { defaultMessages } from "@/lib/default-messages";
 import { CircleCheckBig } from "lucide-react";
 import { useState } from "react";
@@ -13,14 +13,12 @@ const GetAirports = () => {
 
   const getData = async () => {
     setIsLoading(true);
-    await CSRFToken();
+    
 
     await axios
       .get("api/admin/save-airports")
       .then((response) => {
-        console.log("response", response.data);
         if (response.status === 200) {
-          console.log("response", response.status);
           toast.success(
             <div className="flex items-center gap-2">
               <span>
@@ -32,7 +30,6 @@ const GetAirports = () => {
         }
       })
       .catch((error) => {
-        console.log("get-airports-error", error);
         toast.error(
           <ToastError
             text={

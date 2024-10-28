@@ -7,14 +7,13 @@ import CostItems from "./cost-items";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useTour } from "@/hooks/use-tour";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import ToastError from "@/components/toast/toast-error";
 import { defaultMessages } from "@/lib/default-messages";
 import ToastSuccess from "../toast/toast-success";
 import EditHotelPackage from "./edit-hotel-package";
 
 const HotelCosts = ({ data, number, tour_id }) => {
-  console.log("datawewrw", data);
 
   const tourHook = useTour();
 
@@ -23,7 +22,7 @@ const HotelCosts = ({ data, number, tour_id }) => {
   const handleDeleteHotel = async () => {
     setIsLoading(true);
 
-    await CSRFToken();
+    
 
     await axios
       .delete(`/api/agency/tour/cost/${data.id}`)

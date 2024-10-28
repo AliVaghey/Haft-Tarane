@@ -7,7 +7,7 @@ import { jaliliDate, jaliliDateHour } from "@/lib/jalali-date";
 import { farsiNumber } from "@/lib/farsi-number";
 import ToastSuccess from "@/components/toast/toast-success";
 import ToastError from "@/components/toast/toast-error";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import { toast } from "sonner";
 import { useTour } from "@/hooks/use-tour";
 import { Separator } from "@/components/ui/separator";
@@ -21,18 +21,16 @@ import { MapPin } from "lucide-react";
 import { persianPriceFormat } from "@/lib/persian-price-format";
 
 const TransportationCardSystem = ({ data, number, lenght }) => {
-  console.log("data", data);
   const tourHook = useTour();
 
   const { flight } = data;
-  console.log("flight", flight);
 
   const [isLoading, setIsLoading] = useState(false);
 
   const handleDeleteTranspotation = async () => {
     setIsLoading(true);
 
-    await CSRFToken();
+    
 
     await axios
       .delete(`/api/agency/tour/sys-transportation/${data.transportation_id}`)
@@ -57,7 +55,6 @@ const TransportationCardSystem = ({ data, number, lenght }) => {
       });
   };
 
-  console.log("data", data);
 
   return (
     <div className="flex flex-col text-muted-foreground">

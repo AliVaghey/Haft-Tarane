@@ -25,11 +25,9 @@ const AgencyPage = ({ searchParams: { page, name } }) => {
     await axios
       .get(`/api/admin/agencies/checkouts`)
       .then((response) => {
-        console.log("agencySalesResponse", response.data);
         setData(response.data);
       })
       .catch((err) => {
-        console.log("agencySalesError", err);
       })
       .finally(() => {
         setIsLoading(false);

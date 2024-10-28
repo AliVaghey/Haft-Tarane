@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form";
 import SubmitButton from "@/components/submit-button";
 import { toast } from "sonner";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import { useDictionary } from "@/providers/dictionary-provider";
 import querystring from "querystring";
 import ToastError from "@/components/toast/toast-error";
@@ -46,7 +46,6 @@ import { farsiNumber } from "@/lib/farsi-number";
 import { jaliliDate } from "@/lib/jalali-date";
 
 const EditPrice = ({ data }) => {
-  console.log("datapopop", data);
 
   const dictionary = useDictionary();
 
@@ -65,7 +64,7 @@ const EditPrice = ({ data }) => {
     defaultValues: {
       costId: "0",
       dateId: "0",
-
+      currency:data?.currency || "irt",
       one_bed: String(Math.abs(+data.one_bed)),
       one_bed_type: +data.one_bed >= 0 ? "plus" : "mines",
       two_bed: String(Math.abs(+data.two_bed)),
@@ -92,6 +91,7 @@ const EditPrice = ({ data }) => {
   const onSubmit = async (values) => {
     const {
       one_bed,
+      currency,
       one_bed_type,
       two_bed,
       two_bed_type,
@@ -115,6 +115,7 @@ const EditPrice = ({ data }) => {
     const babyPrice = removeChar(",", baby);
 
     const encodedFormData = querystring.stringify({
+      currency,
       one_bed: one_bed_type === "plus" ? +one_bedPrice : +one_bedPrice * -1,
       two_bed: two_bed_type === "plus" ? +two_bedPrice : +two_bedPrice * -1,
       plus_one: plus_one_type === "plus" ? +plus_onePrice : +plus_onePrice * -1,
@@ -123,14 +124,12 @@ const EditPrice = ({ data }) => {
       baby: baby_type === "plus" ? +babyPrice : +babyPrice * -1,
     });
 
-    console.log("encodedFormData", encodedFormData);
 
-    await CSRFToken();
+    
 
     await axios
       .put(`/api/agency/price-change/${data.id}`, encodedFormData)
       .then((response) => {
-        console.log("response", response);
         if (response.status === 200) {
           toast.success(
             <div className="flex items-center gap-2">
@@ -146,7 +145,6 @@ const EditPrice = ({ data }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={
@@ -233,6 +231,33 @@ const EditPrice = ({ data }) => {
                           </SelectContent>
                         </Select>
 
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={control}
+                    name="currency"
+                    render={({ field }) => (
+                      <FormItem className="col-span-full">
+                        <FormLabel>ارز</FormLabel>
+                        <Select
+                          disabled={userHook.userData.access_type !== "agency"}
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="انتخاب کنید" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="irt">تومان</SelectItem>
+                            <SelectItem value="usd">دلار</SelectItem>
+                            <SelectItem value="eur">یورو</SelectItem>
+                            <SelectItem value="aed">درهم</SelectItem>
+                          </SelectContent>
+                        </Select>
                         <FormMessage />
                       </FormItem>
                     )}

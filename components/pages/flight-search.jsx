@@ -48,7 +48,6 @@ const FlightSearch = ({ currentSearchParams }) => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("values", values);
 
     for (var propName in values) {
       if (
@@ -102,11 +101,9 @@ const FlightSearch = ({ currentSearchParams }) => {
 
   const changeDay = (op) => {
     var day = new Date(currentSearchParams.date);
-    console.log(day); // Apr 30 2000
 
     var nextDay = new Date(day);
     nextDay.setDate(day.getDate() + op);
-    console.log(nextDay); // May 01 2000
 
     const current = qs.parse(searchParams.toString());
     const query = {

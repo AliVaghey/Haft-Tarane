@@ -28,7 +28,7 @@ import BreadcrumbComponent from "@/components/breadcrumb";
 import { ChevronRight } from "lucide-react";
 import { useDictionary } from "@/providers/dictionary-provider";
 import { useUser } from "@/hooks/use-user";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import { routes } from "@/routes/routes";
 import { toast } from "sonner";
 import Image from "next/image";
@@ -71,7 +71,7 @@ const Header = () => {
   const signOut = async () => {
     setIsLoading(true);
 
-    await CSRFToken();
+    
 
     const fetchData = () => {
       return new Promise(async (resolve) => {
@@ -149,7 +149,6 @@ const Header = () => {
                         pathname.endsWith(item.href) && "bg-white",
                       )}
                       onClick={() => {
-                        console.log("first");
                       }}
                     >
                       {item?.icon(18, 1.5)}

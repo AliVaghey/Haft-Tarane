@@ -26,7 +26,6 @@ const AdminLayout = ({ children }) => {
     await axios
       .get("/api/admin/info")
       .then((response) => {
-        console.log("getAdminInfores", response?.data?.data);
 
         if (response.status === 200) {
           userHook.setUserData(response?.data?.data);
@@ -36,7 +35,6 @@ const AdminLayout = ({ children }) => {
         }
       })
       .catch((err) => {
-        console.log("getAdminInfoError", err);
       })
       .finally(() => {
         setIsLoading(false);
@@ -47,13 +45,11 @@ const AdminLayout = ({ children }) => {
     axios
       .get("/api/admin/dashboard/info")
       .then((response) => {
-        console.log("agency-dashboard", response?.data);
         if (response.status === 200) {
           userHook.setAdminDashboard(response?.data);
         }
       })
       .catch((err) => {
-        console.log("Error", err);
       })
       .finally(() => {});
   };

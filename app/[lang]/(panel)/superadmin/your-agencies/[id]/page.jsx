@@ -24,7 +24,6 @@ const EditCityPage = ({ params }) => {
     await axios
       .get(`/api/admin/agency/${params.id}`)
       .then((response) => {
-        console.log("response", response);
         setData(response.data.data);
       })
       .catch((error) => {

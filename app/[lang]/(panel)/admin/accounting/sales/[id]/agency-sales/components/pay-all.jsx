@@ -4,7 +4,7 @@ import useMount from "@/hooks/use-mount";
 import { CircleCheckBig } from "lucide-react";
 import SubmitButton from "@/components/submit-button";
 import { toast } from "sonner";
-import { CSRFToken, axios } from "@/lib/axios";
+import {  axios } from "@/lib/axios";
 import { useDictionary } from "@/providers/dictionary-provider";
 import ToastError from "@/components/toast/toast-error";
 import { defaultMessages } from "@/lib/default-messages";
@@ -34,7 +34,6 @@ const PayAll = ({ agencyId, className }) => {
     values.description && formData.append("description", values.description);
     formData.append("receipt", values.recipt.file);
 
-    await CSRFToken();
 
     await axios
       .post(`/api/admin/agency/${agencyId}/checkout`, formData)
@@ -55,7 +54,6 @@ const PayAll = ({ agencyId, className }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={
@@ -86,7 +84,6 @@ const PayAll = ({ agencyId, className }) => {
         }
       })
       .catch((err) => {
-        console.log("setPayDataError", err);
       })
       .finally(() => {
         setLoading2(false);

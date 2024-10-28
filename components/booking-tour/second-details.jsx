@@ -31,7 +31,6 @@ import { Separator } from "../ui/separator";
 import AddPassengers from "./add-passengers";
 
 const SecondDetails = ({ data }) => {
-  console.log("dataooooooooooooppppppppppp", data);
   const router = useRouter();
 
   const searchParams = useSearchParams();

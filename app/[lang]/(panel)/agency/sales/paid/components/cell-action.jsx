@@ -1,7 +1,7 @@
 "use client";
 
 import DeleteModal from "@/components/helpers/delete-dialog";
-import { CSRFToken } from "@/lib/axios";
+
 import { routes } from "@/routes/routes";
 import { axios } from "@/lib/axios";
 import { ChevronDown, LoaderIcon, Trash2 } from "lucide-react";
@@ -46,7 +46,7 @@ const CellAction = ({ data }) => {
 
     const newAccessName = newStatus === "در انتظار پرداخت" ? "pending" : "paid";
 
-    await CSRFToken();
+    
 
     const encodedFormData = querystring.stringify({
       status: newAccessName,
@@ -55,7 +55,6 @@ const CellAction = ({ data }) => {
     await axios
       .post(`/api/agency/reservation/${data.id}/change-status`, encodedFormData)
       .then((response) => {
-        console.log("response", response);
         if (response.status === 200) {
           toast.success(
             <ToastSuccess text={"وضعیت پرداخت با موفقیت تغییر کرد"} />,

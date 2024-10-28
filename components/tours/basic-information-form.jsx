@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/form";
 import SubmitButton from "@/components/submit-button";
 import { toast } from "sonner";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import { useDictionary } from "@/providers/dictionary-provider";
 import querystring from "querystring";
 import ToastError from "@/components/toast/toast-error";
@@ -117,7 +117,7 @@ const BasicInformationForm = ({ data }) => {
       labels,
     } = values;
 
-    await CSRFToken();
+    
 
     const encodedFormData = querystring.stringify({
       title,
@@ -140,7 +140,6 @@ const BasicInformationForm = ({ data }) => {
       await axios
         .put(`/api/agency/tour/${data.id}`, encodedFormData)
         .then(async (response) => {
-          console.log("edit-draft-response", response.data);
 
           if (response.status === 204) {
             tourHook.setFlag(!tourHook.flag);
@@ -151,7 +150,6 @@ const BasicInformationForm = ({ data }) => {
           }
         })
         .catch((error) => {
-          console.log("edit-draft-error", error);
           toast.error(
             <ToastError
               text={
@@ -165,7 +163,6 @@ const BasicInformationForm = ({ data }) => {
       await axios
         .post("/api/agency/tour", encodedFormData)
         .then((response) => {
-          console.log("draft-response", response.data);
 
           if (response.status === 201) {
             toast.success(
@@ -177,7 +174,6 @@ const BasicInformationForm = ({ data }) => {
           }
         })
         .catch((error) => {
-          console.log("draft-error", error);
           toast.error(
             <ToastError
               text={

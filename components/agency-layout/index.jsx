@@ -36,7 +36,6 @@ const AgencyLayout = ({ children }) => {
         }
       })
       .catch((err) => {
-        console.log("getAgencyInfoError", err);
       })
       .finally(() => {
         setIsLoading(false);
@@ -47,13 +46,11 @@ const AgencyLayout = ({ children }) => {
     axios
       .get("/api/agency/dashboard/info")
       .then((response) => {
-        console.log("agency-dashboard", response?.data);
         if (response.status === 200) {
           userHook.setAgencyDashboard(response?.data);
         }
       })
       .catch((err) => {
-        console.log("Error", err);
       })
       .finally(() => {});
   };

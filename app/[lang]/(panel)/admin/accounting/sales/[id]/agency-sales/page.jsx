@@ -30,11 +30,9 @@ const AgencyPage = ({ searchParams: { page, name }, params }) => {
     await axios
       .get(`/api/admin/agency/${params.id}/sales`)
       .then((response) => {
-        console.log("agencySalesResponse", response.data);
         setData(response.data);
       })
       .catch((err) => {
-        console.log("agencySalesError", err);
       })
       .finally(() => {
         setIsLoading(false);

@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/form";
 import SubmitButton from "@/components/submit-button";
 import { toast } from "sonner";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import { useDictionary } from "@/providers/dictionary-provider";
 import querystring from "querystring";
 import ToastError from "@/components/toast/toast-error";
@@ -83,7 +83,6 @@ const AddForm = ({ data }) => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("values", values);
     const { images } = values;
 
     const encodedFormData = querystring.stringify({
@@ -95,7 +94,7 @@ const AddForm = ({ data }) => {
       stars: values.stars,
     });
 
-    await CSRFToken();
+    
 
     await axios
       .put(`/api/admin/hotel/${data.id}`, encodedFormData)
@@ -105,7 +104,6 @@ const AddForm = ({ data }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={
@@ -124,18 +122,16 @@ const AddForm = ({ data }) => {
       formData.append(`photo_${index}`, img.file);
     });
 
-    await CSRFToken();
+    
 
     const doUpload = async () => {
       return new Promise(async (resolve) => {
         await axios
           .post(`/api/admin/hotel/${id}/photos`, formData)
           .then((uploadResponse) => {
-            console.log("uploadResponse", uploadResponse);
             resolve("آپلود تصاویر با موفقیت انجام شد");
           })
           .catch((uploadError) => {
-            console.log("uploadError", uploadError);
             resolve("آپلود تصاویر انجام نشد");
           })
           .finally(() => {});
@@ -145,7 +141,6 @@ const AddForm = ({ data }) => {
     toast.promise(doUpload, {
       loading: "هتل با موفقیت ویرایش شد. در حال آپلود تصاویر...",
       success: () => {
-        console.log("afterUploading");
         router.push(routes.admin["your-hotels"].root);
         router.refresh();
         return "تصاویر با موفقیت آپلود شدند";
@@ -180,7 +175,7 @@ const AddForm = ({ data }) => {
     try {
       setDeleteLoading(true);
 
-      await CSRFToken();
+      
 
       const response = await axios.delete(
         `/api/admin/hotel/${data.id}/photo/${imageId}`,

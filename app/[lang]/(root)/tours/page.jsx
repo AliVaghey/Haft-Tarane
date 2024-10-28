@@ -47,7 +47,6 @@ const TourPage = ({
           setData(response.data);
         })
         .catch((err) => {
-          console.log("getToursErrrrrrrrrrrrrrrrrrrrr", err);
         })
         .finally(() => {
           setIsLoading(false);
@@ -65,14 +64,12 @@ const TourPage = ({
     };
 
     setTimeout(async () => {
-      console.log("first");
       await axios
         .get(url())
         .then((response) => {
           setSimilarData(response.data);
         })
         .catch((err) => {
-          console.log("getToursErrrrrrrrrrrrrrrrrrrrr", err);
         })
         .finally(() => {});
     }, 1000);

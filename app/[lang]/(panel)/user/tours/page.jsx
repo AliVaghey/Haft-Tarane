@@ -28,7 +28,6 @@ const UserToursPage = ({ searchParams: { page } }) => {
         setData(response.data);
       })
       .catch((err) => {
-        console.log("getCitiesError", err);
       })
       .finally(() => {
         setIsLoading(false);

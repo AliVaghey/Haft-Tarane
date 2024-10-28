@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/form";
 import SubmitButton from "@/components/submit-button";
 import { toast } from "sonner";
-import { CSRFToken, axios } from "@/lib/axios";
+import { axios } from "@/lib/axios";
 import { useDictionary } from "@/providers/dictionary-provider";
 import querystring from "querystring";
 import ToastError from "@/components/toast/toast-error";
@@ -44,7 +44,6 @@ import {
 import { removeChar, separatePrice } from "@/lib/persian-price-format";
 
 const EditMyTransportation = ({ data }) => {
-  console.log("datatransportation", data);
   const dictionary = useDictionary();
 
   const tourHook = useTour();
@@ -89,7 +88,6 @@ const EditMyTransportation = ({ data }) => {
   } = form;
 
   const onSubmit = async (values) => {
-    console.log("valuesssssss", values);
 
     const {
       type,
@@ -115,7 +113,7 @@ const EditMyTransportation = ({ data }) => {
       price: price ? removeChar(",", price) : null,
     });
 
-    await CSRFToken();
+    
 
     await axios
       .put(`/api/agency/tour/transportation/${data.id}`, encodedFormData)
@@ -134,7 +132,6 @@ const EditMyTransportation = ({ data }) => {
         }
       })
       .catch((error) => {
-        console.log("login-error", error);
         toast.error(
           <ToastError
             text={
@@ -383,7 +380,6 @@ const EditMyTransportation = ({ data }) => {
                           <FormControl>
                             <SearchableSelect
                               changeValue={(value) => {
-                                console.log("value", value);
                                 field.onChange(value);
                               }}
                               defaultValue={getValues("company_name")}
@@ -441,7 +437,6 @@ const EditMyTransportation = ({ data }) => {
                           <FormControl>
                             <SearchableSelect
                               changeValue={(value) => {
-                                console.log("value", value);
                                 field.onChange(value);
                               }}
                               defaultValue={getValues("transportation_type")}

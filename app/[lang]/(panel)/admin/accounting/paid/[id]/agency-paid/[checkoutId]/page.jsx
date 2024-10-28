@@ -11,7 +11,6 @@ import PaginationComponent from "@/components/pagination";
 import { useTour } from "@/hooks/use-tour";
 
 const AgencyPage = ({ searchParams: { page, name }, params }) => {
-  console.log("params", params);
 
   const dictionary = useDictionary();
 
@@ -30,11 +29,9 @@ const AgencyPage = ({ searchParams: { page, name }, params }) => {
     await axios
       .get(`/api/admin/checkout/${params.checkoutId}`)
       .then((response) => {
-        console.log("agencyPaidResponse", response.data.sales);
         setData(response.data.sales);
       })
       .catch((err) => {
-        console.log("agencyPaidError", err);
       })
       .finally(() => {
         setIsLoading(false);

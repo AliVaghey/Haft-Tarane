@@ -1,6 +1,6 @@
 "use client";
 
-import { CSRFToken } from "@/lib/axios";
+
 import { axios } from "@/lib/axios";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -48,7 +48,7 @@ const CellAction = ({ data }) => {
       // accessName === "ادمین"? "admin":
       accessName === "آژانس" ? "agency" : "user";
 
-    await CSRFToken();
+    
 
     const encodedFormData = querystring.stringify({
       access_type: newAccessName,

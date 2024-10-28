@@ -29,11 +29,9 @@ const BannersPage = ({ searchParams: { page } }) => {
     await axios
       .get(`/api/options?category=bus`)
       .then((response) => {
-        console.log("bus", response.data);
         setData(response.data.data);
       })
       .catch((err) => {
-        console.log("busError", err);
       })
       .finally(() => {
         setIsLoading(false);

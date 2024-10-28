@@ -23,7 +23,6 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { persianPriceFormat } from "@/lib/persian-price-format";
 
 const AddPassengers = ({ defaultData }) => {
-  console.log("defaultData", defaultData);
 
   const cost = defaultData.cost;
 
