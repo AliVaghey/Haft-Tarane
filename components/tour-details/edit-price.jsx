@@ -64,7 +64,7 @@ const EditPrice = ({ data }) => {
     defaultValues: {
       costId: "0",
       dateId: "0",
-
+      currency:data?.currency || "irt",
       one_bed: String(Math.abs(+data.one_bed)),
       one_bed_type: +data.one_bed >= 0 ? "plus" : "mines",
       two_bed: String(Math.abs(+data.two_bed)),
@@ -91,6 +91,7 @@ const EditPrice = ({ data }) => {
   const onSubmit = async (values) => {
     const {
       one_bed,
+      currency,
       one_bed_type,
       two_bed,
       two_bed_type,
@@ -114,6 +115,7 @@ const EditPrice = ({ data }) => {
     const babyPrice = removeChar(",", baby);
 
     const encodedFormData = querystring.stringify({
+      currency,
       one_bed: one_bed_type === "plus" ? +one_bedPrice : +one_bedPrice * -1,
       two_bed: two_bed_type === "plus" ? +two_bedPrice : +two_bedPrice * -1,
       plus_one: plus_one_type === "plus" ? +plus_onePrice : +plus_onePrice * -1,
@@ -229,6 +231,33 @@ const EditPrice = ({ data }) => {
                           </SelectContent>
                         </Select>
 
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={control}
+                    name="currency"
+                    render={({ field }) => (
+                      <FormItem className="col-span-full">
+                        <FormLabel>ارز</FormLabel>
+                        <Select
+                          disabled={userHook.userData.access_type !== "agency"}
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="انتخاب کنید" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="irt">تومان</SelectItem>
+                            <SelectItem value="usd">دلار</SelectItem>
+                            <SelectItem value="eur">یورو</SelectItem>
+                            <SelectItem value="aed">درهم</SelectItem>
+                          </SelectContent>
+                        </Select>
                         <FormMessage />
                       </FormItem>
                     )}
