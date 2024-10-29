@@ -236,6 +236,18 @@ const SecondDetails = ({ data }) => {
                         <span>{item?.company_name}</span>
                         <span>رفت: {farsiNumber(item.start)}</span>
                       </div>
+                      <div className="flex items-center gap-2">
+                        {item.type === "هواپیما" && (
+                          <Plane size={20} className="text-yellow-600" />
+                        )}
+                        {item.type === "قطار" && (
+                          <Train size={20} className="text-yellow-600" />
+                        )}
+                        {item.type === "اتوبوس" && (
+                          <Bus size={20} className="text-yellow-600" />
+                        )}
+                        <span>{item?.transportation_type}</span>
+                      </div>
                     </div>
                     <div className="mr-10 h-8 border-r border-dashed border-black" />
                     {data.transportation.length > index + 1 && (
