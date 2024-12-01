@@ -17,22 +17,25 @@ const FlightReservationForm = ({ params }) => {
   const [captchaCode, setCaptchaCode] = useState("");
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
+  const [reservationData, setReservationData] = useState(null); // ذخیره داده‌های موفق رزرو
+  const [isModalOpen, setIsModalOpen] = useState(false); // کنترل باز بودن مدال
   const [passengers, setPassengers] = useState([
     {
-        "type": "ADL",
-        "firstname_fa": "",
-        "lastname_fa": "",
-        "firstname_en": "",
-        "lastname_en": "",
-        "gender": "male",
-        "nationality": "ir",
-        "passenger_code": "",
-        "expdate": "",
-        "birthday": "",
-        "nationality_code": "IRI"
+      type: "ADL",
+      firstname_fa: "",
+      lastname_fa: "",
+      firstname_en: "",
+      lastname_en: "",
+      gender: "male",
+      nationality: "ir",
+      passenger_code: "",
+      expdate: "",
+      birthday: "",
+      nationality_code: "IRI",
     },
   ]);
   const [isLoading, setIsLoading] = useState(true);
+  const [redirect, setRedirect] = useState("");
   const { id } = params;
   const router = useRouter();
 
@@ -70,18 +73,18 @@ const FlightReservationForm = ({ params }) => {
     setPassengers([
       ...passengers,
       {
-        "type": "ADL",
-        "firstname_fa": "",
-        "lastname_fa": "",
-        "firstname_en": "",
-        "lastname_en": "",
-        "gender": "male",
-        "nationality": "ir",
-        "passenger_code": "",
-        "expdate": "",
-        "birthday": "",
-        "nationality_code": "IRI"
-    },
+        type: "ADL",
+        firstname_fa: "",
+        lastname_fa: "",
+        firstname_en: "",
+        lastname_en: "",
+        gender: "male",
+        nationality: "ir",
+        passenger_code: "",
+        expdate: "",
+        birthday: "",
+        nationality_code: "IRI",
+      },
     ]);
   };
 
@@ -107,7 +110,6 @@ const FlightReservationForm = ({ params }) => {
   };
 
   const handleReservation = async () => {
-    const isValid = passengers.every((p) => validateAge(p.birthday, p.type));
     setIsLoading(true);
     try {
       const response = await axios.post(`/api/user/plane/reserve`, {
@@ -119,8 +121,11 @@ const FlightReservationForm = ({ params }) => {
         passengers: JSON.stringify(passengers),
         flight_info: flightData,
       });
-      router.push(`${response.data.paymentUrl}?url=${process.env.NEXT_PUBLIC_FRONTEND_URL}/fa/user/ticket`);
 
+      // بررسی موفقیت‌آمیز بودن رزرو
+      setRedirect(`${response.data.paymentUrl}?url=${process.env.NEXT_PUBLIC_FRONTEND_URL}/fa/user/ticket`)
+      setReservationData(response.data.reservation_results); // ذخیره اطلاعات رزرو
+      setIsModalOpen(true); // باز کردن مدال
     } catch (error) {
       toast.error(
         <ToastError
@@ -131,7 +136,6 @@ const FlightReservationForm = ({ params }) => {
       setIsLoading(false);
     }
   };
-
   return isLoading ? (
     <div className="flex min-h-screen items-center justify-center bg-yellow-100 p-6">
       <LoadingChita />
@@ -488,6 +492,73 @@ const FlightReservationForm = ({ params }) => {
           >
             ثبت رزرو
           </button>
+        </div>
+      )}
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="w-[90%] max-w-md rounded-lg bg-white p-6 shadow-lg">
+            <h2 className="mb-4 text-xl font-bold text-yellow-800">
+              اطلاعات رزرو
+            </h2>
+            <div className="mb-4">
+              <p>
+                <strong>شماره ووچر:</strong> {reservationData.voucher}
+              </p>
+              <p>
+                <strong>قیمت کل:</strong>{" "}
+                {new Intl.NumberFormat("fa-IR").format(
+                  reservationData.totalPrice,
+                )}{" "}
+                تومان
+              </p>
+            </div>
+            <div className="mb-4">
+              <h3 className="font-bold text-yellow-700">اطلاعات مسافران:</h3>
+              <div className="space-y-2">
+                {reservationData.passengersInfo.map((p, i) => (
+                  <div key={i} className="rounded-lg border shadow-sm">
+                    <button
+                      className="w-full bg-yellow-100 p-2 font-bold text-yellow-700"
+                      onClick={() =>
+                        document
+                          .getElementById(`accordion-content-${i}`)
+                          .classList.toggle("hidden")
+                      }
+                    >
+                      مسافر {i + 1}: {p.firstname_en} {p.lastname_en}
+                    </button>
+                    <div
+                      id={`accordion-content-${i}`}
+                      className="hidden border-t bg-white p-4"
+                    >
+                      <p>
+                        <strong>نوع:</strong> {p.type}
+                      </p>
+                      <p>
+                        <strong>نام (en):</strong> {p.firstname_en}{" "}
+                        {p.lastname_en}
+                      </p>
+                      <p>
+                        <strong>کد ملی/پاسپورت:</strong> {p.passenger_code}
+                      </p>
+                      
+                      {p.expdate && (
+                        <p>
+                          <strong>تاریخ انقضای پاسپورت:</strong> {p.expdate}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <button
+              className="w-full rounded-lg bg-yellow-500 py-3 font-bold text-white hover:bg-yellow-600"
+              onClick={() => router.push(redirect)}
+            >
+              رفتن به صفحه پرداخت
+            </button>
+          </div>
         </div>
       )}
     </div>
