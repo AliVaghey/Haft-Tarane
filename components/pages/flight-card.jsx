@@ -131,6 +131,7 @@ const FlightCard = ({ data }) => {
                   const flightData = JSON.stringify(data); // Convert data to a string
                 const expirationTime = new Date(Date.now() + 15 * 60 * 1000); // 15 minutes from now
                 document.cookie = `flightData=${flightData}; expires=${expirationTime.toUTCString()}; path=/`; // Set the cookie
+                router.push(routes.flights.details(data.uniqueID));
                 } else {
                   toast.error("لطفا ابتدا وارد سایت شوید");
                   router.push(routes.auth.signIn);

@@ -21,6 +21,7 @@ export const routes = {
 
   flights: {
     root: "/flights",
+    details: (id) => `/flights/${id}`,
   },
 
   superadmin: {
@@ -279,6 +280,10 @@ export const routes = {
     tours: {
       root: "/user/tours",
       details: (id) => `/user/tours/${id}`,
+    },
+    ticket: {
+      root: "/user/ticket",
+      details: (id) => `/user/ticket/${id}`,
     },
   },
 };

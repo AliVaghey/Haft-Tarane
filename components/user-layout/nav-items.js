@@ -88,4 +88,20 @@ export const navItems = [
       },
     ],
   },
+  {
+    title: "بلیط ها",
+    type: "subMenu",
+    icon: (size, strokeWidth) => (
+      <Plane size={size || 18} strokeWidth={strokeWidth || 1.5} />
+    ),
+    subMenu: [
+      {
+        title: "بلیط های خریداری شده",
+        href: routes.user.ticket.root,
+        icon: (size, strokeWidth) => (
+          <Plane size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+    ],
+  },
 ];
