@@ -8,8 +8,16 @@ import Image from "next/image";
 import { persianPriceFormat } from "@/lib/persian-price-format";
 import Link from "next/link";
 import { farsiNumber } from "@/lib/farsi-number";
+import cookie from "cookie";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { useUser } from "@/hooks/use-user";
+import { routes } from "@/routes/routes";
 
 const FlightCard = ({ data }) => {
+  const router = useRouter();
+  const userHook = useUser();
+
   return (
     <div className="overflow-hidden rounded-lg bg-white shadow-lg">
       <div className="flex">
@@ -22,7 +30,7 @@ const FlightCard = ({ data }) => {
             className="aspect-square h-full w-72"
           />
           <div className="absolute bottom-0 w-full bg-black/30 p-2 text-center text-white">
-            <span>Mahan Airline</span>
+            <span>{data.airline ?? ""} Airline</span>
           </div>
           <div className="absolute right-5 top-5">
             <Image
@@ -48,7 +56,7 @@ const FlightCard = ({ data }) => {
                 alt="flight"
                 className="h-9 w-72"
               />
-              <span className="text-center text-xs">{`مدت زمان سفر : ۴ ساعت و ۳۰ دقیقه`}</span>
+              {/* <span className="text-center text-xs">{`مدت زمان سفر : ۴ ساعت و ۳۰ دقیقه`}</span> */}
             </div>
             <div className="flex flex-1 flex-row items-center justify-center gap-2 rounded-sm bg-[#EFEFEF] px-5 py-1">
               <span className="text-yellow-primary">به مقصد</span>
@@ -57,28 +65,28 @@ const FlightCard = ({ data }) => {
           </div>
 
           <div className="flex w-full items-center gap-2">
-            <div className="flex flex-1 items-center justify-start">
+            {/* <div className="flex flex-1 items-center justify-start">
               <span>{farsiNumber(data.time_flight)}</span>
-            </div>
+            </div> */}
             <div className="flex flex-1 items-center justify-center gap-2">
-              <span>{farsiNumber("16:00")}</span>
-              <span>تا</span>
-              <span>{farsiNumber("18:30")}</span>
-            </div>
-            <div className="flex flex-1 items-center justify-end">
+              <span>ساعت پرواز</span>
+              <span>:</span>
               <span>{farsiNumber(data.time_flight)}</span>
             </div>
+            {/* <div className="flex flex-1 items-center justify-end">
+              <span>{farsiNumber(data.time_flight)}</span>
+            </div> */}
           </div>
 
           <div className="flex w-full items-center gap-2 text-xs">
             <div className="flex flex-1 items-center justify-start">
-              <span>خروج</span>
+              <span>مبدا</span>
             </div>
-            <div className="flex flex-1 items-center justify-center gap-2 text-center">
+            {/* <div className="flex flex-1 items-center justify-center gap-2 text-center">
               <span>۲ ساعت و ۳۰ دقیقه توقف</span>
-            </div>
+            </div> */}
             <div className="flex flex-1 items-center justify-end">
-              <span>فرود</span>
+              <span>مقصد</span>
             </div>
           </div>
 
@@ -117,11 +125,24 @@ const FlightCard = ({ data }) => {
               </div>
             </div>
 
-            <Link href={""} className="flex flex-1 items-center justify-start">
+            <button
+              onClick={() => {
+                if (userHook.userData) {
+                  const flightData = JSON.stringify(data); // Convert data to a string
+                const expirationTime = new Date(Date.now() + 15 * 60 * 1000); // 15 minutes from now
+                document.cookie = `flightData=${flightData}; expires=${expirationTime.toUTCString()}; path=/`; // Set the cookie
+                } else {
+                  toast.error("لطفا ابتدا وارد سایت شوید");
+                  router.push(routes.auth.signIn);
+                }
+               
+              }}
+              className="flex flex-1 items-center justify-start"
+            >
               <div className="flex flex-1 flex-row items-center justify-center gap-2 rounded-sm bg-[#FCF7D1] px-5 py-2">
                 <span>خرید بلیط</span>
               </div>
-            </Link>
+            </button>
           </div>
         </div>
       </div>

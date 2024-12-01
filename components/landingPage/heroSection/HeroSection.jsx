@@ -87,80 +87,72 @@ function HeroSection() {
       )}
 
       <div className="flex flex-col items-center justify-center">
-        <div
-          className={cn(
-            "my-4 grid grid-cols-1 ",
-            userHook?.sliderCards &&
-              userHook?.sliderCards.length > 0 &&
-              "lg:grid-cols-2",
-          )}
-        >
+        <div className={cn("my-4 grid grid-cols-1 ")}>
           <div className="flex w-full items-center justify-center">
             <Image
               src={chita}
               alt="alt"
               width={720}
               height={480}
-              className={cn(
-                "aspect-video w-2/3",
-                userHook?.sliderCards &&
-                  userHook?.sliderCards.length > 0 &&
-                  "w-1/2",
-              )}
+              className={cn("aspect-video w-2/3")}
               // className="aspect-video w-4/5 md:w-3/5 lg:w-[28%]"
             />
           </div>
-
         </div>
         <div className="">
-          <h2 className="mb-2 animate-pulse text-4xl font-bold max-lg:text-xl max-md:text-xl">
+          <h2
+            className={` animate-pulse text-4xl font-bold max-lg:text-xl max-md:text-xl ${
+            userHook?.sliderCards &&
+            userHook?.sliderCards.length > 0 ?
+            "mb-16" : "mb-2"}`}
+          >
             سفر ضرورتی برای زندگی
           </h2>
         </div>
       </div>
       <div className="flex w-full items-center justify-center">
-      {userHook?.sliderCards && userHook?.sliderCards.length > 0 && (
-        <div className="mt-8 flex lg:w-1/2 w-full items-center justify-center lg:mt-0">
-          <Carousel
-            opts={{ loop: true }}
-            plugins={[
-              Autoplay({
-                delay: 4000,
-              }),
-            ]}
-            className="mx-auto aspect-video w-[90%] lg:w-3/4"
-            dir="ltr"
-          >
-            <CarouselContent className="w-full">
-              {userHook.sliderCards.map((item, index) => (
-                <CarouselItem key={index}>
-                  <Link
-                    href={item?.link || "#"}
-                    className="relative aspect-video w-full"
-                  >
-                    <Image
-                      src={item?.photo}
-                      width={720}
-                      height={480}
-                      alt="hotel"
-                      className="mx-auto aspect-video rounded-lg object-cover"
-                    />
-                    <div
-                      style={{ color: item?.description_color || "yellow" }}
-                      // className="absolute bottom-5 left-10 right-5 block w-[80%] rounded-lg py-2 text-center text-lg font-semibold md:left-14"
-                      className="absolute left-1/2 top-1/2 w-[80%] -translate-x-1/2 -translate-y-1/2 text-center text-lg font-semibold"
+        {userHook?.sliderCards && userHook?.sliderCards.length > 0 && (
+          <div className="mt-8 flex w-full items-center justify-center lg:mt-0 lg:w-1/2">
+            <Carousel
+              opts={{ loop: true }}
+              plugins={[
+                Autoplay({
+                  delay: 4000,
+                }),
+              ]}
+              className="mx-auto aspect-video w-[90%] lg:w-3/4"
+              dir="ltr"
+            >
+              <CarouselContent className="w-full">
+                {userHook.sliderCards.map((item, index) => (
+                  <CarouselItem key={index}>
+                    <Link
+                      href={item?.link || "#"}
+                      className="relative aspect-video w-full"
                     >
-                      <span>{item?.description}</span>
-                    </div>
-                  </Link>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="translate-x-14 border-0 bg-white bg-opacity-50" />
-            <CarouselNext className="-translate-x-[70px] border-0 bg-white bg-opacity-50" />
-          </Carousel>
-        </div>
-      )}
+                      <Image
+                        src={item?.photo}
+                        width={720}
+                        height={480}
+                        alt="hotel"
+                        className="mx-auto aspect-video rounded-lg object-cover"
+                      />
+                      <div
+                        style={{ color: item?.description_color || "yellow" }}
+                        // className="absolute bottom-5 left-10 right-5 block w-[80%] rounded-lg py-2 text-center text-lg font-semibold md:left-14"
+                        className="absolute left-1/2 top-1/2 w-[80%] -translate-x-1/2 -translate-y-1/2 text-center text-lg font-semibold"
+                      >
+                        <span>{item?.description}</span>
+                      </div>
+                    </Link>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="translate-x-14 border-0 bg-white bg-opacity-50" />
+              <CarouselNext className="-translate-x-[70px] border-0 bg-white bg-opacity-50" />
+            </Carousel>
+          </div>
+        )}
       </div>
       {/*<FullSearch />*/}
     </div>
