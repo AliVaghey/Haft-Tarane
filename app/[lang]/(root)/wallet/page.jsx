@@ -1,30 +1,56 @@
-"use client"
+"use client";
+import ToastError from "@/components/toast/toast-error";
+import { useUser } from "@/hooks/use-user";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { toast } from "sonner";
 
 const WalletPage = () => {
   const [amount, setAmount] = useState("");
   const router = useRouter();
-
+  const userHook = useUser();
   const suggestedAmounts = [5000, 10000, 20000, 50000]; // مبالغ پیشنهادی
 
   const handleRedirect = (selectedAmount) => {
     const finalAmount = selectedAmount || amount;
-    if (!finalAmount || isNaN(finalAmount)) {
-      alert("لطفاً مبلغ معتبر وارد کنید.");
-      return;
+    if (userHook.userData) {
+      if (!finalAmount || isNaN(finalAmount)) {
+        toast.error(<ToastError text={"لطفاً مبلغ معتبر وارد کنید."} />);
+        setError("لطفاً مبلغ معتبر وارد کنید.");
+        return;
+      }
+      if (finalAmount < 1000) {
+        toast.error(
+          <ToastError text={"مبلغ نباید کمتر از ۱۰۰۰ تومان باشد."} />,
+        );
+        return;
+      }
+      if (finalAmount > 50000000) {
+        toast.error(
+          <ToastError text={"مبلغ نباید بیشتر از 50 میلیون تومان باشد."} />,
+        );
+        return;
+      }
+
+      router.push(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/pay/balance/increase?amount=${finalAmount}&user=${userHook.userData.id}`,
+      );
+    } else {
+      toast.error("لطفا ابتدا وارد سایت شوید");
+      router.push(routes.auth.signIn);
     }
-    router.push(`${process.env.NEXT_PUBLIC_BACKEND_URL}/pay/balance/increase?amount=${finalAmount}`);
   };
 
   return (
     <div className="flex h-screen items-center justify-center bg-yellow-100">
       <div className="w-[90%] max-w-md rounded-lg bg-white p-6 shadow-lg">
-        <h2 className="mb-4 text-xl font-bold text-yellow-800">افزایش موجودی کیف پول</h2>
+        <h2 className="mb-4 text-xl font-bold text-yellow-800">
+          افزایش موجودی کیف پول
+        </h2>
         <div className="mb-4">
           <label
             htmlFor="amount"
-            className="block mb-2 text-sm font-medium text-yellow-700"
+            className="mb-2 block text-sm font-medium text-yellow-700"
           >
             مبلغ مورد نظر:
           </label>
