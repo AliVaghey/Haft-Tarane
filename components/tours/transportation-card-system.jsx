@@ -151,7 +151,7 @@ const TransportationCardSystem = ({ data, number, lenght }) => {
                 <div className="flex items-center gap-3">
                   <span>قیمت : </span>
                   <span>
-                    {farsiNumber(persianPriceFormat(+flight.price_final))} ریال
+                    {farsiNumber(persianPriceFormat(+flight.price_final / 10))} تومان
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
