@@ -138,6 +138,14 @@ export default function Nav() {
               </button>
             ) : (
               <>
+                <Link href="/wallet">
+                  <Button
+                    variant="outline"
+                    className="rounded-xl bg-[#f60622] hover:bg-[#f60622] border border-gray-dark text-white hover:text-yellow-primary"
+                  >
+                    شارژ آنلاین
+                  </Button>
+                </Link>
                 <Link href="/about">
                   <Button
                     variant="outline"
@@ -178,6 +186,14 @@ export default function Nav() {
           </Link>
           <Link href="/nature-tours">
             <p className="text-xl">طبیعت گردی</p>
+          </Link>
+          <Link href="/wallet">
+            <Button
+              variant="outline"
+              className="rounded-xl border border-gray-dark text-gray-dark hover:text-yellow-primary"
+            >
+               شارژ آنلاین
+            </Button>
           </Link>
           <Link href="/about">
             <Button

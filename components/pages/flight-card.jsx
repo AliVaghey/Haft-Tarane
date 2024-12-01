@@ -115,7 +115,7 @@ const FlightCard = ({ data }) => {
             <div className="flex flex-1 items-center justify-start">
               <div className="flex flex-1 flex-row items-center justify-center gap-2 rounded-sm bg-[#EFEFEF] px-5 py-2">
                 <span className="text-red-primary">{data.type_flight}</span>:
-                <span>{persianPriceFormat(data.price_final)} ریال</span>
+                <span>{persianPriceFormat(+data.price_final / 10)} تومان</span>
               </div>
             </div>
 

@@ -123,7 +123,9 @@ const FlightReservationForm = ({ params }) => {
       });
 
       // بررسی موفقیت‌آمیز بودن رزرو
-      setRedirect(`${response.data.paymentUrl}?url=${process.env.NEXT_PUBLIC_FRONTEND_URL}/fa/user/ticket`)
+      setRedirect(
+        `${response.data.paymentUrl}?url=${process.env.NEXT_PUBLIC_FRONTEND_URL}/fa/user/ticket`,
+      );
       setReservationData(response.data.reservation_results); // ذخیره اطلاعات رزرو
       setIsModalOpen(true); // باز کردن مدال
     } catch (error) {
@@ -505,10 +507,10 @@ const FlightReservationForm = ({ params }) => {
                 <strong>شماره ووچر:</strong> {reservationData.voucher}
               </p>
               <p>
-                <strong>قیمت کل:</strong>{" "}
+                <strong>قیمت کل:</strong>
                 {new Intl.NumberFormat("fa-IR").format(
-                  reservationData.totalPrice,
-                )}{" "}
+                  +reservationData.totalPrice / 10,
+                )}
                 تومان
               </p>
             </div>
@@ -541,7 +543,7 @@ const FlightReservationForm = ({ params }) => {
                       <p>
                         <strong>کد ملی/پاسپورت:</strong> {p.passenger_code}
                       </p>
-                      
+
                       {p.expdate && (
                         <p>
                           <strong>تاریخ انقضای پاسپورت:</strong> {p.expdate}

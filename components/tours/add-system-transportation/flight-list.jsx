@@ -219,7 +219,7 @@ const FlightList = ({ flights, addTransportation }) => {
                                 <div className="flex flex-col gap-2">
                                   <span>قیمت</span>
                                   <span>
-                                    {persianPriceFormat(item.price_final)} ریال
+                                    {persianPriceFormat(+item.price_final / 10)} تومان
                                   </span>
                                 </div>
                                 <div className="flex flex-col gap-2">
