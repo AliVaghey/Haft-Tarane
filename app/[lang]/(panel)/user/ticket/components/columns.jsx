@@ -17,36 +17,34 @@ export const columns = [
   {
     id: "date",
     header: "تاریخ",
-    cell: ({ row }) => <span>{row.original.tour.origin}</span>,
+    cell: ({ row }) => <span>{farsiNumber(jaliliDate(row.original?.flightInfo?.created_at))}</span>,
   },
   {
     id: "origin",
     header: "مبدا",
-    cell: ({ row }) => <span>{row.original.tour.origin}</span>,
+    cell: ({ row }) => <span>{row?.original?.flightInfo?.from}</span>,
   },
   {
     id: "destination",
     header: "مقصد",
-    cell: ({ row }) => <span>{row.original.tour.destination}</span>,
+    cell: ({ row }) => <span>{row?.original?.flightInfo?.to}</span>,
   },
   {
     id: "status",
     header: "وضعیت",
     cell: ({ row }) => (
-      <span>{farsiNumber(row.original.tour.staying_nights)}</span>
+      <span>{row.original.status === "pending" ? "در انتظار پرداخت" : row.original.status === "canceled" ? "ناموفق" : row.original.status === "paid" ? "موفق" : ''}</span>
     ),
   },
   {
     id: "totalPrice",
     header: "توضیحات",
-    cell: ({ row }) => <CellAction data={row.original} />,
+    cell: ({ row }) => <span>{row?.original?.descriptions}</span>,
   },
   {
     id: "start",
     header: "بلیط",
-    cell: ({ row }) => (
-      <span>{farsiNumber(jaliliDate(row.original.date.start))}</span>
-    ),
+    cell: ({ row }) => <CellAction data={row.original} />,
   },
   // {
   //   id: "payStatus",

@@ -23,7 +23,7 @@ const UserToursPage = ({ searchParams: { page } }) => {
   const fetchCities = async () => {
     setIsLoading(true);
     await axios
-      .get(`/api/user/reservations?page=${page || 1}`)
+      .get(`/api/user/plane/tickets?page=${page || 1}`)
       .then((response) => {
         setData(response.data);
       })
