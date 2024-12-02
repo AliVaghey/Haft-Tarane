@@ -13,6 +13,12 @@ const Transportation = ({ data }) => {
   const params = useParams();
   return (
     <div className="mt-5">
+      {data.transportation_type === "my_transportation" ||
+      data.transportation_type === "hotel" ? (
+        <AddMyTransportation tour_id={data.tour_id} />
+      ) : (
+        <AddSystemTransportation tour_id={data.tour_id} />
+      )}
       <div className="flex flex-col">
         {data.transportations.map((item, index) =>
           data.transportation_type === "my_transportation" ||

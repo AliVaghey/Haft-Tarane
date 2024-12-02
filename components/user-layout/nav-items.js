@@ -67,10 +67,10 @@ export const navItems = [
     ],
   },
 
-  {
-    title: "تور ها",
-    type: "text",
-  },
+  // {
+  //   title: "تور ها",
+  //   type: "text",
+  // },
 
   {
     title: "تور ها",
@@ -96,12 +96,21 @@ export const navItems = [
     ),
     subMenu: [
       {
-        title: "بلیط های خریداری شده",
+        title: "بلیط های هواییما",
         href: routes.user.ticket.root,
         icon: (size, strokeWidth) => (
           <Plane size={size || 18} strokeWidth={strokeWidth || 1.5} />
         ),
       },
     ],
+  },
+  {
+    title: "تاریخچه افزایش موجودی",
+    type: "link",
+    href: routes.user.walletHistory,
+    icon: (size, strokeWidth) => (
+      <Wallet size={size || 18} strokeWidth={strokeWidth || 1.5} />
+    ),
+    subMenu: [],
   },
 ];

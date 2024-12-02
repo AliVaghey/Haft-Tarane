@@ -33,6 +33,7 @@ import { routes } from "@/routes/routes";
 import { toast } from "sonner";
 import Image from "next/image";
 import { logoRed } from "@/constants/images";
+import { farsiNumber } from "@/lib/farsi-number";
 
 const Header = () => {
   const dictionary = useDictionary();
@@ -236,6 +237,10 @@ const Header = () => {
       {/* <div className="w-full flex-1">
         <BreadcrumbComponent />
       </div> */}
+      <div className="w-full flex-1">
+        <></>
+      </div>
+      <div>کیف پول : {farsiNumber(userHook?.userData?.balance)} تومان</div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button className="mr-auto flex items-center justify-center gap-2 bg-red-primary text-white hover:bg-red-dark">

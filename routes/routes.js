@@ -273,6 +273,8 @@ export const routes = {
 
   user: {
     dashboard: "/user/dashboard",
+    walletHistory: "/user/walletHistory",
+
     profile: {
       "user-info": "/user/profile/user-info",
       "update-password": "/user/profile/update-password",

@@ -23,7 +23,7 @@ const UserToursPage = ({ searchParams: { page } }) => {
   const fetchCities = async () => {
     setIsLoading(true);
     await axios
-      .get(`/api/user/reservations?page=${page || 1}`)
+      .get(`/api/user/balance-increases?page=${page || 1}`)
       .then((response) => {
         setData(response.data);
       })
@@ -36,8 +36,8 @@ const UserToursPage = ({ searchParams: { page } }) => {
   return (
     <div className="px-0 lg:px-10">
       <DataTableHeader
-        title={"بلیط های هواییما"}
-        description={"بلیط های هواییما"}
+        title={"تاریخچه افزایش موجودی"}
+        description={"تاریخچه افزایش موجودی"}
         // btnText="افزودن شهر"
         // href={routes.admin.cities.add}
       />

@@ -12,6 +12,12 @@ const Dates = ({ data }) => {
   const params = useParams();
   return (
     <div className="mt-5">
+      <div className="my-5">
+       {(data.transportation_type === "my_transportation" ||
+              data.transportation_type === "hotel") && (
+              <AddDate tour_id={data.tour_id} />
+            )}
+            </div>
       <div className="flex flex-col gap-2 lg:gap-4">
         {data.dates.map((item, index) => (
           <DateCard
