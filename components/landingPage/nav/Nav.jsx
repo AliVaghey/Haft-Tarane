@@ -190,8 +190,8 @@ export default function Nav() {
           <Link href="/wallet">
             <Button
               variant="outline"
-              className="rounded-xl border border-gray-dark text-gray-dark hover:text-yellow-primary"
-            >
+              className="rounded-xl bg-[#f60622] hover:bg-[#f60622] border border-gray-dark text-white hover:text-yellow-primary"
+              >
                شارژ آنلاین
             </Button>
           </Link>
@@ -204,14 +204,14 @@ export default function Nav() {
             </Button>
           </Link>
 
-          <Link href="/auth/sign-in">
-            <Button
-              variant="outline"
-              className="rounded-xl border border-gray-dark bg-gray-dark text-white hover:bg-gray-dark hover:text-yellow-primary"
-            >
-              ورود یا ثبت نام
-            </Button>
-          </Link>
+          <Link href={pannelLink()}>
+                  <Button
+                    variant="outline"
+                    className="rounded-xl border border-gray-dark bg-gray-dark text-white hover:bg-gray-dark hover:text-yellow-primary"
+                  >
+                    {userHook.userData ? "پنل کاربری" : " ورود یا ثبت نام"}
+                  </Button>
+                </Link>
         </div>
       )}
     </div>

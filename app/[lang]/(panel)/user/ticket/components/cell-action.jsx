@@ -14,28 +14,28 @@ const CellAction = ({ data }) => {
   return (
     <div className="flex items-center justify-center">
       <div className="flex items-center gap-1">
-        {data.status === "pending" && (
-          <Button
+        {data.status === "paid" && data.buy_ticket_result (
+          <Link
+          href={data.buy_ticket_results}
             onClick={() => {
-              redirectZP(data.id);
               toast.info(
                 <div className="flex items-center gap-2">
                   <LoaderCircle
                     className="animate-spin text-blue-500"
                     size={16}
                   />
-                  <span> در حال انتقال به درگاه پرداخت</span>
+                  <span> در حال دانلود</span>
                 </div>,
               );
             }}
             variant="outline"
             className="h-7 border-green-500 text-xs text-green-500 hover:bg-green-500 hover:text-white"
           >
-            پرداخت
-          </Button>
+            دانلود
+          </Link>
         )}
 
-        <Link href={routes.user.tours.details(data.id)}>
+        <Link href={routes.user.ticket.details(data.id)}>
           <Button className="h-7 text-xs">مشاهده جزئیات</Button>
         </Link>
       </div>
