@@ -241,6 +241,10 @@ export const routes = {
         dates: (id) => `/agency/tours/${id}/edit/dates`,
       },
     },
+    ticket: {
+      root: "/agency/ticket",
+      details: (id) => `/agency/ticket/${id}`,
+    },
     "booked-tours": {
       root: "/agency/booked-tours",
       details: (id) => `/agency/booked-tours/${id}`,

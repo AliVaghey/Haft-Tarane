@@ -132,6 +132,23 @@ export const navItems = [
   },
 
   {
+    title: "بلیط ها",
+    type: "subMenu",
+    icon: (size, strokeWidth) => (
+      <Plane size={size || 18} strokeWidth={strokeWidth || 1.5} />
+    ),
+    subMenu: [
+      {
+        title: "بلیط های هواییما",
+        href: routes.agency.ticket.root,
+        icon: (size, strokeWidth) => (
+          <Plane size={size || 18} strokeWidth={strokeWidth || 1.5} />
+        ),
+      },
+    ],
+  },
+
+  {
     title: "فروش ها",
     type: "subMenu",
     icon: (size, strokeWidth) => (
