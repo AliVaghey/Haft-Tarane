@@ -10,7 +10,7 @@ const WalletPage = () => {
   const [amount, setAmount] = useState("");
   const router = useRouter();
   const userHook = useUser();
-  const suggestedAmounts = [5000, 10000, 20000, 50000]; // مبالغ پیشنهادی
+  const suggestedAmounts = [500000, 1000000, 2000000, 3000000, 5000000]; // مبالغ پیشنهادی
 
   const handleRedirect = (selectedAmount) => {
     const finalAmount = selectedAmount || amount;
